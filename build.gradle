@@ -89,6 +89,9 @@ task buildTests(type: Jar, dependsOn: 'test') {
 	baseName "${baseName}-test"
 }
 
+task stage(dependsOn: ['build', 'clean'])
+	build.mustRunAfter clean
+
 configurations {
 	tests {
 		extendsFrom testRuntime
