@@ -10,14 +10,14 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is the home page.
+				This is the home page of Gif || Gif's Tempeturs app!
 
 				<ul>
 					<li><Link to="/register">Register</Link></li>
 					<li><Link to="/login">Login</Link></li>
-					<li><Link to="/page-1">Page 1</Link></li>
-					<li><Link to="/page-2">Page 2</Link></li>
-					<li><Link to="/page-3">Page 3</Link></li>
+					<li><Link to="/rating-page">Rating Page</Link></li>
+					<li><Link to="/report-page">Report Page</Link></li>
+					<li><Link to="/find-sitter">Find Sitter</Link></li>
 				</ul>
 			</div>
 		);
@@ -56,11 +56,11 @@ export class LoginPage extends React.Component {
 	}
 }
 
-class Page1 extends React.Component {
+class ReviewPage extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is page 1.
+				This a page where you review a user!
 
 				{ _.isDefined(this.props.authentication) &&
 				<div>{this.props.authentication['access_token']}</div>
@@ -74,30 +74,30 @@ class Page1 extends React.Component {
 	}
 }
 
-Page1 = connect(
+ReviewPage = connect(
 	state => ({
 		authentication: Users.State.getAuthentication(state),
 		user: Users.State.getUser(state)
 	})
-)(Page1);
+)(ReviewPage);
 
-export { Page1 };
+export { ReviewPage };
 
-export class Page2 extends React.Component {
+export class ReportingPage extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is page 2.
+				This is the page where you report a user!
 			</div>
 		);
 	}
 }
 
-export class Page3 extends React.Component {
+export class FindSitter extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is page 3.
+				This is the page to find a sitter!
 			</div>
 		);
 	}

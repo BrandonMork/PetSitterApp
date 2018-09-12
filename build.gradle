@@ -44,6 +44,11 @@ dependencyManagement {
 }
 
 dependencies {
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+	compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0.1'
+	compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
@@ -88,9 +93,6 @@ task buildTests(type: Jar, dependsOn: 'test') {
 	from sourceSets.test.output
 	baseName "${baseName}-test"
 }
-
-task stage(dependsOn: ['build', 'clean'])
-	build.mustRunAfter clean
 
 configurations {
 	tests {
@@ -142,8 +144,11 @@ task functionalTest(type: Test, dependsOn: 'build') {
 def isNpmInstalled() {
 	try {
 		exec {
-			commandLine "npm", "--version"
-		}
+			if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+				commandLine "npm.cmd", "--version"
+			} else {
+				commandLine "npm", "--version"
+			}		}
 	} catch (Exception e) {
 		return false
 	}
@@ -186,3 +191,6 @@ processResources {
 }
 
 tasks.processResources.dependsOn webpack
+
+task stage(dependsOn: ['build', 'clean'])
+	build.mustRunAfter clean
