@@ -144,7 +144,11 @@ task functionalTest(type: Test, dependsOn: 'build') {
 def isNpmInstalled() {
 	try {
 		exec {
-			commandLine "npm", "--version"
+			if (org.gradle.internal.os.OperatingSystem.current().isWindows()) {
+				commandLine "npm.cmd", "--version"
+			} else {
+				commandLine "npm", "--version"
+			}
 		}
 	} catch (Exception e) {
 		return false
