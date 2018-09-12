@@ -1,0 +1,13 @@
+image: java:10
+
+deploy:
+ stage: deploy
+ image: ruby:2.3
+ script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=$APP_NAME --api-key=$API_KEY
+
+  only:
+  - master
