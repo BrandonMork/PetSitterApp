@@ -6,11 +6,15 @@ import { connect } from 'react-redux';
 import * as Users from 'js/users';
 import * as Login from 'js/login';
 
+import axios from 'axios';
+
 export class Home extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is Gif||Gif's Tempeturs home page - with a twist!
+				This is Gif||Gif's Tempeturs home page - with a NEW twist!
+
+				<p>	{ JSON.stringify(axios.get('/api/user')) }</p>
 
 				<ul>
 					<li><Link to="/register">Register</Link></li>
