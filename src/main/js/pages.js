@@ -10,7 +10,7 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is Gif||Gif's Tempeturs home page.
+				This is Gif||Gif's Tempeturs home page - with a twist!
 
 				<ul>
 					<li><Link to="/register">Register</Link></li>
