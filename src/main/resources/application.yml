@@ -35,4 +35,4 @@ elastic-search:
   port: 9200
   scheme: http
   user-name:
-  password: 
+  password:
