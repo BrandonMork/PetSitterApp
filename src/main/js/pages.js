@@ -20,9 +20,7 @@ export class Home extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
-				This is Gif||Gif's Tempeturs home page - with a NEW twist!
-
-				<p>	{ JSON.stringify(axios.get('/api/user')) }</p>
+				This is Gif||Gif's Tempeturs home page - redefined!
 
 				<ul>
 					<li><Link to="/register">Register</Link></li>
@@ -42,7 +40,7 @@ export class Home extends React.Component {
 	}
 
 	ping() {
-		axios.get('http://localhost:8080/pong').then(res => {
+		axios.get('/pong').then(res => {
 			alert('Received Successful response from server!');
 			this.setState({ponged: 'Ponged! '});
 		}, err => {
