@@ -40,7 +40,7 @@ export class Home extends React.Component {
 	}
 
 	ping() {
-		axios.get('/pong').then(res => {
+		axios.get('https://giforgif-tempeturs.herokuapp.com/pong').then(res => {
 			alert('Received Successful response from server!');
 			this.setState({ponged: 'Ponged! '});
 		}, err => {
