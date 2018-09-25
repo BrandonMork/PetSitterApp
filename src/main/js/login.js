@@ -7,6 +7,8 @@ import * as Bessemer from 'js/alloy/bessemer/components';
 
 import * as Users from 'js/users';
 
+import {PhoneNumberInput} from 'js/phone';
+
 class LoginForm extends React.Component {
 	onSubmit = ({principal, password}) => {
 		return this.props.authenticate(principal, password);
@@ -15,6 +17,9 @@ class LoginForm extends React.Component {
 	render() {
 		let { handleSubmit, submitting } = this.props;
 
+		// Use Principal to reflect our backend (Principal == UserName)
+		// Accesses UserAuthenticationDto (UAD->Password + UAD->UserDao->Principal)
+		// @TODO Figure out how to index on Elasticsearch
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
 				<Bessemer.Field name="principal" friendlyName="Email Address"
@@ -43,30 +48,44 @@ LoginForm = connect(
 
 export { LoginForm };
 
-const options = [
-	{ value: 'owner', label: 'Owner'},
-	{ value: 'sitter', label: 'Sitter'}
+// 0 or 1 to reflect our enums in the back-end
+const typeOptions = [
+	{ value: '0', label: 'Owner'},
+	{ value: '1', label: 'Sitter'}
+];
+
+const genderOptions = [
+	{ value: 'female', label: 'Female'},
+	{ value: 'male', label: 'Male'},
+	{ value: 'other', label: 'Other'},
+	{ value: 'decline', label: 'Prefer To Not Answer'}
 ];
 
 class RegistrationForm extends React.Component {
 
 	state = {
-		selectedOption: null
-	}
+		selectedTypeOption: null,
+		selectedGenderOption: null,
+		phone: null,
+	};
 
-	handleChange = (selectedOption) => {
-		this.setState({ selectedOption });
-		console.log('Option selected: ', selectedOption);
-	}
+	handleTypeChange = (selectedTypeOption) => {
+		this.setState({ selectedTypeOption });
+	};
+
+	handleGenderChange = (selectedGenderOption) => {
+		this.setState({ selectedGenderOption });
+	};
 
 	onSubmit = user => {
 		return this.props.register(user);
 	};
 
+	//@TODO List of roles, and map of attributes, save this form to Elasticsearch
 	render() {
 		let { handleSubmit, submitting } = this.props;
-
-		const { selectedOption } = this.state;
+		const { selectedTypeOption } = this.state;
+		const { selectedGenderOption } = this.state;
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
@@ -77,7 +96,13 @@ class RegistrationForm extends React.Component {
 				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
 				                field={<input className="form-control" type="password" />} />
 
-				<Bessemer.Select value={selectedOption} onChange={this.handleChange} options={options} />
+				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
+								 onChange={this.handleTypeChange} options={typeOptions} />
+
+				Gender: <Bessemer.Select label="Gender" name="genderType" friendlyName="Gender" value={selectedGenderOption}
+								 onChange={this.handleGenderChange} options={genderOptions} />
+
+				Phone Number: <PhoneNumberInput/>
 
 				<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
 			</form>
