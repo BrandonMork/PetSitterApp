@@ -9,7 +9,9 @@ import alloy.util.Momento;
  * Created by jlutteringer on 1/15/18.
  */
 public class UserAuthenticationDto implements Momento<String> {
+	// UserDto contains all attributes we'd find on a "profile"
 	private UserDto user;
+	// Contains the password needed to access account (will be encrypted)
 	private String password;
 
 	private UserAuthenticationDto() {
