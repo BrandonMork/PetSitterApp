@@ -36,7 +36,7 @@ const config = {
 			js: path.resolve(src, 'js'),
 			styles: path.resolve(src, 'styles')
 		},
-		extensions: ['.json', '.js', '.scss']
+		extensions: ['.json', '.js', '.scss', '.css']
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),

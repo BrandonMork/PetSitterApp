@@ -37,6 +37,9 @@ public class UserService {
 		return userDao.findUserByPrincipal(principal);
 	}
 
+	/**
+	 * RegistrationRequest: I have no idea what this does
+	 */
 	public static class RegistrationRequest {
 		private String principal;
 		private String password;
@@ -67,6 +70,9 @@ public class UserService {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public UserDto register(RegistrationRequest request) {
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto(
 				new UserDto(request.getPrincipal(), _Lists.list("ROLE_USER"), UserType.OWNER, request.getAttributes()), passwordEncoder.encode(request.getPassword()));
