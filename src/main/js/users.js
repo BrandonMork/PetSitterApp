@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // Makes API call to our register function in the back-end
 export function register(user) {
-	return axios.post('/api/user/register', user);
+	return axios.post('https://yew-1307964.us-east-1.bonsaisearch.net/api/user/register', user);
+
 }
 
 export function authenticate(username, password) {

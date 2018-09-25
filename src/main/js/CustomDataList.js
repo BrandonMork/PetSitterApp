@@ -12,7 +12,7 @@ export default class CustomDataList extends React.Component{
             .then(res=> {
                 console.log(res);
                 this.setState({persons: res.data});
-            })
+            });
     }
     render() {
         return (
