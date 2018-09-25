@@ -7,7 +7,7 @@ import * as Users from 'js/users';
 import * as Login from 'js/login';
 
 import axios from 'axios';
-import CustomDataList from "js/CustomDataList";
+import CustomDataList from 'js/CustomDataList';
 
 export class Home extends React.Component {
 
