@@ -21,7 +21,8 @@ class LoginForm extends React.Component {
 				                validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
 				<Bessemer.Field name="password" friendlyName="Password"
-				                validators={[Validation.requiredValidator, Validation.passwordValidator]} />
+				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
+								field={<input className="form-control" type="password" />} />
 
 				<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
 			</form>
@@ -42,13 +43,30 @@ LoginForm = connect(
 
 export { LoginForm };
 
+const options = [
+	{ value: 'owner', label: 'Owner'},
+	{ value: 'sitter', label: 'Sitter'}
+];
+
 class RegistrationForm extends React.Component {
+
+	state = {
+		selectedOption: null
+	}
+
+	handleChange = (selectedOption) => {
+		this.setState({ selectedOption });
+		console.log('Option selected: ', selectedOption);
+	}
+
 	onSubmit = user => {
 		return this.props.register(user);
 	};
 
 	render() {
 		let { handleSubmit, submitting } = this.props;
+
+		const { selectedOption } = this.state;
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
@@ -58,6 +76,8 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="password" friendlyName="Password"
 				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
 				                field={<input className="form-control" type="password" />} />
+
+				<Bessemer.Select value={selectedOption} onChange={this.handleChange} options={options} />
 
 				<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
 			</form>
