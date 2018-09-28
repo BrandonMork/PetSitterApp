@@ -48,8 +48,8 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
-				.withClient("petfinder-app")
-					.secret("petfinder-app-secret")
+				.withClient("rceiwx2ja6")
+					.secret("k8akj8q570")
 					.authorizedGrantTypes("client_credentials", "refresh_token", "password")
 					.authorities("ROLE_TRUSTED_CLIENT")
 					.scopes("read", "write")

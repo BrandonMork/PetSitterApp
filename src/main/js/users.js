@@ -16,7 +16,6 @@ export function authenticate(username, password) {
 				username,
 				password
 			},
-			// add our credentials to this!!!
 			auth: {
 				username: 'rceiwx2ja6',
 				password: 'k8akj8q570'
