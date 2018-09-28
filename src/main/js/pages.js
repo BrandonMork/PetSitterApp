@@ -7,8 +7,10 @@ import * as Users from 'js/users';
 import * as Login from 'js/login';
 
 import axios from 'axios';
+import CustomDataList from 'js/CustomDataList';
 
 export class Home extends React.Component {
+
 
 	constructor(props) {
 		super(props);
@@ -23,6 +25,7 @@ export class Home extends React.Component {
 				This is Gif||Gif's Tempeturs home page - redefined!
 
 				<ul>
+
 					<li><Link to="/register">Register</Link></li>
 					<li><Link to="/login">Login</Link></li>
 					<li><Link to="/rating-page">Rating Page</Link></li>
