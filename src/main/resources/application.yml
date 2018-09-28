@@ -31,7 +31,7 @@ web:
     css-bundle-location: /statics/petfinder-site.css
 
 elastic-search:
-  host: https://umr1tfa3g2:9r5p5idvcc@yew-1307964.us-east-1.bonsaisearch.net
+  host: yew-1307964.us-east-1.bonsaisearch.net
   port: 443
   scheme: https
   user-name: rceiwx2ja6

@@ -16,9 +16,10 @@ export function authenticate(username, password) {
 				username,
 				password
 			},
+			// add our credentials to this!!!
 			auth: {
-				username: 'petfinder-app',
-				password: 'petfinder-app-secret'
+				username: 'rceiwx2ja6',
+				password: 'k8akj8q570'
 			}
 		}
 	);
