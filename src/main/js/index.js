@@ -1,19 +1,23 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-
-import * as Pages from 'js/pages';
+import {HomePage} from 'js/pages/home';
+import {RegisterPage} from 'js/pages/register';
+import {LoginPage} from 'js/pages/login';
+import {ReviewPage} from 'js/pages/review';
+import {ReportingPage} from 'js/pages/reporting';
+import {FindSitter} from 'js/pages/findsitter';
 
 export default class Index extends React.Component {
 	render() {
 		return (
 			<HashRouter>
 				<div>
-					<Route exact path="/" component={Pages.Home} />
-					<Route exact path="/register" component={Pages.RegisterPage} />
-					<Route exact path="/login" component={Pages.LoginPage} />
-					<Route exact path="/rating-page" component={Pages.ReviewPage} />
-					<Route exact path="/report-page" component={Pages.ReportingPage} />
-					<Route exact path="/find-sitter" component={Pages.FindSitter} />
+					<Route exact path="/" component={HomePage} />
+					<Route exact path="/register" component={RegisterPage} />
+					<Route exact path="/login" component={LoginPage} />
+					<Route exact path="/rating-page" component={ReviewPage} />
+					<Route exact path="/report-page" component={ReportingPage} />
+					<Route exact path="/find-sitter" component={FindSitter} />
 				</div>
 			</HashRouter>
 		);
