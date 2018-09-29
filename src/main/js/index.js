@@ -2,10 +2,10 @@ import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import {HomePage} from 'js/pages/home';
 import {RegisterPage} from 'js/pages/register';
-import {LoginPage} from 'js/pages/login';
 import {ReviewPage} from 'js/pages/review';
 import {ReportingPage} from 'js/pages/reporting';
 import {FindSitter} from 'js/pages/findsitter';
+import LoginPage from 'js/pages/login';
 
 export default class Index extends React.Component {
 	render() {

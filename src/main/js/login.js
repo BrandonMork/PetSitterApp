@@ -23,10 +23,10 @@ class LoginForm extends React.Component {
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
 				<Bessemer.Field name="principal" friendlyName="Email Address"
-				                validators={[Validation.requiredValidator, Validation.emailValidator]} />
+								validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
 				<Bessemer.Field name="password" friendlyName="Password"
-				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
+								validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
 
 				<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
@@ -90,17 +90,17 @@ class RegistrationForm extends React.Component {
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
 				<Bessemer.Field name="principal" friendlyName="Email Address"
-				                validators={[Validation.requiredValidator, Validation.emailValidator]} />
+								validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
 				<Bessemer.Field name="password" friendlyName="Password"
-				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
-				                field={<input className="form-control" type="password" />} />
+								validators={[Validation.requiredValidator, Validation.passwordValidator]}
+								field={<input className="form-control" type="password" />} />
 
 				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
-								 onChange={this.handleTypeChange} options={typeOptions} />
+											onChange={this.handleTypeChange} options={typeOptions} />
 
 				Gender: <Bessemer.Select label="Gender" name="genderType" friendlyName="Gender" value={selectedGenderOption}
-								 onChange={this.handleGenderChange} options={genderOptions} />
+										 onChange={this.handleGenderChange} options={genderOptions} />
 
 				Phone Number: <PhoneNumberInput/>
 
