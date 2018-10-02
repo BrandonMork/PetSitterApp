@@ -1,5 +1,6 @@
 package petfinder.site.common.pet;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,26 @@ public class PetService {
 
 	public void save(PetDto pet) {
 		petDao.save(pet);
+	}
+
+	public static class PetRegistrationRequest {
+		private String principal;
+		private String type;
+
+		public String getPrincipal() {
+			return principal;
+		}
+
+		public void setPrincipal(String principal) {
+			this.principal = principal;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
 	}
 }

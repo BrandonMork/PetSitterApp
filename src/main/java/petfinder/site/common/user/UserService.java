@@ -37,7 +37,7 @@ public class UserService {
 		return userDao.findUserByPrincipal(principal);
 	}
 
-	/**
+	/**k
 	 * RegistrationRequest: I have no idea what this does
 	 */
 	public static class RegistrationRequest {
