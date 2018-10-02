@@ -7,8 +7,6 @@ import * as Bessemer from 'js/alloy/bessemer/components';
 
 import * as Users from 'js/users';
 
-import {PhoneNumberInput} from 'js/phone';
-
 class LoginForm extends React.Component {
 	onSubmit = ({principal, password}) => {
 		return this.props.authenticate(principal, password);
@@ -22,14 +20,16 @@ class LoginForm extends React.Component {
 		// @TODO Figure out how to index on Elasticsearch
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-				<Bessemer.Field name="principal" friendlyName="Email Address"
+				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="Example@Website.com"
 				                validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
-				<Bessemer.Field name="password" friendlyName="Password"
+				<Bessemer.Field name="password" friendlyName="Password" placeholde="Password"
 				                validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
 
-				<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
+				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
+					<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
+				</div>
 			</form>
 		);
 	}
@@ -99,12 +99,9 @@ class RegistrationForm extends React.Component {
 				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
 								 onChange={this.handleTypeChange} options={typeOptions} />
 
-				Gender: <Bessemer.Select label="Gender" name="genderType" friendlyName="Gender" value={selectedGenderOption}
-								 onChange={this.handleGenderChange} options={genderOptions} />
-
-				Phone Number: <PhoneNumberInput/>
-
-				<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
+				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
+					<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
+				</div>
 			</form>
 		);
 	}

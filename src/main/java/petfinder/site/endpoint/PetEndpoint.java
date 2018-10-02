@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import petfinder.site.common.pet.PetDto;
 import petfinder.site.common.pet.PetService;
-import petfinder.site.common.user.UserDto;
 
 /**
  * Created by jlutteringer on 8/23/17.
@@ -30,7 +28,7 @@ public class PetEndpoint {
 		return petService.findPet(id);
 	}
 
-	@PostMapping(produces = "application/json")
+	@PostMapping(value = "/add-pet", produces = "application/json")
 	public PetDto savePet(@RequestBody PetDto pet) {
 		petService.save(pet);
 		return pet;
