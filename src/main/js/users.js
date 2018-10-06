@@ -3,8 +3,7 @@ import Cookie from 'universal-cookie';
 
 // Makes API call to our register function in the back-end
 export function register(user) {
-	return axios.post('https://giforgif-tempeturs.herokuapp.com/api/user/register', user);
-
+	return axios.post('/api/user/register', user);
 }
 
 export function authenticate(username, password) {

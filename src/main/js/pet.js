@@ -1,45 +1,69 @@
-import React from 'react';
 import axios from 'axios';
-import * as Bessemer from 'js/alloy/bessemer/components';
 
-export class AddPet extends React.Component {
-
-    state = {
-        petName: null,
-    };
-
-    static registerPet(pet) {
-        return axios.post('/api/pets/add-pet', pet);
-    }
-
-    onSubmit = pet => {
-        return AddPet.registerPet(pet);
-    };
-
-    render() {
-        let { handleSubmit, submitting } = this.props;
-
-        return (
-            <form name="addPetForm" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-                <Bessemer.Field name="petname" friendlyName="Pet Name"/>
-
-                <Bessemer.Button loading={submitting}>Add Pet</Bessemer.Button>
-            </form>
-        );
-    }
+// Makes API call to our register function in the back-end
+export function addPet(name, type) {
+	return axios(
+		{
+			method: 'post',
+			url: '/api/pets/add-pet',
+			params: {
+				name,
+				type
+			},
+			auth: {
+				username: 'rceiwx2ja6',
+				password: 'k8akj8q570'
+			}
+		}
+	);
 }
 
-export class GetPet extends React.Component {
-    render() {
-        return (
-            <div className="container padded">
-                <div className="row">
-                    <div className="col-6 offset-md-3">
-                        <h2>Access list of pets here!!!</h2>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+
+export function getPetDetails(id) {
+	return axios.get('/api/pet/'+id);
 }
+
+let State = {};
+
+State.getPet = state => {
+	return state.pet;
+};
+
+export { State };
+
+let Actions = {};
+
+Actions.Types = {
+	SET_TYPES: 'SET_TYPES',
+	SET_NAME: 'SET_NAME'
+};
+
+Actions.addPet = pet => {
+	return addPet(pet.name, pet.type);
+};
+
+Actions.setType = category => {
+	return {type: Actions.Types.SET_TYPES, category};
+};
+
+Actions.setUser = pet => {
+	return {type: Actions.Types.SET_NAME, pet};
+};
+
+export { Actions };
+
+let Reducers = {};
+
+Reducers.pet = (pet = null, action) => {
+	switch (action.type) {
+		case Actions.Types.SET_NAME: {
+			return action.pet;
+		}
+		default: {
+			return pet;
+		}
+	}
+};
+
+export { Reducers };
 
