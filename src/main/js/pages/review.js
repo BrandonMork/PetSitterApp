@@ -28,4 +28,4 @@ ReviewPage = connect(
 	})
 )(ReviewPage);
 
-export { ReviewPage };
+export default ReviewPage;
