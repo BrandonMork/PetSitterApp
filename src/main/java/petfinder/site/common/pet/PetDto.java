@@ -8,6 +8,11 @@ import alloy.util.Identifiable;
 public class PetDto implements Identifiable {
 	private Long id;
 	private String name;
+
+	// @TODO Define what our types will be
+	// i.e. Breed, Species, Size, Age, etc....
+	// Will have more defined attributes as we go on
+
 	private String type;
 
 	public PetDto(Long id, String name, String type) {
