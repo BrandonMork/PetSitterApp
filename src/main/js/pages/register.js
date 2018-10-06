@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardText, CardTitle, Col} from 'reactstrap';
 import RegistrationForm from 'js/components/registrationForm';
 
-export class RegisterPage extends React.Component {
+class RegisterPage extends React.Component {
 	render() {
 		return (
 			<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
@@ -21,3 +21,5 @@ export class RegisterPage extends React.Component {
 		);
 	}
 }
+
+export default RegisterPage;

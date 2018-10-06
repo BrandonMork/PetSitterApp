@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class ReportingPage extends React.Component {
+class ReportingPage extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
@@ -9,3 +9,5 @@ export class ReportingPage extends React.Component {
 		);
 	}
 }
+
+export default ReportingPage;

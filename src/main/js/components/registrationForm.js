@@ -59,6 +59,9 @@ class RegistrationForm extends React.Component {
 RegistrationForm = ReduxForm.reduxForm({form: 'register'})(RegistrationForm);
 
 RegistrationForm = connect(
+	state => ({
+
+	}),
 	dispatch => ({
 		register: user => dispatch(Users.Actions.register(user))
 	})

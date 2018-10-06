@@ -36,6 +36,9 @@ class LoginForm extends React.Component {
 LoginForm = ReduxForm.reduxForm({form: 'login'})(LoginForm);
 
 LoginForm = connect(
+	state => ({
+
+	}),
 	dispatch => ({
 		authenticate: (principal, password) => dispatch(Users.Actions.authenticate(principal, password))
 	})
