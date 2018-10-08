@@ -1,13 +1,15 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import {HomePage} from 'js/pages/home';
-import {RegisterPage} from 'js/pages/register';
-import {ReportingPage} from 'js/pages/report';
-import {FindSitterPage} from 'js/pages/findSitter';
-import ReviewPage from 'js/pages/review';
-import LoginPage from 'js/pages/login';
 
-export default class Index extends React.Component {
+// Pages
+import HomePage from 'js/pages/home';
+import RegisterPage from 'js/pages/register';
+import LoginPage from 'js/pages/login';
+import ReviewPage from 'js/pages/review';
+import ReportingPage from 'js/pages/report';
+import FindSitterPage from 'js/pages/findSitter';
+
+class Index extends React.Component {
 	render() {
 		return (
 			<HashRouter>
@@ -23,3 +25,5 @@ export default class Index extends React.Component {
 		);
 	}
 }
+
+export default Index;
