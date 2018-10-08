@@ -6,6 +6,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/users';
 
 class LoginForm extends React.Component {
+
 	onSubmit = ({principal, password}) => {
 		return this.props.authenticate(principal, password);
 	};
@@ -36,6 +37,9 @@ class LoginForm extends React.Component {
 LoginForm = ReduxForm.reduxForm({form: 'login'})(LoginForm);
 
 LoginForm = connect(
+	state => ({
+
+	}),
 	dispatch => ({
 		authenticate: (principal, password) => dispatch(Users.Actions.authenticate(principal, password))
 	})
