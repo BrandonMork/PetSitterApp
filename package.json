@@ -83,6 +83,7 @@
     "redux": "3.7.2",
     "redux-form": "^6.8.0",
     "redux-logger": "^2.8.2 ",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "universal-cookie": "^3.0.4"
   }
 }
