@@ -6,12 +6,7 @@ import {
 	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
-	DropdownMenu,
-	DropdownItem,
-	UncontrolledDropdown,
-	DropdownToggle
-} from 'reactstrap';
+	NavLink} from 'reactstrap';
 import Link from 'react-router-dom/es/Link';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
@@ -48,41 +43,21 @@ export default class NavigationBar extends React.Component {
 		const myCookie = new Cookie();
 
 		if (myCookie.get('user')) {
-			return <React.Fragment>
-
-				<NavItem>
-					<NavLink tag={Link} to="/find-sitter">Find Sitter</NavLink>
-				</NavItem>
-				<UncontrolledDropdown nav inNavbar>
-					<DropdownToggle nav caret>
-						Pets
-					</DropdownToggle>
-					<DropdownMenu right>
-						<DropdownItem>
-							View Pets
-						</DropdownItem>
-						<DropdownItem>
-							Edit Pets
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
-				<NavItem>
-					<NavLink tag={Link} to="/profile">Profile</NavLink>
-				</NavItem>
+			return <div>
 				<NavItem>
 					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
 				</NavItem>
-
-			</React.Fragment>;
+			</div>;
 		} else {
-			return 	<React.Fragment>
+			return 	<div>
 				<NavItem>
 					<NavLink tag={Link} to="/login">Login</NavLink>
 				</NavItem>
+
 				<NavItem>
 					<NavLink tag={Link} to="/register">Register</NavLink>
 				</NavItem>
-			</React.Fragment>;
+			</div>;
 		}
 	}
 
@@ -94,7 +69,9 @@ export default class NavigationBar extends React.Component {
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
+
 							{NavigationBar.checkUserStatus()}
+
 						</Nav>
 					</Collapse>
 				</Navbar>
