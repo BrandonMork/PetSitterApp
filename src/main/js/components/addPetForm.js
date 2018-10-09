@@ -1,39 +1,70 @@
 import React from 'react';
-import * as Bessemer from 'js/alloy/bessemer/components';
-import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect';
-import {addPet} from 'js/pet';
+import uuidv4 from 'uuid/v4';
+import PropTypes from 'prop-types';
 
 class AddPetForm extends React.Component {
-	onSubmit = ({principal, type}) => {
-		return this.props.addPet(principal, type);
+
+	constructor() {
+		super();
+		this.state = {
+			newPet: {}
+		};
+	}
+
+	static defaultProps = {
+		types: ['Dog', 'Cat', 'Bird', 'Rabbit', 'Mouse']
 	};
 
+	handleSubmit(e) {
+
+		// Debug
+		if (this.refs.name.value === '') {
+			alert('Pet name is required!');
+		} else {
+			this.setState({newPet: {
+				id: uuidv4(),
+				name: this.refs.name.value,
+				type: this.refs.type.value
+			}}, function() {
+				// console.log(this.state);
+				this.props.addPet(this.state.newPet);
+			});
+		}
+		e.preventDefault();
+	}
+
 	render() {
-		let { handleSubmit } = this.props;
+		let typeOptions = this.props.types.map(type => {
+			return <option key={type} value={type}>{type}</option>;
+		});
 
-		// Use Principal to reflect our backend (Principal == UserName)
-		// Accesses UserAuthenticationDto (UAD->Password + UAD->UserDao->Principal)
-		// @TODO Figure out how to index on Elasticsearch
 		return (
-			<form name="addPet" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-				<Bessemer.Field name="petname" friendlyName="Pet Name" />
+			<div>
+				<h3>Add New Pet</h3>
+				<form onSubmit={this.handleSubmit.bind(this)}>
+					<div>
+						<label>Pet Name</label>
+						<input type="text" ref="name"/>
+					</div>
 
-				<Bessemer.Field name="type" friendlyName="Pet Type" />
+					<div>
+						<label>Pet Type</label> <br/>
+						<select ref="type">
+							{typeOptions}
+						</select>
+					</div>
 
-				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
-					<Bessemer.Button>Add Pet</Bessemer.Button>
-				</div>
-			</form>
+					<input type="submit" value="Submit"/>
+
+				</form>
+			</div>
 		);
 	}
 }
 
-AddPetForm = ReduxForm.reduxForm({form: 'addpet'})(AddPetForm);
-AddPetForm = connect(
-	dispatch => ({
-		addPet: pet => addPet(pet)
-	})
-)(AddPetForm);
+AddPetForm.propTypes = {
+	types: PropTypes.object,
+	addPet: PropTypes.func
+};
 
-export { AddPetForm };
+export default AddPetForm;

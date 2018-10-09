@@ -57,10 +57,13 @@ export default class NavigationBar extends React.Component {
 						Pets
 					</DropdownToggle>
 					<DropdownMenu right>
-						<DropdownItem>
+						<DropdownItem tag={Link} to="/add-pet">
 							View Pets
 						</DropdownItem>
-						<DropdownItem>
+						<DropdownItem tag={Link} to="/add-pet">
+							Add Pets
+						</DropdownItem>
+						<DropdownItem tag={Link} to="/add-pet">
 							Edit Pets
 						</DropdownItem>
 					</DropdownMenu>

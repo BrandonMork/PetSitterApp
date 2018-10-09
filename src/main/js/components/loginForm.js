@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
 
 	onSubmit = ({principal, password}) => {
 		this.context.router.history.push('/');
+		// This is where we would make our axios calls to the data store
 		return this.props.authenticate(principal, password);
 	};
 

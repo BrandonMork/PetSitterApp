@@ -1,6 +1,5 @@
 .gradle
 .idea
-.eslintrc
 build
 node_modules
 out
