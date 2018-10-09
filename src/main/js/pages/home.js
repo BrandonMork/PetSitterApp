@@ -44,6 +44,7 @@ class HomePage extends React.Component {
 				<br/>
 
 				<ul>
+				    <li><Link to="/profile-page">My Profile</Link></li>
 					<li><Link to="/rating-page">Rating Page</Link></li>
 					<li><Link to="/report-page">Report Page</Link></li>
 					<li><Link to="/find-sitter">Find Sitter</Link></li>
