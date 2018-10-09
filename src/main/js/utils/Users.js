@@ -10,6 +10,12 @@ export function registerPet(pet) {
     return axios.post('/api/pets/add-pet', pet);
 }
 
+export function getPets() {
+    return axios.get('/api/user/pet');
+}
+
+
+
 export function authenticate(username, password) {
 	return axios(
 		{

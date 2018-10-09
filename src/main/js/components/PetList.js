@@ -11,7 +11,7 @@ class PetList extends React.Component {
 	editPet(id) {
 		this.props.onEdit(id);
 	}
-
+		/* 		let pets = this.props.user.getPets().map(); */
 	render() {
 		let petListItems;
 		if(this.props.pets) {
