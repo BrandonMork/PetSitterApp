@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class FindSitterPage extends React.Component {
+class FindSitterPage extends React.Component {
 	render() {
 		return (
 			<div className="container padded">
@@ -9,3 +9,5 @@ export class FindSitterPage extends React.Component {
 		);
 	}
 }
+
+export default FindSitterPage;

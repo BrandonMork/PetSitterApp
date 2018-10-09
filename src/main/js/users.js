@@ -77,14 +77,18 @@ Actions.logout = () => {
 };
 
 Actions.setAuthentication = authentication => {
-    const myCookie = new Cookie();
-    myCookie.set('authentication', authentication, {path: '/'});
+	// Setting our cookies for auth token
+	const myCookie = new Cookie();
+	myCookie.set('authentication', authentication, {path: '/'});
+
 	return {type: Actions.Types.SET_AUTHENTICATION, authentication};
 };
 
 Actions.setUser = user => {
-    const myCookie = new Cookie();
-    myCookie.set('user', user, {path: '/'});
+	// Setting our cookies for current user
+	const myCookie = new Cookie();
+	myCookie.set('user', user, {path: '/'});
+
 	return {type: Actions.Types.SET_USER, user};
 };
 

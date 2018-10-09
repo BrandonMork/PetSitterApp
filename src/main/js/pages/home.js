@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import NavigationBar from 'js/components/navbar';
+import { Jumbotron, Container } from 'reactstrap';
+import _ from 'lodash';
+import connect from 'react-redux/es/connect/connect';
+import * as Users from 'js/users';
 
-export class HomePage extends React.Component {
+class HomePage extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -18,12 +22,28 @@ export class HomePage extends React.Component {
 
 				<NavigationBar/>
 
-				This is Gif||Gif's Tempeturs home page - redefined!
+				<Jumbotron fluid>
+					<Container fluid>
+						<h1 className="display-4">Pet Sitter Matching Service</h1>
+						<p className="lead">Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
+					</Container>
+				</Jumbotron>
+
+				<br/>
+
+				{ _.isDefined(this.props.authentication) &&
+				<div>{this.props.authentication['access_token']}</div>
+				}
+
+				<br/>
+
+				{ _.isDefined(this.props.user) &&
+				<div>Welcome, {this.props.user.principal}!</div>
+				}
+
+				<br/>
 
 				<ul>
-
-					<li><Link to="/register">Register</Link></li>
-					<li><Link to="/login">Login</Link></li>
 					<li><Link to="/rating-page">Rating Page</Link></li>
 					<li><Link to="/report-page">Report Page</Link></li>
 					<li><Link to="/find-sitter">Find Sitter</Link></li>
@@ -40,7 +60,7 @@ export class HomePage extends React.Component {
 	}
 
 	ping() {
-		axios.get('https://giforgif-tempeturs.herokuapp.com/pong').then(res => {
+		axios.get('https://giforgif-tempeturs.herokuapp.com/pong').then(() => {
 			alert('Received Successful response from server!');
 			this.setState({ponged: 'Ponged! '});
 		}, err => {
@@ -48,3 +68,12 @@ export class HomePage extends React.Component {
 		});
 	}
 }
+
+HomePage = connect(
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	})
+)(HomePage);
+
+export default HomePage;

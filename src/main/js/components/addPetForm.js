@@ -16,7 +16,7 @@ class AddPetForm extends React.Component {
 		// Accesses UserAuthenticationDto (UAD->Password + UAD->UserDao->Principal)
 		// @TODO Figure out how to index on Elasticsearch
 		return (
-			<form name="addpet" onSubmit={handleSubmit(form => this.onSubmit(form))}>
+			<form name="addPet" onSubmit={handleSubmit(form => this.onSubmit(form))}>
 				<Bessemer.Field name="petname" friendlyName="Pet Name" />
 
 				<Bessemer.Field name="type" friendlyName="Pet Type" />

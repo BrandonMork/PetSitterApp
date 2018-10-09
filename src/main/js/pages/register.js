@@ -1,18 +1,25 @@
 import React from 'react';
-import * as Login from 'js/login';
+import {Card, CardBody, CardText, CardTitle, Col} from 'reactstrap';
+import RegistrationForm from 'js/components/registrationForm';
 
-export class RegisterPage extends React.Component {
+class RegisterPage extends React.Component {
 	render() {
 		return (
-			<div className="container padded">
-				<div className="row">
-					<div className="col-6 offset-md-3">
-						<h2>Register</h2>
-						<hr />
-						<Login.RegistrationForm />
-					</div>
-				</div>
+			<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+				<Col sm="6">
+					<Card>
+						<br/>
+						<CardTitle style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Register</CardTitle>
+						<CardBody>
+							<CardText>
+								<RegistrationForm />
+							</CardText>
+						</CardBody>
+					</Card>
+				</Col>
 			</div>
 		);
 	}
 }
+
+export default RegisterPage;
