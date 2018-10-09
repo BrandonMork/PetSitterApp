@@ -29,16 +29,8 @@ class HomePage extends React.Component {
 					</Container>
 				</Jumbotron>
 
-				<br/>
-
-				{ _.isDefined(this.props.authentication) &&
-				<div>{this.props.authentication['access_token']}</div>
-				}
-
-				<br/>
-
 				{ _.isDefined(this.props.user) &&
-				<div>Welcome, {this.props.user.principal}!</div>
+				<h1>Welcome, {this.props.user.principal}!</h1>
 				}
 
 				<br/>
