@@ -4,10 +4,12 @@ import * as Validation from 'js/alloy/utils/validation';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/users';
+import PropTypes from 'prop-types';
 
 class LoginForm extends React.Component {
 
 	onSubmit = ({principal, password}) => {
+		this.context.router.history.push('/');
 		return this.props.authenticate(principal, password);
 	};
 
@@ -33,6 +35,11 @@ class LoginForm extends React.Component {
 		);
 	}
 }
+
+LoginForm.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
+
 
 LoginForm = ReduxForm.reduxForm({form: 'login'})(LoginForm);
 

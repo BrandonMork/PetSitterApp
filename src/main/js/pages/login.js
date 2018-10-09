@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardTitle, CardBody, CardText, Col } from 'reactstrap';
+import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import LoginForm from 'js/components/loginForm';
 
 class LoginPage extends React.Component {
@@ -11,9 +11,7 @@ class LoginPage extends React.Component {
 						<br/>
 						<CardTitle style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Login</CardTitle>
 						<CardBody>
-							<CardText>
-								<LoginForm/>
-							</CardText>
+							<LoginForm/>
 						</CardBody>
 					</Card>
 				</Col>
