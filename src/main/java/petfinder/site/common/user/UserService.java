@@ -1,6 +1,7 @@
 package petfinder.site.common.user;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import alloy.util.AlloyAuthentication;
 import alloy.util.Wait;
 import alloy.util._Lists;
 import alloy.util._Maps;
+import petfinder.site.common.pet.PetDto;
 import petfinder.site.common.user.UserDto.UserType;
 
 /**
@@ -25,10 +27,6 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	public Optional<UserDto> findUser(String id) {
-		return userDao.findUser(id).map(UserAuthenticationDto::getUser);
-	}
-
 	public Optional<UserDto> findUserByPrincipal(String principal) {
 		return userDao.findUserByPrincipal(principal).map(UserAuthenticationDto::getUser);
 	}
@@ -37,12 +35,10 @@ public class UserService {
 		return userDao.findUserByPrincipal(principal);
 	}
 
-	/**k
-	 * RegistrationRequest: I have no idea what this does
-	 */
 	public static class RegistrationRequest {
 		private String principal;
 		private String password;
+		private String myNewField;
 		private Map<String, Object> attributes;
 
 		public String getPrincipal() {
@@ -68,16 +64,29 @@ public class UserService {
 		public void setAttributes(Map<String, Object> attributes) {
 			this.attributes = attributes;
 		}
+
+		public String getMyNewField() {
+			return myNewField;
+		}
+
+		public void setMyNewField(String myNewField) {
+			this.myNewField = myNewField;
+		}
 	}
 
-	/**
-	 *
-	 */
 	public UserDto register(RegistrationRequest request) {
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto(
 				new UserDto(request.getPrincipal(), _Lists.list("ROLE_USER"), UserType.OWNER, request.getAttributes()), passwordEncoder.encode(request.getPassword()));
 
 		userDao.save(userAuthentication);
 		return userAuthentication.getUser();
+	}
+
+	public UserPetDto save(UserPetDto userPetDto) {
+		return userDao.save(userPetDto);
+	}
+
+	public List<PetDto> findPets(UserDto user) {
+		return userDao.findPets(user);
 	}
 }
