@@ -20,7 +20,7 @@ class HomePage extends React.Component {
 		return (
 			<div className="container padded">
 
-				<NavigationBar />
+				<NavigationBar/>
 
 				<Jumbotron fluid>
 					<Container fluid>
@@ -30,7 +30,7 @@ class HomePage extends React.Component {
 				</Jumbotron>
 
 				{ _.isDefined(this.props.user) &&
-				<div>Welcome, {this.props.user.principal}!</div>
+				<h1>Welcome, {this.props.user.principal}!</h1>
 				}
 
 				<br/>
