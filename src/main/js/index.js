@@ -9,7 +9,7 @@ import ReviewPage from 'js/pages/review';
 import ReportingPage from 'js/pages/report';
 import FindSitterPage from 'js/pages/findSitter';
 import ProfilePage from 'js/pages/profile';
-import PetPage from 'js/pages/pet';
+import PetPage from 'js/pages/PetPage';
 
 class Index extends React.Component {
 	render() {
@@ -22,6 +22,7 @@ class Index extends React.Component {
 					<Route exact path="/" component={HomePage} />
 					<Route exact path="/register" component={RegisterPage} />
 					<Route exact path="/login" component={LoginPage} />
+					<Route exact path="/profile-page" component={ProfilePage} />
 					<Route exact path="/rating-page" component={ReviewPage} />
 					<Route exact path="/report-page" component={ReportingPage} />
 					<Route exact path="/find-sitter" component={FindSitterPage} />
