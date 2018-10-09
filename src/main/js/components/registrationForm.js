@@ -4,6 +4,7 @@ import * as Validation from 'js/alloy/utils/validation';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/users';
+import PropTypes from 'prop-types';
 
 // 0 or 1 to reflect our enums in the back-end
 const typeOptions = [
@@ -22,6 +23,7 @@ class RegistrationForm extends React.Component {
 	};
 
 	onSubmit = user => {
+		this.context.router.history.push('/');
 		return this.props.register(user);
 	};
 
@@ -46,8 +48,6 @@ class RegistrationForm extends React.Component {
 				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
 											onChange={this.handleTypeChange} options={typeOptions} />
 
-				<br/>
-
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
 					<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
 				</div>
@@ -55,6 +55,10 @@ class RegistrationForm extends React.Component {
 		);
 	}
 }
+
+RegistrationForm.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
 
 RegistrationForm = ReduxForm.reduxForm({form: 'register'})(RegistrationForm);
 

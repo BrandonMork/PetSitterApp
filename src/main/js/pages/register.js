@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardBody, CardText, CardTitle, Col} from 'reactstrap';
+import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import RegistrationForm from 'js/components/registrationForm';
 
 class RegisterPage extends React.Component {
@@ -11,9 +11,7 @@ class RegisterPage extends React.Component {
 						<br/>
 						<CardTitle style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Register</CardTitle>
 						<CardBody>
-							<CardText>
-								<RegistrationForm />
-							</CardText>
+							<RegistrationForm />
 						</CardBody>
 					</Card>
 				</Col>

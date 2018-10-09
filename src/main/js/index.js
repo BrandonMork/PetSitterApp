@@ -22,6 +22,7 @@ class Index extends React.Component {
 					<Route exact path="/rating-page" component={ReviewPage} />
 					<Route exact path="/report-page" component={ReportingPage} />
 					<Route exact path="/find-sitter" component={FindSitterPage} />
+					<Route exact path="/profile" component={ProfilePage} />
 				</div>
 			</HashRouter>
 		);
