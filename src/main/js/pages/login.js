@@ -1,51 +1,18 @@
 import React from 'react';
-import * as Login from 'js/login';
+import { Card, CardTitle, CardBody, Col } from 'reactstrap';
+import LoginForm from 'js/components/loginForm';
 
-import { Card, CardBody, CardText, Col, Button, ButtonGroup } from 'reactstrap';
-import {LoginForm} from 'js/login';
-import {RegistrationForm} from 'js/login';
-
-class LoginRegistrationPage extends React.Component {
-
-	constructor(props) {
-		super(props);
-
-		this.state = { rSelected: 1 };
-
-		this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
-	}
-
-	onRadioBtnClick(rSelected) {
-		this.setState({ rSelected });
-	}
-
+class LoginPage extends React.Component {
 	render() {
-
-		let form;
-
-		if (this.state.rSelected === 1) {
-			form = <LoginForm/>;
-		} else {
-			form = <RegistrationForm/>;
-		}
-
 		return (
 			<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-				<Col sm="5">
+				<Col sm="6">
 					<Card>
-						<ButtonGroup style={{marginTop: '10px', display: 'flex',
-							justifyContent: 'center', alignItems: 'center'}}>
-							<Button size="lg" color="primary" onClick={() => this.onRadioBtnClick(1)}
-									active={this.state.rSelected === 1}>Login</Button>
-							<Button size="lg" color="primary" onClick={() => this.onRadioBtnClick(2)}
-									active={this.state.rSelected === 2}>Register</Button>
-						</ButtonGroup>
+						<br/>
+						<CardTitle style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Login</CardTitle>
 						<CardBody>
-							<CardText>
-								{form}
-							</CardText>
+							<LoginForm/>
 						</CardBody>
-
 					</Card>
 				</Col>
 			</div>
@@ -53,4 +20,4 @@ class LoginRegistrationPage extends React.Component {
 	}
 }
 
-export default LoginRegistrationPage;
+export default LoginPage;
