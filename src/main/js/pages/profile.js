@@ -15,8 +15,9 @@ class ProfilePage extends React.Component {
                     <br/><br/>
                     Let's see if you have any pets!
                     <br/><br/>
-                    Insert reactive form here to curl elastisearch
+                     Insert reactive form here to curl elastisearch
                 </div>
+
 
 			</div>
 		);
