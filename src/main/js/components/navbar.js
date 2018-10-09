@@ -6,13 +6,16 @@ import {
 	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
-	UncontrolledDropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem } from 'reactstrap';
+	NavLink} from 'reactstrap';
+import Link from 'react-router-dom/es/Link';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faPaw);
 
 export default class NavigationBar extends React.Component {
+
 	constructor(props) {
 		super(props);
 
@@ -21,42 +24,28 @@ export default class NavigationBar extends React.Component {
 			isOpen: false
 		};
 	}
+
 	toggle() {
 		this.setState({
 			isOpen: !this.state.isOpen
 		});
 	}
+
 	render() {
 		return (
 			<div>
 				<Navbar color="light" light expand="md">
-					<NavbarBrand href="/">Tempeturs</NavbarBrand>
+					<NavbarBrand href="/"> <FontAwesomeIcon icon="paw"/> Tempeturs</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem>
-								<NavLink href="/components/">Components</NavLink>
+								<NavLink tag={Link} to="/login">Login</NavLink>
 							</NavItem>
+
 							<NavItem>
-								<NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+								<NavLink tag={Link} to="/register">Register</NavLink>
 							</NavItem>
-							<UncontrolledDropdown nav inNavbar>
-								<DropdownToggle nav caret>
-									Options
-								</DropdownToggle>
-								<DropdownMenu right>
-									<DropdownItem>
-										Option 1
-									</DropdownItem>
-									<DropdownItem>
-										Option 2
-									</DropdownItem>
-									<DropdownItem divider />
-									<DropdownItem>
-										Reset
-									</DropdownItem>
-								</DropdownMenu>
-							</UncontrolledDropdown>
 						</Nav>
 					</Collapse>
 				</Navbar>
