@@ -6,12 +6,11 @@ import {
 	NavbarBrand,
 	Nav,
 	NavItem,
-	NavLink,
-	DropdownMenu,
-	DropdownItem,
 	UncontrolledDropdown,
-	DropdownToggle
-} from 'reactstrap';
+	DropdownToggle,
+	DropdownItem,
+	DropdownMenu,
+	NavLink} from 'reactstrap';
 import Link from 'react-router-dom/es/Link';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
