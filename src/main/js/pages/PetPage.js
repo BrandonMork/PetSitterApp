@@ -57,6 +57,9 @@ class PetPage extends React.Component {
 		let pets = this.state.pets;
 		pets.push(pet);
 		this.setState({pets: pets});
+
+		/* this should add pet to UserPet */
+        this.registerPet(pet);
 	}
 
 	handleDeletePet(id) {
