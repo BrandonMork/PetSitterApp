@@ -47,6 +47,9 @@ class PetPage extends React.Component {
 				type: 'Cat'
 			}
 		]});
+
+
+
 	}
 
 	componentDidMount() {
@@ -84,6 +87,7 @@ class PetPage extends React.Component {
 							<br/>
 							<CardTitle style={centered}>{this.props.user.principal}'s pets:</CardTitle>
 							<CardBody>
+								<div> I am a {this.props.user.type} </div>
 								<PetList pets={this.state.pets}
 										 onDelete={this.handleDeletePet.bind(this)}
 										 onEdit={this.handleEditPet.bind(this)}/>
@@ -94,7 +98,6 @@ class PetPage extends React.Component {
 
                                 This will be pets retrieved from elasticsearch! <br/>
 
-                                {this.props.user.type}
 							</CardBody>
 						</Card>
 					</Col>
