@@ -24,13 +24,6 @@ class HomePage extends React.Component {
 				{ _.isDefined(this.props.user) &&
 				<h1>Welcome, {this.props.user.principal}!</h1>
 				}
-
-				<ul>
-					<li><Link to="/rating-page">Rating Page</Link></li>
-					<li><Link to="/report-page">Report Page</Link></li>
-					<li><Link to="/find-sitter">Find Sitter</Link></li>
-					<li><Link to="/add-pet">Add Pet</Link></li>
-				</ul>
 			</div>
 		);
 	}

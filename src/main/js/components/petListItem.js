@@ -29,7 +29,7 @@ class PetListItem extends React.Component {
 }
 
 PetListItem.propTypes = {
-	pets: PropTypes.object,
+	pets: PropTypes.array,
 	onDelete: PropTypes.func,
 	onEdit: PropTypes.func
 };

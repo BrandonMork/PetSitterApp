@@ -63,7 +63,6 @@ class AddPetForm extends React.Component {
 }
 
 AddPetForm.propTypes = {
-	types: PropTypes.object,
 	addPet: PropTypes.func
 };
 
