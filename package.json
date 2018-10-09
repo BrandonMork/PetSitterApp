@@ -1,7 +1,10 @@
 {
   "name": "petfinder-site",
   "version": "1.0.0",
-  "description": "template project for react",
+  "description": "Pet owners are able to easily find sitters at an affordable price and convenient time; Pet sitters can find work that first their schedules easily",
+  "author": "Mario Arturo Lopez Martinez",
+  "repository": "https://gitlab.com/fall18-group2/group-2",
+  "license": "ISC",
   "main": "webpack.config.js",
   "scripts": {
     "dev": "cross-env webpack-dev-server --env dev",
@@ -24,8 +27,6 @@
     "verbose": true,
     "transform": {}
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "babel-core": "^6.24.1",
@@ -81,7 +82,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "4.2.0",
     "react-select": "1.2.1",
-    "reactstrap": "5.0.0-alpha.4",
+    "reactstrap": "6.5.0",
     "redux": "3.7.2",
     "redux-form": "^6.8.0",
     "redux-logger": "^2.8.2 ",
