@@ -1,4 +1,6 @@
 import axios from 'axios';
+import React from 'react';
+import addPetForm from 'js/components/addPetForm';
 
 // Makes API call to our register function in the back-end
 export function addPet(name, type) {
@@ -9,15 +11,25 @@ export function addPet(name, type) {
 			params: {
 				name,
 				type
-			},
-			auth: {
-				username: 'rceiwx2ja6',
-				password: 'k8akj8q570'
 			}
 		}
 	);
 }
 
+class PetPage extends React.Component {
+	render() {
+		return (
+			<div>
+                Add a pet here!
+                <br/>
+                <addPetForm />
+                The form must be bad
+			</div>
+		);
+	}
+}
+
+export default PetPage;
 
 export function getPetDetails(id) {
 	return axios.get('/api/pet/'+id);

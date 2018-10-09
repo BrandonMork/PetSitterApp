@@ -2,7 +2,7 @@ import React from 'react';
 import * as Bessemer from 'js/alloy/bessemer/components';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-import {addPet} from 'js/pet';
+import {addPet} from 'js/pages/pet';
 
 class AddPetForm extends React.Component {
 	onSubmit = ({principal, type}) => {
