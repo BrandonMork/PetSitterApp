@@ -37,6 +37,8 @@ axios.interceptors.request.use(request => {
 }, error => Promise.reject(error));
 
 axios.interceptors.response.use(response => response.data, error => Promise.reject(error));
-
 const mountNode = document.querySelector('#main');
+
+// Our app will be mounted to the root here (replaces the Index.html
+// of an app created via create-react-app
 ReactDOM.render(<Provider store={store}><Index /></Provider>, mountNode);
