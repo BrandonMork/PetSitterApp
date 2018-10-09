@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/users';
+import * as Users from 'js/utils/Users';
 
 class ReviewPage extends React.Component {
 	render() {

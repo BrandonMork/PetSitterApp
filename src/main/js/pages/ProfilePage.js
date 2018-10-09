@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/users';
-import AvailabilityForm from 'js/components/availabilityForm';
+import * as Users from 'js/utils/Users';
+import AvailabilityForm from 'js/components/AvailabilityForm';
 import {
 	Col,
 	Row,
