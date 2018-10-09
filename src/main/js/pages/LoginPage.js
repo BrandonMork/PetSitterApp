@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
-import LoginForm from 'js/components/loginForm';
+import LoginForm from 'js/components/LoginForm';
 
 const cardStyle = {
 	display: 'flex',
