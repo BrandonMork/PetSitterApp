@@ -16,7 +16,6 @@ class AddPetForm extends React.Component {
 	};
 
 	handleSubmit(e) {
-
 		// Debug
 		if (this.refs.name.value === '') {
 			alert('Pet name is required!');
@@ -28,6 +27,7 @@ class AddPetForm extends React.Component {
 			}}, function() {
 				// console.log(this.state);
 				this.props.addPet(this.state.newPet);
+				/*this.props.user.setType(this.state.name);*/
 			});
 		}
 		e.preventDefault();

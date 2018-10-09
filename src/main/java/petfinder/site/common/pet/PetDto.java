@@ -1,5 +1,5 @@
 package petfinder.site.common.pet;
-
+import java.util.UUID;
 import alloy.util.Identifiable;
 
 /**
@@ -8,12 +8,15 @@ import alloy.util.Identifiable;
 public class PetDto implements Identifiable {
 	private Long id;
 	private String name;
+	private String type;
 
 	// @TODO Define what our types will be
 	// i.e. Breed, Species, Size, Age, etc....
 	// Will have more defined attributes as we go on
 
-	private String type;
+	public PetDto() {
+		this.id = UUID.randomUUID().getMostSignificantBits();
+	}
 
 	public PetDto(Long id, String name, String type) {
 		this.id = id;
