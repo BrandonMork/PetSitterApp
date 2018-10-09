@@ -1,8 +1,8 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/users';
-import PetList from 'js/components/petList';
-import AddPetForm from 'js/components/addPetForm';
+import * as Users from 'js/utils/Users';
+import PetList from 'js/components/PetList';
+import AddPetForm from 'js/components/AddPetForm';
 import uuidv4 from 'uuid/v4';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 

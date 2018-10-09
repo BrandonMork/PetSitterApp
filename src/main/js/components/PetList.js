@@ -1,5 +1,5 @@
 import React from 'react';
-import PetListItem from './petListItem';
+import PetListItem from './PetListItem';
 import PropTypes from 'prop-types'; // ES6
 
 class PetList extends React.Component {

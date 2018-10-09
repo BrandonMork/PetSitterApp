@@ -3,7 +3,7 @@ import * as Bessemer from 'js/alloy/bessemer/components';
 import * as Validation from 'js/alloy/utils/validation';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/users';
+import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
 
 // 0 or 1 to reflect our enums in the back-end
