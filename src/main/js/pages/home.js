@@ -20,7 +20,7 @@ class HomePage extends React.Component {
 		return (
 			<div className="container padded">
 
-				<NavigationBar />
+				<NavigationBar/>
 
 				<Jumbotron fluid>
 					<Container fluid>
@@ -28,6 +28,14 @@ class HomePage extends React.Component {
 						<p className="lead">Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
 					</Container>
 				</Jumbotron>
+
+				<br/>
+
+				{ _.isDefined(this.props.authentication) &&
+				<div>{this.props.authentication['access_token']}</div>
+				}
+
+				<br/>
 
 				{ _.isDefined(this.props.user) &&
 				<div>Welcome, {this.props.user.principal}!</div>
