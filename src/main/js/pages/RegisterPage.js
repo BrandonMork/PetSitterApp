@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
-import RegistrationForm from 'js/components/registrationForm';
+import RegistrationForm from 'js/components/RegistrationForm';
 
 class RegisterPage extends React.Component {
 	render() {

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import NavigationBar from 'js/components/navbar';
+import NavigationBar from 'js/components/Navbar';
 import { Jumbotron, Container } from 'reactstrap';
 import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/users';
+import * as Users from 'js/utils/Users';
 
 class HomePage extends React.Component {
 	render() {
