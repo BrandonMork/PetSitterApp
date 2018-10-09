@@ -1,6 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/users';
+import AvailabilityForm from 'js/components/availabilityForm';
 
 class ProfilePage extends React.Component {
 	render() {
@@ -13,6 +14,12 @@ class ProfilePage extends React.Component {
 					<br/><br/>
 					Insert reactive form here to curl elastisearch
 				</div>
+                <br/><br/>
+                <div>
+                    Add possible availabilities
+                    <AvailabilityForm />
+                </div>
+
 			</div>
 		);
 	}
