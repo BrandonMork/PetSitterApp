@@ -88,6 +88,10 @@ class PetPage extends React.Component {
 								<br/>
 
 								<AddPetForm addPet={this.handleAddPet.bind(this)}/>
+
+                                This will be pets retrieved from elasticsearch! <br/>
+
+                                {this.props.user.type}
 							</CardBody>
 						</Card>
 					</Col>
