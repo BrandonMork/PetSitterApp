@@ -12,7 +12,7 @@ public class PetDto implements Identifiable {
 	private String species;
 	private String breed;
 	private String size;
-	private String age;
+	private Long age;
 
 
 	// @TODO Define what our types will be
@@ -23,7 +23,7 @@ public class PetDto implements Identifiable {
 		this.id = UUID.randomUUID().getMostSignificantBits();
 	}
 
-	public PetDto(Long ownerID, Long id, String name, String species, String breed, String size, String age) {
+	public PetDto(Long ownerID, Long id, String name, String species, String breed, String size, Long age) {
 		this.ownerID = ownerID;
 		this.id = id;
 		this.name = name;
@@ -82,11 +82,11 @@ public class PetDto implements Identifiable {
 		this.size = size;
 	}
 
-	public String getAge() {
+	public Long getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(Long age) {
 		this.age = age;
 	}
 }
