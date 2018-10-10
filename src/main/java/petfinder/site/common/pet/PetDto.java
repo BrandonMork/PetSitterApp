@@ -6,9 +6,14 @@ import alloy.util.Identifiable;
  * Created by jlutteringer on 8/23/17.
  */
 public class PetDto implements Identifiable {
+	private Long ownerID;
 	private Long id;
 	private String name;
-	private String type;
+	private String species;
+	private String breed;
+	private String size;
+	private String age;
+
 
 	// @TODO Define what our types will be
 	// i.e. Breed, Species, Size, Age, etc....
@@ -18,10 +23,14 @@ public class PetDto implements Identifiable {
 		this.id = UUID.randomUUID().getMostSignificantBits();
 	}
 
-	public PetDto(Long id, String name, String type) {
+	public PetDto(Long ownerID, Long id, String name, String species, String breed, String size, String age) {
+		this.ownerID = ownerID;
 		this.id = id;
 		this.name = name;
-		this.type = type;
+		this.species = species;
+		this.breed = breed;
+		this.size = size;
+		this.age = age;
 	}
 
 	@Override
@@ -41,11 +50,43 @@ public class PetDto implements Identifiable {
 		this.name = name;
 	}
 
-	public String getType() {
-		return type;
+	public Long getOwnerID() {
+		return ownerID;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setOwnerID(Long ownerID) {
+		this.ownerID = ownerID;
+	}
+
+	public String getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(String species) {
+		this.species = species;
+	}
+
+	public String getBreed() {
+		return breed;
+	}
+
+	public void setBreed(String breed) {
+		this.breed = breed;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 }
