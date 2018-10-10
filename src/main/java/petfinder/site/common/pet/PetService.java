@@ -14,32 +14,13 @@ public class PetService {
 	@Autowired
 	private PetDao petDao;
 
+	//Calls PetDto findPet() function to search in elasticsearch
 	public Optional<PetDto> findPet(Long id) {
 		return petDao.findPet(id);
 	}
 
-	public void save(PetDto pet) {
-		petDao.save(pet);
-	}
-
-	public static class PetRegistrationRequest {
-		private String principal;
-		private String type;
-
-		public String getPrincipal() {
-			return principal;
-		}
-
-		public void setPrincipal(String principal) {
-			this.principal = principal;
-		}
-
-		public String getType() {
-			return type;
-		}
-
-		public void setType(String type) {
-			this.type = type;
-		}
+	//Calls PetDto Save() function to save to elasticsearch
+	public void save(PetDto petExample) {
+		petDao.save(petExample);
 	}
 }

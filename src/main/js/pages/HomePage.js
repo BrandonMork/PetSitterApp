@@ -8,9 +8,11 @@ import * as Users from 'js/utils/Users';
 class HomePage extends React.Component {
 	render() {
 		return (
-			<div className="container padded">
+			<div>
 
-				<NavigationBar/>
+				<div>
+					<NavigationBar/>
+				</div>
 
 				<Jumbotron fluid>
 					<Container fluid>
@@ -23,6 +25,7 @@ class HomePage extends React.Component {
 				{ _.isDefined(this.props.user) &&
 				<h1>Welcome, {this.props.user.principal}!</h1>
 				}
+
 			</div>
 		);
 	}

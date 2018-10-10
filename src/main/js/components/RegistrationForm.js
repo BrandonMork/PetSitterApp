@@ -47,7 +47,6 @@ class RegistrationForm extends React.Component {
 
 				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
 											onChange={this.handleTypeChange} options={typeOptions} />
-
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
 					<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
 				</div>
