@@ -6,6 +6,10 @@ export function register(user) {
 	return axios.post('/api/user/register', user);
 }
 
+export function registerPet(pet) {
+    return axios.post('/api/pets/add-pet', pet);
+}
+
 export function authenticate(username, password) {
 	return axios(
 		{

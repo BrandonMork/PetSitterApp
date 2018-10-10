@@ -25,9 +25,11 @@ public class PetDao {
 	@Autowired
 	private ElasticSearchClientProvider elasticSearchClientProvider;
 
-	public Optional<PetDto> findPet(Long id) {
-		return petElasticsearchRepository.find(id);
+	//call elasticsearch to get PetDto
+	public Optional<PetDto> findPet(Long petID) {
+		return petElasticsearchRepository.find(petID);
 	}
+
 
 	public Optional<PetDto> findPetLowTech(Long id) {
 		RestHighLevelClient client = elasticSearchClientProvider.getClient();
@@ -35,6 +37,7 @@ public class PetDao {
 		return Optional.empty();
 	}
 
+	//save petDto to elasticsearch
 	public void save(PetDto pet) {
 		petElasticsearchRepository.save(pet);
 	}
