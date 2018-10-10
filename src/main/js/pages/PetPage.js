@@ -5,11 +5,11 @@ import PetList from 'js/components/PetList';
 import AddPetForm from 'js/components/AddPetForm';
 import uuidv4 from 'uuid/v4';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
+import NavigationBar from 'js/components/Navbar';
 
 const cardStyle = {
 	display: 'flex',
 	justifyContent: 'center',
-	alignItems: 'center',
 	height: '100vh'
 };
 
@@ -47,9 +47,6 @@ class PetPage extends React.Component {
 				type: 'Cat'
 			}
 		]});
-
-
-
 	}
 
 	componentDidMount() {
@@ -62,7 +59,7 @@ class PetPage extends React.Component {
 		this.setState({pets: pets});
 
 		/* this should add pet to UserPet */
-        this.registerPet(pet);
+        // this.registerPet(pet);
 	}
 
 	handleDeletePet(id) {
@@ -81,6 +78,12 @@ class PetPage extends React.Component {
 	render() {
 		return (
 			<div>
+
+				<div>
+					<NavigationBar/>
+				</div>
+				<br/>
+
 				<div style={cardStyle}>
 					<Col sm="12">
 						<Card>
