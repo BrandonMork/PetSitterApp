@@ -14,6 +14,7 @@ import {
 	CardTitle,
 	CardBody, CardText
 } from 'reactstrap';
+import NavigationBar from 'js/components/Navbar';
 
 const cardStyle = {
 	display: 'flex',
@@ -32,6 +33,12 @@ class ProfilePage extends React.Component {
 	render() {
 		return (
 			<div>
+
+				<div>
+					<NavigationBar/>
+				</div>
+				<br/>
+
 				<div>
 					Welcome to your profile {this.props.user.principal}!
 					<br/><br/>
