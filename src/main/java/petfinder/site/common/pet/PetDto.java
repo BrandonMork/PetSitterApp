@@ -6,7 +6,7 @@ import alloy.util.Identifiable;
  * Created by jlutteringer on 8/23/17.
  */
 public class PetDto implements Identifiable {
-	private Long ownerID;
+	private String principal; // username, always will be unique (primary key)
 	private Long id;
 	private String name;
 	private String species;
@@ -23,14 +23,19 @@ public class PetDto implements Identifiable {
 		this.id = UUID.randomUUID().getMostSignificantBits();
 	}
 
-	public PetDto(Long ownerID, Long id, String name, String species, String breed, String size, Long age) {
-		this.ownerID = ownerID;
+	public PetDto(String principal, Long id, String name, String species, String breed, String size, Long age) {
+		this.principal = principal;
 		this.id = id;
 		this.name = name;
 		this.species = species;
 		this.breed = breed;
 		this.size = size;
 		this.age = age;
+	}
+
+	public PetDto(String principal, String name) {
+		this.principal = principal;
+		this.name = name;
 	}
 
 	@Override
@@ -50,12 +55,12 @@ public class PetDto implements Identifiable {
 		this.name = name;
 	}
 
-	public Long getOwnerID() {
-		return ownerID;
+	public String getPrincipal() {
+		return principal;
 	}
 
-	public void setOwnerID(Long ownerID) {
-		this.ownerID = ownerID;
+	public void setPrincipal(String principal) {
+		this.principal = principal;
 	}
 
 	public String getSpecies() {

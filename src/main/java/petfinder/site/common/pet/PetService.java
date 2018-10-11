@@ -1,10 +1,12 @@
 package petfinder.site.common.pet;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import petfinder.site.common.user.UserDto;
 
 /**
  * Created by jlutteringer on 8/23/17.
@@ -23,4 +25,10 @@ public class PetService {
 	public void save(PetDto petExample) {
 		petDao.save(petExample);
 	}
+
+	public List<PetDto> findPets(String principal) {
+		System.out.println("I hit the PetService");
+		return petDao.findPets(principal);
+	}
+
 }

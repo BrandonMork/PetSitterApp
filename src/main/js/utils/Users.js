@@ -4,11 +4,27 @@ import Cookie from 'universal-cookie';
 // Makes API call to our register function in the back-end
 export function register(user) {
 	console.log(user);
+	return axios.post('/api/user/register', user);
+}
 
-	let newUser = {
+export function registerPet(pet, user){
+
+	let newPet = {
+		'principal': user.principal,
+		'name': pet.name
 	};
 
-	return axios.post('/api/user/register', user);
+	return axios.post('/api/pets/add-pet', newPet)
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+}
+
+export function getPets(principal){
+	return axios.get('/api/pets/get-pets/' + principal);
 }
 
 export function authenticate(username, password) {
@@ -43,13 +59,30 @@ State.getUser = state => {
 	return state.user;
 };
 
+//IM ADDING THIS MARIO
+State.getPets = state => {
+	return state.pets;
+};
+
 export { State };
 
 let Actions = {};
 
+//IM ADDING THIS MARIO
 Actions.Types = {
 	SET_AUTHENTICATION: 'SET_AUTHENTICATION',
-	SET_USER: 'SET_USER'
+	SET_USER: 'SET_USER',
+	SET_PETS: 'SET_PETS'
+};
+
+//IM ADDING THIS MARIO
+//this is from some Redux
+Actions.getPets = principal => {
+	return (dispatch) => {
+		return getPets(principal).then((pets) => {
+			return dispatch(Actions.setPets(pets));
+		});
+	};
 };
 
 Actions.register = user => {
@@ -78,6 +111,9 @@ Actions.logout = () => {
 	return (dispatch) => {
 		dispatch(Actions.setAuthentication(null));
 		dispatch(Actions.setUser(null));
+
+		//IM ADDING THIS MARIO
+		dispatch(Actions.setPets(null));
 	};
 };
 
@@ -87,6 +123,11 @@ Actions.setAuthentication = authentication => {
 	myCookie.set('authentication', authentication, {path: '/'});
 
 	return {type: Actions.Types.SET_AUTHENTICATION, authentication};
+};
+
+//IM ADDING THIS MARIO
+Actions.setPets = pets => {
+	return {type: Actions.Types.SET_PETS, pets};
 };
 
 Actions.setUser = user => {
@@ -122,5 +163,19 @@ Reducers.user = (user = null, action) => {
 		}
 	}
 };
+
+
+//IM ADDING THIS MARIO
+Reducers.pets = (pets = [], action) => {
+	switch (action.type) {
+		case Actions.Types.SET_PETS: {
+			return action.pets;
+		}
+		default: {
+			return pets;
+		}
+	}
+};
+
 
 export { Reducers };

@@ -1,5 +1,6 @@
 package petfinder.site.endpoint;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,14 @@ public class PetEndpoint {
 		petService.save(pet);
 		return pet;
 	}
+
+	@GetMapping(value = "/get-pets/{principal}")
+	public List<PetDto> getPets(@PathVariable("principal") String principal) {
+		System.out.println("I hit the pet endpoint");
+		return petService.findPets(principal);
+	}
+
+
+
+
 }
