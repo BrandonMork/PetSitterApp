@@ -3,11 +3,12 @@ import Cookie from 'universal-cookie';
 
 // Makes API call to our register function in the back-end
 export function register(user) {
-	return axios.post('/api/user/register', user);
-}
+	console.log(user);
 
-export function registerPet(pet) {
-    return axios.post('/api/pets/add-pet', pet);
+	let newUser = {
+	};
+
+	return axios.post('/api/user/register', user);
 }
 
 export function authenticate(username, password) {
