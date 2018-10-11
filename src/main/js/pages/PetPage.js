@@ -6,17 +6,30 @@ import AddPetForm from 'js/components/AddPetForm';
 import uuidv4 from 'uuid/v4';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
+import Background from '../../resources/images/dogs_background.jpg';
 
-const cardStyle = {
+const pageStyle = {
+	backgroundSize: 'cover',
+	backgroundImage: 'url(' + Background + ')',
+	backgroundPosition: 'center',
+	/*
+	background-repeat: no-repeat;
+background-attachment: fixed;
+	*/
+	backgroundAttachment: 'scroll',
+	height: '100%',
+};
+const pageContent = {
+	opacity: '0.8',
+};
+const center = {
 	display: 'flex',
 	justifyContent: 'center',
-	height: '100vh'
+	alignItems: 'center',
 };
 
-const centered = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center'
+const testStyle = {
+	height: '1000px'
 };
 
 class PetPage extends React.Component {
@@ -45,7 +58,7 @@ class PetPage extends React.Component {
 				id: uuidv4(),
 				name: 'chico',
 				type: 'Cat'
-			}
+			},
 		]});
 	}
 
@@ -77,33 +90,36 @@ class PetPage extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div style={pageStyle}>
+				<div className="container padding">
+					<div style={pageContent}>
+						<div>
+							<NavigationBar/>
+						</div>
+						<br/>
 
-				<div>
-					<NavigationBar/>
-				</div>
-				<br/>
+						<div style={center}>
+							<Col sm="12">
+								<Card>
+									<br/>
+									<CardTitle style={center}>{this.props.user.principal}'s pets:</CardTitle>
+									<CardBody>
+										<div> I am a {this.props.user.type} </div>
+										<PetList pets={this.state.pets}
+												 onDelete={this.handleDeletePet.bind(this)}
+												 onEdit={this.handleEditPet.bind(this)}/>
 
-				<div style={cardStyle}>
-					<Col sm="12">
-						<Card>
-							<br/>
-							<CardTitle style={centered}>{this.props.user.principal}'s pets:</CardTitle>
-							<CardBody>
-								<div> I am a {this.props.user.type} </div>
-								<PetList pets={this.state.pets}
-										 onDelete={this.handleDeletePet.bind(this)}
-										 onEdit={this.handleEditPet.bind(this)}/>
+										<br/>
 
-								<br/>
+										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
 
-								<AddPetForm addPet={this.handleAddPet.bind(this)}/>
+										This will be pets retrieved from elasticsearch! <br/>
 
-                                This will be pets retrieved from elasticsearch! <br/>
-
-							</CardBody>
-						</Card>
-					</Col>
+									</CardBody>
+								</Card>
+							</Col>
+						</div>
+					</div>
 				</div>
 			</div>
 		);
