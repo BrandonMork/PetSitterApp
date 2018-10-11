@@ -1,6 +1,9 @@
 import React from 'react';
 import uuidv4 from 'uuid/v4';
 import PropTypes from 'prop-types';
+import {registerPet} from 'js/utils/Users';
+import connect from 'react-redux/es/connect/connect';
+import * as Users from 'js/utils/Users';
 
 class AddPetForm extends React.Component {
 
@@ -23,11 +26,11 @@ class AddPetForm extends React.Component {
 			this.setState({newPet: {
 				id: uuidv4(),
 				name: this.refs.name.value,
-				type: this.refs.type.value
 			}}, function() {
-				// console.log(this.state);
+				//console.log(this.state);
 				this.props.addPet(this.state.newPet);
-				/*this.props.user.setType(this.state.name);*/
+				console.log(this.state.newPet);
+				registerPet(this.state.newPet, this.props.user);
 			});
 		}
 		e.preventDefault();
@@ -65,5 +68,12 @@ class AddPetForm extends React.Component {
 AddPetForm.propTypes = {
 	addPet: PropTypes.func
 };
+
+AddPetForm = connect(
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	})
+)(AddPetForm);
 
 export default AddPetForm;
