@@ -18,8 +18,6 @@ import petfinder.site.common.user.UserAuthenticationDto;
 public class UserElasticSearchRepository extends ElasticSearchJsonRepository<UserAuthenticationDto, String> {
 	@Autowired
 	public UserElasticSearchRepository(ElasticSearchClientProvider provider) {
-
-		//put the index name from elasticsearch here
 		super(new ElasticSearchIndex(provider, "petfinder-users"), UserAuthenticationDto.class);
 	}
 }
