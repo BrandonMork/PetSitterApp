@@ -68,6 +68,7 @@
     "axios": "0.15.3",
     "babel-polyfill": "^6.23.0",
     "bootstrap": "4.0.0-beta.3",
+    "copy-webpack-plugin": "^4.5.3",
     "font-awesome": "^4.7.0",
     "i": "^0.3.6",
     "lodash": "^4.17.4",
