@@ -48,6 +48,9 @@ class PetPage extends React.Component {
 
 	getPets() {
 		// This is where we will call our data store via elasticsearch
+
+		// axios get call to all pets belonging to currrent user ID
+		// map or some
 		this.setState({pets: [
 			{
 				id: uuidv4(),
@@ -80,11 +83,13 @@ class PetPage extends React.Component {
 		let index = pets.findIndex(x => x.id === id);
 		pets.splice(index, 1);
 		this.setState({pets: pets});
-
-
 	}
 
 	handleEditPet(id) {
+		// Once we have the p[ets loaded
+		// we will make an axios GET call to pet of UUID
+		// pull up pet info of ID and able to modify all its attributes
+		// configure document on form submit
 		console.log('Editing ' + id);
 	}
 
