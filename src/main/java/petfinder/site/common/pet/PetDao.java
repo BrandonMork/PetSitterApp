@@ -50,8 +50,12 @@ public class PetDao {
 	}
 
 	public List<PetDto> findPets(String principal) {
-		System.out.println("I hit the PetDao");
+		System.out.println("I hit the PetDao and the principal is " + principal);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+		//fix?
+		//principal = "mario@xom.com";
+		principal = principal + ".com";
 
 		String queryString = String.format("principal=\"%s\"", principal.replace("\"", ""));
 		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
@@ -68,7 +72,7 @@ public class PetDao {
 
 		System.out.println(newList.toString());
 
-		return newList;
+		return userPets;
 
 //		return userPets.stream()
 //				.map(userPet -> petRepository.find(userPet.getPetId()).get())
