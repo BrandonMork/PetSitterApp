@@ -14,9 +14,7 @@ public class UserAuthenticationDto implements Momento<String> {
 	// Contains the password needed to access account (will be encrypted)
 	private String password;
 
-	private UserAuthenticationDto() {
-
-	}
+	private UserAuthenticationDto() { }
 
 	public UserAuthenticationDto(UserDto user, String password) {
 		this.user = user;

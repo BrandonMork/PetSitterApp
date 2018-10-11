@@ -6,31 +6,17 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
 
-// 0 or 1 to reflect our enums in the back-end
-const typeOptions = [
-	{ value: '0', label: 'Owner'},
-	{ value: '1', label: 'Sitter'}
-];
-
 class RegistrationForm extends React.Component {
 
-	state = {
-		selectedTypeOption: null,
-	};
-
-	handleTypeChange = (selectedTypeOption) => {
-		this.setState({ selectedTypeOption });
-	};
-
 	onSubmit = user => {
-		this.context.router.history.push('/');
-		return this.props.register(user);
+		console.log(Object.keys(user).join(', '));
+		this.props.register(user);
+		return this.context.router.history.push('/');
 	};
 
 	//@TODO List of roles, and map of attributes, save this form to Elasticsearch
 	render() {
-		let { handleSubmit, submitting } = this.props;
-		const { selectedTypeOption } = this.state;
+		let { handleSubmit } = this.props;
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
@@ -41,14 +27,11 @@ class RegistrationForm extends React.Component {
 								validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
 
-				<Bessemer.Field name="confirm-password" friendlyName="Confirm Password"
-								validators={[Validation.requiredValidator, Validation.passwordValidator]}
-								field={<input className="form-control" type="password" />} />
+				<Bessemer.Field name="userType" friendlyName="User Type: Owner or Sitter"
+								validators={[Validation.requiredValidator]} />
 
-				User Type: <Bessemer.Select name="userType" friendlyName="User Type" value={selectedTypeOption}
-											onChange={this.handleTypeChange} options={typeOptions} />
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
-					<Bessemer.Button loading={submitting}>Register</Bessemer.Button>
+					<Bessemer.Button>Register</Bessemer.Button>
 				</div>
 			</form>
 		);

@@ -38,8 +38,7 @@ public class UserService {
 	public static class RegistrationRequest {
 		private String principal;
 		private String password;
-		private String myNewField;
-		private Map<String, Object> attributes;
+		private String userType;
 
 		public String getPrincipal() {
 			return principal;
@@ -57,26 +56,34 @@ public class UserService {
 			this.password = password;
 		}
 
-		public Map<String, Object> getAttributes() {
-			return attributes;
+		public String getUserType() {
+			return userType;
 		}
 
-		public void setAttributes(Map<String, Object> attributes) {
-			this.attributes = attributes;
-		}
-
-		public String getMyNewField() {
-			return myNewField;
-		}
-
-		public void setMyNewField(String myNewField) {
-			this.myNewField = myNewField;
+		public void setUserType(String userType) {
+			this.userType = userType;
 		}
 	}
 
 	public UserDto register(RegistrationRequest request) {
+		// The idea is that we process the request to create a new user
+		// and let the user input non-essential data as they please.
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto(
-				new UserDto(request.getPrincipal(), _Lists.list("ROLE_USER"), UserType.OWNER, request.getAttributes()), passwordEncoder.encode(request.getPassword()));
+				new UserDto(
+						request.getPrincipal(),
+						"",
+						"",
+						"",
+						"",
+						"",
+						"",
+						"",
+						0,
+						0,
+						_Lists.list(),
+						_Lists.list("ROLE_USER"),
+						request.getUserType()),
+				passwordEncoder.encode(request.getPassword()));
 
 		userDao.save(userAuthentication);
 		return userAuthentication.getUser();
