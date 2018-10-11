@@ -33,6 +33,11 @@ public class PetDto implements Identifiable {
 		this.age = age;
 	}
 
+	public PetDto(String principal, String name) {
+		this.principal = principal;
+		this.name = name;
+	}
+
 	@Override
 	public Long getId() {
 		return id;

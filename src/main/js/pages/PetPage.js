@@ -7,6 +7,7 @@ import uuidv4 from 'uuid/v4';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
+import {Button} from 'js/alloy/bessemer/components';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -110,16 +111,13 @@ class PetPage extends React.Component {
 									<CardTitle style={center}>{this.props.user.principal}'s pets:</CardTitle>
 									<CardBody>
 										<div> I am a {this.props.user.type} </div>
-										<PetList pets={this.state.pets}
-												 onDelete={this.handleDeletePet.bind(this)}
-												 onEdit={this.handleEditPet.bind(this)}/>
+										<PetList/>
 
 										<br/>
 
 										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
 
 										This will be pets retrieved from elasticsearch! <br/>
-
 									</CardBody>
 								</Card>
 							</Col>
