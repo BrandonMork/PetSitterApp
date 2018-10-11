@@ -36,7 +36,7 @@ class LoginPage extends React.Component {
 							<NavigationBar/>
 						</div>
 						<br/>
-						<div style={cardStyle}>
+						<div style={center}>
 							<Col sm="8">
 								<Card>
 									<br/>
