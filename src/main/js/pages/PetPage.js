@@ -102,7 +102,6 @@ class PetPage extends React.Component {
 						<div>
 							<NavigationBar/>
 						</div>
-						<br/>
 
 						<div style={center}>
 							<Col sm="12">

@@ -20,6 +20,8 @@ public class JobDto implements Identifiable {
     private String endTime;
     private String location;
     private Long maxPay;
+
+    // @TODO Address
     private String hosting;
     private String reccuring;
 

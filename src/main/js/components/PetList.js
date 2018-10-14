@@ -18,8 +18,9 @@ class PetList extends React.Component {
 		this.props.onDelete(id);
 	}
 
-	editPet(id) {
-		this.props.onEdit(id);
+	editPet(pet) {
+		console.log(pet);
+
 	}
 		/* 		let pets = this.props.user.getPets().map(); */
 	render() {
@@ -39,8 +40,8 @@ class PetList extends React.Component {
 
 				{ _.isDefined(this.props.elasticPets) &&
 					this.props.elasticPets.map(pet => (
-						<div key={pet.name}>
-							<p>{pet.name}</p>
+						<div key={pet.id}>
+							<a href='#' onClick={this.editPet(this)}>{pet.name}</a>
 						</div>
 					))
 				}
