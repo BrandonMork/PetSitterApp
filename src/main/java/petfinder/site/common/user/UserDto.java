@@ -4,13 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
 import com.google.common.collect.ImmutableList;
 import org.codehaus.jackson.annotate.JsonIgnore;
-
-import alloy.util.Identifiable;
 import alloy.util.Momento;
-import petfinder.site.common.pet.PetDto;
+
 
 /**
  * Created by jlutteringer on 8/23/17.
@@ -41,20 +38,22 @@ public class UserDto implements Momento<String> {
 
 	}
 
-	public UserDto(
-			String principal,
-			String firstName,
-			String middleName,
-			String lastName,
-			String addressLine1,
-			String addressLine2,
-			String city,
-			String state,
-			long zip,
-			long phoneNumber,
-			List<UserPetDto> pets,
-			List<String> roles,
-			String type) {
+	//does not include roles & pets
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, long zip, long phoneNumber, String type) {
+		this.principal = principal;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNumber = phoneNumber;
+		this.type = type;
+	}
+
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, long zip, long phoneNumber, List<UserPetDto> pets, List<String> roles, String type) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
