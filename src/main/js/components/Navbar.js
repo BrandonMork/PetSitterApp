@@ -52,6 +52,9 @@ export default class NavigationBar extends React.Component {
 				<NavItem>
 					<NavLink tag={Link} to="/find-sitter">Find Sitter</NavLink>
 				</NavItem>
+				<NavItem>
+					<NavLink tag={Link} to="/post-job">Post Job</NavLink>
+				</NavItem>
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Pets
