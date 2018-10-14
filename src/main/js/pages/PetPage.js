@@ -70,11 +70,11 @@ class PetPage extends React.Component {
 		this.getPets();
 	}
 
+	// @TODO we need to make sure we update the state of the pets
 	handleAddPet(pet) {
 		let pets = this.state.pets;
 		pets.push(pet);
 		this.setState({pets: pets});
-
 		/* this should add pet to UserPet */
         // this.registerPet(pet);
 	}
@@ -117,7 +117,6 @@ class PetPage extends React.Component {
 
 										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
 
-										This will be pets retrieved from elasticsearch! <br/>
 									</CardBody>
 								</Card>
 							</Col>

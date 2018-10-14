@@ -43,7 +43,15 @@ class ProfilePage extends React.Component {
 				firstName: e.target.firstName.value,
 				middleName: e.target.middleName.value,
 				lastName: e.target.lastName.value,
+				addressLine1: e.target.addressLine1.value,
+				addressLine2: e.target.addressLine2.value,
+				city: e.target.city.value,
+				state: e.target.state.value,
+				zip: e.target.zip.value,
+				phoneNumber: e.target.phoneNumber.value,
+				type: e.target.type.value
 			}}, function() {
+			console.log('the user has pushed the update profile button with the following info');
 			console.log(this.state.updatedUserProfile);
 			updateUser(this.state.updatedUserProfile);
 		});
@@ -62,10 +70,6 @@ class ProfilePage extends React.Component {
 							<Col md="10">
 								<Card>
 									<CardTitle style={center}>Welcome to your profile {this.props.user.principal}!</CardTitle>
-									<div>
-										Add possible availabilities
-										<AvailabilityForm />
-									</div>
 								</Card>
 							</Col>
 						</div>

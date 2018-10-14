@@ -25,10 +25,10 @@ public class UserDto implements Momento<String> {
 	private String addressLine2;
 	private String city;
 	private String state;
-	private long zip;
+	private String zip;
 
 	// @TODO Is this the correct data structure?
-	private long phoneNumber;
+	private String phoneNumber;
 
 	private List<UserPetDto> pets;
 	private List<String> roles;
@@ -39,7 +39,7 @@ public class UserDto implements Momento<String> {
 	}
 
 	//does not include roles & pets
-	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, long zip, long phoneNumber, String type) {
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, String zip, String phoneNumber, String type) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -53,7 +53,7 @@ public class UserDto implements Momento<String> {
 		this.type = type;
 	}
 
-	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, long zip, long phoneNumber, List<UserPetDto> pets, List<String> roles, String type) {
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, String zip, String phoneNumber, List<UserPetDto> pets, List<String> roles, String type) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -133,19 +133,19 @@ public class UserDto implements Momento<String> {
 		this.city = city;
 	}
 
-	public long getZip() {
+	public String getZip() {
 		return zip;
 	}
 
-	public void setZip(long zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -181,5 +181,24 @@ public class UserDto implements Momento<String> {
 
 	public enum UserType {
 		OWNER, SITTER
+	}
+
+	@Override
+	public String toString() {
+		return "UserDto{" +
+				"principal='" + principal + '\'' +
+				", firstName='" + firstName + '\'' +
+				", middleName='" + middleName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", addressLine1='" + addressLine1 + '\'' +
+				", addressLine2='" + addressLine2 + '\'' +
+				", city='" + city + '\'' +
+				", state='" + state + '\'' +
+				", zip='" + zip + '\'' +
+				", phoneNumber='" + phoneNumber + '\'' +
+				", pets=" + pets +
+				", roles=" + roles +
+				", type='" + type + '\'' +
+				'}';
 	}
 }

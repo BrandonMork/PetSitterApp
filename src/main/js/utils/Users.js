@@ -28,9 +28,11 @@ export function getPets(principal){
 	return axios.get('/api/pets/get-pets/' + principal);
 }
 
-//put in the user object
+
 //notice: the pets,roles are missing
+// @TODO this is where we get to update the new user, not sure how to do that yet
 export function updateUser(user){
+	console.log('we are now calling an axios post');
 	let newUser = {
 		'principal': user.principal,
 		'firstName': user.firstName,
@@ -38,7 +40,6 @@ export function updateUser(user){
 		'lastName': user.lastName,
 		'addressLine1': user.addressLine1,
 		'addressLine2': user.addressLine2,
-		'city': user.city,
 		'state': user.state,
 		'zip': user.zip,
 		'phoneNumber': user.phoneNumber,
