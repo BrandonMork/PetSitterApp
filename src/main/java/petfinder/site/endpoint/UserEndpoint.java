@@ -50,4 +50,10 @@ public class UserEndpoint {
 	public UserPetDto addPet(@RequestBody UserPetDto userPetDto) {
 		return userService.save(userPetDto);
 	}
+
+	@PostMapping(value = "/update-user")
+	public void updateUser(@RequestBody UserDto userDto){
+		System.out.println("In the UserEndpoint for updateUser");
+		userService.updateUser(userDto);
+	}
 }
