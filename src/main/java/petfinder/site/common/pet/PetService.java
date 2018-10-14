@@ -26,8 +26,9 @@ public class PetService {
 		petDao.save(petExample);
 	}
 
+	//GO TO PetDao after this call!
 	public List<PetDto> findPets(String principal) {
-		System.out.println("I hit the PetService");
+		System.out.println("I hit the PetService and the principal is " + principal);
 		return petDao.findPets(principal);
 	}
 
