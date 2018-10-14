@@ -39,7 +39,7 @@ public class PetEndpoint {
 
 	@GetMapping(value = "/get-pets/{principal}")
 	public List<PetDto> getPets(@PathVariable("principal") String principal) {
-		System.out.println("I hit the pet endpoint");
+		System.out.println("I hit the pet endpoint and the principal is "+ principal);
 		return petService.findPets(principal);
 	}
 
