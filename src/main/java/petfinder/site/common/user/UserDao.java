@@ -63,7 +63,7 @@ public class UserDao {
 	}
 
 	public void updateUser(UserDto userDto){
-		System.out.println("In the UserDao for updateUser");
+		System.out.println("In the UserDao for updateUser: " + userDto.toString());
 		actualUserElasticsearchRepository.save(userDto);
 	}
 }

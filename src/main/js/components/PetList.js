@@ -3,6 +3,7 @@ import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect'; // ES6
 import _ from 'lodash';
+import {Button} from 'js/alloy/bessemer/components';
 
 class PetList extends React.Component {
 	constructor(props){
@@ -19,11 +20,12 @@ class PetList extends React.Component {
 	}
 
 	editPet(id) {
+		console.log(id);
 		this.props.onEdit(id);
 	}
 		/* 		let pets = this.props.user.getPets().map(); */
 	render() {
-		let petListItems;
+		//let petListItems;
 		// if(this.props.pets) {
 		// 	petListItems = this.props.pets.map(pet => {
 		// 		return (
@@ -39,7 +41,7 @@ class PetList extends React.Component {
 
 				{ _.isDefined(this.props.elasticPets) &&
 					this.props.elasticPets.map(pet => (
-						<div key={pet.name}>
+						<div key={pet.id}>
 							<p>{pet.name}</p>
 						</div>
 					))
