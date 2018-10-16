@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import petfinder.site.common.pet.PetDto;
+import petfinder.site.elasticsearch.ActualUserElasticsearchRepository;
 import petfinder.site.elasticsearch.PetElasticsearchRepository;
 import petfinder.site.elasticsearch.UserElasticSearchRepository;
 import petfinder.site.elasticsearch.UserPetElasticsearchRepository;
@@ -27,6 +28,9 @@ public class UserDao {
 
 	@Autowired
 	private PetElasticsearchRepository petRepository;
+
+	@Autowired
+	private ActualUserElasticsearchRepository actualUserElasticsearchRepository;
 
 	public Optional<UserAuthenticationDto> findUserByPrincipal(String principal) {
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
@@ -56,5 +60,10 @@ public class UserDao {
 
 	public UserPetDto save(UserPetDto userPetDto) {
 		return userPetRepository.save(userPetDto);
+	}
+
+	public void updateUser(UserDto userDto){
+		System.out.println("In the UserDao for updateUser: " + userDto.toString());
+		actualUserElasticsearchRepository.save(userDto);
 	}
 }

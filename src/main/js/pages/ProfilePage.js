@@ -7,6 +7,7 @@ import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
 import {register} from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
+import {updateUser} from 'js/utils/Users';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -24,6 +25,8 @@ const center = {
 	alignItems: 'center'
 };
 
+// @Todo Mario make sure the form shows the current user info
+
 class ProfilePage extends React.Component {
 
 	constructor() {
@@ -40,10 +43,17 @@ class ProfilePage extends React.Component {
 				firstName: e.target.firstName.value,
 				middleName: e.target.middleName.value,
 				lastName: e.target.lastName.value,
-				password: e.target.password.value
+				addressLine1: e.target.addressLine1.value,
+				addressLine2: e.target.addressLine2.value,
+				city: e.target.city.value,
+				state: e.target.state.value,
+				zip: e.target.zip.value,
+				phoneNumber: e.target.phoneNumber.value,
+				type: e.target.type.value
 			}}, function() {
+			console.log('the user has pushed the update profile button with the following info');
 			console.log(this.state.updatedUserProfile);
-			register(this.state.updatedUserProfile);
+			updateUser(this.state.updatedUserProfile);
 		});
 	}
 
@@ -60,10 +70,6 @@ class ProfilePage extends React.Component {
 							<Col md="10">
 								<Card>
 									<CardTitle style={center}>Welcome to your profile {this.props.user.principal}!</CardTitle>
-									<div>
-										Add possible availabilities
-										<AvailabilityForm />
-									</div>
 								</Card>
 							</Col>
 						</div>
@@ -97,7 +103,7 @@ class ProfilePage extends React.Component {
 												</Col>
 												<Col md={4}>
 													<FormGroup>
-														<Label for="lastName">First Name</Label>
+														<Label for="lastName">Last Name</Label>
 														<Input type="text" ref="lastName" name="lastName" id="lastName" placeholder={this.props.user.lastName}  />
 													</FormGroup>
 												</Col>
@@ -142,11 +148,6 @@ class ProfilePage extends React.Component {
 											<FormGroup>
 												<Label for="type">User Type</Label>
 												<Input type="text" ref="type" name="type" id="type" placeholder={this.props.user.type}/>
-											</FormGroup>
-
-											<FormGroup>
-												<Label for="password">Password</Label>
-												<Input type="text" ref="password" name="password" id="password" placeholder="Enter password here to update!"/>
 											</FormGroup>
 
 											<br/>

@@ -24,7 +24,35 @@ export function registerPet(pet, user){
 }
 
 export function getPets(principal){
+	console.log(principal);
 	return axios.get('/api/pets/get-pets/' + principal);
+}
+
+
+//notice: the pets,roles are missing
+// @TODO this is where we get to update the new user, not sure how to do that yet
+export function updateUser(user){
+	console.log('we are now calling an axios post');
+	let newUser = {
+		'principal': user.principal,
+		'firstName': user.firstName,
+		'middleName': user.middleName,
+		'lastName': user.lastName,
+		'addressLine1': user.addressLine1,
+		'addressLine2': user.addressLine2,
+		'state': user.state,
+		'zip': user.zip,
+		'phoneNumber': user.phoneNumber,
+		'type': user.type
+	};
+
+	return axios.post('/api/user/update-user/', newUser)
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
 }
 
 export function authenticate(username, password) {
