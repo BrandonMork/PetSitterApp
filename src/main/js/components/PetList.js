@@ -1,9 +1,14 @@
 import React from 'react';
 import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect'; // ES6
+import connect from 'react-redux/es/connect/connect';
 import _ from 'lodash';
 import {Button} from 'js/alloy/bessemer/components';
+import {Col, Row} from 'reactstrap';
+
+const style = {
+	margin: '10px'
+};
 
 class PetList extends React.Component {
 	constructor(props){
@@ -15,55 +20,20 @@ class PetList extends React.Component {
 		this.props.fetchPets(this.props.user.principal);
 	}
 
-	deletePet(id) {
-		this.props.onDelete(id);
-	}
-
-	editPet(id) {
-		console.log(id);
-		this.props.onEdit(id);
-	}
-		/* 		let pets = this.props.user.getPets().map(); */
 	render() {
-		//let petListItems;
-		// if(this.props.pets) {
-		// 	petListItems = this.props.pets.map(pet => {
-		// 		return (
-		// 			<PetListItem onEdit={this.editPet.bind(this)}
-		// 						 onDelete={this.deletePet.bind(this)}
-		// 						 key={pet.id} pet={pet} />
-		// 		);
-		// 	});
-		// }
 		return (
-			<div className="PetList">
+			<Col className="PetList">
 				<button type={'button'} className="btn btn-primary" onClick={this.updatePets.bind(this)}>Update Pets</button>
 
 				{ _.isDefined(this.props.elasticPets) &&
 					this.props.elasticPets.map(pet => (
-						<div key={pet.id}>
-							<p>{pet.name} {pet.type}</p>
-						</div>
+						<Row key={pet.id} style={style}>
+							<Button>{pet.name}</Button>
+						</Row>
 					))
 				}
-			</div>
+			</Col>
 		);
-
-		// // if(this.props.elasticPets) {
-		// // 	petListItems = this.props.elasticPets.map(pet => {
-		// // 		return (
-		// // 			<PetListItem onEdit={this.editPet.bind(this)}
-		// // 						 onDelete={this.deletePet.bind(this)}
-		// // 						 key={pet.id} pet={pet} />
-		// // 		);
-		// // 	});
-		// // }
-		//
-		// return (
-		// 	<div className="PetList">
-		// 		{petListItems}
-		// 	</div>
-		// );
 	}
 }
 
