@@ -169,25 +169,6 @@ public class UserDto implements Momento<String> {
 		this.roles = roles;
 	}
 
-	@Override
-	public String toString() {
-		return "UserDto{" +
-				"principal='" + principal + '\'' +
-				", firstName='" + firstName + '\'' +
-				", middleName='" + middleName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", addressLine1='" + addressLine1 + '\'' +
-				", addressLine2='" + addressLine2 + '\'' +
-				", city='" + city + '\'' +
-				", state='" + state + '\'' +
-				", zip=" + zip +
-				", phoneNumber=" + phoneNumber +
-				", pets=" + pets +
-				", roles=" + roles +
-				", type='" + type + '\'' +
-				'}';
-	}
-
 	@JsonIgnore
 	@Override
 	public String getMomento() {
