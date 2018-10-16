@@ -1,13 +1,12 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody, CardText} from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody} from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
-import {register} from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
-import {updateUser} from 'js/utils/Users';
 import PetList from 'js/components/PetList';
+import {postJob} from 'js/utils/Users';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -31,18 +30,37 @@ class PostJobPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
+		this.updatedJob = {};
+	}
+
+	handleStartDateChange(date) {
+		this.setState({
+			startDate: date
+		});
+	}
+
+	handleEndDateChange(date) {
+		this.setState({
+			endDate: date
+		});
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.setState({ updatedUserProfile: {
+		this.setState({ updatedJob: {
+				startDate: e.target.startDate.value,
+				endDate: e.target.endDate.value,
 				addressLine1: e.target.addressLine1.value,
 				addressLine2: e.target.addressLine2.value,
 				city: e.target.city.value,
 				state: e.target.state.value,
-				zip: e.target.zip.value,
+				zip: e.target.zip.value
 			}}, function() {
+			console.log('Im adding a job!');
+			console.log(this.state.updatedJob);
+			postJob(this.state.updatedJob);
 			// @TODO Brandon post job
+			console.log(this.state.newJob);
 		});
 	}
 
@@ -68,17 +86,26 @@ class PostJobPage extends React.Component {
 									<br/>
 									<CardTitle style={center}>Create a job!</CardTitle>
 									<CardBody>
-										<Form name="form">
+										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 											<p>What pets need to be taken care of?</p>
 											<PetList/>
+
 											<FormGroup>
 												<Label for="startDate">Start Date</Label>
-												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="MM-DD-YYYY"/>
+												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
 											</FormGroup>
 
 											<FormGroup>
+												<Label for="startDate">Start Date</Label>
+												<DatePicker
+													ref="startDate" name="startDate" id="startDate"
+													selected={this.state.startDate}
+													onChange={this.handleStartDateChange}
+												/>
+											</FormGroup>
+											<FormGroup>
 												<Label for="endDate">End Date</Label>
-												<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="MM-DD-YYYY"/>
+												<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
 											</FormGroup>
 
 											<h3>Where is the job located? </h3>
