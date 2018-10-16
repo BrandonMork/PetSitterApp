@@ -14,8 +14,8 @@ public class JobDto implements Identifiable {
     //not sure how to pull array from elasticsearch
     private String pets;
 
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private String startTime;
     private String endTime;
     private Long maxPay;
@@ -36,7 +36,7 @@ public class JobDto implements Identifiable {
         this.id = UUID.randomUUID().getMostSignificantBits();
     }
 
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip) {
+    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip) {
         this.id = id;
         this.ownerID = ownerID;
         this.sitterID = sitterID;
@@ -54,7 +54,7 @@ public class JobDto implements Identifiable {
     }
 
     //added this to see if elasticsearch will work or not
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
+    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate) {
         this.id = id;
         this.ownerID = ownerID;
         this.sitterID = sitterID;
@@ -97,19 +97,19 @@ public class JobDto implements Identifiable {
         this.pets = pets;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
