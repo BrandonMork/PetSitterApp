@@ -7,6 +7,7 @@ import uuidv4 from 'uuid/v4';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
+import {Button} from 'js/alloy/bessemer/components';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -28,6 +29,10 @@ const center = {
 	alignItems: 'center',
 };
 
+const testStyle = {
+	height: '1000px'
+};
+
 class PetPage extends React.Component {
 
 	constructor() {
@@ -47,7 +52,18 @@ class PetPage extends React.Component {
 
 		// axios get call to all pets belonging to currrent user ID
 		// map or some
-		this.setState({pets: []});
+		this.setState({pets: [
+			{
+				id: uuidv4(),
+				name: 'rex',
+				type: 'Dog',
+			},
+			{
+				id: uuidv4(),
+				name: 'chico',
+				type: 'Cat'
+			},
+		]});
 	}
 
 	componentDidMount() {
@@ -59,6 +75,23 @@ class PetPage extends React.Component {
 		let pets = this.state.pets;
 		pets.push(pet);
 		this.setState({pets: pets});
+		/* this should add pet to UserPet */
+        // this.registerPet(pet);
+	}
+
+	handleDeletePet(id) {
+		let pets = this.state.pets;
+		let index = pets.findIndex(x => x.id === id);
+		pets.splice(index, 1);
+		this.setState({pets: pets});
+	}
+
+	handleEditPet(id) {
+		// Once we have the p[ets loaded
+		// we will make an axios GET call to pet of UUID
+		// pull up pet info of ID and able to modify all its attributes
+		// configure document on form submit
+		console.log('Editing ' + id);
 	}
 
 	render() {
@@ -78,8 +111,11 @@ class PetPage extends React.Component {
 									<CardBody>
 										<div> I am a {this.props.user.type} </div>
 										<PetList/>
+
 										<br/>
+
 										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
+
 									</CardBody>
 								</Card>
 							</Col>

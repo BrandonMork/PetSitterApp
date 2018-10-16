@@ -11,6 +11,7 @@ import FindSitterPage from 'js/pages/FindSitterPage';
 import ProfilePage from 'js/pages/ProfilePage';
 import PetPage from 'js/pages/PetPage';
 import PostJobPage from 'js/pages/PostJobPage';
+import SearchJobPage from 'js/pages/SearchJobPage';
 
 class Index extends React.Component {
 	render() {
@@ -27,6 +28,8 @@ class Index extends React.Component {
 					<Route exact path="/profile" component={ProfilePage} />
 					<Route exact path="/add-pet" component={PetPage}/>
 					<Route exact path="/post-job" component={PostJobPage}/>
+					<Route exact path="/search-job" component={SearchJobPage}/>
+
 				</div>
 			</HashRouter>
 		);
