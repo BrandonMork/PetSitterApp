@@ -12,13 +12,9 @@ public class JobService {
     @Autowired
     private JobDao jobDao;
 
-    //Calls JobDto findPet() function to search in elasticsearch
-    public Optional<JobDto> findPet(Long id) {
-        return jobDao.findJob(id);
-    }
-
     //Calls JobDto Save() function to save to elasticsearch
     public void save(JobDto jobExample) {
+        System.out.println("In the JobService for save" + jobExample.toString() + ".");
         jobDao.save(jobExample);
     }
 }

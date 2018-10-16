@@ -49,6 +49,16 @@ public class JobDto implements Identifiable {
         this.reccuring = reccuring;
     }
 
+    //added this to see if elasticsearch will work or not
+    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
+        this.id = id;
+        this.ownerID = ownerID;
+        this.sitterID = sitterID;
+        this.pets = pets;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     @Override
     public Long getId() {
         return id;
@@ -144,5 +154,21 @@ public class JobDto implements Identifiable {
 
     public void setReccuring(String reccuring) {
         this.reccuring = reccuring;
+    }
+
+    @Override
+    public String toString() {
+        return "JobDto{" +
+                "id=" + id +
+                ", ownerID=" + ownerID +
+                ", sitterID=" + sitterID +
+                ", pets='" + pets + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", location='" + location + '\'' +
+                ", reccuring='" + reccuring + '\'' +
+                '}';
     }
 }
