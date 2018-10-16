@@ -36,6 +36,7 @@ class PostJobPage extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({ updatedJob: {
+				pets: e.target.pets.value,
 				startDate: e.target.startDate.value,
 				endDate: e.target.endDate.value,
 				addressLine1: e.target.addressLine1.value,
@@ -76,6 +77,11 @@ class PostJobPage extends React.Component {
 										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 											<p>What pets need to be taken care of?</p>
 											<PetList/>
+											<FormGroup>
+												<Label for="pets">Which pet would you like to have a sitter look after?</Label>
+												<Input type="text" ref="pets" name="pets" id="pets" placeholder="pet name"/>
+											</FormGroup>
+
 											<FormGroup>
 												<Label for="startDate">Start Date</Label>
 												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
