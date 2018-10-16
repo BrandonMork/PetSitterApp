@@ -42,7 +42,7 @@ class PetList extends React.Component {
 				{ _.isDefined(this.props.elasticPets) &&
 					this.props.elasticPets.map(pet => (
 						<div key={pet.id}>
-							<p>{pet.name}</p>
+							<p>{pet.name} {pet.type}</p>
 						</div>
 					))
 				}

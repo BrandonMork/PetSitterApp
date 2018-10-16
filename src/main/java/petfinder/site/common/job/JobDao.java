@@ -1,5 +1,6 @@
 package petfinder.site.common.job;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
@@ -39,6 +40,22 @@ public class JobDao {
 
     //save petDto to elasticsearch
     public void save(JobDto job) {
-        jobElasticsearchRepository.save(job);
+
+        Date a = new Date();
+        Date b= new Date();
+        JobDto temp = new JobDto((long)1,(long)111,(long)222,"Fido",a,b);
+
+        System.out.println("In the JobDao for save with " + temp.toString());
+//        jobElasticsearchRepository.save(job);
+        jobElasticsearchRepository.save(temp);
     }
+
+//    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
+//        this.id = id;
+//        this.ownerID = ownerID;
+//        this.sitterID = sitterID;
+//        this.pets = pets;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//    }
 }
