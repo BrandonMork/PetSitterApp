@@ -97,11 +97,6 @@ class PostJobPage extends React.Component {
 											</FormGroup>
 
 											<FormGroup>
-												<Label for="pets">Which pet would you like to have a sitter look after?</Label>
-												<Input type="text" ref="pets" name="pets" id="pets" placeholder="pet name"/>
-											</FormGroup>
-
-											<FormGroup>
 												<Label for="startDate">Start Date</Label>
 												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
 											</FormGroup>
