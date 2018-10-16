@@ -29,6 +29,7 @@ export function getPets(principal){
 }
 
 export function postJob(job){
+	console.log('this is from the axios call, this is the job object');
 	console.log(job);
 	return axios.post('api/jobs/post-job' , job)
 
@@ -36,8 +37,8 @@ export function postJob(job){
 			console.log(response);
 		})
 		.catch(function (error) {
-				console.log(error);
-			});
+			console.log(error);
+		});
 }
 //id,
 
