@@ -67,6 +67,17 @@ if(env === 'dev') {
 	config.devtool = 'cheap-module-eval-source-map';
 
 	config.module.rules.push({
+		test: /\.css$/,
+		use: [{
+			loader: "style-loader" // creates style nodes from JS strings
+		}, {
+			loader: "css-loader" // translates CSS into CommonJS
+		}, {
+			loader: "sass-loader" // compiles Sass to CSS
+		}],
+	});
+
+	config.module.rules.push({
 		test: /\.scss$/,
 		use: [{
 			loader: "style-loader" // creates style nodes from JS strings
@@ -101,6 +112,15 @@ else {
 	}
 
 	config.plugins.push(new ExtractTextPlugin(libraryName + '.css'));
+
+	config.module.rules.push({
+		test: /\.css$/,
+		use: ExtractTextPlugin.extract({
+			fallback: "style-loader",
+			use: ['css-loader', 'sass-loader']
+		}),
+		exclude: /node_modules/
+	});
 
 	config.module.rules.push({
 		test: /\.scss$/,
