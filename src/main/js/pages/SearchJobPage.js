@@ -37,13 +37,22 @@ class SearchJobPage extends React.Component {
 						app='job-info'
 						url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 					>
-
+						<DataSearch
+							componentId='mainSearch'
+							dataField={['zip', 'zip.search']}
+							queryFormat='and'
+							iconPosition='left'
+						/>
 						<ResultCard
 							componentId='results'
-							dataField='job-list'
+							dataField='original_title'
+							react={{
+								'and': ['mainSearch']
+							}}
 							onData={(res)=>({
-								'title': res.startDate,
-								'description':  res.endDate
+								'image': res.image,
+								'title': res.zip,
+								'description':  res.id
 							})}
 						/>
 
