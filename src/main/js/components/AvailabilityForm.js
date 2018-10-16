@@ -3,7 +3,6 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 
-
 class AvailabilityForm extends Component {
 	constructor() {
 		super();

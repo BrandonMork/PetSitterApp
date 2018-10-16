@@ -29,7 +29,7 @@ class AddPetForm extends React.Component {
 			}}, function() {
 				//console.log(this.state);
 				this.props.addPet(this.state.newPet);
-				console.log(this.state.newPet);
+				//console.log(this.state.newPet);
 				registerPet(this.state.newPet, this.props.user);
 			});
 		}

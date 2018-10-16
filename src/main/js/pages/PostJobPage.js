@@ -1,138 +1,144 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody} from 'reactstrap';
+import connect from 'react-redux/es/connect/connect';
+import * as Users from 'js/utils/Users';
+import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody, CardText} from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
-import {postJob} from 'js/utils/Users';
+import {register} from 'js/utils/Users';
+import * as ReduxForm from 'redux-form';
+import {updateUser} from 'js/utils/Users';
+import PetList from 'js/components/PetList';
 
-const center = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-};
 const pageStyle = {
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundImage: 'url(' + Background + ')',
-    overflow: 'hidden',
-    height: '100%',
+	backgroundSize: 'cover',
+	backgroundImage: 'url(' + Background + ')',
+	backgroundPosition: 'center',
+	backgroundAttachment: 'scroll',
+	height: '100%',
 };
 const pageContent = {
-    opacity: '0.9',
+	opacity: '0.8',
+};
+const center = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center'
 };
 
+// @Todo Mario make sure the form shows the current user info
 class PostJobPage extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
-		this.setState({ updatedJob: {
-				id: 123123
+		this.setState({ updatedUserProfile: {
+				addressLine1: e.target.addressLine1.value,
+				addressLine2: e.target.addressLine2.value,
+				city: e.target.city.value,
+				state: e.target.state.value,
+				zip: e.target.zip.value,
 			}}, function() {
-			postJob(this.state.updatedJob);
+			// @TODO Brandon post job
 		});
 	}
-    render() {
-        return (
-            <div style={pageStyle}>
-                <div style={pageContent}>
-                    <div>
-                        <NavigationBar/>
-                    </div>
-                    <br/>
-                    <div style={center}>
-                        <Col sm="8">
-                            <Card>
-                                <br/>
-                                <CardTitle style={center}>Job Posting Form</CardTitle>
-                            </Card>
-                        </Col>
-                    </div>
-                </div>
-				<div style={center}>
-					<Col md="10">
-						<Card>
-							<br/>
-							<CardTitle style={center}>Submit any changes below.</CardTitle>
-							<CardBody>
-								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
-									<Row form>
-										<Col md={12}>
-											<FormGroup>
-												<Label for="principal">Email</Label>
-												<Input type="principal" ref="principal" name="principal" id="principal" />
-											</FormGroup>
-										</Col>
-									</Row>
-									<Row>
-										<Col md={4}>
-											<FormGroup>
-												<Label for="firstName">First Name</Label>
-												<Input type="text" ref="firstName" name="firstName" id="firstName"  />
-											</FormGroup>
-										</Col>
-										<Col md={4}>
-											<FormGroup>
-												<Label for="middleName">Middle Name</Label>
-												<Input type="text" ref="firstName" name="middleName" id="middleName" />
-											</FormGroup>
-										</Col>
-										<Col md={4}>
-											<FormGroup>
-												<Label for="lastName">Last Name</Label>
-												<Input type="text" ref="lastName" name="lastName" id="lastName"  />
-											</FormGroup>
-										</Col>
-									</Row>
 
-									<FormGroup>
-										<Label for="addressLine1">Address</Label>
-										<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" />
-									</FormGroup>
-
-									<FormGroup>
-										<Label for="addressLine2">Address 2</Label>
-										<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" />
-									</FormGroup>
-
-									<Row form>
-										<Col md={6}>
-											<FormGroup>
-												<Label for="city">City</Label>
-												<Input type="text" ref="city" name="city" id="city" />
-											</FormGroup>
-										</Col>
-										<Col md={4}>
-											<FormGroup>
-												<Label for="state">State</Label>
-												<Input type="text" ref="state" name="state" id="state" />
-											</FormGroup>
-										</Col>
-										<Col md={2}>
-											<FormGroup>
-												<Label for="zip">Zip</Label>
-												<Input type="text" ref="zip" name="zip" id="zip" />
-											</FormGroup>
-										</Col>
-									</Row>
-
-									<FormGroup>
-										<Label for="phoneNumber">Phone Number</Label>
-										<Input type="text" ref="phoneNumber" name="phoneNumber" id="phoneNumber" />
-									</FormGroup>
-
-									<FormGroup>
-										<Label for="type">User Type</Label>
-										<Input type="text" ref="type" name="type" id="type" />
-									</FormGroup>
-
+	render() {
+		return (
+			<div style={pageStyle}>
+				<div className="container padded">
+					<div style={pageContent}>
+						<div>
+							<NavigationBar/>
+						</div>
+						<br/>
+						<div style={center}>
+							<Col md="10">
+								<Card>
+									<CardTitle style={center}>Welcome to the job posting page, {this.props.user.principal}!</CardTitle>
+								</Card>
+							</Col>
+						</div>
+						<div style={center}>
+							<Col md="10">
+								<Card>
 									<br/>
-									<Button>Submit Changes</Button>
-								</Form>
-							</CardBody>
-						</Card>
-					</Col>
+									<CardTitle style={center}>Create a job!</CardTitle>
+									<CardBody>
+										<Form name="form">
+											<p>What pets need to be taken care of?</p>
+											<PetList/>
+											<FormGroup>
+												<Label for="startDate">Start Date</Label>
+												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="MM-DD-YYYY"/>
+											</FormGroup>
+
+											<FormGroup>
+												<Label for="endDate">End Date</Label>
+												<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="MM-DD-YYYY"/>
+											</FormGroup>
+
+											<h3>Where is the job located? </h3>
+											<p>Sitters will only see the approximate area. Location will be shown after you've accepted their bid.</p>
+											<FormGroup>
+												<Label for="addressLine1">Address</Label>
+												<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" placeholder={this.props.user.userAddress1}/>
+											</FormGroup>
+
+											<FormGroup>
+												<Label for="addressLine2">Address 2</Label>
+												<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" placeholder={this.props.user.userAddress2}/>
+											</FormGroup>
+
+											<Row form>
+												<Col md={6}>
+													<FormGroup>
+														<Label for="city">City</Label>
+														<Input type="text" ref="city" name="city" id="city" placeholder={this.props.user.city}/>
+													</FormGroup>
+												</Col>
+												<Col md={4}>
+													<FormGroup>
+														<Label for="state">State</Label>
+														<Input type="text" ref="state" name="state" id="state" placeholder={this.props.user.state}/>
+													</FormGroup>
+												</Col>
+												<Col md={2}>
+													<FormGroup>
+														<Label for="zip">Zip</Label>
+														<Input type="text" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
+													</FormGroup>
+												</Col>
+											</Row>
+
+											<br/>
+											<Button>Post Job</Button>
+										</Form>
+									</CardBody>
+								</Card>
+							</Col>
+						</div>
+					</div>
 				</div>
-            </div>
-        );
-    }
+			</div>
+		);
+	}
 }
+
+PostJobPage = ReduxForm.reduxForm({form: 'register'})(PostJobPage);
+
+//make sure user is logged in
+PostJobPage = connect(
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	}),
+	dispatch => ({
+		register: user => dispatch(Users.Actions.register(user))
+	})
+)(PostJobPage);
 
 export default PostJobPage;

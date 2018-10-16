@@ -1,10 +1,6 @@
 package petfinder.site.common.user;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import com.google.common.collect.ImmutableList;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import alloy.util.Momento;
 
