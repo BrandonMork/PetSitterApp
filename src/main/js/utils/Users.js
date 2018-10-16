@@ -28,6 +28,19 @@ export function getPets(principal){
 	return axios.get('/api/pets/get-pets/' + principal);
 }
 
+export function postJob(job){
+	console.log(job);
+	return axios.post('api/jobs/post-job' , job)
+
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+				console.log(error);
+			});
+}
+//id,
+
 
 //notice: the pets,roles are missing
 // @TODO this is where we get to update the new user, not sure how to do that yet
