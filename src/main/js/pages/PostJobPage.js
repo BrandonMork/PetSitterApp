@@ -33,6 +33,18 @@ class PostJobPage extends React.Component {
 		this.updatedJob = {};
 	}
 
+	handleStartDateChange(date) {
+		this.setState({
+			startDate: date
+		});
+	}
+
+	handleEndDateChange(date) {
+		this.setState({
+			endDate: date
+		});
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({ updatedJob: {
@@ -48,6 +60,7 @@ class PostJobPage extends React.Component {
 			console.log(this.state.updatedJob);
 			postJob(this.state.updatedJob);
 			// @TODO Brandon post job
+			console.log(this.state.newJob);
 		});
 	}
 
@@ -76,11 +89,20 @@ class PostJobPage extends React.Component {
 										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 											<p>What pets need to be taken care of?</p>
 											<PetList/>
+
 											<FormGroup>
 												<Label for="startDate">Start Date</Label>
 												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
 											</FormGroup>
 
+											<FormGroup>
+												<Label for="startDate">Start Date</Label>
+												<DatePicker
+													ref="startDate" name="startDate" id="startDate"
+													selected={this.state.startDate}
+													onChange={this.handleStartDateChange}
+												/>
+											</FormGroup>
 											<FormGroup>
 												<Label for="endDate">End Date</Label>
 												<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
