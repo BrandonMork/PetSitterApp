@@ -87,22 +87,19 @@ class PostJobPage extends React.Component {
 									<CardTitle style={center}>Create a job!</CardTitle>
 									<CardBody>
 										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
-											<p>What pets need to be taken care of?</p>
+											<p>List of your pets:</p>
 											<PetList/>
+
+											<FormGroup>
+												<Label for="pets">Which pet needs sitting?</Label>
+												<Input type="text" ref="pets" name="pets" id="pets" placeholder="Pet Name"/>
+											</FormGroup>
 
 											<FormGroup>
 												<Label for="startDate">Start Date</Label>
 												<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
 											</FormGroup>
 
-											<FormGroup>
-												<Label for="startDate">Start Date</Label>
-												<DatePicker
-													ref="startDate" name="startDate" id="startDate"
-													selected={this.state.startDate}
-													onChange={this.handleStartDateChange}
-												/>
-											</FormGroup>
 											<FormGroup>
 												<Label for="endDate">End Date</Label>
 												<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
