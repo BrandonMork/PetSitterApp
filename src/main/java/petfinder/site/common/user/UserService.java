@@ -68,9 +68,7 @@ public class UserService {
 	public UserDto register(RegistrationRequest request) {
 		// The idea is that we process the request to create a new user
 		// and let the user input non-essential data as they please.
-		UserAuthenticationDto userAuthentication = new UserAuthenticationDto(
-				new UserDto(
-						request.getPrincipal(),
+		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto( request.getPrincipal(),
 						"",
 						"",
 						"",
@@ -78,8 +76,8 @@ public class UserService {
 						"",
 						"",
 						"",
-						0,
-						0,
+						"",
+						"",
 						_Lists.list(),
 						_Lists.list("ROLE_USER"),
 						request.getUserType()),
@@ -95,5 +93,10 @@ public class UserService {
 
 	public List<PetDto> findPets(UserDto user) {
 		return userDao.findPets(user);
+	}
+
+	public void updateUser(UserDto userDto){
+		System.out.println("In the UserService for updateUser");
+		userDao.updateUser(userDto);
 	}
 }
