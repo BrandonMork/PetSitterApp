@@ -47,7 +47,7 @@ public class JobDao {
 
         System.out.println("In the JobDao for save with " + temp.toString());
 //        jobElasticsearchRepository.save(job);
-        jobElasticsearchRepository.save(temp);
+        jobElasticsearchRepository.save(job);
     }
 
 //    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {

@@ -14,7 +14,7 @@ public class JobService {
 
     //Calls JobDto Save() function to save to elasticsearch
     public void save(JobDto jobExample) {
-        System.out.println("In the JobService for save");
+        System.out.println("In the JobService for save" + jobExample.toString() + ".");
         jobDao.save(jobExample);
     }
 }

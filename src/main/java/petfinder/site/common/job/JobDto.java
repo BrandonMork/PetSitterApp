@@ -168,8 +168,6 @@ public class JobDto implements Identifiable {
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", location='" + location + '\'' +
-                ", maxPay=" + maxPay +
-                ", hosting='" + hosting + '\'' +
                 ", reccuring='" + reccuring + '\'' +
                 '}';
     }

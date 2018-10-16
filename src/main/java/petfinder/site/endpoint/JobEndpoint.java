@@ -22,7 +22,7 @@ public class JobEndpoint {
 
     @PostMapping(value = "/post-job")
     public JobDto postJob(@RequestBody JobDto job) {
-        System.out.println("In the JobEndpoint for postJob");
+        System.out.println("In the JobEndpoint for postJob" + job.toString());
         jobService.save(job);
         return job;
     }
