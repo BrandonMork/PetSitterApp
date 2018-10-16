@@ -20,7 +20,6 @@ const reducers = [
 ];
 
 const myCookie = new Cookie();
-
 const reducer = Utils.combineReducers(reducers);
 const store = createStore(reducer, {authentication: myCookie.get('authentication'), user: myCookie.get('user')}, applyMiddleware(thunkMiddleware, createLogger()));
 
