@@ -47,6 +47,7 @@ public class JobDto implements Identifiable {
         this.reccuring = reccuring;
     }
 
+    //added this to see if elasticsearch will work or not
     public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
         this.id = id;
         this.ownerID = ownerID;
