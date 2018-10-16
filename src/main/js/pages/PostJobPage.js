@@ -33,6 +33,18 @@ class PostJobPage extends React.Component {
 		this.updatedJob = {};
 	}
 
+	handleStartDateChange(date) {
+		this.setState({
+			startDate: date
+		});
+	}
+
+	handleEndDateChange(date) {
+		this.setState({
+			endDate: date
+		});
+	}
+
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({ updatedJob: {
@@ -49,6 +61,7 @@ class PostJobPage extends React.Component {
 			console.log(this.state.updatedJob);
 			postJob(this.state.updatedJob);
 			// @TODO Brandon post job
+			console.log(this.state.newJob);
 		});
 	}
 
@@ -75,8 +88,14 @@ class PostJobPage extends React.Component {
 									<CardTitle style={center}>Create a job!</CardTitle>
 									<CardBody>
 										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
-											<p>What pets need to be taken care of?</p>
+											<p>List of your pets:</p>
 											<PetList/>
+
+											<FormGroup>
+												<Label for="pets">Which pet needs sitting?</Label>
+												<Input type="text" ref="pets" name="pets" id="pets" placeholder="Pet Name"/>
+											</FormGroup>
+
 											<FormGroup>
 												<Label for="pets">Which pet would you like to have a sitter look after?</Label>
 												<Input type="text" ref="pets" name="pets" id="pets" placeholder="pet name"/>
