@@ -1,8 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import AvailabilityForm from 'js/components/AvailabilityForm';
-import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody, CardText} from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody} from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
 import {register} from 'js/utils/Users';
@@ -39,17 +38,17 @@ class ProfilePage extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({ updatedUserProfile: {
-				principal: e.target.principal.value,
-				firstName: e.target.firstName.value,
-				middleName: e.target.middleName.value,
-				lastName: e.target.lastName.value,
-				addressLine1: e.target.addressLine1.value,
-				addressLine2: e.target.addressLine2.value,
-				city: e.target.city.value,
-				state: e.target.state.value,
-				zip: e.target.zip.value,
-				phoneNumber: e.target.phoneNumber.value,
-				type: e.target.type.value
+			principal: e.target.principal.value,
+			firstName: e.target.firstName.value,
+			middleName: e.target.middleName.value,
+			lastName: e.target.lastName.value,
+			addressLine1: e.target.addressLine1.value,
+			addressLine2: e.target.addressLine2.value,
+			city: e.target.city.value,
+			state: e.target.state.value,
+			zip: e.target.zip.value,
+			phoneNumber: e.target.phoneNumber.value,
+			type: e.target.type.value
 			}}, function() {
 			console.log('the user has pushed the update profile button with the following info');
 			console.log(this.state.updatedUserProfile);

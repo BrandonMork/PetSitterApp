@@ -48,13 +48,14 @@ class PostJobPage extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({ updatedJob: {
-				startDate: e.target.startDate.value,
-				endDate: e.target.endDate.value,
-				addressLine1: e.target.addressLine1.value,
-				addressLine2: e.target.addressLine2.value,
-				city: e.target.city.value,
-				state: e.target.state.value,
-				zip: e.target.zip.value
+			pets: e.target.pets.value,
+			startDate: e.target.startDate.value,
+			endDate: e.target.endDate.value,
+			addressLine1: e.target.addressLine1.value,
+			addressLine2: e.target.addressLine2.value,
+			city: e.target.city.value,
+			state: e.target.state.value,
+			zip: e.target.zip.value
 			}}, function() {
 			console.log('Im adding a job!');
 			console.log(this.state.updatedJob);
