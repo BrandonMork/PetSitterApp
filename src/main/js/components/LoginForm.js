@@ -21,15 +21,15 @@ class LoginForm extends React.Component {
 		// Accesses UserAuthenticationDto (UAD->Password + UAD->UserDao->Principal)
 		// @TODO Figure out how to index on Elasticsearch
 		return (
-			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="Example@Website.com"
+			<form name='form' onSubmit={handleSubmit(form => this.onSubmit(form))}>
+				<Bessemer.Field name='principal' friendlyName='Email Address' placeholder='Example@Website.com'
 								validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
-				<Bessemer.Field name="password" friendlyName="Password" placeholde="Password"
+				<Bessemer.Field name='password' friendlyName='Password' placeholde='Password'
 								validators={[Validation.requiredValidator, Validation.passwordValidator]}
-								field={<input className="form-control" type="password" />} />
+								field={<input className='form-control' type='password' />} />
 
-				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
+				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className='center'>
 					<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
 				</div>
 			</form>

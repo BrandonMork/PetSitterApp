@@ -138,4 +138,5 @@ else {
 config.output.filename = outputFile;
 
 config.module.rules.push({ test: /\.js?$/, loader: 'eslint-loader', exclude: /node_modules/ });
+
 module.exports = config;

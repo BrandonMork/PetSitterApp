@@ -22,7 +22,7 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div style={pageStyle}>
-				<div className="container padded" style={pageContent}>
+				<div className='container padded' style={pageContent}>
 
 					<div>
 						<NavigationBar/>
@@ -30,8 +30,8 @@ class HomePage extends React.Component {
 
 					<Jumbotron fluid>
 						<Container fluid>
-							<h1 className="display-4">Pet Sitter Matching Service REDEFINED</h1>
-							<p className="lead">Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
+							<h1 className='display-4'>Pet Sitter Matching Service REDEFINED</h1>
+							<p className='lead'>Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
 							<p>We want to give you quick, reliable, and simple matches.</p>
 						</Container>
 					</Jumbotron>

@@ -11,12 +11,6 @@ const pageStyle = {
 	overflow: 'hidden',
 	height: '100%',
 };
-const cardStyle = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	height: '100vh'
-};
 const center = {
 	display: 'flex',
 	justifyContent: 'center',
@@ -28,16 +22,17 @@ const pageContent = {
 
 class LoginPage extends React.Component {
 	render() {
+		console.log('LoginPage loading.');
 		return (
 			<div style={pageStyle}>
 				<div style={pageContent}>
-					<div className="container padded">
+					<div className='container padded'>
 						<div>
 							<NavigationBar/>
 						</div>
 						<br/>
 						<div style={center}>
-							<Col sm="8">
+							<Col sm='8'>
 								<Card>
 									<br/>
 									<CardTitle style={center}>Login</CardTitle>

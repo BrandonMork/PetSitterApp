@@ -59,94 +59,94 @@ class ProfilePage extends React.Component {
 	render() {
 		return (
 			<div style={pageStyle}>
-				<div className="container padded">
+				<div className='container padded'>
 					<div style={pageContent}>
 						<div>
 							<NavigationBar/>
 						</div>
 						<br/>
 						<div style={center}>
-							<Col md="10">
+							<Col md='10'>
 								<Card>
 									<CardTitle style={center}>Welcome to your profile {this.props.user.principal}!</CardTitle>
 								</Card>
 							</Col>
 						</div>
 						<div style={center}>
-							<Col md="10">
+							<Col md='10'>
 								<Card>
 									<br/>
 									<CardTitle style={center}>Submit any changes below.</CardTitle>
 									<CardBody>
-										<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+										<Form name='form' onSubmit={this.handleSubmit.bind(this)}>
 											<Row form>
 												<Col md={12}>
 													<FormGroup>
-														<Label for="principal">Email</Label>
-														<Input type="principal" ref="principal" name="principal" id="principal" placeholder={this.props.user.principal} />
+														<Label for='principal'>Email</Label>
+														<Input type='principal' ref='principal' name='principal' id='principal' placeholder={this.props.user.principal} />
 													</FormGroup>
 												</Col>
 											</Row>
 											<Row>
 												<Col md={4}>
 													<FormGroup>
-														<Label for="firstName">First Name</Label>
-														<Input type="text" ref="firstName" name="firstName" id="firstName" placeholder={this.props.user.firstName}  />
+														<Label for='firstName'>First Name</Label>
+														<Input type='text' ref='firstName' name='firstName' id='firstName' placeholder={this.props.user.firstName}  />
 													</FormGroup>
 												</Col>
 												<Col md={4}>
 													<FormGroup>
-														<Label for="middleName">Middle Name</Label>
-														<Input type="text" ref="firstName" name="middleName" id="middleName" placeholder={this.props.user.middleName}/>
+														<Label for='middleName'>Middle Name</Label>
+														<Input type='text' ref='firstName' name='middleName' id='middleName' placeholder={this.props.user.middleName}/>
 													</FormGroup>
 												</Col>
 												<Col md={4}>
 													<FormGroup>
-														<Label for="lastName">Last Name</Label>
-														<Input type="text" ref="lastName" name="lastName" id="lastName" placeholder={this.props.user.lastName}  />
+														<Label for='lastName'>Last Name</Label>
+														<Input type='text' ref='lastName' name='lastName' id='lastName' placeholder={this.props.user.lastName}  />
 													</FormGroup>
 												</Col>
 											</Row>
 
 											<FormGroup>
-												<Label for="addressLine1">Address</Label>
-												<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" placeholder={this.props.user.userAddress1}/>
+												<Label for='addressLine1'>Address</Label>
+												<Input type='text' ref='addressLine1' name='addressLine1' id='addressLine1' placeholder={this.props.user.userAddress1}/>
 											</FormGroup>
 
 											<FormGroup>
-												<Label for="addressLine2">Address 2</Label>
-												<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" placeholder={this.props.user.userAddress2}/>
+												<Label for='addressLine2'>Address 2</Label>
+												<Input type='text' ref='addressLine2' name='addressLine2' id='addressLine2' placeholder={this.props.user.userAddress2}/>
 											</FormGroup>
 
 											<Row form>
 												<Col md={6}>
 													<FormGroup>
-														<Label for="city">City</Label>
-														<Input type="text" ref="city" name="city" id="city" placeholder={this.props.user.city}/>
+														<Label for='city'>City</Label>
+														<Input type='text' ref='city' name='city' id='city' placeholder={this.props.user.city}/>
 													</FormGroup>
 												</Col>
 												<Col md={4}>
 													<FormGroup>
-														<Label for="state">State</Label>
-														<Input type="text" ref="state" name="state" id="state" placeholder={this.props.user.state}/>
+														<Label for='state'>State</Label>
+														<Input type='text' ref='state' name='state' id='state' placeholder={this.props.user.state}/>
 													</FormGroup>
 												</Col>
 												<Col md={2}>
 													<FormGroup>
-														<Label for="zip">Zip</Label>
-														<Input type="text" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
+														<Label for='zip'>Zip</Label>
+														<Input type='text' ref='zip' name='zip' id='zip' placeholder={this.props.user.zip}/>
 													</FormGroup>
 												</Col>
 											</Row>
 
 											<FormGroup>
-												<Label for="phoneNumber">Phone Number</Label>
-												<Input type="text" ref="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder={this.props.user.phoneNumber}/>
+												<Label for='phoneNumber'>Phone Number</Label>
+												<Input type='text' ref='phoneNumber' name='phoneNumber' id='phoneNumber' placeholder={this.props.user.phoneNumber}/>
 											</FormGroup>
 
 											<FormGroup>
-												<Label for="type">User Type</Label>
-												<Input type="text" ref="type" name="type" id="type" placeholder={this.props.user.type}/>
+												<Label for='type'>User Type</Label>
+												<Input type='text' ref='type' name='type' id='type' placeholder={this.props.user.type}/>
 											</FormGroup>
 
 											<br/>

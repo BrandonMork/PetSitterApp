@@ -20,14 +20,13 @@
     ],
     "rules": {
         "indent": [
-            "warn",
-            "tab", {
-                "SwitchCase": 1
-            }
+            // @TODO Change this back to "error"
+            // @TODO Fix indents on every file!!!
+            "off"
         ],
         "linebreak-style": [
             "warn",
-            "windows"
+            "unix"
         ],
         "quotes": [
             "error",
