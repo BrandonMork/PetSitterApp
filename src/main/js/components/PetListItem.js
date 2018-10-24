@@ -22,7 +22,6 @@ class PetListItem extends React.Component {
 					<Button color="danger" size="sm"
 							onClick={this.deletePet.bind(this, this.props.pet.id)}>Delete</Button>
 				</li>
-
 				<br/>
 			</React.Fragment>
 		);

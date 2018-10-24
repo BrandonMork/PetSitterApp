@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 class RegistrationForm extends React.Component {
 
 	onSubmit = user => {
-		//console.log(Object.keys(user).join(', '));
+		console.log(Object.keys(user).join(', '));
 		this.props.register(user);
 		return this.context.router.history.push('/');
 	};
