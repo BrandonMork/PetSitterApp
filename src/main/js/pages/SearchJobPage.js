@@ -6,7 +6,8 @@ import NavigationBar from 'js/components/Navbar';
 import {
 	ReactiveBase,
 	DataSearch,
-	ResultCard } from '@appbaseio/reactivesearch';
+	ResultCard
+} from '@appbaseio/reactivesearch';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -16,10 +17,6 @@ const pageStyle = {
 };
 const pageContent = {
 	opacity: '0.9',
-};
-
-const dateStyle ={
-	padding: '5px'
 };
 
 class SearchJobPage extends React.Component {
