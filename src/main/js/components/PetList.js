@@ -31,7 +31,6 @@ class PetList extends React.Component {
 	}
 }
 
-//BRANDON WAS HERE
 PetList = ReduxForm.reduxForm({form: 'elasticPets'})(PetList);
 
 PetList = connect(
