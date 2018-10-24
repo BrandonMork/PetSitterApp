@@ -25,6 +25,7 @@ public class PetEndpoint {
 	private PetService petService;
 
 	//get these functions from the PetService!!!
+
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public Optional<PetDto> getPet(@PathVariable("id") Long id) {
 		return petService.findPet(id);

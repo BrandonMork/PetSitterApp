@@ -6,8 +6,6 @@ import alloy.util.Identifiable;
  * Created by jlutteringer on 8/23/17.
  */
 public class PetDto implements Identifiable {
-
-	// Only the owner of that pet can create
 	private String principal; // username, always will be unique (primary key)
 	private Long id;
 	private String name;
@@ -15,6 +13,7 @@ public class PetDto implements Identifiable {
 	private String breed;
 	private String size;
 	private Long age;
+
 
 	// @TODO Define what our types will be
 	// i.e. Breed, Species, Size, Age, etc....
