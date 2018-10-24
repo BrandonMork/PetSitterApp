@@ -39,6 +39,12 @@ const config = {
 		extensions: ['.json', '.js', '.scss', '.css']
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('development')
+			},
+			'__DEV__': false
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
 	],
