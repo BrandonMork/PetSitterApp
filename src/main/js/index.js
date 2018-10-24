@@ -29,7 +29,6 @@ class Index extends React.Component {
 					<Route exact path="/add-pet" component={PetPage}/>
 					<Route exact path="/post-job" component={PostJobPage}/>
 					<Route exact path="/search-job" component={SearchJobPage}/>
-
 				</div>
 			</HashRouter>
 		);

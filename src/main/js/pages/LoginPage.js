@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
-import LoginForm from 'js/components/LoginForm';
+import LoginForm from 'js/components/forms/LoginForm';
 import NavigationBar from 'js/components/Navbar';
 import Background from '../../resources/images/dogs_background.jpg';
 
@@ -10,12 +10,6 @@ const pageStyle = {
 	backgroundImage: 'url(' + Background + ')',
 	overflow: 'hidden',
 	height: '100%',
-};
-const cardStyle = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	height: '100vh'
 };
 const center = {
 	display: 'flex',
@@ -27,6 +21,7 @@ const pageContent = {
 };
 
 class LoginPage extends React.Component {
+
 	render() {
 		return (
 			<div style={pageStyle}>
@@ -49,7 +44,6 @@ class LoginPage extends React.Component {
 						</div>
 					</div>
 				</div>
-
 			</div>
 		);
 	}

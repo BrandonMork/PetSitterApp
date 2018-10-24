@@ -1,6 +1,5 @@
 import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
-import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import Background from '../../resources/images/dogs_background.jpg';
@@ -23,24 +22,16 @@ class HomePage extends React.Component {
 		return (
 			<div style={pageStyle}>
 				<div className="container padded" style={pageContent}>
-
 					<div>
 						<NavigationBar/>
 					</div>
-
 					<Jumbotron fluid>
 						<Container fluid>
-							<h1 className="display-4">Pet Sitter Matching Service REDEFINED</h1>
-							<p className="lead">Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
-							<p>We want to give you quick, reliable, and simple matches.</p>
+							<h1 className="display-4">5-Star Pet Sitter Matching Service</h1>
+							<h4 className="lead">Our job is to seamlessly pair you with qualified pet sitters in your
+								area. Join our network of just under 5 users today!</h4>
 						</Container>
 					</Jumbotron>
-
-					{ _.isDefined(this.props.user) &&
-					<h1>Welcome, {this.props.user.principal}!</h1>
-
-					}
-
 				</div>
 			</div>
 		);
