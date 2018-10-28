@@ -88,6 +88,7 @@ export function authenticate(username, password) {
 }
 
 export function getUserDetails() {
+	console.log(axios.get('/api/user'));
 	return axios.get('/api/user');
 }
 

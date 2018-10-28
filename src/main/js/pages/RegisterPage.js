@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import RegistrationForm from 'js/components/RegistrationForm';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../../resources/images/dogs_background.jpg';
+import Background from '../dogs_background.jpg';
 
 const center = {
 	display: 'flex',
