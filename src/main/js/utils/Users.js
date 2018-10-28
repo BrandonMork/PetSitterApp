@@ -42,7 +42,7 @@ export function postJob(job){
 }
 
 export function updateUser(user){
-	console.log('we are now calling an axios post');
+	//console.log('we are now calling an axios post');
 	let newUser = {
 		'principal': user.principal,
 		'firstName': user.firstName,
@@ -84,7 +84,7 @@ export function authenticate(username, password) {
 }
 
 export function getUserDetails() {
-	console.log(axios.get('/api/user'));
+	//console.log(axios.get('/api/user'));
 	return axios.get('/api/user');
 }
 
