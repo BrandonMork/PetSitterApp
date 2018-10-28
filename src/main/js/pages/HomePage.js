@@ -29,9 +29,9 @@ class HomePage extends React.Component {
 
 					<Jumbotron fluid>
 						<Container fluid>
-							<h1 className="display-4">Pet Sitter Matching Service REDEFINED</h1>
-							<p className="lead">Our job is to seamlessly pair you with qualified pet sitters in your area.</p>
-							<p>We want to give you quick, reliable, and simple matches.</p>
+							<h1 className="display-4">The Best Pet Sitter Matching Service</h1>
+							<h4 className="lead">Our job is to seamlessly pair you with qualified pet sitters in your
+								area. Join our network of just under 5 users today!</h4>
 						</Container>
 					</Jumbotron>
 
