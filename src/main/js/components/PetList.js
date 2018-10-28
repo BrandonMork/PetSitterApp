@@ -3,30 +3,38 @@ import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import _ from 'lodash';
+import {Table, Button} from 'reactstrap';
 
 class PetList extends React.Component {
+
 	constructor(props){
 		super(props);
 		this.props.fetchPets(this.props.user.principal);
 	}
 
-	updatePets() {
-		this.props.fetchPets(this.props.user.principal);
-	}
-
 	render() {
 		return (
-			<div className="PetList">
-				<button type={'button'} className="btn btn-primary" onClick={this.updatePets.bind(this)}>Update Pets</button>
-
-				{ _.isDefined(this.props.elasticPets) &&
+			<React.Fragment>
+				<Table responsive hover dark>
+					<thead>
+					<tr>
+						<th>Pet Name</th>
+					</tr>
+					</thead>
+					<tbody>
+					{ _.isDefined(this.props.elasticPets) &&
 					this.props.elasticPets.map(pet => (
-						<div key={pet.id}>
-							<p>{pet.name}</p>
-						</div>
+						<React.Fragment key={pet.id}>
+							<tr>
+								<td>{pet.name}</td>
+								<td><Button>Edit</Button></td>
+							</tr>
+						</React.Fragment>
 					))
-				}
-			</div>
+					}
+					</tbody>
+				</Table>
+			</React.Fragment>
 		);
 	}
 }

@@ -3,18 +3,17 @@ import { Jumbotron, Container } from 'reactstrap';
 import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import Background from '../../resources/images/dogs_background.jpg';
 import NavigationBar from 'js/components/Navbar';
+import Background from 'js/dogs_background.jpg';
 
 const pageStyle = {
 	backgroundSize: 'cover',
-	backgroundPosition: 'center',
 	backgroundImage: 'url(' + Background + ')',
-	overflow: 'hidden',
+	backgroundPosition: 'center',
 	height: '100%',
 };
 const pageContent = {
-	opacity: '0.9',
+	opacity: '0.8',
 };
 
 class HomePage extends React.Component {
