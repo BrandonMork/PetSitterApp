@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, Card, CardTitle, CardBody} from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../dogs_background.jpg';
 import PostJobForm from 'js/components/forms/PostJobForm';
+import Background from '../dogs_background.jpg';
 
 const pageStyle = {
 	backgroundSize: 'cover',
