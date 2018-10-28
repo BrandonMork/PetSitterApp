@@ -3,8 +3,8 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { Col, Row, Button, Form, FormGroup, Label, Input, Card, CardTitle, CardBody} from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../dogs_background.jpg';
 import PostJobForm from 'js/components/forms/PostJobForm';
+import Background from '../dogs_background.jpg';
 
 const pageStyle = {
 	backgroundSize: 'cover',
