@@ -5,15 +5,15 @@ import PetList from 'js/components/PetList';
 import AddPetForm from 'js/components/forms/AddPetForm';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../../resources/images/dogs_background.jpg';
+import Background from '../dogs_background.jpg';
 
 const pageStyle = {
 	backgroundSize: 'cover',
 	backgroundImage: 'url(' + Background + ')',
 	backgroundPosition: 'center',
-	backgroundAttachment: 'scroll',
 	height: '100%',
 };
+// @TODO Styles to separate file
 const pageContent = {
 	opacity: '0.8',
 };
@@ -50,20 +50,16 @@ class PetPage extends React.Component {
 						<div>
 							<NavigationBar/>
 						</div>
-
+						<br/>
 						<div style={center}>
 							<Col sm="12">
 								<Card>
 									<br/>
 									<CardTitle style={center}>{this.props.user.principal}'s pets:</CardTitle>
 									<CardBody>
-										<div> I am a {this.props.user.type} </div>
 										<PetList/>
-
 										<br/>
-
 										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
-
 									</CardBody>
 								</Card>
 							</Col>
