@@ -6,33 +6,37 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
 
+// import {Form, FormGroup, Input, Label, Button} from 'reactstrap';
+
 class LoginForm extends React.Component {
 
 	onSubmit = ({principal, password}) => {
-		this.context.router.history.push('/');
+
 		// This is where we would make our axios calls to the data store
-		return this.props.authenticate(principal, password);
+		if (this.props.authenticate(principal, password)) {
+			this.context.router.history.push('/');
+		} else {
+			console.log('Error! Email or password does not exist.');
+		}
 	};
 
 	render() {
-		let { handleSubmit, submitting } = this.props;
+		let { handleSubmit } = this.props;
 
-		// Use Principal to reflect our backend (Principal == UserName)
-		// Accesses UserAuthenticationDto (UAD->Password + UAD->UserDao->Principal)
-		// @TODO Figure out how to index on Elasticsearch
 		return (
-			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="Example@Website.com"
-								validators={[Validation.requiredValidator, Validation.emailValidator]} />
+			<React.Fragment>
+				<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
+					<Bessemer.Field name="principal" friendlyName="Email Address"
+									validators={[Validation.requiredValidator, Validation.emailValidator]}
+									field={<input className="form-control" type="text" placeholder="example@email.com" /> }/>
 
-				<Bessemer.Field name="password" friendlyName="Password" placeholde="Password"
-								validators={[Validation.requiredValidator, Validation.passwordValidator]}
-								field={<input className="form-control" type="password" />} />
+					<Bessemer.Field name="password" friendlyName="Password"
+									validators={[Validation.requiredValidator, Validation.passwordValidator]}
+									field={<input className="form-control" type="password" placeholder="Password" />} />
 
-				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
-					<Bessemer.Button loading={submitting}>Sign In</Bessemer.Button>
-				</div>
-			</form>
+					<Bessemer.Button>Sign In</Bessemer.Button>
+				</form>
+			</React.Fragment>
 		);
 	}
 }
@@ -40,7 +44,6 @@ class LoginForm extends React.Component {
 LoginForm.contextTypes = {
 	router: PropTypes.object.isRequired,
 };
-
 
 LoginForm = ReduxForm.reduxForm({form: 'login'})(LoginForm);
 
@@ -54,3 +57,20 @@ LoginForm = connect(
 )(LoginForm);
 
 export default LoginForm;
+
+
+/*
+				<Form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
+					<FormGroup>
+						<Label for="pets">Email Address</Label>
+						<Input type="text" name="principal" placeholder="Example@Website.com"/>
+					</FormGroup>
+
+					<FormGroup>
+						<Label for="pets">Password</Label>
+						<Input type="password" name="password" placeholder="Password"/>
+					</FormGroup>
+
+					<Button>Login</Button>
+				</Form>
+ */

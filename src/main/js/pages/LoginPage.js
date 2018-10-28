@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import LoginForm from 'js/components/forms/LoginForm';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../../resources/images/dogs_background.jpg';
+import Background from '../dogs_background.jpg';
 
 const pageStyle = {
 	backgroundSize: 'cover',
@@ -27,9 +27,11 @@ class LoginPage extends React.Component {
 			<div style={pageStyle}>
 				<div style={pageContent}>
 					<div className="container padded">
+
 						<div>
 							<NavigationBar/>
 						</div>
+
 						<br/>
 						<div style={center}>
 							<Col sm="8">

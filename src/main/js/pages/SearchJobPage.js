@@ -1,7 +1,7 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import Background from '../../resources/images/dogs_background.jpg';
+import Background from '../dogs_background.jpg';
 import NavigationBar from 'js/components/Navbar';
 import {
 	ReactiveBase,
