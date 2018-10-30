@@ -1,30 +1,20 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import Background from '../dogs_background.jpg';
 import NavigationBar from 'js/components/Navbar';
 import {
-	ReactiveBase,
-	DataSearch,
-	ResultCard
+ReactiveBase,
+DataSearch,
+ResultCard
 } from '@appbaseio/reactivesearch';
-
-const pageStyle = {
-	backgroundSize: 'cover',
-	backgroundPosition: 'center',
-	backgroundImage: 'url(' + Background + ')',
-	height: '100%',
-};
-const pageContent = {
-	opacity: '0.9',
-};
+import '../../styles/pageStyles.css';
 
 class SearchJobPage extends React.Component {
 
 	render() {
 		return (
-			<div style={pageStyle}>
-				<div className='container padded' style={pageContent}>
+			<div className="pageContainer">
+				<div className='container padded pageContent'>
 
 					<div>
 						<NavigationBar/>

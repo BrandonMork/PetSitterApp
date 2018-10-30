@@ -3,24 +3,13 @@ import { Jumbotron, Container } from 'reactstrap';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
-import Background from 'js/dogs_background.jpg';
-
-const pageStyle = {
-	backgroundSize: 'cover',
-	backgroundImage: 'url(' + Background + ')',
-	backgroundPosition: 'center',
-	height: '100%',
-};
-const pageContent = {
-	opacity: '0.8',
-};
+import '../../styles/pageStyles.css';
 
 class HomePage extends React.Component {
-
 	render() {
 		return (
-			<div style={pageStyle}>
-				<div className="container padded" style={pageContent}>
+			<div className="pageContainer">
+				<div className="container padded pageContent">
 					<div>
 						<NavigationBar/>
 					</div>
