@@ -2,30 +2,14 @@ import React from 'react';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import LoginForm from 'js/components/forms/LoginForm';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../dogs_background.jpg';
-
-const pageStyle = {
-	backgroundSize: 'cover',
-	backgroundPosition: 'center',
-	backgroundImage: 'url(' + Background + ')',
-	overflow: 'hidden',
-	height: '100%',
-};
-const center = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center'
-};
-const pageContent = {
-	opacity: '0.9',
-};
+import '../../styles/pageStyles.css';
 
 class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<div style={pageStyle}>
-				<div style={pageContent}>
+			<div className="pageContainer">
+				<div className="pageContent">
 					<div className="container padded">
 
 						<div>
@@ -33,11 +17,11 @@ class LoginPage extends React.Component {
 						</div>
 
 						<br/>
-						<div style={center}>
+						<div className="center">
 							<Col sm="8">
 								<Card>
 									<br/>
-									<CardTitle style={center}>Login</CardTitle>
+									<CardTitle className="center">Login</CardTitle>
 									<CardBody>
 										<LoginForm/>
 									</CardBody>
