@@ -1,0 +1,16 @@
+.pageContainer {
+    background-size: cover;
+    background-position: center;
+    background-image: url(../js/dogs_background.jpg);
+    height: 100%;
+}
+
+.pageContent {
+    opacity: 0.8;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
