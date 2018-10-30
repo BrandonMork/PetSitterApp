@@ -5,23 +5,7 @@ import PetList from 'js/components/PetList';
 import AddPetForm from 'js/components/forms/AddPetForm';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
-import Background from '../dogs_background.jpg';
-
-const pageStyle = {
-	backgroundSize: 'cover',
-	backgroundImage: 'url(' + Background + ')',
-	backgroundPosition: 'center',
-	height: '100%',
-};
-// @TODO Styles to separate file
-const pageContent = {
-	opacity: '0.8',
-};
-const center = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-};
+import '../../styles/pageStyles.css';
 
 class PetPage extends React.Component {
 
@@ -44,18 +28,18 @@ class PetPage extends React.Component {
 
 	render() {
 		return (
-			<div style={pageStyle}>
+			<div className="pageContainer">
 				<div className="container padding">
-					<div style={pageContent}>
+					<div className="pageContent">
 						<div>
 							<NavigationBar/>
 						</div>
 						<br/>
-						<div style={center}>
+						<div className="center">
 							<Col sm="12">
 								<Card>
 									<br/>
-									<CardTitle style={center}>{this.props.user.principal}'s pets:</CardTitle>
+									<CardTitle className="center">{this.props.user.principal}'s pets:</CardTitle>
 									<CardBody>
 										<PetList/>
 										<br/>

@@ -13,6 +13,7 @@ import {
 	Button
 } from 'reactstrap';
 
+// @TODO This is completely broken and doesn't do what we want it to
 class ProfilePageForm extends React.Component {
 
 	constructor() {
