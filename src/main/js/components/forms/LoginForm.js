@@ -6,8 +6,6 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
 
-// import {Form, FormGroup, Input, Label, Button} from 'reactstrap';
-
 class LoginForm extends React.Component {
 
 	onSubmit = ({principal, password}) => {
@@ -46,7 +44,6 @@ LoginForm.contextTypes = {
 };
 
 LoginForm = ReduxForm.reduxForm({form: 'login'})(LoginForm);
-
 LoginForm = connect(
 	state => ({
 

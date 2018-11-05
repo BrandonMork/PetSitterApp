@@ -27,22 +27,31 @@ class ProfilePageForm extends React.Component {
 		e.preventDefault();
 		this.setState({
 			updatedUserProfile: {
-				principal: e.target.principal.value,
-				firstName: e.target.firstName.value,
-				middleName: e.target.middleName.value,
-				lastName: e.target.lastName.value,
-				addressLine1: e.target.addressLine1.value,
-				addressLine2: e.target.addressLine2.value,
-				city: e.target.city.value,
-				state: e.target.state.value,
-				zip: e.target.zip.value,
-				phoneNumber: e.target.phoneNumber.value,
-				type: e.target.type.value
+				user: {
+					principal: e.target.principal.value,
+					firstName: e.target.firstName.value,
+					middleName: e.target.middleName.value,
+					lastName: e.target.lastName.value,
+					addressLine1: e.target.addressLine1.value,
+					addressLine2: e.target.addressLine2.value,
+					city: e.target.city.value,
+					state: e.target.state.value,
+					zip: e.target.zip.value,
+					phoneNumber: e.target.phoneNumber.value,
+					pets: [],
+					roles: [
+						'ROLE_USER',
+					],
+					type: e.target.type.value,
+					momento: e.target.principal.value,
+				},
 			}},
 			function() {
 				//console.log('the user has pushed the update profile button with the following info');
 				//console.log(this.state.updatedUserProfile);
-				updateUser(this.state.updatedUserProfile);
+				updateUser(this.state.updatedUserProfile.user);
+				this.props.getUserDetails();
+				window.location.reload();
 			}
 		);
 	}
@@ -132,6 +141,11 @@ class ProfilePageForm extends React.Component {
 							   placeholder={this.props.user.type} defaultValue={this.props.user.type}/>
 					</FormGroup>
 
+					<FormGroup>
+						<Label for="password">Password</Label>
+						<Input type="password" name="password" />
+					</FormGroup>
+
 					<br/>
 					<Button>Submit Changes</Button>
 				</Form>
@@ -140,16 +154,15 @@ class ProfilePageForm extends React.Component {
 	}
 }
 
-ProfilePageForm = ReduxForm.reduxForm({form: 'register'})(ProfilePageForm);
-
-//make sure user is logged in
+ProfilePageForm = ReduxForm.reduxForm({form: 'profile'})(ProfilePageForm);
 ProfilePageForm = connect(
 	state => ({
 		authentication: Users.State.getAuthentication(state),
 		user: Users.State.getUser(state)
 	}),
 	dispatch => ({
-		register: user => dispatch(Users.Actions.register(user))
+		register: user => dispatch(Users.Actions.register(user)),
+		getUserDetails: () => dispatch(Users.Actions.getUserDetails())
 	})
 )(ProfilePageForm);
 
