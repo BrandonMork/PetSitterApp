@@ -11,7 +11,6 @@ import Cookie from 'universal-cookie';
 import Index from 'js/index';
 import * as Users from 'js/utils/Users';
 import * as Utils from 'js/alloy/utils/core-utils';
-
 import 'styles/main.scss';
 
 const reducers = [
@@ -23,6 +22,9 @@ const myCookie = new Cookie();
 const reducer = Utils.combineReducers(reducers);
 const store = createStore(reducer, {authentication: myCookie.get('authentication'), user: myCookie.get('user')}, applyMiddleware(thunkMiddleware, createLogger()));
 
+/**
+ * @TODO [QUESTION]: What does this entire block of axios do?
+ */
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
@@ -38,6 +40,12 @@ axios.interceptors.request.use(request => {
 axios.interceptors.response.use(response => response.data, error => Promise.reject(error));
 const mountNode = document.querySelector('#main');
 
-// Our app will be mounted to the root here (replaces the Index.html
-// of an app created via create-react-app
+/**
+ * Our app will be mounted to the root here (replaces the Index.html
+ * of an app created via create-react-app
+ *
+ * Notice that the entire app is wrapped around our Provider, this
+ * is where Redux does its thing to provide the entire app 'global'
+ * access to certain states and functions
+ */
 ReactDOM.render(<Provider store={store}><Index /></Provider>, mountNode);
