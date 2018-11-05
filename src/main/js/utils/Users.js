@@ -44,16 +44,22 @@ export function postJob(job){
 export function updateUser(user){
 	//console.log('we are now calling an axios post');
 	let newUser = {
-		'principal': user.principal,
-		'firstName': user.firstName,
-		'middleName': user.middleName,
-		'lastName': user.lastName,
-		'addressLine1': user.addressLine1,
-		'addressLine2': user.addressLine2,
-		'state': user.state,
-		'zip': user.zip,
-		'phoneNumber': user.phoneNumber,
-		'type': user.type
+		'user': {
+			'principal': user.principal,
+			'firstName': user.firstName,
+			'middleName': user.middleName,
+			'lastName': user.lastName,
+			'addressLine1': user.addressLine1,
+			'addressLine2': user.addressLine2,
+			'state': user.state,
+			'zip': user.zip,
+			'phoneNumber': user.phoneNumber,
+			'type': user.type,
+			'pets': [],
+			'roles': [
+				'ROLE_USER',
+			],
+		}
 	};
 
 	return axios.post('/api/user/update-user/', newUser)
@@ -84,7 +90,6 @@ export function authenticate(username, password) {
 }
 
 export function getUserDetails() {
-	//console.log(axios.get('/api/user'));
 	return axios.get('/api/user');
 }
 
@@ -139,6 +144,16 @@ Actions.authenticate = (username, password) => {
 				});
 			}
 		);
+	};
+};
+
+Actions.getUserDetails = () => {
+	return (dispatch) => {
+		getUserDetails().then(user => {
+			console.log('I am updating to the newest user!!');
+			console.log(user);
+			dispatch(Actions.setUser(user));
+		});
 	};
 };
 

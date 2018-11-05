@@ -35,6 +35,7 @@ public class UserService {
 		return userDao.findUserByPrincipal(principal);
 	}
 
+	// @TODO Add all fields for new registration
 	public static class RegistrationRequest {
 		private String principal;
 		private String password;
@@ -65,6 +66,7 @@ public class UserService {
 		}
 	}
 
+	// @TODO Add new stuff from new userAuthItem - NOT HARDCODED @brandon
 	public UserDto register(RegistrationRequest request) {
 		// The idea is that we process the request to create a new user
 		// and let the user input non-essential data as they please.
@@ -82,7 +84,6 @@ public class UserService {
 						_Lists.list("ROLE_USER"),
 						request.getUserType()),
 				passwordEncoder.encode(request.getPassword()));
-
 		userDao.save(userAuthentication);
 		return userAuthentication.getUser();
 	}

@@ -3,7 +3,8 @@ import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import _ from 'lodash';
-import {Table, Button} from 'reactstrap';
+import {Table, Button, Col, Row, Container} from 'reactstrap';
+import '../../styles/pageStyles.css';
 
 class PetList extends React.Component {
 
@@ -12,28 +13,31 @@ class PetList extends React.Component {
 		this.props.fetchPets(this.props.user.principal);
 	}
 
+	handleAddPet(name) {
+		console.log(name);
+	}
+
 	render() {
 		return (
 			<React.Fragment>
-				<Table responsive hover dark>
-					<thead>
-					<tr>
-						<th>Pet Name</th>
-					</tr>
-					</thead>
-					<tbody>
-					{ _.isDefined(this.props.elasticPets) &&
-					this.props.elasticPets.map(pet => (
-						<React.Fragment key={pet.id}>
-							<tr>
-								<td>{pet.name}</td>
-								<td><Button>Edit</Button></td>
-							</tr>
-						</React.Fragment>
-					))
-					}
-					</tbody>
-				</Table>
+				<Container fluid>
+					<Row style={{
+						margin: 10,
+						borderColor: 'black',
+						border: 5
+					}}>
+						{ _.isDefined(this.props.elasticPets) &&
+						this.props.elasticPets.map(pet => (
+							<React.Fragment key={pet.id}>
+								<Col className="darkColumn" md={3}>
+									<p>{pet.name}</p>
+									<Button onClick={this.handleAddPet(pet.name)}>Add</Button>
+								</Col>
+							</React.Fragment>
+						))
+						}
+					</Row>
+				</Container>
 			</React.Fragment>
 		);
 	}
