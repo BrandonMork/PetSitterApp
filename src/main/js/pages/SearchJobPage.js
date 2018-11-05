@@ -5,21 +5,23 @@ import NavigationBar from 'js/components/Navbar';
 import {
 ReactiveBase,
 DataSearch,
-ResultCard
+ResultList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
+import {Button} from 'reactstrap';
 
 class SearchJobPage extends React.Component {
+	handleReviewJob = job => {
+		console.log(job);
+	};
 
 	render() {
 		return (
 			<div className="pageContainer">
 				<div className='container padded pageContent'>
-
 					<div>
 						<NavigationBar/>
 					</div>
-
 					<ReactiveBase
 						app='job-info'
 						url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -30,19 +32,23 @@ class SearchJobPage extends React.Component {
 							queryFormat='and'
 							iconPosition='left'
 						/>
-						<ResultCard
+						<ResultList
 							componentId='results'
 							dataField='original_title'
 							react={{
 								'and': ['mainSearch']
 							}}
 							onData={(res)=>({
-								'image': res.image,
 								'title': res.zip,
-								'description':  res.id
+								'description': (
+									<div>
+										<p>Start Date: {res.startDate}</p>
+										<p>End Date: {res.endDate}</p>
+										<Button onClick={ () => this.handleReviewJob(res)}>Review Job</Button>
+									</div>
+								),
 							})}
 						/>
-
 					</ReactiveBase>
 
 				</div>

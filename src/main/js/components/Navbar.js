@@ -19,6 +19,7 @@ import Cookie from 'universal-cookie';
 
 library.add(faPaw);
 
+// @TODO Completely jank. Logout doesn't redirect properly. Have to logout at homepage. Need to fix.
 export default class NavigationBar extends React.Component {
 
 	constructor(props) {

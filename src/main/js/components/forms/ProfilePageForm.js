@@ -23,6 +23,7 @@ class ProfilePageForm extends React.Component {
 		};
 	}
 
+	// @TODO MARIO DON'T TOUCH THIS SH** BRANDON WILL FIX IT!!!!!
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({
@@ -155,6 +156,7 @@ class ProfilePageForm extends React.Component {
 }
 
 ProfilePageForm = ReduxForm.reduxForm({form: 'profile'})(ProfilePageForm);
+
 ProfilePageForm = connect(
 	state => ({
 		authentication: Users.State.getAuthentication(state),
