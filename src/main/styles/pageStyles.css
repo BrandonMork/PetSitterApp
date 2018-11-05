@@ -2,7 +2,11 @@
     background-size: cover;
     background-position: center;
     background-image: url(../js/dogs_background.jpg);
+    background-attachment: fixed;
     height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: inline-block;
 }
 
 .pageContent {
@@ -13,4 +17,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.darkColumn {
+    border-color: black;
+    border: 10px;
 }
