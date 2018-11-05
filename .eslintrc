@@ -27,7 +27,7 @@
         ],
         "linebreak-style": [
             "warn",
-            "windows"
+            "unix"
         ],
         "quotes": [
             "error",
@@ -38,7 +38,7 @@
             "always"
         ],
         "no-unused-vars": "warn",
-        "no-console": "warn",
+        "no-console": "off",
         "no-class-assign": "off",
         "react/jsx-uses-vars": "error",
         "no-mixed-spaces-and-tabs": "off"

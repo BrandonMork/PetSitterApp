@@ -46,14 +46,12 @@ export default class NavigationBar extends React.Component {
 
 	static checkUserStatus() {
 		const myCookie = new Cookie();
-
 		if (myCookie.get('user')) {
 			return <React.Fragment>
 
 				<NavItem>
 					<NavLink tag={Link} to="/find-sitter">Find Sitter</NavLink>
 				</NavItem>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Jobs
@@ -67,7 +65,6 @@ export default class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Pets
