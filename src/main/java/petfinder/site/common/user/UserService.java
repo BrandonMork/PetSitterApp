@@ -40,6 +40,15 @@ public class UserService {
 		private String principal;
 		private String password;
 		private String userType;
+		private String firstName;
+		private String middleName;
+		private String lastName;
+		private String addressLine1;
+		private String addressLine2;
+		private String city;
+		private String state;
+		private String zip;
+		private String phoneNumber;
 
 		public String getPrincipal() {
 			return principal;
@@ -64,6 +73,78 @@ public class UserService {
 		public void setUserType(String userType) {
 			this.userType = userType;
 		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getMiddleName() {
+			return middleName;
+		}
+
+		public void setMiddleName(String middleName) {
+			this.middleName = middleName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+
+		public String getAddressLine1() {
+			return addressLine1;
+		}
+
+		public void setAddressLine1(String addressLine1) {
+			this.addressLine1 = addressLine1;
+		}
+
+		public String getAddressLine2() {
+			return addressLine2;
+		}
+
+		public void setAddressLine2(String addressLine2) {
+			this.addressLine2 = addressLine2;
+		}
+
+		public String getCity() {
+			return city;
+		}
+
+		public void setCity(String city) {
+			this.city = city;
+		}
+
+		public String getState() {
+			return state;
+		}
+
+		public void setState(String state) {
+			this.state = state;
+		}
+
+		public String getZip() {
+			return zip;
+		}
+
+		public void setZip(String zip) {
+			this.zip = zip;
+		}
+
+		public String getPhoneNumber() {
+			return phoneNumber;
+		}
+
+		public void setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+		}
 	}
 
 	// @TODO Add new stuff from new userAuthItem - NOT HARDCODED @brandon
@@ -71,15 +152,15 @@ public class UserService {
 		// The idea is that we process the request to create a new user
 		// and let the user input non-essential data as they please.
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto( request.getPrincipal(),
-						"",
-						"",
-						"",
-						"",
-						"",
-						"",
-						"",
-						"",
-						"",
+						request.getFirstName(),
+						request.getMiddleName(),
+						request.getLastName(),
+						request.getAddressLine1(),
+						request.getAddressLine2(),
+						request.getCity(),
+						request.getState(),
+						request.getZip(),
+						request.getPhoneNumber(),
 						_Lists.list(),
 						_Lists.list("ROLE_USER"),
 						request.getUserType()),
