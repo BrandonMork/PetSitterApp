@@ -50,7 +50,7 @@ class ProfilePageForm extends React.Component {
 				}},
 			function() {
 				//console.log('the user has pushed the update profile button with the following info');
-				//console.log(this.state.updatedUserProfile);
+				console.log(this.state.updatedUserProfile);
 				updateUser(this.state.updatedUserProfile.user);
 				this.props.getUserDetails();
 				//window.location.reload();
