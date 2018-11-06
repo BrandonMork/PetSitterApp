@@ -66,7 +66,7 @@ class AddPetForm extends React.Component {
 					<Col sm="8">
 						<Card>
 							<br/>
-							<CardTitle className="center">Login</CardTitle>
+							<CardTitle className="center">Add Pet</CardTitle>
 							<CardBody>
 								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 									<Row form>
