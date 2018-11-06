@@ -19,6 +19,7 @@ import Cookie from 'universal-cookie';
 
 library.add(faPaw);
 
+// @TODO Completely jank. Logout doesn't redirect properly. Have to logout at homepage. Need to fix.
 export default class NavigationBar extends React.Component {
 
 	constructor(props) {
@@ -45,14 +46,12 @@ export default class NavigationBar extends React.Component {
 
 	static checkUserStatus() {
 		const myCookie = new Cookie();
-
 		if (myCookie.get('user')) {
 			return <React.Fragment>
 
 				<NavItem>
 					<NavLink tag={Link} to="/find-sitter">Find Sitter</NavLink>
 				</NavItem>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Jobs
@@ -66,7 +65,6 @@ export default class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Pets

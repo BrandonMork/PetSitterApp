@@ -18,13 +18,12 @@ class PetPage extends React.Component {
 	}
 
 	// @TODO we need to make sure we update the state of the pets
-	handleAddPet(pet) {
+	handleAddPet = pet => {
 		let pets = this.state.pets;
 		pets.push(pet);
 		this.setState({pets: pets});
-		/* this should add pet to UserPet */
-        // this.registerPet(pet);
-	}
+		window.location.reload();
+	};
 
 	render() {
 		return (
@@ -43,7 +42,7 @@ class PetPage extends React.Component {
 									<CardBody>
 										<PetList/>
 										<br/>
-										<AddPetForm addPet={this.handleAddPet.bind(this)}/>
+										<AddPetForm addPet={this.handleAddPet}/>
 									</CardBody>
 								</Card>
 							</Col>
