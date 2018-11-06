@@ -52,8 +52,7 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="firstName" friendlyName="First Name" placeholder="John"
 								validators={[Validation.requiredValidator]} />
 
-				<Bessemer.Field name="middleName" friendlyName="Middle Name" placeholder="Example"
-								validators={[Validation.requiredValidator]} />
+				<Bessemer.Field name="middleName" friendlyName="Middle Name" placeholder="Example" />
 
 				<Bessemer.Field name="lastName" friendlyName="Last Name" placeholder="Lutteringer"
 								validators={[Validation.requiredValidator]} />
@@ -61,8 +60,7 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="addressLine1" friendlyName="Address Line 1" placeholder="123 Main St"
 								validators={[Validation.requiredValidator]} />
 
-				<Bessemer.Field name="addressLine2" friendlyName="Address Line 2" placeholder="Apt 100"
-								validators={[Validation.requiredValidator]} />
+				<Bessemer.Field name="addressLine2" friendlyName="Address Line 2" placeholder="Apt 100" />
 
 				<Bessemer.Field name="city" friendlyName="City" placeholder="Dallas"
 								validators={[Validation.requiredValidator]} />
