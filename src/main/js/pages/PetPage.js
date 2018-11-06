@@ -6,6 +6,7 @@ import '../../styles/pageStyles.css';
 import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import {Button} from 'js/alloy/bessemer/components';
+import AddPetForm from 'js/components/forms/AddPetForm';
 
 
 class PetPage extends React.Component {
