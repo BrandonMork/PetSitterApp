@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import NavigationBar from 'js/components/Navbar';
-import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
+import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 
@@ -23,6 +23,13 @@ class FindSitterPage extends React.Component {
 						componentId='results'
 						dataField='Sitters'
 						pagination={true}
+
+						defaultQuery={() => ({
+							match: {
+								type: 'Sitter'
+							}
+						})}
+
 						paginationAt="bottom"
 						onData={(res) =>
 							<React.Fragment>
