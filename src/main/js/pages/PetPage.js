@@ -1,11 +1,9 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import PetList from 'js/components/PetList';
-import AddPetForm from 'js/components/forms/AddPetForm';
-import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
+import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 
 class PetPage extends React.Component {
 
@@ -34,19 +32,32 @@ class PetPage extends React.Component {
 							<NavigationBar/>
 						</div>
 						<br/>
-						<div className="center">
-							<Col sm="12">
-								<Card>
-									<br/>
-									<CardTitle className="center">{this.props.user.principal}'s pets:</CardTitle>
-									<CardBody>
-										<PetList/>
-										<br/>
-										<AddPetForm addPet={this.handleAddPet}/>
-									</CardBody>
-								</Card>
-							</Col>
-						</div>
+
+						<ReactiveBase
+							app='pet-info'
+							url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
+						>
+							<DataSearch
+								componentId='mainSearch'
+								dataField={['principal', 'principal.search']}
+								queryFormat='and'
+								iconPosition='left'
+							/>
+							<ReactiveList
+								componentId='results'
+								dataField='Pets'
+								react={{
+									'and': ['mainSearch']
+								}}
+								pagination={true}
+								paginationAt="bottom"
+								onData={(res) =>
+									<React.Fragment>
+										<div>{res.name}</div>
+									</React.Fragment>
+								}
+							/>
+						</ReactiveBase>
 					</div>
 				</div>
 			</div>
@@ -62,3 +73,20 @@ PetPage = connect(
 )(PetPage);
 
 export default PetPage;
+
+/**
+ <div className="center">
+ <Col sm="12">
+ <Card>
+ <br/>
+ <CardTitle className="center">{this.props.user.principal}'s pets:</CardTitle>
+ <CardBody>
+ <PetList/>
+ <br/>
+ <AddPetForm addPet={this.handleAddPet}/>
+ </CardBody>
+ </Card>
+ </Col>
+ </div>
+
+ */
