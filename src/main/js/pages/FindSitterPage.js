@@ -39,6 +39,8 @@ class FindSitterPage extends React.Component {
 										Location: {res.user.zip}
 										<br/>
 										Phone: {res.user.phoneNumber}
+										<br/>
+										Average Rating : ★★★★★
 									</CardText>
 									<Button color="secondary">View Profile</Button>
 								</Card>
