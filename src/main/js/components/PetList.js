@@ -3,7 +3,7 @@ import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import _ from 'lodash';
-import {Table, Button, Col, Row, Container} from 'reactstrap';
+import {Button, Col, Row, Container} from 'reactstrap';
 import '../../styles/pageStyles.css';
 
 class PetList extends React.Component {

@@ -7,35 +7,45 @@ import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
 
 const typeOptions = [
-	{value: 'sitter', label: 'Sitter'},
-	{value: 'owner', label: 'Owner'}
+	{value: 'Owner', label: 'Owner'},
+	{value: 'Sitter', label: 'Sitter'},
 ];
 
 class RegistrationForm extends React.Component {
 
-	state = {
-		selectedTypeOption: null,
-	};
+	constructor(props) {
+		super(props);
 
+		this.state = {value: null, label: null};
+	}
+
+	// @TODO Figure out why the type key isn't being included into our user
 	onSubmit = user => {
-		//console.log(Object.keys(user).join(', '));
+		console.log(Object.keys(user).join(', '));
+		console.log(user);
 		this.props.register(user);
 		return this.context.router.history.push('/');
 	};
 
-	handleChangeTypeOption(selectedTypeOption) {
-		this.setState({selectedTypeOption});
-	}
+	handleChangeTypeOption = selectedTypeOption => {
+		this.setState({selectedTypeOption });
+		console.log(selectedTypeOption);
+	};
 
 	//@TODO List of roles, and map of attributes, save this form to Elasticsearch
 	//@TODO TURN ALL USER INPUT TO LOWER CASE!!!!
 	render() {
 		let { handleSubmit } = this.props;
-
 		const { selectedTypeOption } = this.state;
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
+
+				<Bessemer.Select name="type" friendlyName="User Type" placeholder="User Type" options={typeOptions}
+								 value={selectedTypeOption} onChange={this.handleChangeTypeOption.bind(this)}
+								 validator={[Validation.requiredValidator]} />
+				<br/>
+
 				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="test@web.com"
 								validators={[Validation.requiredValidator, Validation.emailValidator]} />
 
@@ -66,11 +76,6 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="phoneNumber" friendlyName="Phone Number" placeholder="2545551234"
 								validators={[Validation.requiredValidator]} />
 
-				<Bessemer.Select name="type" friendlyName="User Type" placeholder="User Type"
-								 value={selectedTypeOption} onChange={this.handleChangeTypeOption.bind(this)} options={typeOptions}
-								 validator={Validation.requiredValidator} />
-				<br/>
-
 				<Bessemer.Field name="password" friendlyName="Password"
 								validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
@@ -78,6 +83,7 @@ class RegistrationForm extends React.Component {
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
 					<Bessemer.Button>Register</Bessemer.Button>
 				</div>
+
 			</form>
 		);
 	}
