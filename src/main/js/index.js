@@ -6,7 +6,7 @@ import HomePage from 'js/pages/HomePage';
 import RegisterPage from 'js/pages/RegisterPage';
 import LoginPage from 'js/pages/LoginPage';
 import ReviewPage from 'js/pages/ReviewPage';
-import ReportingPage from 'js/pages/ReportPage';
+import ReportPage from 'js/pages/ReportPage';
 import FindSitterPage from 'js/pages/FindSitterPage';
 import ProfilePage from 'js/pages/ProfilePage';
 import PetPage from 'js/pages/PetPage';
@@ -23,7 +23,7 @@ class Index extends React.Component {
 					<Route exact path="/login" component={LoginPage} />
 					<Route exact path="/profile-page" component={ProfilePage} />
 					<Route exact path="/rating-page" component={ReviewPage} />
-					<Route exact path="/report-page" component={ReportingPage} />
+					<Route exact path="/report-page" component={ReportPage} />
 					<Route exact path="/find-sitter" component={FindSitterPage} />
 					<Route exact path="/profile" component={ProfilePage} />
 					<Route exact path="/add-pet" component={PetPage}/>
