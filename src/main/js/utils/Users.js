@@ -44,25 +44,56 @@ export function postJob(job){
 export function updateUser(user){
 	//console.log('we are now calling an axios post');
 	let newUser = {
-		'user': {
-			'principal': user.principal,
-			'firstName': user.firstName,
-			'middleName': user.middleName,
-			'lastName': user.lastName,
-			'addressLine1': user.addressLine1,
-			'addressLine2': user.addressLine2,
-			'state': user.state,
-			'zip': user.zip,
-			'phoneNumber': user.phoneNumber,
-			'type': user.type,
-			'pets': [],
-			'roles': [
-				'ROLE_USER',
-			],
-		}
+		'principal': user.principal,
+		'firstName': user.firstName,
+		'middleName': user.middleName,
+		'lastName': user.lastName,
+		'addressLine1': user.addressLine1,
+		'addressLine2': user.addressLine2,
+		'state': user.state,
+		'zip': user.zip,
+		'phoneNumber': user.phoneNumber,
+		'type': user.type,
+		'password': user.password,
 	};
 
-	return axios.post('/api/user/update-user/', newUser)
+	let backEndUser = getUserDetails();
+
+	if(newUser.principal != null){
+		backEndUser.principal = newUser.principal;
+	}
+	if(newUser.firstName != null){
+		backEndUser.firstName = newUser.firstName;
+	}
+	if(newUser.middleName != null){
+		backEndUser.middleName = newUser.middleName;
+	}
+	if(newUser.lastName != null){
+		backEndUser.lastName = newUser.lastName;
+	}
+	if(newUser.addressLine1 != null){
+		backEndUser.addressLine1 = newUser.addressLine1;
+	}
+	if(newUser.addressLine2 != null){
+		backEndUser.addressLine2 = newUser.addressLine2;
+	}
+	if(newUser.state != null){
+		backEndUser.state = newUser.state;
+	}
+	if(newUser.zip != null){
+		backEndUser.zip = newUser.zip;
+	}
+	if(newUser.phoneNumber != null){
+		backEndUser.phoneNumber = newUser.phoneNumber;
+	}
+	if(newUser.type != null){
+		backEndUser.type = newUser.type;
+	}
+	if(newUser.password != null){
+		backEndUser.password = newUser.password;
+	}
+
+	return axios.post('/api/user/update-user/', backEndUser)
 		.then(function (response) {
 			console.log(response);
 		})
