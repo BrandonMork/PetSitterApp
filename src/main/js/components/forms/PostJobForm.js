@@ -21,7 +21,7 @@ class PostJobForm extends React.Component {
 		this.updatedJob = {};
 	}
 
-	handleSubmit(e) {
+	handleSubmit = e => {
 		e.preventDefault();
 		this.setState({
 			updatedJob: {
@@ -42,12 +42,12 @@ class PostJobForm extends React.Component {
 				// @TODO Brandon post job
 				postJob(this.state.updatedJob);
 			});
-	}
+	};
 
 	render() {
 		return (
 			<React.Fragment>
-				<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+				<Form name="form" onSubmit={this.handleSubmit}>
 					<p>List of your pets:</p>
 					<PetList/>
 
