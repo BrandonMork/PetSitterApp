@@ -166,6 +166,11 @@ public class UserService {
 						request.getUserType()),
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
+
+		// @TODO Remove Debug
+		System.out.println("REGISTERING USER!");
+		System.out.println(userAuthentication.getUser().toString());
+
 		return userAuthentication.getUser();
 	}
 

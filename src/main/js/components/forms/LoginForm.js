@@ -54,20 +54,3 @@ LoginForm = connect(
 )(LoginForm);
 
 export default LoginForm;
-
-
-/*
-				<Form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-					<FormGroup>
-						<Label for="pets">Email Address</Label>
-						<Input type="text" name="principal" placeholder="Example@Website.com"/>
-					</FormGroup>
-
-					<FormGroup>
-						<Label for="pets">Password</Label>
-						<Input type="password" name="password" placeholder="Password"/>
-					</FormGroup>
-
-					<Button>Login</Button>
-				</Form>
- */
