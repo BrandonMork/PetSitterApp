@@ -7,13 +7,9 @@ export function register(user) {
 	return axios.post('/api/user/register', user);
 }
 
-export function registerPet(pet, user){
-	let newPet = {
-		'principal': user.principal,
-		'name': pet.name
-	};
+export function registerPet(pet){
 
-	return axios.post('/api/pets/add-pet', newPet)
+	return axios.post('/api/pets/add-pet', pet)
 		.then(function (response) {
 			console.log(response);
 		})
@@ -26,6 +22,17 @@ export function getPets(principal){
 	console.log(principal);
 	console.log('GETTING PETS AGAIN!!!');
 	return axios.get('/api/pets/get-pets/' + principal);
+}
+
+export function getOnePet(id){
+	console.log('going to get one pet! ' + id);
+	return axios.get('/api/pets/' + id)
+		.then(function (response) {
+			console.log(response);
+			})
+		.catch(function (error) {
+			console.log(error);
+		});
 }
 
 export function postJob(job){

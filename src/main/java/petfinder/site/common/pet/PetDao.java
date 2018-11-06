@@ -34,6 +34,7 @@ public class PetDao {
 
 	//call elasticsearch to get PetDto
 	public Optional<PetDto> findPet(Long petID) {
+		System.out.println("In the PetDao with the id " + petID);
 		return petElasticsearchRepository.find(petID);
 	}
 
@@ -46,6 +47,7 @@ public class PetDao {
 
 	//save petDto to elasticsearch
 	public void save(PetDto pet) {
+		System.out.println(pet.toString());
 		petElasticsearchRepository.save(pet);
 	}
 

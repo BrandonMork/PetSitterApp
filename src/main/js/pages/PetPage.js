@@ -3,9 +3,12 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
-import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
+import {ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import {Button} from 'js/alloy/bessemer/components';
+import AddPetForm from 'js/components/forms/AddPetForm';
+import {getOnePet} from 'js/utils/Users';
+
 
 class PetPage extends React.Component {
 
@@ -15,6 +18,14 @@ class PetPage extends React.Component {
 		this.state = {
 			pets: [],
 		};
+	}
+
+	editPet(id, e){
+		e.preventDefault();
+		console.log('Im going to edit this pet! ' + id);
+
+		let oldPet = getOnePet(id);
+		console.log('old pet -> ' + oldPet.toString());
 	}
 
 	// @TODO we need to make sure we update the state of the pets
@@ -35,6 +46,7 @@ class PetPage extends React.Component {
 						</div>
 						<br/>
 
+						<AddPetForm/>
 						<ReactiveBase
 							app='pet-info'
 							url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -52,7 +64,7 @@ class PetPage extends React.Component {
 												<CardTitle className="center">{res.name}</CardTitle>
 												<CardBody>
 													{res.id}
-													<Button>Edit Pet</Button>
+													<Button onClick={(e) => this.editPet(res.id,e)}>Edit Pet</Button>
 												</CardBody>
 											</Card>
 										</Col>

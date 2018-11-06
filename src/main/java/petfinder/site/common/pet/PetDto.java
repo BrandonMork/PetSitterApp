@@ -95,4 +95,17 @@ public class PetDto implements Identifiable {
 	public void setAge(Long age) {
 		this.age = age;
 	}
+
+	@Override
+	public String toString() {
+		return "PetDto{" +
+				"principal='" + principal + '\'' +
+				", id=" + id +
+				", name='" + name + '\'' +
+				", species='" + species + '\'' +
+				", breed='" + breed + '\'' +
+				", size='" + size + '\'' +
+				", age=" + age +
+				'}';
+	}
 }
