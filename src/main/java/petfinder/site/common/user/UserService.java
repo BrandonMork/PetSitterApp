@@ -14,7 +14,6 @@ import alloy.util.Wait;
 import alloy.util._Lists;
 import alloy.util._Maps;
 import petfinder.site.common.pet.PetDto;
-import petfinder.site.common.user.UserDto.UserType;
 
 /**
  * Created by jlutteringer on 8/23/17.
