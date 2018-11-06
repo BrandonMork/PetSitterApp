@@ -4,6 +4,7 @@ import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
 import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
+import AddPetForm from 'js/components/forms/AddPetForm';
 
 class PetPage extends React.Component {
 
@@ -33,6 +34,7 @@ class PetPage extends React.Component {
 						</div>
 						<br/>
 
+						<AddPetForm/>
 						<ReactiveBase
 							app='pet-info'
 							url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
