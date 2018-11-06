@@ -11,7 +11,10 @@ import {
 	FormGroup,
 	Label,
 	Input,
-	Button
+	Button,
+	Card,
+	CardTitle,
+	CardBody
 } from 'reactstrap';
 
 class AddPetForm extends React.Component {
@@ -58,48 +61,60 @@ class AddPetForm extends React.Component {
 
 		return (
 			<React.Fragment>
-				<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
-					<Row form>
-						<Col md={4}>
-							<FormGroup>
-								<Label for="name">Pet Name</Label>
-								<Input type="text" name="name"
-									   placeholder="Pet Name"/>
-							</FormGroup>
-						</Col>
-						<Col md={4}>
-							<FormGroup>
-								<Label for="species">Species</Label>
-								<Input type="text" name="species"
-									   placeholder="Pet Species"/>
-							</FormGroup>
-						</Col>
-						<Col md={4}>
-							<FormGroup>
-								<Label for="breed">Breed</Label>
-								<Input type="text" name="breed"
-									   placeholder="Pet Breed"/>
-							</FormGroup>
-						</Col>
-					</Row>
-						<Col md={3}>
-							<FormGroup>
-								<Label for="age">Age</Label>
-								<Input type="text" name="age"
-									   placeholder="Pet Age"/>
-							</FormGroup>
-						</Col>
-						<Col md={4}>
-							<FormGroup>
-								<Label for="size">Size</Label>
-								<Input type="text" name="size"
-									   placeholder="Pet Size"/>
-							</FormGroup>
-						</Col>
-					<Row/>
-					<br/>
-					<Button>Submit Changes</Button>
-				</Form>
+
+				<div className="center">
+					<Col sm="8">
+						<Card>
+							<br/>
+							<CardTitle className="center">Login</CardTitle>
+							<CardBody>
+								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+									<Row form>
+										<Col md={4}>
+											<FormGroup>
+												<Label for="name">Pet Name</Label>
+												<Input type="text" name="name"
+													   placeholder="Pet Name"/>
+											</FormGroup>
+										</Col>
+										<Col md={4}>
+											<FormGroup>
+												<Label for="species">Species</Label>
+												<Input type="text" name="species"
+													   placeholder="Pet Species"/>
+											</FormGroup>
+										</Col>
+										<Col md={4}>
+											<FormGroup>
+												<Label for="breed">Breed</Label>
+												<Input type="text" name="breed"
+													   placeholder="Pet Breed"/>
+											</FormGroup>
+										</Col>
+									</Row>
+									<Col md={3}>
+										<FormGroup>
+											<Label for="age">Age</Label>
+											<Input type="text" name="age"
+												   placeholder="Pet Age"/>
+										</FormGroup>
+									</Col>
+									<Col md={4}>
+										<FormGroup>
+											<Label for="size">Size</Label>
+											<Input type="text" name="size"
+												   placeholder="Pet Size"/>
+										</FormGroup>
+									</Col>
+									<Row/>
+									<br/>
+									<Button>Submit Changes</Button>
+								</Form>
+							</CardBody>
+						</Card>
+					</Col>
+				</div>
+
 			</React.Fragment>
 		);
 	}

@@ -60,12 +60,12 @@ class PostJobForm extends React.Component {
 
 					<FormGroup>
 						<Label for="startDate">Start Date</Label>
-						<Input type="text" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
+						<Input type="date" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
 					</FormGroup>
 
 					<FormGroup>
 						<Label for="endDate">End Date</Label>
-						<Input type="text" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
+						<Input type="date" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
 					</FormGroup>
 
 					<h3>Where is the job located? </h3>
@@ -96,7 +96,7 @@ class PostJobForm extends React.Component {
 						<Col md={2}>
 							<FormGroup>
 								<Label for="zip">Zip</Label>
-								<Input type="text" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
+								<Input type="number" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
 							</FormGroup>
 						</Col>
 					</Row>
