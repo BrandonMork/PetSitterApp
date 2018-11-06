@@ -3,6 +3,7 @@ import Cookie from 'universal-cookie';
 
 // Makes API call to our register function in the back-end
 export function register(user) {
+	console.log('IN onSubmit() VIA Users.register():');
 	console.log(user);
 	return axios.post('/api/user/register', user);
 }
@@ -166,6 +167,8 @@ Actions.getPets = principal => {
 Actions.register = user => {
 	return (dispatch) => {
 		return register(user).then(() => {
+			console.log('IN register() VIA Users.Actions:');
+			console.log(user);
 			return dispatch(Actions.authenticate(user.principal, user.password));
 		});
 	};

@@ -9,7 +9,6 @@ import {Button} from 'js/alloy/bessemer/components';
 import AddPetForm from 'js/components/forms/AddPetForm';
 import {getOnePet} from 'js/utils/Users';
 
-
 class PetPage extends React.Component {
 
 	constructor() {
@@ -36,16 +35,23 @@ class PetPage extends React.Component {
 		window.location.reload();
 	};
 
+	customQuery = function() {
+		console.log('Returning pets belonging to ' + this.props.user.principal.valueOf());
+		return {
+			'match': { 'principal': this.props.user.principal.valueOf() }
+		};
+	};
+
 	render() {
+
 		return (
-			<div className="pageContainer">
-				<div className="container padding">
-					<div className="pageContent">
+			<div className='pageContainer'>
+				<div className='container padding'>
+					<div className='pageContent'>
 						<div>
 							<NavigationBar/>
 						</div>
 						<br/>
-
 						<AddPetForm/>
 						<ReactiveBase
 							app='pet-info'
@@ -55,16 +61,25 @@ class PetPage extends React.Component {
 								componentId='results'
 								dataField='Pets'
 								pagination={true}
-								paginationAt="bottom"
+								paginationAt='bottom'
+								defaultQuery={() => ({
+									match: {
+										principal: this.props.user.principal.valueOf()
+									}
+								})}
 								onData={(res) =>
 									<React.Fragment>
-										<Col sm="8">
+										<Col sm='8'>
 											<Card>
 												<br/>
-												<CardTitle className="center">{res.name}</CardTitle>
+												<CardTitle>{res.name}</CardTitle>
 												<CardBody>
 													{res.id}
+													<br/>
 													<Button onClick={(e) => this.editPet(res.id,e)}>Edit Pet</Button>
+													<br/>
+													<br/>
+													<Button>Delete Pet</Button>
 												</CardBody>
 											</Card>
 										</Col>
@@ -88,20 +103,3 @@ PetPage = connect(
 )(PetPage);
 
 export default PetPage;
-
-/**
- <div className="center">
- <Col sm="12">
- <Card>
- <br/>
- <CardTitle className="center">{this.props.user.principal}'s pets:</CardTitle>
- <CardBody>
- <PetList/>
- <br/>
- <AddPetForm addPet={this.handleAddPet}/>
- </CardBody>
- </Card>
- </Col>
- </div>
-
- */
