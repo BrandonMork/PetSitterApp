@@ -27,27 +27,27 @@ class ProfilePageForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({
-			updatedUserProfile: {
-				user: {
-					principal: e.target.principal.value,
-					firstName: e.target.firstName.value,
-					middleName: e.target.middleName.value,
-					lastName: e.target.lastName.value,
-					addressLine1: e.target.addressLine1.value,
-					addressLine2: e.target.addressLine2.value,
-					city: e.target.city.value,
-					state: e.target.state.value,
-					zip: e.target.zip.value,
-					phoneNumber: e.target.phoneNumber.value,
-					pets: [],
-					roles: [
-						'ROLE_USER',
-					],
-					type: e.target.type.value,
-					momento: e.target.principal.value,
-					password: e.target.password.value,
-				},
-			}},
+				updatedUserProfile: {
+					user: {
+						principal: e.target.principal.value,
+						firstName: e.target.firstName.value,
+						middleName: e.target.middleName.value,
+						lastName: e.target.lastName.value,
+						addressLine1: e.target.addressLine1.value,
+						addressLine2: e.target.addressLine2.value,
+						city: e.target.city.value,
+						state: e.target.state.value,
+						zip: e.target.zip.value,
+						phoneNumber: e.target.phoneNumber.value,
+						pets: [],
+						roles: [
+							'ROLE_USER',
+						],
+						type: e.target.type.value,
+						momento: e.target.principal.value,
+						password: e.target.password.value,
+					},
+				}},
 			function() {
 				//console.log('the user has pushed the update profile button with the following info');
 				//console.log(this.state.updatedUserProfile);

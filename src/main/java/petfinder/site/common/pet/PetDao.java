@@ -46,6 +46,7 @@ public class PetDao {
 
 	//save petDto to elasticsearch
 	public void save(PetDto pet) {
+		System.out.println(pet.toString());
 		petElasticsearchRepository.save(pet);
 	}
 

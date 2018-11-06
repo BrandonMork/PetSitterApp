@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
+import {
+	Form,
+	Col,
+	Row,
+	FormGroup,
+	Label,
+	Input,
+	Button
+} from 'reactstrap';
 
 class AddPetForm extends React.Component {
 
@@ -19,21 +28,27 @@ class AddPetForm extends React.Component {
 	};
 
 	handleSubmit(e) {
-		// Debug
-		if (this.refs.name.value === '') {
-			alert('Pet name is required!');
-		} else {
-			this.setState({newPet: {
-				id: uuidv4(),
-				name: this.refs.name.value,
-			}}, function() {
-				//console.log(this.state);
-				this.props.addPet(this.state.newPet);
-				//console.log(this.state.newPet);
-				registerPet(this.state.newPet, this.props.user);
-			});
-		}
 		e.preventDefault();
+		this.setState({
+				newPet: {
+					pet: {
+						principal: this.props.user.principal,
+						name: e.target.name.value,
+						species: e.target.species.value,
+						breed: e.target.breed.value,
+						size: e.target.size.value,
+						age: e.target.age.value,
+					},
+				}},
+			function() {
+				//console.log('the user has pushed the update profile button with the following info');
+				//console.log(this.state.updatedUserProfile);
+				console.log(this.state.newPet.pet);
+				//this.props.addPet(this.state.newPet.pet);
+				registerPet(this.state.newPet.pet);
+				//window.location.reload();
+			}
+		);
 	}
 
 	render() {
@@ -42,25 +57,50 @@ class AddPetForm extends React.Component {
 		});
 
 		return (
-			<div>
-				<h3>Add New Pet</h3>
-				<form onSubmit={this.handleSubmit.bind(this)}>
-					<div>
-						<label>Pet Name</label>
-						<input type="text" ref="name"/>
-					</div>
-
-					<div>
-						<label>Pet Type</label> <br/>
-						<select ref="type">
-							{typeOptions}
-						</select>
-					</div>
-
-					<input type="submit" value="Submit"/>
-
-				</form>
-			</div>
+			<React.Fragment>
+				<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+					<Row form>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="name">Pet Name</Label>
+								<Input type="text" name="name"
+									   placeholder="Pet Name"/>
+							</FormGroup>
+						</Col>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="species">Species</Label>
+								<Input type="text" name="species"
+									   placeholder="Pet Species"/>
+							</FormGroup>
+						</Col>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="breed">Breed</Label>
+								<Input type="text" name="breed"
+									   placeholder="Pet Breed"/>
+							</FormGroup>
+						</Col>
+					</Row>
+						<Col md={3}>
+							<FormGroup>
+								<Label for="age">Age</Label>
+								<Input type="text" name="age"
+									   placeholder="Pet Age"/>
+							</FormGroup>
+						</Col>
+						<Col md={4}>
+							<FormGroup>
+								<Label for="size">Size</Label>
+								<Input type="text" name="size"
+									   placeholder="Pet Size"/>
+							</FormGroup>
+						</Col>
+					<Row/>
+					<br/>
+					<Button>Submit Changes</Button>
+				</Form>
+			</React.Fragment>
 		);
 	}
 }
@@ -77,3 +117,4 @@ AddPetForm = connect(
 )(AddPetForm);
 
 export default AddPetForm;
+

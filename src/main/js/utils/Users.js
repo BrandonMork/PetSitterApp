@@ -7,13 +7,9 @@ export function register(user) {
 	return axios.post('/api/user/register', user);
 }
 
-export function registerPet(pet, user){
-	let newPet = {
-		'principal': user.principal,
-		'name': pet.name
-	};
+export function registerPet(pet){
 
-	return axios.post('/api/pets/add-pet', newPet)
+	return axios.post('/api/pets/add-pet', pet)
 		.then(function (response) {
 			console.log(response);
 		})
