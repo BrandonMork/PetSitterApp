@@ -1,6 +1,7 @@
 import React from 'react';
+import _ from 'lodash';
 import NavigationBar from 'js/components/Navbar';
-import {DataSearch, ReactiveBase, ResultCard} from '@appbaseio/reactivesearch';
+import {DataSearch, ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 
@@ -18,42 +19,17 @@ class FindSitterPage extends React.Component {
 					app='petfinder-users'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 				>
-					<DataSearch
-						dataField='mainSearch'
-						componentId='mainSearch'
-						customQuery={ (value,props) => {
-							console.log('Test');
-							console.log(value,props);
-							return {
-								'query': {
-									'nested': {
-										'path': 'user',
-										'query': {
-											'bool': {
-												'must': [
-													{ 'match': { 'user.type':  value }}
-												]
-											}
-										}
-									}
-								}
-							};
-						}}
-						iconPosition='left'
-					/>
-
-					<ResultCard
+					<ReactiveList
 						componentId='results'
-						dataField='original_title'
-						react={{
-							'and': ['mainSearch']
-						}}
-						onData={(res)=>({
-							'title': res.user.principal,
-							'description':  res.user.type
-						})}
+						dataField='Sitters'
+						pagination={true}
+						paginationAt="bottom"
+						onData={(res) =>
+							<React.Fragment>
+								<div>{_.isDefined(res.user) && _.isEqual(res.user.type, 'Sitter') ? res.user.principal : 'NOT A SITTER'}</div>
+							</React.Fragment>
+						}
 					/>
-
 				</ReactiveBase>
 			</div>
 		);
