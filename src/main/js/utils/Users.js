@@ -24,6 +24,17 @@ export function getPets(principal){
 	return axios.get('/api/pets/get-pets/' + principal);
 }
 
+export function getOnePet(id){
+	console.log('going to get one pet! ' + id);
+	return axios.get('/api/pets/' + id)
+		.then(function (response) {
+			console.log(response);
+			})
+		.catch(function (error) {
+			console.log(error);
+		});
+}
+
 export function postJob(job){
 	console.log('this is from the axios call, this is the job object');
 	console.log(job);
