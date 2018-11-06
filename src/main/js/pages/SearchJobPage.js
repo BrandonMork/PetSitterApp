@@ -50,7 +50,6 @@ class SearchJobPage extends React.Component {
 							})}
 						/>
 					</ReactiveBase>
-
 				</div>
 			</div>
 		);

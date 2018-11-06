@@ -12,6 +12,7 @@ import {Form,
 	Col,
 	Button
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 
 class PostJobForm extends React.Component {
 
@@ -41,6 +42,7 @@ class PostJobForm extends React.Component {
 
 				// @TODO Brandon post job
 				postJob(this.state.updatedJob);
+				return this.context.router.history.push('/');
 			});
 	};
 
@@ -106,6 +108,10 @@ class PostJobForm extends React.Component {
 		);
 	}
 }
+
+PostJobForm.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
 
 PostJobForm = ReduxForm.reduxForm({form: 'register'})(PostJobForm);
 
