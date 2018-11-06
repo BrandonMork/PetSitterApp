@@ -177,8 +177,24 @@ public class UserService {
 		return userDao.findPets(user);
 	}
 
-	public void updateUser(UserDto userDto){
+	public void updateUser(RegistrationRequest request){
 		System.out.println("In the UserService for updateUser");
-		userDao.updateUser(userDto);
+		//userDao.updateUser(userDto);
+		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto(
+				request.getPrincipal(),
+				request.getFirstName(),
+				request.getMiddleName(),
+				request.getLastName(),
+				request.getAddressLine1(),
+				request.getAddressLine2(),
+				request.getCity(),
+				request.getState(),
+				request.getZip(),
+				request.getPhoneNumber(),
+				_Lists.list(),
+				_Lists.list("ROLE_USER"),
+				request.getUserType()),
+				passwordEncoder.encode(request.getPassword()));
+		userDao.save(userAuthentication);
 	}
 }

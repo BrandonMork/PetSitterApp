@@ -52,8 +52,8 @@ public class UserEndpoint {
 	}
 
 	@PostMapping(value = "/update-user")
-	public void updateUser(@RequestBody UserDto userDto){
+	public void updateUser(@RequestBody RegistrationRequest request){
 		System.out.println("In the UserEndpoint for updateUser");
-		userService.updateUser(userDto);
+		userService.updateUser(request);
 	}
 }

@@ -45,6 +45,7 @@ class ProfilePageForm extends React.Component {
 					],
 					type: e.target.type.value,
 					momento: e.target.principal.value,
+					password: e.target.password.value,
 				},
 			}},
 			function() {
@@ -52,7 +53,7 @@ class ProfilePageForm extends React.Component {
 				//console.log(this.state.updatedUserProfile);
 				updateUser(this.state.updatedUserProfile.user);
 				this.props.getUserDetails();
-				window.location.reload();
+				//window.location.reload();
 			}
 		);
 	}
