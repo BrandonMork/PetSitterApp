@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBar from 'js/components/navbar';
+import NavigationBar from 'js/components/Navbar';
 
 class ReportingPage extends React.Component {
 	render() {
