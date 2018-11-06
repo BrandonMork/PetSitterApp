@@ -19,6 +19,13 @@
     align-items: center;
 }
 
+.cardStyle {
+    flex: 1;
+    padding: 15px;
+    flex-direction: row;
+    width: 100%;
+}
+
 .darkColumn {
     border-color: black;
     border: 10px;
