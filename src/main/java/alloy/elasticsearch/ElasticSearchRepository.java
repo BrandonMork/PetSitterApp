@@ -50,6 +50,10 @@ public class ElasticSearchRepository<T, I> implements Repository<T, I>  {
 		return index.search(searchSource, serializer);
 	}
 
+	public Optional<T> optSearch(SearchSourceBuilder searchSource) {
+		return index.find(searchSource, serializer);
+	}
+
 	public static class ElasticSearchMomentoRepository<T extends Momento<I>, I> extends ElasticSearchRepository<T, I> {
 		public ElasticSearchMomentoRepository(ElasticSearchIndex index, Serializer<T> serializer) {
 			super(index, serializer, Momento::getMomento);
