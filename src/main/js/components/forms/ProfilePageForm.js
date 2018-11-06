@@ -129,7 +129,7 @@ class ProfilePageForm extends React.Component {
 							</FormGroup>
 						</Col>
 					</Row>
-
+					
 					<FormGroup>
 						<Label for="phoneNumber">Phone Number</Label>
 						<Input type="text" name="phoneNumber"
