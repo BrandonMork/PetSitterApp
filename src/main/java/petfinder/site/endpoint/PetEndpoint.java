@@ -43,7 +43,7 @@ public class PetEndpoint {
 		return petService.findPets(principal);
 	}
 
-
+	// @TODO Delete pet function
 
 
 }
