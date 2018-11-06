@@ -39,10 +39,34 @@ public class PetDao {
 	}
 
 
-	public Optional<PetDto> findPetLowTech(Long id) {
-		RestHighLevelClient client = elasticSearchClientProvider.getClient();
-		// Use the client to make your search and manually parse the results
-		return Optional.empty();
+	// this will find the specific pet from the user
+	public Optional<PetDto> findOnePet(String principal, Long id) {
+		System.out.println("In the PetDao with the id " + id + " with principal " + principal);
+		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+		// for some reason we dont need to fix the principal...
+		//@Todo figure out why lol
+
+		String queryString = String.format("principal=\"%s\"", principal.replace("\"", ""));
+		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
+
+		//get a list of Pets with the user's Principal
+		List<PetDto> userPets = petElasticsearchRepository.search(searchSourceBuilder);
+		System.out.println(userPets.toString());
+
+		Long tempID = new Long("8113244720662530687");
+
+		for(int i=0;i<userPets.size();i++){
+
+			if(userPets.get(i).getId().equals(tempID)) {
+				Optional<PetDto> temp = Optional.ofNullable(userPets.get(i));
+				System.out.println("Found the pet! " + userPets.get(i));
+				return temp;
+			}
+		}
+		PetDto lost = null;
+		Optional<PetDto> returnMe = Optional.ofNullable(lost);
+		return returnMe;
 	}
 
 	//save petDto to elasticsearch
@@ -66,18 +90,7 @@ public class PetDao {
 		List<PetDto> userPets = petElasticsearchRepository.search(searchSourceBuilder);
 		System.out.println(userPets.toString());
 
-		PetDto a = new PetDto("mario@xom.com","help me pls");
-		PetDto b = new PetDto("mario@xom.com","here you go");
-		List<PetDto> newList = new ArrayList<>();
-		newList.add(a);
-		newList.add(b);
-
-		System.out.println(newList.toString());
-
 		return userPets;
 
-//		return userPets.stream()
-//				.map(userPet -> petRepository.find(userPet.getPetId()).get())
-//				.collect(Collectors.toList());
 	}
 }

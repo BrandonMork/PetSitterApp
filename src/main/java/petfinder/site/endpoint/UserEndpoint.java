@@ -54,6 +54,7 @@ public class UserEndpoint {
 	@PostMapping(value = "/update-user")
 	public void updateUser(@RequestBody RegistrationRequest request){
 		System.out.println("In the UserEndpoint for updateUser");
+		System.out.println(request.getUserType());
 		userService.updateUser(request);
 	}
 }

@@ -49,6 +49,7 @@ public class UserService {
 		private String state;
 		private String zip;
 		private String phoneNumber;
+		private Long rating;
 
 		public String getPrincipal() {
 			return principal;
@@ -145,6 +146,14 @@ public class UserService {
 		public void setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 		}
+
+		public Long getRating() {
+			return rating;
+		}
+
+		public void setRating(Long rating) {
+			this.rating = rating;
+		}
 	}
 
 	// @TODO Add new stuff from new userAuthItem - NOT HARDCODED @brandon
@@ -161,6 +170,7 @@ public class UserService {
 						request.getState(),
 						request.getZip(),
 						request.getPhoneNumber(),
+						request.getRating(),
 						_Lists.list(),
 						_Lists.list("ROLE_USER"),
 						request.getUserType()),
@@ -196,6 +206,7 @@ public class UserService {
 				request.getState(),
 				request.getZip(),
 				request.getPhoneNumber(),
+				request.getRating(),
 				_Lists.list(),
 				_Lists.list("ROLE_USER"),
 				request.getUserType()),
