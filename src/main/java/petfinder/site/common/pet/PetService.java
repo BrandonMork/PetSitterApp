@@ -18,6 +18,7 @@ public class PetService {
 
 	//Calls PetDto findPet() function to search in elasticsearch
 	public Optional<PetDto> findPet(Long id) {
+		System.out.println("In the PetService with the id " + id);
 		return petDao.findPet(id);
 	}
 
