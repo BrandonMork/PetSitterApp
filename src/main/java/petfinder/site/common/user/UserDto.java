@@ -25,17 +25,18 @@ public class UserDto implements Momento<String> {
 
 	// @TODO Is this the correct data structure?
 	private String phoneNumber;
+	private Long rating;
 
 	private List<UserPetDto> pets;
 	private List<String> roles;
-	private String type;
+	private String userType;
 
 	private UserDto() {
 
 	}
 
 	//does not include roles & pets
-	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, String zip, String phoneNumber, String type) {
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, String zip, String phoneNumber, String userType) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -46,10 +47,12 @@ public class UserDto implements Momento<String> {
 		this.state = state;
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
-		this.type = type;
+		this.userType = userType;
 	}
 
-	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1, String addressLine2, String city, String state, String zip, String phoneNumber, List<UserPetDto> pets, List<String> roles, String type) {
+	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1,
+				   String addressLine2, String city, String state, String zip, String phoneNumber, Long rating,
+				   List<UserPetDto> pets, List<String> roles, String userType) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -60,9 +63,10 @@ public class UserDto implements Momento<String> {
 		this.state = state;
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
+		this.rating = rating;
 		this.pets = pets;
 		this.roles = roles;
-		this.type = type;
+		this.userType = userType;
 	}
 
 	public String getPrincipal() {
@@ -81,6 +85,78 @@ public class UserDto implements Momento<String> {
 		this.state = state;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Long getRating() {
+		return rating;
+	}
+
+	public void setRating(Long rating) {
+		this.rating = rating;
+	}
+
 	public List<UserPetDto> getPets() {
 		return pets;
 	}
@@ -89,12 +165,12 @@ public class UserDto implements Momento<String> {
 		this.pets = pets;
 	}
 
-	public String getType() {
-		return type;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 	public List<String> getRoles() {
@@ -120,9 +196,10 @@ public class UserDto implements Momento<String> {
 				", state='" + state + '\'' +
 				", zip='" + zip + '\'' +
 				", phoneNumber='" + phoneNumber + '\'' +
+				", rating=" + rating +
 				", pets=" + pets +
 				", roles=" + roles +
-				", type='" + type + '\'' +
+				", userType='" + userType + '\'' +
 				'}';
 	}
 }
