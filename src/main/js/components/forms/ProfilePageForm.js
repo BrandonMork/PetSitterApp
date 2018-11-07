@@ -15,12 +15,14 @@ import {
 
 // @TODO This is completely broken and doesn't do what we want it to
 class ProfilePageForm extends React.Component {
-
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			updatedUserProfile: {}
 		};
+
+		this.props.getUserDetails();
+		setTimeout(this.forceUpdate(),1000);
 	}
 
 	// @TODO MARIO DON'T TOUCH THIS SH** BRANDON WILL FIX IT!!!!!
@@ -43,17 +45,19 @@ class ProfilePageForm extends React.Component {
 						roles: [
 							'ROLE_USER',
 						],
-						type: e.target.type.value,
+						userType: e.target.userType.value,
 						momento: e.target.principal.value,
 						password: e.target.password.value,
 					},
 				}},
 			function() {
-				//console.log('the user has pushed the update profile button with the following info');
-				console.log(this.state.updatedUserProfile);
-				updateUser(this.state.updatedUserProfile.user);
-				this.props.getUserDetails();
-				//window.location.reload();
+				console.log('this is what goes to the update user');
+				console.log(this.state.updatedUserProfile.user);
+				//console.log(this.state.updatedUserProfile);
+				updateUser(this.state.updatedUserProfile.user)
+					.then( () => {
+						this.props.getUserDetails();
+					});
 			}
 		);
 	}
@@ -138,9 +142,9 @@ class ProfilePageForm extends React.Component {
 					</FormGroup>
 
 					<FormGroup>
-						<Label for="type">User Type</Label>
-						<Input type="text" name="type"
-							   placeholder={this.props.user.type} defaultValue={this.props.user.type}/>
+						<Label for="userType">User Type</Label>
+						<Input type="text" name="userType"
+							   placeholder={this.props.user.userType} defaultValue={this.props.user.userType}/>
 					</FormGroup>
 
 					<FormGroup>

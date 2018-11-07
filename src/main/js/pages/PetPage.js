@@ -23,8 +23,18 @@ class PetPage extends React.Component {
 		e.preventDefault();
 		console.log('Im going to edit this pet! ' + id);
 
-		let oldPet = getOnePet(id);
-		console.log('old pet -> ' + oldPet.toString());
+		//this will get the pet that will be edited
+		let oldPet;
+		let newPEt;
+		getOnePet(this.props.user.principal.valueOf(), id)
+			.then(function (response) {
+				console.log('did this work?');
+				console.log(response);
+				oldPet = response;
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	}
 
 	deletePet(id, e) {

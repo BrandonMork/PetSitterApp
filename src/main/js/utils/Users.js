@@ -25,15 +25,10 @@ export function getPets(principal){
 	return axios.get('/api/pets/get-pets/' + principal);
 }
 
-export function getOnePet(id){
-	console.log('going to get one pet! ' + id);
-	return axios.get('/api/pets/' + id)
-		.then(function (response) {
-			console.log(response);
-			})
-		.catch(function (error) {
-			console.log(error);
-		});
+export function getOnePet(principal, id){
+	console.log('In the User.js with ! ' + id + ' with principal ' + principal);
+
+	return axios.get('/api/pets/' + principal + '/' + id);
 }
 
 export function postJob(job){
@@ -61,7 +56,7 @@ export function updateUser(user){
 		'state': user.state,
 		'zip': user.zip,
 		'phoneNumber': user.phoneNumber,
-		'type': user.type,
+		'userType': user.userType,
 		'password': user.password,
 	};
 
@@ -97,15 +92,12 @@ export function updateUser(user){
 	if(newUser.phoneNumber != null){
 		backEndUser.phoneNumber = newUser.phoneNumber;
 	}
-	if(newUser.type != null){
-		backEndUser.type = newUser.type;
+	if(newUser.userType != null){
+		backEndUser.userType = newUser.userType;
 	}
 	if(newUser.password != null){
 		backEndUser.password = newUser.password;
 	}
-
-	console.log('after');
-	console.log(backEndUser);
 
 	return axios.post('/api/user/update-user/', backEndUser)
 		.then(function (response) {

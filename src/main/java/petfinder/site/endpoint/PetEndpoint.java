@@ -25,10 +25,10 @@ public class PetEndpoint {
 	private PetService petService;
 
 	//get these functions from the PetService!!!
-	@GetMapping(value = "/{id}", produces = "application/json")
-	public Optional<PetDto> getPet(@PathVariable("id") Long id) {
-		System.out.println("In the PetEndpoint with the id " + id);
-		return petService.findPet(id);
+	@GetMapping(value = "/{principal}/{id}", produces = "application/json")
+	public Optional<PetDto> getPet(@PathVariable("principal") String principal, @PathVariable("id") Long id) {
+		System.out.println("In the PetEndpoint with the id " + id + " with principal " + principal);
+		return petService.findPet(principal,id);
 	}
 
 	@PostMapping(value = "/add-pet", produces = "application/json")
