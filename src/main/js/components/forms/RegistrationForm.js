@@ -17,6 +17,7 @@ class RegistrationForm extends React.Component {
 		super(props);
 
 		this.state = {value: null, label: null};
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	// @TODO Figure out why the type key isn't being included into our user
@@ -24,6 +25,7 @@ class RegistrationForm extends React.Component {
 		console.log(Object.keys(user).join(', '));
 		console.log('IN onSubmit() VIA REGISTRATION FORM:');
 		console.log(user);
+		user.type = this.state.selectedState;
 		this.props.register(user);
 		return this.context.router.history.push('/');
 	};
@@ -41,6 +43,11 @@ class RegistrationForm extends React.Component {
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
+
+				<Bessemer.Select name="type" friendlyName="User Type" placeholder="User Type" options={typeOptions}
+								 value={selectedTypeOption} onChange={this.handleChangeTypeOption.bind(this)}
+								 validator={[Validation.requiredValidator]} />
+				<br/>
 
 				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="test@web.com"
 								validators={[Validation.requiredValidator, Validation.emailValidator]} />

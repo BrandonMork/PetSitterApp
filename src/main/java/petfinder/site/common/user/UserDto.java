@@ -177,18 +177,10 @@ public class UserDto implements Momento<String> {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
-
 	@JsonIgnore
 	@Override
 	public String getMomento() {
 		return principal;
-	}
-
-	public enum UserType {
-		OWNER, SITTER
 	}
 
 	@Override
