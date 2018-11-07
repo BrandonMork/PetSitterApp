@@ -60,6 +60,9 @@ export function updateUser(user){
 		'password': user.password,
 	};
 
+	console.log('In updateUse()');
+	console.log(newUser);
+
 	let backEndUser = getUserDetails();
 
 	if(newUser.principal != null){
@@ -95,9 +98,6 @@ export function updateUser(user){
 	if(newUser.password != null){
 		backEndUser.password = newUser.password;
 	}
-
-	console.log('is this even working?');
-	console.log(JSON.stringify(backEndUser));
 
 	return axios.post('/api/user/update-user/', backEndUser)
 		.then(function (response) {
