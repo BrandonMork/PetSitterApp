@@ -12,6 +12,7 @@ import ProfilePage from 'js/pages/ProfilePage';
 import PetPage from 'js/pages/PetPage';
 import PostJobPage from 'js/pages/PostJobPage';
 import SearchJobPage from 'js/pages/SearchJobPage';
+import ReviewJobPage from 'js/pages/ReviewJobPage';
 
 class Index extends React.Component {
 	render() {
@@ -29,6 +30,7 @@ class Index extends React.Component {
 					<Route exact path="/add-pet" component={PetPage}/>
 					<Route exact path="/post-job" component={PostJobPage}/>
 					<Route exact path="/search-job" component={SearchJobPage}/>
+                    <Route exact path="/review-job" component={ReviewJobPage}/>
 				</div>
 			</HashRouter>
 		);
