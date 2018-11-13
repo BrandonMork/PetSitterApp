@@ -20,12 +20,13 @@ public class JobDto implements Identifiable {
     private String endTime;
     private Long maxPay;
 
-    // @TODO Address
     private String addressLine1;
     private String addressLine2;
     private String city;
     private String state;
     private String zip;
+
+    private String accepted;
 
 
     // @TODO Define what our types will be
@@ -36,7 +37,7 @@ public class JobDto implements Identifiable {
         this.id = UUID.randomUUID().getMostSignificantBits();
     }
 
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip) {
+    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
         this.id = id;
         this.ownerID = ownerID;
         this.sitterID = sitterID;
@@ -51,6 +52,7 @@ public class JobDto implements Identifiable {
         this.city = city;
         this.state = state;
         this.zip = zip;
+        this.accepted = accepted;
     }
 
     //added this to see if elasticsearch will work or not
@@ -177,6 +179,14 @@ public class JobDto implements Identifiable {
         this.zip = zip;
     }
 
+    public String getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(String accepted) {
+        this.accepted = accepted;
+    }
+
     @Override
     public String toString() {
         return "JobDto{" +
@@ -184,8 +194,8 @@ public class JobDto implements Identifiable {
                 ", ownerID=" + ownerID +
                 ", sitterID=" + sitterID +
                 ", pets='" + pets + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", maxPay=" + maxPay +
@@ -194,6 +204,7 @@ public class JobDto implements Identifiable {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
+                ", accepted='" + accepted + '\'' +
                 '}';
     }
 }

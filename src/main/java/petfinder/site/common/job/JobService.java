@@ -1,5 +1,6 @@
 package petfinder.site.common.job;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,5 +17,10 @@ public class JobService {
     public void save(JobDto jobExample) {
         System.out.println("In the JobService for save" + jobExample.toString() + ".");
         jobDao.save(jobExample);
+    }
+
+    public JobDto getJob(Long id) {
+        System.out.println("I hit the JobService for getJob and the id is " + id);
+        return jobDao.getJob(id);
     }
 }
