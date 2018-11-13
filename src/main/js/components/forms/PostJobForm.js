@@ -26,6 +26,7 @@ class PostJobForm extends React.Component {
 		e.preventDefault();
 		this.setState({
 			updatedJob: {
+				ownerID: this.props.user.id,
 				pets: e.target.pets.value,
 				startDate: e.target.startDate.value,
 				endDate: e.target.endDate.value,

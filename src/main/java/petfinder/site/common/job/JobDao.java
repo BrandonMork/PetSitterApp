@@ -47,13 +47,13 @@ public class JobDao {
         jobElasticsearchRepository.save(job);
     }
 
-    public JobDto getJob(Long id) {
+    public JobDto getJob(String id) {
         System.out.println("I hit the JobDao and the id is " + id);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
-
-        String queryString = "id=" + id;
-        //String queryString = "id=-6258199856447404836";
+        //id = "-6477585206027493647";
+        //String queryString = "id=" + id;
+        String queryString = "jobID=\"" + id + "\"";
         System.out.println(queryString);
 
         searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));

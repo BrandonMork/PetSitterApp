@@ -18,7 +18,7 @@ class SearchJobPage extends React.Component {
 	acceptJob = (e, res) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
-		getJob(res.id)
+		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
 				console.log(response);
@@ -37,7 +37,7 @@ class SearchJobPage extends React.Component {
 	reviewJob = (e, res) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
-		getJob(res.id)
+		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked reivewJob button');
 				console.log(response);
