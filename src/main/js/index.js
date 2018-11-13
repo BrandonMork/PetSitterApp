@@ -15,6 +15,7 @@ import ReviewJobPage from 'js/pages/ReviewJobPage';
 import SearchJobPage from 'js/pages/SearchJobPage';
 import AcceptJobPage from 'js/pages/AcceptJobPage';
 
+
 class Index extends React.Component {
 	render() {
 		return (
@@ -33,6 +34,7 @@ class Index extends React.Component {
 					<Route exact path="/search-job" component={SearchJobPage}/>
 					<Route exact path="/review-job-page" component={ReviewJobPage}/>
 					<Route exact path="/accept-job-page" component={AcceptJobPage}/>
+
 
 				</div>
 			</HashRouter>
