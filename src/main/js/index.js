@@ -14,6 +14,7 @@ import PostJobPage from 'js/pages/PostJobPage';
 import ReviewJobPage from 'js/pages/ReviewJobPage';
 import SearchJobPage from 'js/pages/SearchJobPage';
 import AcceptJobPage from 'js/pages/AcceptJobPage';
+import EditPetPage from 'js/pages/EditPetPage';
 
 
 class Index extends React.Component {
@@ -34,7 +35,7 @@ class Index extends React.Component {
 					<Route exact path="/search-job" component={SearchJobPage}/>
 					<Route exact path="/review-job-page" component={ReviewJobPage}/>
 					<Route exact path="/accept-job-page" component={AcceptJobPage}/>
-
+					<Route exact path="/edit-pet-page" component={EditPetPage}/>
 
 				</div>
 			</HashRouter>
