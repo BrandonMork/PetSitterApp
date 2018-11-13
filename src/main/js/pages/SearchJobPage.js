@@ -18,6 +18,8 @@ class SearchJobPage extends React.Component {
 	acceptJob = (e, res) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
+		console.log('the jobID should be');
+		console.log(res.jobID);
 		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
