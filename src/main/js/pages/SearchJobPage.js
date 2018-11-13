@@ -9,10 +9,44 @@ ResultList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
 import {Button} from 'reactstrap';
+import {getJob} from '../utils/Users';
+import Cookie from 'universal-cookie';
+import PropTypes from 'prop-types';
+import {updateJobDetails} from 'js/utils/Users';
 
 class SearchJobPage extends React.Component {
-	handleReviewJob = job => {
-		console.log(job);
+	acceptJob = (e, res) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		getJob(res.id)
+			.then(function (response) {
+				console.log('user has clicked acceptJob button');
+				console.log(response);
+				myCookie.set('currentJob', response, {path: '/'});
+				response.accepted = 'yes';
+				console.log(response);
+				updateJobDetails(response);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		this.context.router.history.push('/accept-job-page');
+
+	};
+
+	reviewJob = (e, res) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		getJob(res.id)
+			.then(function (response) {
+				console.log('user has clicked reivewJob button');
+				console.log(response);
+				myCookie.set('currentJob', response, {path: '/'});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		this.context.router.history.push('/review-job-page');
 	};
 
 	render() {
@@ -44,7 +78,8 @@ class SearchJobPage extends React.Component {
 									<div>
 										<p>Start Date: {res.startDate}</p>
 										<p>End Date: {res.endDate}</p>
-										<Button onClick={ () => this.handleReviewJob(res)}>Review Job</Button>
+										<Button onClick={ (e) => this.acceptJob(e, res)}>Accept Job</Button>
+										<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
 									</div>
 								),
 							})}
@@ -55,6 +90,10 @@ class SearchJobPage extends React.Component {
 		);
 	}
 }
+
+SearchJobPage.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
 
 SearchJobPage = connect(
 	state => ({

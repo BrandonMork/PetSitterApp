@@ -25,7 +25,6 @@ class PetPage extends React.Component {
 
 		//this will get the pet that will be edited
 		let oldPet;
-		let newPEt;
 		getOnePet(this.props.user.principal.valueOf(), id)
 			.then(function (response) {
 				console.log('did this work?');
