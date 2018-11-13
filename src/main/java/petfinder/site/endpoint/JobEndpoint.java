@@ -28,7 +28,7 @@ public class JobEndpoint {
     }
 
     @GetMapping(value = "/get-job/{id}")
-    public JobDto getJob(@PathVariable("id") Long id) {
+    public JobDto getJob(@PathVariable("id") String id) {
         System.out.println("In the JobEndpoint for getJob " + id);
         return jobService.getJob(id);
     }

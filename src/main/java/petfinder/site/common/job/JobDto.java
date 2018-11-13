@@ -3,11 +3,14 @@ import java.util.Date;
 import java.util.UUID;
 import alloy.util.Identifiable;
 
+import static java.util.UUID.randomUUID;
+
 /**
  * Created by jlutteringer on 8/23/17.
  */
 public class JobDto implements Identifiable {
     private Long id;
+    private String jobID;
     private Long ownerID;
     private Long sitterID;
 
@@ -34,11 +37,13 @@ public class JobDto implements Identifiable {
     // Will have more defined attributes as we go on
 
     public JobDto() {
-        this.id = UUID.randomUUID().getMostSignificantBits();
+        this.id = UUID.randomUUID().getLeastSignificantBits();
+        this.jobID = id.toString();
     }
 
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
+    public JobDto(Long id, String jobID, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
         this.id = id;
+        this.jobID = jobID;
         this.ownerID = ownerID;
         this.sitterID = sitterID;
         this.pets = pets;
@@ -73,6 +78,14 @@ public class JobDto implements Identifiable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getJobID() {
+        return jobID;
+    }
+
+    public void setJobID(String jobID) {
+        this.jobID = jobID;
     }
 
     public Long getOwnerID() {
@@ -191,6 +204,7 @@ public class JobDto implements Identifiable {
     public String toString() {
         return "JobDto{" +
                 "id=" + id +
+                ", jobID='" + jobID + '\'' +
                 ", ownerID=" + ownerID +
                 ", sitterID=" + sitterID +
                 ", pets='" + pets + '\'' +

@@ -19,7 +19,7 @@ public class JobService {
         jobDao.save(jobExample);
     }
 
-    public JobDto getJob(Long id) {
+    public JobDto getJob(String id) {
         System.out.println("I hit the JobService for getJob and the id is " + id);
         return jobDao.getJob(id);
     }

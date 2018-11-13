@@ -45,7 +45,7 @@ export function postJob(job){
 }
 
 export function getJob(id){
-	console.log('getting a job with id' + id);
+	console.log('getting a job with id ' + id);
 	return axios.get('api/jobs/get-job/' + id);
 }
 
@@ -67,8 +67,6 @@ export function updateJobDetails(frontEndJob){
 		'accepted': backEndJob.accepted
 	};
 
-	if(job.ownerID == null && frontEndJob.ownerID != null)
-		job.ownerID = frontEndJob.ownerID;
 	if(job.sitterID == null && frontEndJob.sitterID != null)
 		job.sitterID = frontEndJob.sitterID;
 	if(job.accepted == null && frontEndJob.accepted != null)
