@@ -5,7 +5,7 @@ import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
+import {Card, CardBody, CardTitle, Col, CardText, CardImg, Form, Row, FormGroup, Label, Input} from 'reactstrap';
 import {Button} from 'js/alloy/bessemer/components';
 
 // @TODO Mario make this look pretty pls
@@ -29,11 +29,22 @@ class EditPetPage extends React.Component {
 						<CardText>{'Breed: ' + currentPet.breed} </CardText>
 						<CardText>{'Size: ' + currentPet.size} </CardText>
 						<CardText>{'Age: ' + currentPet.age} </CardText>
-						<Button> Edit the Pet (soon to be added)</Button>
 					</CardBody>
 				</Card>
 			</Col>
 		</React.Fragment>;
+	}
+
+	getCookieInfo(){
+		const myCookie = new Cookie();
+		const currentPet = myCookie.get('currentPet');
+		return currentPet;
+	}
+
+	handleSubmit(e) {
+		e.preventDefault();
+		console.log('update pet with this info');
+		console.log(e);
 	}
 
 	render() {
@@ -48,6 +59,33 @@ class EditPetPage extends React.Component {
 							<div>
 								<this.getCurrentPet />
 							</div>
+							<br/>
+							<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+								<Row form>
+									<Col md={4}>
+										<FormGroup>
+											<Label for="name">Name</Label>
+											<Input type="text" name="name"
+												   placeholder={this.getCookieInfo().name} defaultValue={this.getCookieInfo().name} />
+										</FormGroup>
+									</Col>
+									<Col md={4}>
+										<FormGroup>
+											<Label for="size">Size</Label>
+											<Input type="text" name="size"
+												   placeholder={this.getCookieInfo().size} defaultValue={this.getCookieInfo().size} />
+										</FormGroup>
+									</Col>
+									<Col md={4}>
+										<FormGroup>
+											<Label for="age">Age</Label>
+											<Input type="text" name="age"
+												   placeholder={this.getCookieInfo().age} defaultValue={this.getCookieInfo().age} />
+										</FormGroup>
+									</Col>
+								</Row>
+								<Button>Edit Pet</Button>
+							</Form>
 						</div>
 					</div>
 				</div>
