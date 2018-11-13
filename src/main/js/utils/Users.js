@@ -60,8 +60,8 @@ export function updateJobDetails(frontEndJob){
 			let job = {
 				'id': backEndJob.id,
 				'jobID': backEndJob.jobID,
-				'ownerID': backEndJob.ownerID,
-				'sitterID': backEndJob.sitterID,
+				'ownerPrincipal': backEndJob.ownerPrincipal,
+				'sitterPrincipal': backEndJob.sitterPrincipal,
 				'pets': backEndJob.pets,
 				'startDate': backEndJob.startDate,
 				'endDate': backEndJob.endDate,
@@ -74,8 +74,8 @@ export function updateJobDetails(frontEndJob){
 				'accepted': backEndJob.accepted
 			};
 
-			if(job.sitterID == null && frontEndJob.sitterID != null)
-				job.sitterID = frontEndJob.sitterID;
+			if(job.sitterPrincipal == null && frontEndJob.sitterPrincipal != null)
+				job.sitterPrincipal = frontEndJob.sitterPrincipal;
 			if(job.accepted == null && frontEndJob.accepted != null)
 				job.accepted = frontEndJob.accepted;
 
