@@ -5,6 +5,11 @@ import connect from 'react-redux/es/connect/connect';
 import _ from 'lodash';
 import {Button, Col, Row, Container} from 'reactstrap';
 import '../../styles/pageStyles.css';
+import Cookie from 'universal-cookie';
+import {getJob} from 'js/utils/Users';
+import {getOnePet} from 'js/utils/Users';
+import PropTypes from 'prop-types';
+import SearchJobPage from 'js/pages/SearchJobPage';
 
 class PetList extends React.Component {
 
@@ -13,9 +18,21 @@ class PetList extends React.Component {
 		this.props.fetchPets(this.props.user.principal);
 	}
 
-	handleAddPet(name) {
-		console.log(name);
-	}
+
+	handleAddPet = (e, name, id) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		getOnePet(this.props.user.principal, id)
+			.then(function (response) {
+				console.log('user has clicked editPet button');
+				console.log(response);
+				myCookie.set('currentPet', response, {path: '/'});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		this.context.router.history.push('/edit-pet-page');
+	};
 
 	render() {
 		return (
@@ -31,7 +48,7 @@ class PetList extends React.Component {
 							<React.Fragment key={pet.id}>
 								<Col className="darkColumn" md={3}>
 									<p>{pet.name}</p>
-									<Button onClick={this.handleAddPet(pet.name)}>Add</Button>
+									<Button onClick={ (e) => this.handleAddPet(e, pet.name, pet.id)}>Edit Pet</Button>
 								</Col>
 							</React.Fragment>
 						))
@@ -42,6 +59,11 @@ class PetList extends React.Component {
 		);
 	}
 }
+
+PetList.contextTypes = {
+	router: PropTypes.object.isRequired,
+
+};
 
 PetList = ReduxForm.reduxForm({form: 'elasticPets'})(PetList);
 

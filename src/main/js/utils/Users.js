@@ -26,7 +26,7 @@ export function getPets(principal){
 }
 
 export function getOnePet(principal, id){
-	console.log('In the User.js with ! ' + id + ' with principal ' + principal);
+	console.log('In the User.js with ' + id + ' with principal ' + principal);
 
 	return axios.get('/api/pets/' + principal + '/' + id);
 }
