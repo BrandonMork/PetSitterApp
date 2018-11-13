@@ -11,8 +11,8 @@ import static java.util.UUID.randomUUID;
 public class JobDto implements Identifiable {
     private Long id;
     private String jobID;
-    private Long ownerID;
-    private Long sitterID;
+    private String ownerPrincipal;
+    private String sitterPrincipal;
 
     //not sure how to pull array from elasticsearch
     private String pets;
@@ -41,11 +41,11 @@ public class JobDto implements Identifiable {
         this.jobID = id.toString();
     }
 
-    public JobDto(Long id, String jobID, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
+    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
         this.id = id;
         this.jobID = jobID;
-        this.ownerID = ownerID;
-        this.sitterID = sitterID;
+        this.ownerPrincipal = ownerPrincipal;
+        this.sitterPrincipal = sitterPrincipal;
         this.pets = pets;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -58,16 +58,6 @@ public class JobDto implements Identifiable {
         this.state = state;
         this.zip = zip;
         this.accepted = accepted;
-    }
-
-    //added this to see if elasticsearch will work or not
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate) {
-        this.id = id;
-        this.ownerID = ownerID;
-        this.sitterID = sitterID;
-        this.pets = pets;
-        this.startDate = startDate;
-        this.endDate = endDate;
     }
 
 
@@ -88,20 +78,20 @@ public class JobDto implements Identifiable {
         this.jobID = jobID;
     }
 
-    public Long getOwnerID() {
-        return ownerID;
+    public String getOwnerPrincipal() {
+        return ownerPrincipal;
     }
 
-    public void setOwnerID(Long ownerID) {
-        this.ownerID = ownerID;
+    public void setOwnerPrincipal(String ownerPrincipal) {
+        this.ownerPrincipal = ownerPrincipal;
     }
 
-    public Long getSitterID() {
-        return sitterID;
+    public String getSitterPrincipal() {
+        return sitterPrincipal;
     }
 
-    public void setSitterID(Long sitterID) {
-        this.sitterID = sitterID;
+    public void setSitterPrincipal(String sitterPrincipal) {
+        this.sitterPrincipal = sitterPrincipal;
     }
 
     public String getPets() {
@@ -205,8 +195,8 @@ public class JobDto implements Identifiable {
         return "JobDto{" +
                 "id=" + id +
                 ", jobID='" + jobID + '\'' +
-                ", ownerID=" + ownerID +
-                ", sitterID=" + sitterID +
+                ", ownerPrincipal='" + ownerPrincipal + '\'' +
+                ", sitterPrincipal='" + sitterPrincipal + '\'' +
                 ", pets='" + pets + '\'' +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +

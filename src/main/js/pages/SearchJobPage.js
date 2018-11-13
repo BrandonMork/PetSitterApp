@@ -15,17 +15,26 @@ import PropTypes from 'prop-types';
 import {updateJobDetails} from 'js/utils/Users';
 
 class SearchJobPage extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {};
+		this.updatedJob = {};
+	}
+
 	acceptJob = (e, res) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
 		console.log('the jobID should be');
 		console.log(res.jobID);
+		let sitterInfo = this.props.user.principal;
 		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
 				console.log(response);
 				myCookie.set('currentJob', response, {path: '/'});
 				response.accepted = 'yes';
+				response.sitterPrincipal = sitterInfo;
 				console.log(response);
 				updateJobDetails(response);
 			})
@@ -102,7 +111,10 @@ SearchJobPage = connect(
     state => ({
         authentication: Users.State.getAuthentication(state),
         user: Users.State.getUser(state)
-    })
+    }),
+	dispatch => ({
+		getUserDetails: () => dispatch(Users.Actions.getUserDetails())
+	})
 )(SearchJobPage);
 
 export default SearchJobPage;
