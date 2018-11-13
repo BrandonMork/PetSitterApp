@@ -3,9 +3,9 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
 import {
-ReactiveBase,
-DataSearch,
-ResultList
+    ReactiveBase,
+    DataSearch,
+    ResultList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
 import {Button} from 'reactstrap';
@@ -93,13 +93,14 @@ class SearchJobPage extends React.Component {
 
 SearchJobPage.contextTypes = {
 	router: PropTypes.object.isRequired,
+
 };
 
 SearchJobPage = connect(
-	state => ({
-		authentication: Users.State.getAuthentication(state),
-		user: Users.State.getUser(state)
-	})
+    state => ({
+        authentication: Users.State.getAuthentication(state),
+        user: Users.State.getUser(state)
+    })
 )(SearchJobPage);
 
 export default SearchJobPage;
