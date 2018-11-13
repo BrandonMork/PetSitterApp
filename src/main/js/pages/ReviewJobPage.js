@@ -35,10 +35,10 @@ class ReviewJobPage extends React.Component {
 					<div className='pageContent'>
 						<div>
 							<NavigationBar/>
+							<br/>
+							<br/>
 							<div>
-								<p>
-									<this.getCurrentJob />
-								</p>
+								<this.getCurrentJob />
 							</div>
 						</div>
 					</div>
