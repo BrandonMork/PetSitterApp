@@ -8,7 +8,6 @@ import AvailableTimes from 'react-available-times';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 
-
 // @Todo Mario make sure the form shows the current user info
 class ProfilePage extends React.Component {
 
@@ -16,7 +15,7 @@ class ProfilePage extends React.Component {
 		return (
 			<div className="pageContainer">
 				<div className="container padded">
-					<div className="pagecontent">
+					<div className="pageContent">
 						<div>
 							<NavigationBar/>
 						</div>

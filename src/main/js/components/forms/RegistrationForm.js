@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 const typeOptions = [
 	{value: 'Owner', label: 'Owner'},
 	{value: 'Sitter', label: 'Sitter'},
+	{value: 'Both', label: 'Both'},
 ];
 
 class RegistrationForm extends React.Component {
@@ -25,18 +26,16 @@ class RegistrationForm extends React.Component {
 		console.log(Object.keys(user).join(', '));
 		console.log('IN onSubmit() VIA REGISTRATION FORM:');
 		console.log(user);
-		user.type = this.state.selectedState;
+		user.type = this.state.selectedTypeOption;
 		this.props.register(user);
 		return this.context.router.history.push('/');
 	};
 
 	handleChangeTypeOption = selectedTypeOption => {
-		this.setState({selectedTypeOption });
+		this.setState({selectedTypeOption});
 		console.log(selectedTypeOption);
 	};
 
-	//@TODO List of roles, and map of attributes, save this form to Elasticsearch
-	//@TODO TURN ALL USER INPUT TO LOWER CASE!!!!
 	render() {
 		let { handleSubmit } = this.props;
 		const { selectedTypeOption } = this.state;
@@ -82,9 +81,6 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="password" friendlyName="Password"
 								validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
-
-				<Bessemer.Field name="userType" friendlyName="User Type" placeholder="'Owner' or 'Sitter' or 'Both'"
-								validators={[Validation.requiredValidator]} />
 
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
 					<Bessemer.Button>Register</Bessemer.Button>
