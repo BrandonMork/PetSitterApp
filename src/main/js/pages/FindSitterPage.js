@@ -29,7 +29,7 @@ class FindSitterPage extends React.Component {
 						onData={(res) =>
 							<React.Fragment key={uuidv4()}>
 								{_.isDefined(res.user) &&
-								_.isEqual(res.user.type, 'Sitter') &&
+								_.isEqual(res.user.userType, 'Sitter') &&
 								<Card className="center" body outline color="info">
 									<CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
 									<CardText>

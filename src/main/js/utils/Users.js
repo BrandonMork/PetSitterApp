@@ -26,7 +26,7 @@ export function getPets(principal){
 }
 
 export function getOnePet(principal, id){
-	console.log('In the User.js with ! ' + id + ' with principal ' + principal);
+	console.log('In the User.js with ' + id + ' with principal ' + principal);
 
 	return axios.get('/api/pets/' + principal + '/' + id);
 }
@@ -42,6 +42,53 @@ export function postJob(job){
 		.catch(function (error) {
 			console.log(error);
 		});
+}
+
+export function getJob(id){
+	console.log('getting a job with id ' + id);
+	return axios.get('api/jobs/get-job/' + id);
+}
+
+export function updateJobDetails(frontEndJob){
+	let backEndJob;
+	getJob(frontEndJob.jobID)
+		.then(function (response) {
+			backEndJob = response;
+			console.log('this is what backendJob looks like');
+			console.log(backEndJob);
+
+			let job = {
+				'id': backEndJob.id,
+				'jobID': backEndJob.jobID,
+				'ownerPrincipal': backEndJob.ownerPrincipal,
+				'sitterPrincipal': backEndJob.sitterPrincipal,
+				'pets': backEndJob.pets,
+				'startDate': backEndJob.startDate,
+				'endDate': backEndJob.endDate,
+				'maxPay': backEndJob.maxPay,
+				'addressLine1': backEndJob.addressLine1,
+				'addressLine2': backEndJob.addressLine2,
+				'city': backEndJob.city,
+				'state': backEndJob.state,
+				'zip': backEndJob.zip,
+				'accepted': backEndJob.accepted
+			};
+
+			if(job.sitterPrincipal == null && frontEndJob.sitterPrincipal != null)
+				job.sitterPrincipal = frontEndJob.sitterPrincipal;
+			if(job.accepted == null && frontEndJob.accepted != null)
+				job.accepted = frontEndJob.accepted;
+
+			console.log('this should send an accepted job to back end');
+			console.log(job);
+
+			return axios.post('api/jobs/post-job' , job);
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+
+
 }
 
 export function updateUser(user){

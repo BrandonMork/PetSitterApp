@@ -109,7 +109,51 @@ export default class NavigationBar extends React.Component {
 
             </React.Fragment>;
 
-        } else {
+        } else if (myCookie.get('user') && myCookie.get('user').userType === 'Both') {
+			return <React.Fragment>
+
+				<UncontrolledDropdown nav inNavbar>
+					<DropdownToggle nav caret>
+						Ratings
+					</DropdownToggle>
+					<DropdownMenu right>
+						<DropdownItem tag={Link} to="/rating-page">
+							Rate Sitters
+						</DropdownItem>
+						<DropdownItem tag={Link} to="/report-page">
+							Report a Sitter
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+				<UncontrolledDropdown nav inNavbar>
+					<DropdownToggle nav caret>
+						Jobs
+					</DropdownToggle>
+					<DropdownMenu right>
+						<DropdownItem tag={Link} to="/post-job">
+							Post Jobs
+						</DropdownItem>
+						<DropdownItem tag={Link} to="/find-sitter">
+							Find Sitter
+						</DropdownItem>
+						<DropdownItem tag={Link} to="/search-job">
+							Search Jobs
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+				<NavItem>
+					<NavLink tag={Link} to="/add-pet">Pets</NavLink>
+				</NavItem>
+				<NavItem>
+					<NavLink tag={Link} to="/profile">Profile</NavLink>
+				</NavItem>
+				<NavItem>
+					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
+				</NavItem>
+
+			</React.Fragment>;
+		}
+        else {
             return 	<React.Fragment>
                 <NavItem>
                     <NavLink tag={Link} to="/login">Login</NavLink>

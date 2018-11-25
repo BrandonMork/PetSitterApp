@@ -3,12 +3,12 @@ package petfinder.site.common.job;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.Date;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -43,14 +43,24 @@ public class JobDao {
 
     //save petDto to elasticsearch
     public void save(JobDto job) {
-//
-//        Date a = new Date();
-//        Date b= new Date();
-        //JobDto temp = new JobDto((long)1,(long)111,(long)222,"Fido",a,b);
-
-
         System.out.println("In the JobDao for save with " + job.toString());
         jobElasticsearchRepository.save(job);
+    }
+
+    public JobDto getJob(String id) {
+        System.out.println("I hit the JobDao and the id is " + id);
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        //id = "-6702061221884714951";
+        //String queryString = "id=" + id;
+        String queryString = "jobID=\"" + id + "\"";
+        System.out.println(queryString);
+
+        searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
+        List<JobDto> temp = jobElasticsearchRepository.search(searchSourceBuilder);
+        System.out.println(temp.toString());
+        return temp.get(0);
+
     }
 
 //    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {

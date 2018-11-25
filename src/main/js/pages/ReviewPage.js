@@ -12,6 +12,9 @@ class ReviewPage extends React.Component {
                     <div className='pageContent'>
                         <div>
                             <NavigationBar/>
+							<div>
+
+							</div>
                         </div>
                     </div>
                 </div>
