@@ -3,13 +3,16 @@ import java.util.Date;
 import java.util.UUID;
 import alloy.util.Identifiable;
 
+import static java.util.UUID.randomUUID;
+
 /**
  * Created by jlutteringer on 8/23/17.
  */
 public class JobDto implements Identifiable {
     private Long id;
-    private Long ownerID;
-    private Long sitterID;
+    private String jobID;
+    private String ownerPrincipal;
+    private String sitterPrincipal;
 
     //not sure how to pull array from elasticsearch
     private String pets;
@@ -20,12 +23,13 @@ public class JobDto implements Identifiable {
     private String endTime;
     private Long maxPay;
 
-    // @TODO Address
     private String addressLine1;
     private String addressLine2;
     private String city;
     private String state;
     private String zip;
+
+    private String accepted;
 
 
     // @TODO Define what our types will be
@@ -33,13 +37,15 @@ public class JobDto implements Identifiable {
     // Will have more defined attributes as we go on
 
     public JobDto() {
-        this.id = UUID.randomUUID().getMostSignificantBits();
+        this.id = UUID.randomUUID().getLeastSignificantBits();
+        this.jobID = id.toString();
     }
 
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip) {
+    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
         this.id = id;
-        this.ownerID = ownerID;
-        this.sitterID = sitterID;
+        this.jobID = jobID;
+        this.ownerPrincipal = ownerPrincipal;
+        this.sitterPrincipal = sitterPrincipal;
         this.pets = pets;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -51,16 +57,7 @@ public class JobDto implements Identifiable {
         this.city = city;
         this.state = state;
         this.zip = zip;
-    }
-
-    //added this to see if elasticsearch will work or not
-    public JobDto(Long id, Long ownerID, Long sitterID, String pets, String startDate, String endDate) {
-        this.id = id;
-        this.ownerID = ownerID;
-        this.sitterID = sitterID;
-        this.pets = pets;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.accepted = accepted;
     }
 
 
@@ -73,20 +70,28 @@ public class JobDto implements Identifiable {
         this.id = id;
     }
 
-    public Long getOwnerID() {
-        return ownerID;
+    public String getJobID() {
+        return jobID;
     }
 
-    public void setOwnerID(Long ownerID) {
-        this.ownerID = ownerID;
+    public void setJobID(String jobID) {
+        this.jobID = jobID;
     }
 
-    public Long getSitterID() {
-        return sitterID;
+    public String getOwnerPrincipal() {
+        return ownerPrincipal;
     }
 
-    public void setSitterID(Long sitterID) {
-        this.sitterID = sitterID;
+    public void setOwnerPrincipal(String ownerPrincipal) {
+        this.ownerPrincipal = ownerPrincipal;
+    }
+
+    public String getSitterPrincipal() {
+        return sitterPrincipal;
+    }
+
+    public void setSitterPrincipal(String sitterPrincipal) {
+        this.sitterPrincipal = sitterPrincipal;
     }
 
     public String getPets() {
@@ -177,15 +182,24 @@ public class JobDto implements Identifiable {
         this.zip = zip;
     }
 
+    public String getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(String accepted) {
+        this.accepted = accepted;
+    }
+
     @Override
     public String toString() {
         return "JobDto{" +
                 "id=" + id +
-                ", ownerID=" + ownerID +
-                ", sitterID=" + sitterID +
+                ", jobID='" + jobID + '\'' +
+                ", ownerPrincipal='" + ownerPrincipal + '\'' +
+                ", sitterPrincipal='" + sitterPrincipal + '\'' +
                 ", pets='" + pets + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", maxPay=" + maxPay +
@@ -194,6 +208,7 @@ public class JobDto implements Identifiable {
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
+                ", accepted='" + accepted + '\'' +
                 '}';
     }
 }

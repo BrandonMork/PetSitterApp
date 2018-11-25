@@ -1,59 +1,58 @@
 import React from 'react';
+import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import NavigationBar from 'js/components/Navbar';
-import {
-    ReactiveBase,
-    DataSearch,
-    ResultList
-} from '@appbaseio/reactivesearch';
-import '../../styles/pageStyles.css';
-import {Button} from 'reactstrap';
 import Cookie from 'universal-cookie';
-import {Card, CardBody, CardTitle, Col} from 'reactstrap';
+import profile_pic from '../profile_pic.jpg';
+import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
 
+// @TODO Mario make this look pretty pls
 class ReviewJobPage extends React.Component {
-    handleReviewJob = job => {
-        console.log(job);
-    };
+	getCurrentJob() {
+		const myCookie = new Cookie();
+		const currentJob = myCookie.get('currentJob');
+		return <React.Fragment>
+			<Col sm='8' >
+				<Card>
+					<CardTitle>{'Please review the information below and accept the job!'} </CardTitle>
+                    <CardImg top width="25%" src={profile_pic} />
+                    <CardBody>
+						<CardText>{'Job ID: ' + currentJob.id} </CardText>
+						<CardText>{'Pet Name: ' + currentJob.pets} </CardText>
+						<CardText>{'Start Date: ' + currentJob.startDate} </CardText>
+						<CardText>{'End Date: ' + currentJob.endDate} </CardText>
+					</CardBody>
+				</Card>
+			</Col>
+		</React.Fragment>;
+	}
 
-    render() {
-        const myCookie = new Cookie();
-        console.log(myCookie.get('job').id.valueOf());
-        return (
-            <div className="pageContainer">
-                <div className='container padded pageContent'>
-                    <div>
-                        <NavigationBar/>
-                    </div>
-                    <React.Fragment>
-                        <Col sm='8'>
-                            <Card>
-                                <br/>
-                                <CardTitle>{'ID of Owner: ' + myCookie.get('job').id.valueOf()}</CardTitle>
-                                <CardBody>
-                                    <br/>
-                                    <br/>
-                                    <Button>Accept Job</Button>
-                                    <br/>
-                                </CardBody>
-                            </Card>
-                        </Col>
-                        <br/>
-                    </React.Fragment>
-                    <div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div className='pageContainer'>
+				<div className='container padding'>
+					<div className='pageContent'>
+						<div>
+							<NavigationBar/>
+							<br/>
+							<br/>
+							<div>
+								<this.getCurrentJob />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 ReviewJobPage = connect(
-    state => ({
-        authentication: Users.State.getAuthentication(state),
-        user: Users.State.getUser(state)
-    })
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	})
 )(ReviewJobPage);
 
 export default ReviewJobPage;

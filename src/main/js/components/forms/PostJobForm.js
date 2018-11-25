@@ -24,8 +24,12 @@ class PostJobForm extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
+		console.log('the id of the current user is');
+		console.log(this.props.user);
 		this.setState({
 			updatedJob: {
+				ownerPrincipal: this.props.user.principal,
+				accepted: 'no',
 				pets: e.target.pets.value,
 				startDate: e.target.startDate.value,
 				endDate: e.target.endDate.value,
@@ -122,7 +126,8 @@ PostJobForm = connect(
 		user: Users.State.getUser(state)
 	}),
 	dispatch => ({
-		register: user => dispatch(Users.Actions.register(user))
+		register: user => dispatch(Users.Actions.register(user)),
+		getUserDetails: () => dispatch(Users.Actions.getUserDetails())
 	})
 )(PostJobForm);
 

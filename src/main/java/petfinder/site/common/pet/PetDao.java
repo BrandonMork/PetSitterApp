@@ -40,7 +40,7 @@ public class PetDao {
 
 
 	// this will find the specific pet from the user
-	public Optional<PetDto> findOnePet(String principal, Long id) {
+	public PetDto findOnePet(String principal, Long id) {
 		System.out.println("In the PetDao with the id " + id + " with principal " + principal);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
@@ -52,21 +52,27 @@ public class PetDao {
 
 		//get a list of Pets with the user's Principal
 		List<PetDto> userPets = petElasticsearchRepository.search(searchSourceBuilder);
-		System.out.println(userPets.toString());
+		PetDto foundPet = new PetDto();
 
-		Long tempID = new Long("8113244720662530687");
 
 		for(int i=0;i<userPets.size();i++){
 
-			if(userPets.get(i).getId().equals(tempID)) {
-				Optional<PetDto> temp = Optional.ofNullable(userPets.get(i));
+			//round the left :(
+			String roundMe = userPets.get(i).getId().toString();
+			String finished = roundMe.substring(0,15);
+			char c = roundMe.charAt(16);
+			finished+=c;
+			for (int j=0;j<3;j++)
+				finished+='0';
+
+			if(finished.equals(id.toString())) {
+				foundPet = userPets.get(i);
 				System.out.println("Found the pet! " + userPets.get(i));
-				return temp;
+				return foundPet;
 			}
 		}
-		PetDto lost = null;
-		Optional<PetDto> returnMe = Optional.ofNullable(lost);
-		return returnMe;
+
+		return foundPet;
 	}
 
 	//save petDto to elasticsearch
