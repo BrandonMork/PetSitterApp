@@ -85,7 +85,7 @@ class EditPetPage extends React.Component {
 										</FormGroup>
 									</Col>
 								</Row>
-								<Button>Edit Pet</Button>
+								<Button>Submit Changes</Button>
 							</Form>
 						</div>
 					</div>
