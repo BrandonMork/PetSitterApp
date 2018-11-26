@@ -1,7 +1,6 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import NavigationBar from 'js/components/Navbar';
 import {
     ReactiveBase,
     DataSearch,
@@ -62,38 +61,36 @@ class SearchJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className="pageContainer">
-				<div className='container padded pageContent'>
-					<ReactiveBase
-						app='job-info'
-						url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
-					>
-						<DataSearch
-							componentId='mainSearch'
-							dataField={['zip', 'zip.search']}
-							queryFormat='and'
-							iconPosition='left'
-						/>
-						<ResultList
-							componentId='results'
-							dataField='original_title'
-							react={{
-								'and': ['mainSearch']
-							}}
-							onData={(res)=>({
-								'title': res.zip,
-								'description': (
-									<div>
-										<p>Start Date: {res.startDate}</p>
-										<p>End Date: {res.endDate}</p>
-										<Button onClick={ (e) => this.acceptJob(e, res)}>Accept Job</Button>
-										<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
-									</div>
-								),
-							})}
-						/>
-					</ReactiveBase>
-				</div>
+			<div>
+				<ReactiveBase
+					app='job-info'
+					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
+				>
+					<DataSearch
+						componentId='mainSearch'
+						dataField={['zip', 'zip.search']}
+						queryFormat='and'
+						iconPosition='left'
+					/>
+					<ResultList
+						componentId='results'
+						dataField='original_title'
+						react={{
+							'and': ['mainSearch']
+						}}
+						onData={(res)=>({
+							'title': res.zip,
+							'description': (
+								<div>
+									<p>Start Date: {res.startDate}</p>
+									<p>End Date: {res.endDate}</p>
+									<Button onClick={ (e) => this.acceptJob(e, res)}>Accept Job</Button>
+									<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
+								</div>
+							),
+						})}
+					/>
+				</ReactiveBase>
 			</div>
 		);
 	}
@@ -101,14 +98,13 @@ class SearchJobPage extends React.Component {
 
 SearchJobPage.contextTypes = {
 	router: PropTypes.object.isRequired,
-
 };
 
 SearchJobPage = connect(
-    state => ({
-        authentication: Users.State.getAuthentication(state),
-        user: Users.State.getUser(state)
-    }),
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	}),
 	dispatch => ({
 		getUserDetails: () => dispatch(Users.Actions.getUserDetails())
 	})

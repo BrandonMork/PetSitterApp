@@ -25,11 +25,22 @@ export function getPets(principal){
 	return axios.get('/api/pets/get-pets/' + principal);
 }
 
-export function getOnePet(principal, id){
-	console.log('In the User.js with ' + id + ' with principal ' + principal);
+//used for editing pet
+export function getOnePet(principal, name){
+	console.log('In the User.js with ' + name + ' with principal ' + principal);
 
-	return axios.get('/api/pets/' + principal + '/' + id);
+	return axios.get('/api/pets/' + principal + '/' + name);
 }
+
+export function updatePet(pet){
+	return axios.post('/api/pets/edit-pet/', pet);
+}
+
+export function deletePet(principal, name){
+	console.log(name);
+	return axios.post('/api/pets/delete-pet/' + principal + '/' + name);
+}
+
 
 export function postJob(job){
 	console.log('this is from the axios call, this is the job object');
@@ -87,8 +98,6 @@ export function updateJobDetails(frontEndJob){
 		.catch(function (error) {
 			console.log(error);
 		});
-
-
 }
 
 export function updateUser(user){

@@ -1,8 +1,6 @@
 import React from 'react';
-import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import NavigationBar from 'js/components/Navbar';
 import Cookie from 'universal-cookie';
 
 // @TODO Mario make this look pretty pls
@@ -33,15 +31,11 @@ class AcceptJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className='pageContainer'>
-				<div className='container padding'>
-					<div className='pageContent'>
-						<div>
-							<p>
-								<this.getCurrentJob />
-							</p>
-						</div>
-					</div>
+			<div>
+				<div>
+					<p>
+						<this.getCurrentJob />
+					</p>
 				</div>
 			</div>
 		);
