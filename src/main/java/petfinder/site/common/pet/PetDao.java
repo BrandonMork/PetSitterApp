@@ -134,4 +134,9 @@ public class PetDao {
 		petElasticsearchRepository.save(pet);
 	}
 
+	public void deletePet(String principal, String name){
+		PetDto deleteMe = getOnePet(principal,name);
+		petElasticsearchRepository.delete(deleteMe.getId());
+	}
+
 }

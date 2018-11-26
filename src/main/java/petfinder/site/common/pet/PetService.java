@@ -37,4 +37,8 @@ public class PetService {
 		petDao.upDatePet(pet);
 	}
 
+    public void deletePet(String principal, String name){
+	    petDao.deletePet(principal,name);
+    }
+
 }
