@@ -15,6 +15,7 @@
 }
 
 .center {
+    margin-top: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,4 +31,8 @@
 .darkColumn {
     border-color: black;
     border: 10px;
+}
+
+.center-container {
+    margin-top: 5vh;
 }

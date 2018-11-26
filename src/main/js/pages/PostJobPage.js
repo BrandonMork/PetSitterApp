@@ -11,7 +11,6 @@ class PostJobPage extends React.Component {
 			<div className="center">
 				<Col md="10">
 					<Card>
-						<br/>
 						<CardTitle className="center">Create a job!</CardTitle>
 						<CardBody>
 							<PostJobForm/>
