@@ -14,7 +14,7 @@ class ProfilePage extends React.Component {
 		return (
 			<Container className="center-container">
 				<Row>
-					<Col md="10">
+					<Col lg="12" md="10">
 						<Card>
 							<br/>
 							<CardTitle className="center">Welcome to your profile!</CardTitle>
@@ -30,7 +30,7 @@ class ProfilePage extends React.Component {
 			{_.isDefined(this.props.user) &&
 			(_.isEqual(this.props.user.userType, 'Sitter') || _.isEqual(this.props.user.userType, 'Both')) &&
 			<Row>
-				<Col md="10">
+				<Col lg="12" md="10">
 					<Card>
 						<br/>
 						<CardTitle className="center">Set your availability!</CardTitle>
@@ -54,7 +54,7 @@ class ProfilePage extends React.Component {
 								height={700}
 								recurring={true}
 								availableDays={['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']}
-								availableHourRange={{ start: 0, end: 23 }}
+								availableHourRange={{ start: 9, end: 19 }}
 							/>
 						</CardBody>
 					</Card>

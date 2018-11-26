@@ -34,7 +34,7 @@ class AcceptJobPage extends React.Component {
 			<div>
 				<div>
 					<p>
-						<this.getCurrentJob />
+						{this.getCurrentJob()}
 					</p>
 				</div>
 			</div>
