@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 const typeOptions = [
 	{value: 'Owner', label: 'Owner'},
 	{value: 'Sitter', label: 'Sitter'},
+	{value: 'Both', label: 'Both'}
 ];
 
 class RegistrationForm extends React.Component {
@@ -82,9 +83,6 @@ class RegistrationForm extends React.Component {
 				<Bessemer.Field name="password" friendlyName="Password"
 								validators={[Validation.requiredValidator, Validation.passwordValidator]}
 								field={<input className="form-control" type="password" />} />
-
-				<Bessemer.Field name="userType" friendlyName="User Type" placeholder="'Owner' or 'Sitter' or 'Both'"
-								validators={[Validation.requiredValidator]} />
 
 				<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}} className="center">
 					<Bessemer.Button>Register</Bessemer.Button>

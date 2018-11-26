@@ -42,7 +42,7 @@ class PetPage extends React.Component {
 
 	render() {
 		return (
-			<div className='container padding'>
+			<div>
 				<AddPetForm/>
 				<ReactiveBase
 					app='pet-info'
