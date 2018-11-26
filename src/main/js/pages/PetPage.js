@@ -1,7 +1,6 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
 import {ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
@@ -42,64 +41,55 @@ class PetPage extends React.Component {
 	}
 
 	render() {
-
 		return (
-			<div className='pageContainer'>
-				<div className='container padding'>
-					<div className='pageContent'>
-						<div>
-							<NavigationBar/>
-						</div>
-						<br/>
-						<AddPetForm/>
-						<ReactiveBase
-							app='pet-info'
-							url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
-						>
-							<div className="cardStyle">
-								<ReactiveList
-									componentId='results'
-									dataField='Pets'
-									pagination={true}
-									showResultStats={false}
-									paginationAt='bottom'
-									defaultQuery={() => ({
-										match: {
-											principal: this.props.user.principal.valueOf()
-										}
-									})}
-									onData={(res) =>
-										<React.Fragment key={uuidv4()}>
+			<div className='container padding'>
+				<AddPetForm/>
+				<ReactiveBase
+					app='pet-info'
+					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
+				>
+					<div className="cardStyle">
+						<ReactiveList
+							componentId='results'
+							dataField='Pets'
+							pagination={true}
+							showResultStats={false}
+							paginationAt='bottom'
+							defaultQuery={() => ({
+								match: {
+									principal: this.props.user.principal.valueOf()
+								}
+							})}
+							onData={(res) =>
+								<React.Fragment key={uuidv4()}>
+									<br/>
+									<Col sm='8'>
+										<Card className="center">
 											<br/>
-											<Col sm='8'>
-												<Card className="center">
-													<br/>
-													<CardTitle>{res.name}</CardTitle>
-													<CardBody>
-														Species: {res.species}
-														<br/>
-														ID: {res.id}
-														<br/>
-														Breed: {res.breed}
-														<br/>
-														Age: {res.age}
-														<br/>
-														Size: {res.size}
-														<br/>
-														<Button onClick={(e) => this.editPet(res.id,e)}>Edit Pet</Button>
-														<br/>
-														<br/>
-														<Button onClick={(e) => this.deletePet(res.id, e)}>Delete Pet</Button>
-													</CardBody>
-												</Card>
-											</Col>
-										</React.Fragment>
-									}
-								/>
-							</div>
-						</ReactiveBase>
+											<CardTitle>{res.name}</CardTitle>
+											<CardBody>
+												Species: {res.species}
+												<br/>
+												ID: {res.id}
+												<br/>
+												Breed: {res.breed}
+												<br/>
+												Age: {res.age}
+												<br/>
+												Size: {res.size}
+												<br/>
+												<Button onClick={(e) => this.editPet(res.id,e)}>Edit Pet</Button>
+												<br/>
+												<br/>
+												<Button onClick={(e) => this.deletePet(res.id, e)}>Delete Pet</Button>
+											</CardBody>
+										</Card>
+									</Col>
+								</React.Fragment>
+							}
+						/>
 					</div>
-				</div>
+				</ReactiveBase>
 			</div>
 		);
 	}

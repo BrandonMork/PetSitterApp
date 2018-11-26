@@ -6,10 +6,8 @@ import _ from 'lodash';
 import {Button, Col, Row, Container} from 'reactstrap';
 import '../../styles/pageStyles.css';
 import Cookie from 'universal-cookie';
-import {getJob} from 'js/utils/Users';
 import {getOnePet} from 'js/utils/Users';
 import PropTypes from 'prop-types';
-import SearchJobPage from 'js/pages/SearchJobPage';
 
 class PetList extends React.Component {
 

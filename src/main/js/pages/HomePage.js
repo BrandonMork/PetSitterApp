@@ -21,9 +21,6 @@ class HomePage extends React.Component {
 		return (
 			<div className="pageContainer">
 				<div className="container padded pageContent">
-					<div>
-						<NavigationBar/>
-					</div>
 					<Jumbotron fluid>
 						<Container fluid>
 							<h1 className="display-4">The Best Pet Sitter Matching Service</h1>

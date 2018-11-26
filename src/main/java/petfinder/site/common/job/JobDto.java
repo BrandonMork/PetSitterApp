@@ -8,6 +8,8 @@ import static java.util.UUID.randomUUID;
 /**
  * Created by jlutteringer on 8/23/17.
  */
+
+// @TODO Job Title and Description (String) to be added
 public class JobDto implements Identifiable {
     private Long id;
     private String jobID;
@@ -59,7 +61,6 @@ public class JobDto implements Identifiable {
         this.zip = zip;
         this.accepted = accepted;
     }
-
 
     @Override
     public Long getId() {

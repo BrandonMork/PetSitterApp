@@ -37,12 +37,9 @@ class AcceptJobPage extends React.Component {
 				<div className='container padding'>
 					<div className='pageContent'>
 						<div>
-							<NavigationBar/>
-							<div>
-								<p>
-									<this.getCurrentJob />
-								</p>
-							</div>
+							<p>
+								<this.getCurrentJob />
+							</p>
 						</div>
 					</div>
 				</div>
