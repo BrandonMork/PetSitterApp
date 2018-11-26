@@ -166,20 +166,18 @@ export default class NavigationBar extends React.Component {
 
 	render() {
 		return (
-			<div className="pageContent">
-				<Navbar color="light" light expand="md">
-					<NavbarBrand href="/">
-						<img src={logo} />&nbsp;
-						Tempetūrs
-					</NavbarBrand>
-					<NavbarToggler onClick={this.toggle} />
-					<Collapse isOpen={this.state.isOpen} navbar>
-						<Nav className="ml-auto" navbar>
-							{NavigationBar.checkUserStatus()}
-						</Nav>
-					</Collapse>
-				</Navbar>
-			</div>
+			<Navbar color="light" light expand="md">
+				<NavbarBrand href="/">
+					<img src={logo} />&nbsp;
+					Tempetūrs
+				</NavbarBrand>
+				<NavbarToggler onClick={this.toggle} />
+				<Collapse isOpen={this.state.isOpen} navbar>
+					<Nav className="ml-auto" navbar>
+						{NavigationBar.checkUserStatus()}
+					</Nav>
+				</Collapse>
+			</Navbar>
 		);
 	}
 }
