@@ -39,7 +39,7 @@ public class PetDao {
 	}
 
 
-	// this will find the specific pet from the user
+	// MIGHT DELETE THIS LATER?????
 	public PetDto findOnePet(String principal, Long id) {
 		System.out.println("In the PetDao with the id " + id + " with principal " + principal);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
@@ -75,6 +75,32 @@ public class PetDao {
 		return foundPet;
 	}
 
+	// this will find the specific pet from the user
+	public PetDto getOnePet(String principal, String name) {
+		System.out.println("In the PetDao with name of  " + name + " with principal " + principal);
+		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+		// for some reason we dont need to fix the principal...
+		//@Todo figure out why lol
+
+		String queryString = String.format("principal=\"%s\"", principal.replace("\"", ""));
+		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
+
+		//get a list of Pets with the user's Principal
+		List<PetDto> userPets = petElasticsearchRepository.search(searchSourceBuilder);
+
+		for(int i=0;i<userPets.size();i++){
+			userPets.get(i).toString();
+			if(userPets.get(i).getName().equals(name)) {
+				return userPets.get(i);
+			}
+		}
+
+		System.out.println("couldnt find pet");
+		PetDto error = new PetDto();
+		return error;
+	}
+
 	//save petDto to elasticsearch
 	public void save(PetDto pet) {
 		System.out.println(pet.toString());
@@ -99,4 +125,13 @@ public class PetDao {
 		return userPets;
 
 	}
+
+	public void upDatePet(PetDto pet){
+		System.out.println("The id is " + pet.getId());
+		PetDto deleteMe = getOnePet(pet.getPrincipal(),pet.getName());
+		System.out.println(deleteMe.toString());
+		petElasticsearchRepository.delete(deleteMe.getId());
+		petElasticsearchRepository.save(pet);
+	}
+
 }
