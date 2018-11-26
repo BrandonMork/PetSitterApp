@@ -8,6 +8,7 @@ import '../../styles/pageStyles.css';
 import Cookie from 'universal-cookie';
 import {getOnePet} from 'js/utils/Users';
 import PropTypes from 'prop-types';
+import {deletePet} from 'js/utils/Users';
 
 class PetList extends React.Component {
 
@@ -17,7 +18,7 @@ class PetList extends React.Component {
 	}
 
 
-	handleAddPet = (e, name, id) => {
+	handleAddPet = (e, name) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
 		getOnePet(this.props.user.principal, name)
@@ -30,6 +31,11 @@ class PetList extends React.Component {
 				console.log(error);
 			});
 		this.context.router.history.push('/edit-pet-page');
+	};
+
+	handleDeletePet = (e, name) => {
+		e.preventDefault();
+		deletePet(this.props.user.principal, name);
 	};
 
 	render() {
@@ -46,7 +52,8 @@ class PetList extends React.Component {
 							<React.Fragment key={pet.id}>
 								<Col className="darkColumn" md={3}>
 									<p>{pet.name}</p>
-									<Button onClick={ (e) => this.handleAddPet(e, pet.name, pet.id)}>Edit Pet</Button>
+									<Button onClick={ (e) => this.handleAddPet(e, pet.name)}>Edit Pet</Button>
+									<Button onClick={ (e) => this.handleDeletePet(e, pet.name)}>Delete Pet</Button>
 								</Col>
 							</React.Fragment>
 						))

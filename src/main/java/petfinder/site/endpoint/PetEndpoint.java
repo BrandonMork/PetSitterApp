@@ -49,6 +49,13 @@ public class PetEndpoint {
 		return pet;
 	}
 
+    @PostMapping(value = "/delete-pet/{principal}/{name}", produces = "application/json")
+    public void deletePet(@PathVariable("principal") String principal, @PathVariable("name") String name) {
+        petService.deletePet(principal,name);
+    }
+
+
+
 	// @TODO Delete pet function
 
 //	return axios.post('/api/pets/edit-pet/' + principal);

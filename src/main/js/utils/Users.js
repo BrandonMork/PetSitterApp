@@ -36,7 +36,10 @@ export function updatePet(pet){
 	return axios.post('/api/pets/edit-pet/', pet);
 }
 
-
+export function deletePet(principal, name){
+	console.log(name);
+	return axios.post('/api/pets/delete-pet/' + principal + '/' + name);
+}
 
 
 export function postJob(job){
