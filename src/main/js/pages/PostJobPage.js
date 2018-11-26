@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Card, CardTitle, CardBody} from 'reactstrap';
-import NavigationBar from 'js/components/Navbar';
 import PostJobForm from 'js/components/forms/PostJobForm';
 import '../../styles/pageStyles.css';
 
@@ -12,12 +11,6 @@ class PostJobPage extends React.Component {
 			<div className="pageContainer">
 				<div className="container padded">
 					<div className="pageContent">
-						<div>
-							<NavigationBar/>
-						</div>
-
-						<br/>
-
 						<div className="center">
 							<Col md="10">
 								<Card>

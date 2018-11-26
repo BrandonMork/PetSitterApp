@@ -33,24 +33,24 @@ class AddPetForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({
-				newPet: {
-					pet: {
-						principal: this.props.user.principal,
-						name: e.target.name.value,
-						species: e.target.species.value,
-						breed: e.target.breed.value,
-						size: e.target.size.value,
-						age: e.target.age.value,
-					},
-				}},
-			function() {
-				//console.log('the user has pushed the update profile button with the following info');
-				//console.log(this.state.updatedUserProfile);
-				console.log(this.state.newPet.pet);
-				//this.props.addPet(this.state.newPet.pet);
-				registerPet(this.state.newPet.pet);
-				//window.location.reload();
-			}
+			newPet: {
+				pet: {
+					principal: this.props.user.principal,
+					name: e.target.name.value,
+					species: e.target.species.value,
+					breed: e.target.breed.value,
+					size: e.target.size.value,
+					age: e.target.age.value,
+				},
+			}},
+		function() {
+			//console.log('the user has pushed the update profile button with the following info');
+			//console.log(this.state.updatedUserProfile);
+			console.log(this.state.newPet.pet);
+			//this.props.addPet(this.state.newPet.pet);
+			registerPet(this.state.newPet.pet);
+			//window.location.reload();
+		}
 		);
 	}
 

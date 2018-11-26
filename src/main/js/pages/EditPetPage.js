@@ -53,9 +53,6 @@ class EditPetPage extends React.Component {
 				<div className='container padding'>
 					<div className='pageContent'>
 						<div>
-							<NavigationBar/>
-							<br/>
-							<br/>
 							<div>
 								<this.getCurrentPet />
 							</div>

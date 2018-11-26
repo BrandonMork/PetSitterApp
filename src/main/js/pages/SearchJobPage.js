@@ -64,9 +64,6 @@ class SearchJobPage extends React.Component {
 		return (
 			<div className="pageContainer">
 				<div className='container padded pageContent'>
-					<div>
-						<NavigationBar/>
-					</div>
 					<ReactiveBase
 						app='job-info'
 						url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'

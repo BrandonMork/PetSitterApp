@@ -39,15 +39,15 @@ class PostJobForm extends React.Component {
 				state: e.target.state.value,
 				zip: e.target.zip.value
 			}},
-			function() {
-				//console.log('Im adding a job!');
-				//console.log(this.state.newJob);
-				//console.log(this.state.updatedJob);
+		function() {
+			//console.log('Im adding a job!');
+			//console.log(this.state.newJob);
+			//console.log(this.state.updatedJob);
 
-				// @TODO Brandon post job
-				postJob(this.state.updatedJob);
-				return this.context.router.history.push('/');
-			});
+			// @TODO Brandon post job
+			postJob(this.state.updatedJob);
+			return this.context.router.history.push('/');
+		});
 	};
 
 	render() {
