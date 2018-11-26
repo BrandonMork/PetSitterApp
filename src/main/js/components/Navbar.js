@@ -17,7 +17,7 @@ import Cookie from 'universal-cookie';
 import '../../styles/pageStyles.css';
 import logo from '../logo.png';
 import Favicon from 'react-favicon';
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet';
 
 library.add(faPaw);
 
