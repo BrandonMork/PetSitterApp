@@ -7,20 +7,16 @@ class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<div className="pageContainer">
-				<div className="pageContent">
-					<div className="center">
-						<Col sm="8">
-							<Card>
-								<br/>
-								<CardTitle className="center">Login</CardTitle>
-								<CardBody>
-									<LoginForm/>
-								</CardBody>
-							</Card>
-						</Col>
-					</div>
-				</div>
+			<div className="center">
+				<Col sm="8">
+					<Card>
+						<br/>
+						<CardTitle className="center">Login</CardTitle>
+						<CardBody>
+							<LoginForm/>
+						</CardBody>
+					</Card>
+				</Col>
 			</div>
 		);
 	}

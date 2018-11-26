@@ -8,22 +8,16 @@ class PostJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className="pageContainer">
-				<div className="container padded">
-					<div className="pageContent">
-						<div className="center">
-							<Col md="10">
-								<Card>
-									<br/>
-									<CardTitle className="center">Create a job!</CardTitle>
-									<CardBody>
-										<PostJobForm/>
-									</CardBody>
-								</Card>
-							</Col>
-						</div>
-					</div>
-				</div>
+			<div className="center">
+				<Col md="10">
+					<Card>
+						<br/>
+						<CardTitle className="center">Create a job!</CardTitle>
+						<CardBody>
+							<PostJobForm/>
+						</CardBody>
+					</Card>
+				</Col>
 			</div>
 		);
 	}

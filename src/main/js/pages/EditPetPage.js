@@ -1,8 +1,6 @@
 import React from 'react';
-import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import NavigationBar from 'js/components/Navbar';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg, Form, Row, FormGroup, Label, Input} from 'reactstrap';

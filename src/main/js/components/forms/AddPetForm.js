@@ -1,5 +1,4 @@
 import React from 'react';
-import uuidv4 from 'uuid/v4';
 import PropTypes from 'prop-types';
 import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
@@ -61,7 +60,6 @@ class AddPetForm extends React.Component {
 
 		return (
 			<React.Fragment>
-
 				<div className="center">
 					<Col sm="8">
 						<Card>
@@ -114,7 +112,6 @@ class AddPetForm extends React.Component {
 						</Card>
 					</Col>
 				</div>
-
 			</React.Fragment>
 		);
 	}
