@@ -1,14 +1,13 @@
 import React from 'react';
-import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import NavigationBar from 'js/components/Navbar';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
 
 // @TODO Mario make this look pretty pls
 class ReviewJobPage extends React.Component {
+
 	getCurrentJob() {
 		const myCookie = new Cookie();
 		const currentJob = myCookie.get('currentJob');
@@ -30,19 +29,8 @@ class ReviewJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className='pageContainer'>
-				<div className='container padding'>
-					<div className='pageContent'>
-						<div>
-							<NavigationBar/>
-							<br/>
-							<br/>
-							<div>
-								<this.getCurrentJob />
-							</div>
-						</div>
-					</div>
-				</div>
+			<div>
+				<this.getCurrentJob />
 			</div>
 		);
 	}

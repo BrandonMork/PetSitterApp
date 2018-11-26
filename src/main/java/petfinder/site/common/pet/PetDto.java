@@ -9,6 +9,7 @@ public class PetDto implements Identifiable {
 
 	// Only the owner of that pet can create
 	private String principal; // username, always will be unique (primary key)
+	private String petId;
 	private Long id;
 	private String name;
 	private String species;
@@ -22,10 +23,13 @@ public class PetDto implements Identifiable {
 
 	public PetDto() {
 		this.id = UUID.randomUUID().getMostSignificantBits();
+		this.petId = this.id.toString();
+		System.out.println("Made a pet object with id of " + id + " with a petID of " + petId);
 	}
 
-	public PetDto(String principal, Long id, String name, String species, String breed, String size, Long age) {
+	public PetDto(String principal, String petId, Long id, String name, String species, String breed, String size, Long age) {
 		this.principal = principal;
+		this.petId = petId;
 		this.id = id;
 		this.name = name;
 		this.species = species;
@@ -46,6 +50,14 @@ public class PetDto implements Identifiable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getPetId() {
+		return petId;
+	}
+
+	public void setPetId(String petId) {
+		this.petId = petId;
 	}
 
 	public String getName() {
@@ -100,6 +112,7 @@ public class PetDto implements Identifiable {
 	public String toString() {
 		return "PetDto{" +
 				"principal='" + principal + '\'' +
+				", petId='" + petId + '\'' +
 				", id=" + id +
 				", name='" + name + '\'' +
 				", species='" + species + '\'' +

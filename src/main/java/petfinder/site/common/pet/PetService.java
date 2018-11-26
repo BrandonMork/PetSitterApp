@@ -17,9 +17,9 @@ public class PetService {
 	private PetDao petDao;
 
 	//Calls PetDto findPet() function to search in elasticsearch
-	public PetDto findPet(String principal, Long id) {
-		System.out.println("In the PetService with the id " + id + " with principal " + principal);
-		return petDao.findOnePet(principal, id);
+	public PetDto findPet(String principal, String name) {
+		System.out.println("In the PetService with the name of " + name + " with principal " + principal);
+		return petDao.getOnePet(principal, name);
 	}
 
 	//Calls PetDto Save() function to save to elasticsearch
@@ -32,5 +32,13 @@ public class PetService {
 		System.out.println("I hit the PetService and the principal is " + principal);
 		return petDao.findPets(principal);
 	}
+
+	public void updatePet(PetDto pet){
+		petDao.upDatePet(pet);
+	}
+
+    public void deletePet(String principal, String name){
+	    petDao.deletePet(principal,name);
+    }
 
 }
