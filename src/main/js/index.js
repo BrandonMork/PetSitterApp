@@ -23,8 +23,8 @@ import '../styles/pageStyles.css';
 class Index extends React.Component {
 	render() {
 		return (
-			<React.Fragment className="pageContainer">
-				<div className="pageContent">
+			<div className="pageContainer">
+				<div className="pageContent container padded">
 					<NavigationBar/>
 					<HashRouter>
 						<Switch>
@@ -45,7 +45,7 @@ class Index extends React.Component {
 						</Switch>
 					</HashRouter>
 				</div>
-			</React.Fragment>
+			</div>
 		);
 	}
 }

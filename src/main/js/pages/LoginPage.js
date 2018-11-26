@@ -9,18 +9,16 @@ class LoginPage extends React.Component {
 		return (
 			<div className="pageContainer">
 				<div className="pageContent">
-					<div className="container padded">
-						<div className="center">
-							<Col sm="8">
-								<Card>
-									<br/>
-									<CardTitle className="center">Login</CardTitle>
-									<CardBody>
-										<LoginForm/>
-									</CardBody>
-								</Card>
-							</Col>
-						</div>
+					<div className="center">
+						<Col sm="8">
+							<Card>
+								<br/>
+								<CardTitle className="center">Login</CardTitle>
+								<CardBody>
+									<LoginForm/>
+								</CardBody>
+							</Card>
+						</Col>
 					</div>
 				</div>
 			</div>
