@@ -16,6 +16,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookie from 'universal-cookie';
 import '../../styles/pageStyles.css';
+import logo from '../logo.png';
 
 library.add(faPaw);
 
@@ -167,7 +168,10 @@ export default class NavigationBar extends React.Component {
 		return (
 			<div className="pageContent">
 				<Navbar color="light" light expand="md">
-					<NavbarBrand href="/"> <FontAwesomeIcon icon="paw"/> Tempetūrs</NavbarBrand>
+					<NavbarBrand href="/">
+						<img src={logo} />&nbsp;
+						Tempetūrs
+					</NavbarBrand>
 					<NavbarToggler onClick={this.toggle} />
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
