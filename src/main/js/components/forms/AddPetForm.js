@@ -63,7 +63,6 @@ class AddPetForm extends React.Component {
 				<div className="center">
 					<Col sm="8">
 						<Card>
-							<br/>
 							<CardTitle className="center">Add Pet Form</CardTitle>
 							<CardBody>
 								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
@@ -90,22 +89,33 @@ class AddPetForm extends React.Component {
 											</FormGroup>
 										</Col>
 									</Row>
-									<Col md={3}>
-										<FormGroup>
-											<Label for="age">Age</Label>
-											<Input type="text" name="age"
-												   placeholder="Pet Age"/>
-										</FormGroup>
-									</Col>
-									<Col md={4}>
-										<FormGroup>
-											<Label for="size">Size</Label>
-											<Input type="text" name="size"
-												   placeholder="Pet Size"/>
-										</FormGroup>
-									</Col>
-									<Row/>
-									<br/>
+									<Row>
+										<Col md={6}>
+											<FormGroup>
+												<Label for="age">Age</Label>
+												<Input type="text" name="age"
+													   placeholder="Pet Age"/>
+											</FormGroup>
+										</Col>
+										<Col md={6}>
+											<FormGroup>
+												<Label for="size">Size</Label>
+												<Input type="text" name="size"
+													   placeholder="Pet Size"/>
+											</FormGroup>
+										</Col>
+									</Row>
+									<Row>
+										<Col>
+											<FormGroup>
+												<Label for="pet-details">Other Details</Label>
+												<Input type="textarea" name="pet-details"
+													   placeholder="Enter any details about your furry friend!
+													   Dietary restrictions, health conditions, special care
+													   instructions, food preferences, etc." />
+											</FormGroup>
+										</Col>
+									</Row>
 									<Button>Add Pet</Button>
 								</Form>
 							</CardBody>

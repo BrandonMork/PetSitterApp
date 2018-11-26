@@ -39,6 +39,10 @@ export default class NavigationBar extends React.Component {
 		});
 	}
 
+	reloadComponent = () => {
+		this.setState(this.state);
+	};
+
 	static logout() {
 		const myCookie = new Cookie();
 		myCookie.remove('authentication', {path: '/'});
@@ -120,7 +124,7 @@ export default class NavigationBar extends React.Component {
 						<DropdownItem href="#/rating-page">
 							Rate Sitters
 						</DropdownItem>
-						<DropdownItem thref="#/report-page">
+						<DropdownItem href="#/report-page">
 							Report a Sitter
 						</DropdownItem>
 					</DropdownMenu>
@@ -170,12 +174,12 @@ export default class NavigationBar extends React.Component {
 			<Navbar color="light" light expand="md">
 				<Favicon url="https://imgur.com/AzPIQVM.png" />
 				<Helmet>
-					<title>Tempetūrs</title>
+					<title>Refur</title>
 				</Helmet>
 
 				<NavbarBrand href="/">
 					<img src={logo} />&nbsp;
-					Tempetūrs
+					Refur
 				</NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>

@@ -30,7 +30,7 @@ class ReviewJobPage extends React.Component {
 	render() {
 		return (
 			<div>
-				<this.getCurrentJob />
+				{this.getCurrentJob()}
 			</div>
 		);
 	}

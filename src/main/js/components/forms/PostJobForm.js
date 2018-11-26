@@ -105,7 +105,18 @@ class PostJobForm extends React.Component {
 						</Col>
 					</Row>
 
-					<br/>
+					<Row form>
+						<Col md={12}>
+							<FormGroup>
+								<Label for="pet-details">Other Details</Label>
+								<Input type="textarea" name="job-details"
+									   placeholder="Enter any details about your listing!
+									   Do your pets play well with other pets?
+									   Any toy preferences? Favorite parks? Etc." />
+							</FormGroup>
+						</Col>
+					</Row>
+
 					<Button>Post Job</Button>
 				</Form>
 			</React.Fragment>

@@ -7,7 +7,7 @@ class RegisterPage extends React.Component {
 	render() {
 		return (
 			<div className="center">
-				<Col sm="8">
+				<Col md="10" sm="12">
 					<Card>
 						<br/>
 						<CardTitle className="center">Register</CardTitle>

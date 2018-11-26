@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import _, {isEqual} from 'lodash';
 import {Jumbotron, Container, Row, Col, Card, CardTitle, CardText, Button} from 'reactstrap';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
@@ -21,7 +21,7 @@ class HomePage extends React.Component {
 			<div>
 				<Jumbotron fluid>
 					<Container fluid>
-						<h1 className="display-4">The Best Pet Sitter Matching Service</h1>
+						<h2 className="display-4">Refurring you to the best sitters in your area!</h2>
 						<h4 className="lead">Our job is to seamlessly pair you with qualified pet sitters in your
 							area. Join our network of just under 5 users today!</h4>
 					</Container>
@@ -31,14 +31,14 @@ class HomePage extends React.Component {
 				!_.isDefined(this.props.user) &&
 				<div>
 					<Row>
-						<Col sm="6">
+						<Col md={6} sm={6} xs={12} style={{marginBottom: 10}}>
 							<Card body>
 								<CardTitle>Join Now!</CardTitle>
 								<CardText>Sign up for the best pet sitting service!</CardText>
 								<Button onClick={this.register}>Register</Button>
 							</Card>
 						</Col>
-						<Col sm="6">
+						<Col md={6} sm={6} xs={12}>
 							<Card body>
 								<CardTitle>Already a member?</CardTitle>
 								<CardText>Log in to get back to it!</CardText>
@@ -53,14 +53,15 @@ class HomePage extends React.Component {
 				_.isDefined(this.props.user) &&
 				<div>
 					<Row className="center">
-						<Col md="4" sm="6">
+						<Col md="6" sm="10">
 							<Card body>
 								<CardTitle>Welcome back, {this.props.user.principal}</CardTitle>
-								<CardText className="center">
+								<CardText>
 									We're glad you're back!
 								</CardText>
 
-								{this.props.user.userType === 'Owner' &&
+								{(isEqual(this.props.user.userType, 'Owner') ||
+									isEqual(this.props.user.userType, 'Both')) &&
 								<Container>
 									<Row style={{marginBottom: 10}}>
 										<Col>
@@ -75,28 +76,9 @@ class HomePage extends React.Component {
 								</Container>
 								}
 
-								{this.props.user.userType === 'Sitter' &&
+								{(isEqual(this.props.user.userType, 'Sitter') ||
+									isEqual(this.props.user.userType, 'Both')) &&
 								<Container>
-									<Row>
-										<Col>
-											<Button>Browse Job</Button>
-										</Col>
-									</Row>
-								</Container>
-								}
-
-								{this.props.user.userType === 'Both' &&
-								<Container>
-									<Row style={{marginBottom: 10}}>
-										<Col>
-											<Button>Post Job</Button>
-										</Col>
-									</Row>
-									<Row style={{marginBottom: 10}}>
-										<Col>
-											<Button>Browse Sitters</Button>
-										</Col>
-									</Row>
 									<Row>
 										<Col>
 											<Button>Browse Job</Button>
