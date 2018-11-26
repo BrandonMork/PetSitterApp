@@ -31,3 +31,7 @@
     border-color: black;
     border: 10px;
 }
+
+.center-container {
+    margin-top: 5vh;
+}
