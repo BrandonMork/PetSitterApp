@@ -18,7 +18,7 @@ class PetList extends React.Component {
 	}
 
 
-	handleAddPet = (e, name) => {
+	handleEditPet = (e, name) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
 		getOnePet(this.props.user.principal, name)
@@ -52,7 +52,7 @@ class PetList extends React.Component {
 							<React.Fragment key={pet.id}>
 								<Col className="darkColumn" md={3}>
 									<p>{pet.name}</p>
-									<Button onClick={ (e) => this.handleAddPet(e, pet.name)}>Edit Pet</Button>
+									<Button onClick={ (e) => this.handleEditPet(e, pet.name)}>Edit Pet</Button>
 									<Button onClick={ (e) => this.handleDeletePet(e, pet.name)}>Delete Pet</Button>
 								</Col>
 							</React.Fragment>

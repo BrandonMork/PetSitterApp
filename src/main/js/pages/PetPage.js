@@ -8,6 +8,8 @@ import {Button} from 'js/alloy/bessemer/components';
 import AddPetForm from 'js/components/forms/AddPetForm';
 import {getOnePet} from 'js/utils/Users';
 import uuidv4 from 'uuid/v4';
+import {deletePet} from 'js/utils/Users';
+import Cookie from 'universal-cookie';
 
 class PetPage extends React.Component {
 	constructor() {
@@ -18,26 +20,24 @@ class PetPage extends React.Component {
 		};
 	}
 
-	editPet(id, e){
+	editPet(name, e){
 		e.preventDefault();
-		console.log('Im going to edit this pet! ' + id);
-
-		//this will get the pet that will be edited
-		let oldPet;
-		getOnePet(this.props.user.principal.valueOf(), id)
+		const myCookie = new Cookie();
+		getOnePet(this.props.user.principal, name)
 			.then(function (response) {
-				console.log('did this work?');
+				console.log('user has clicked editPet button');
 				console.log(response);
-				oldPet = response;
+				myCookie.set('currentPet', response, {path: '/'});
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
+		this.context.router.history.push('/edit-pet-page');
 	}
 
-	deletePet(id, e) {
-		console.log('Deleting pet');
-		console.log(id);
+	deletePet(name, e) {
+		e.preventDefault();
+		deletePet(this.props.user.principal, name);
 	}
 
 	render() {
@@ -78,10 +78,10 @@ class PetPage extends React.Component {
 												<br/>
 												Size: {res.size}
 												<br/>
-												<Button onClick={(e) => this.editPet(res.id,e)}>Edit Pet</Button>
+												<Button onClick={(e) => this.editPet(res.name,e)}>Edit Pet</Button>
 												<br/>
 												<br/>
-												<Button onClick={(e) => this.deletePet(res.id, e)}>Delete Pet</Button>
+												<Button onClick={(e) => this.deletePet(res.name, e)}>Delete Pet</Button>
 											</CardBody>
 										</Card>
 									</Col>
