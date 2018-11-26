@@ -1,7 +1,6 @@
 import React from 'react';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import RegistrationForm from 'js/components/forms/RegistrationForm';
-import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
 
 class RegisterPage extends React.Component {
@@ -9,10 +8,6 @@ class RegisterPage extends React.Component {
 		return (
 			<div className="pageContainer">
 				<div className="pageContent">
-					<div>
-						<NavigationBar/>
-					</div>
-					<br/>
 					<div className="center">
 						<Col sm="8">
 							<Card>

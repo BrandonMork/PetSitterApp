@@ -11,12 +11,6 @@ class FindSitterPage extends React.Component {
 	render() {
 		return (
 			<div>
-
-				<div>
-					<NavigationBar/>
-				</div>
-				<br/>
-
 				<ReactiveBase
 					app='petfinder-users'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
