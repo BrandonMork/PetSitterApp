@@ -13,10 +13,11 @@ import {
 	NavLink} from 'reactstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cookie from 'universal-cookie';
 import '../../styles/pageStyles.css';
 import logo from '../logo.png';
+import Favicon from 'react-favicon';
+import { Helmet } from 'react-helmet';
 
 library.add(faPaw);
 
@@ -167,6 +168,11 @@ export default class NavigationBar extends React.Component {
 	render() {
 		return (
 			<Navbar color="light" light expand="md">
+				<Favicon url="https://imgur.com/AzPIQVM.png" />
+				<Helmet>
+					<title>Tempetūrs</title>
+				</Helmet>
+
 				<NavbarBrand href="/">
 					<img src={logo} />&nbsp;
 					Tempetūrs
