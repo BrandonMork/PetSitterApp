@@ -7,6 +7,8 @@ import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg, Form, Row, FormGroup, Label, Input} from 'reactstrap';
 import {Button} from 'js/alloy/bessemer/components';
+import {updateUser} from 'js/utils/Users';
+import {updatePet} from 'js/utils/Users';
 
 // @TODO Mario make this look pretty pls
 class EditPetPage extends React.Component {
@@ -43,8 +45,17 @@ class EditPetPage extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log('update pet with this info');
-		console.log(e);
+		let tempPet = this.getCookieInfo();
+		let updatedPet = {
+			'name': tempPet.name,
+			'principal': tempPet.principal,
+			'id': tempPet.id,
+			'species': tempPet.species,
+			'breed': tempPet.breed,
+			'size': e.target.size.value,
+			'age': e.target.age.value
+		};
+		updatePet(updatedPet);
 	}
 
 	render() {
@@ -59,13 +70,6 @@ class EditPetPage extends React.Component {
 							<br/>
 							<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 								<Row form>
-									<Col md={4}>
-										<FormGroup>
-											<Label for="name">Name</Label>
-											<Input type="text" name="name"
-												   placeholder={this.getCookieInfo().name} defaultValue={this.getCookieInfo().name} />
-										</FormGroup>
-									</Col>
 									<Col md={4}>
 										<FormGroup>
 											<Label for="size">Size</Label>

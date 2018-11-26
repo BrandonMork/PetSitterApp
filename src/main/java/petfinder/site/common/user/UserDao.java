@@ -42,7 +42,6 @@ public class UserDao {
 	}
 
 	public void save(UserAuthenticationDto userAuthentication) {
-
 		userRepository.save(userAuthentication);
 	}
 

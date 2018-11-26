@@ -20,7 +20,7 @@ class PetList extends React.Component {
 	handleAddPet = (e, name, id) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
-		getOnePet(this.props.user.principal, id)
+		getOnePet(this.props.user.principal, name)
 			.then(function (response) {
 				console.log('user has clicked editPet button');
 				console.log(response);

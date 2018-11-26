@@ -25,10 +25,10 @@ public class PetEndpoint {
 	private PetService petService;
 
 	//get these functions from the PetService!!!
-	@GetMapping(value = "/{principal}/{id}", produces = "application/json")
-	public PetDto getPet(@PathVariable("principal") String principal, @PathVariable("id") Long id) {
-		System.out.println("In the PetEndpoint with the id " + id + " with principal " + principal);
-		return petService.findPet(principal,id);
+	@GetMapping(value = "/{principal}/{name}", produces = "application/json")
+	public PetDto getPet(@PathVariable("principal") String principal, @PathVariable("name") String name) {
+		System.out.println("In the PetEndpoint with pet name of  " + name + " with principal " + principal);
+		return petService.findPet(principal,name);
 	}
 
 	@PostMapping(value = "/add-pet", produces = "application/json")
@@ -43,7 +43,13 @@ public class PetEndpoint {
 		return petService.findPets(principal);
 	}
 
+	@PostMapping(value = "/edit-pet", produces = "application/json")
+	public PetDto updatePet(@RequestBody PetDto pet) {
+		petService.updatePet(pet);
+		return pet;
+	}
+
 	// @TODO Delete pet function
 
-
+//	return axios.post('/api/pets/edit-pet/' + principal);
 }
