@@ -20,24 +20,29 @@ const reducers = [
 
 const myCookie = new Cookie();
 const reducer = Utils.combineReducers(reducers);
-const store = createStore(reducer, {authentication: myCookie.get('authentication'), user: myCookie.get('user')}, applyMiddleware(thunkMiddleware, createLogger()));
 
-/**
- * @TODO [QUESTION]: What does this entire block of axios do?
- */
+/* Initializing our Redux (data) store */
+const store = createStore(reducer, {
+	authentication: myCookie.get('authentication'),
+	user: myCookie.get('user')
+}, applyMiddleware(thunkMiddleware, createLogger()));
+
+/* Sets default headers for calls for debuggers for us to use on things like Chrome or Firefox. */
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
 
+/* Every Axios requests requires us to have a valid authentication token on our client */
 axios.interceptors.request.use(request => {
 	let authentication = Users.State.getAuthentication(store.getState());
 	if(_.isDefined(authentication)) {
 		request.headers.common['Authorization'] = 'Bearer ' + authentication['access_token'];
 	}
-
 	return request;
 }, error => Promise.reject(error));
 
 axios.interceptors.response.use(response => response.data, error => Promise.reject(error));
+
+/* 'Node' where our app will be mounted to */
 const mountNode = document.querySelector('#main');
 
 /**

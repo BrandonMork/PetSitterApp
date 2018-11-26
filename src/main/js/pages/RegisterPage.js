@@ -1,30 +1,21 @@
 import React from 'react';
 import {Card, CardBody, CardTitle, Col} from 'reactstrap';
 import RegistrationForm from 'js/components/forms/RegistrationForm';
-import NavigationBar from 'js/components/Navbar';
 import '../../styles/pageStyles.css';
 
 class RegisterPage extends React.Component {
 	render() {
 		return (
-			<div className="pageContainer">
-				<div className="pageContent">
-					<div>
-						<NavigationBar/>
-					</div>
-					<br/>
-					<div className="center">
-						<Col sm="8">
-							<Card>
-								<br/>
-								<CardTitle className="center">Register</CardTitle>
-								<CardBody>
-									<RegistrationForm />
-								</CardBody>
-							</Card>
-						</Col>
-					</div>
-				</div>
+			<div className="center">
+				<Col sm="8">
+					<Card>
+						<br/>
+						<CardTitle className="center">Register</CardTitle>
+						<CardBody>
+							<RegistrationForm />
+						</CardBody>
+					</Card>
+				</Col>
 			</div>
 		);
 	}
