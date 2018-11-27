@@ -5,8 +5,28 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
+import Cookie from 'universal-cookie';
+import {getSitterInfo} from 'js/utils/Users';
 
 class FindSitterPage extends React.Component {
+
+	constructor(props){
+		super(props);
+	}
+
+	handleViewProfile = (e, principal) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		getSitterInfo(principal)
+			.then(function (response) {
+				myCookie.set('sitterProfile', response, {path: '/'});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		this.context.router.history.push('/view-sitter-page');
+	};
+
 	render() {
 		return (
 			<div style={{marginTop: 80, marginBottom: 30}}>
@@ -36,7 +56,7 @@ class FindSitterPage extends React.Component {
 										{/** @TODO Need to add actual user ratings here once we start to capture them */}
 										Average Rating : ★★★★★
 									</CardText>
-									<Button color="secondary">View Profile</Button>
+									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">View Profile</Button>
 								</Card>
 								}
 							</React.Fragment>
