@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import {
 	Collapse,
@@ -18,11 +19,14 @@ import '../../styles/pageStyles.css';
 import logo from '../logo.png';
 import Favicon from 'react-favicon';
 import { Helmet } from 'react-helmet';
+import connect from 'react-redux/es/connect/connect';
+import * as Users from 'js/utils/Users';
+import notificationBell from '../notification16x16.png';
 
 library.add(faPaw);
 
 // @TODO Set isOpen state to false when link is clicked (user is redirected) Maybe? Consider it.
-export default class NavigationBar extends React.Component {
+class NavigationBar extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -145,12 +149,21 @@ export default class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-				<NavItem>
-					<NavLink href="#/add-pet">Pets</NavLink>
-				</NavItem>
-				<NavItem>
-					<NavLink href="#/profile">Profile</NavLink>
-				</NavItem>
+
+				<UncontrolledDropdown nav inNavbar>
+					<DropdownToggle nav caret>
+						User
+					</DropdownToggle>
+					<DropdownMenu right>
+						<DropdownItem href="#/profile">
+							My Profile
+						</DropdownItem>
+						<DropdownItem href="#/add-pet">
+							My Pets
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
+
 				<NavItem>
 					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
 				</NavItem>
@@ -171,7 +184,7 @@ export default class NavigationBar extends React.Component {
 
 	render() {
 		return (
-			<Navbar color="light" light expand="md">
+			<Navbar color="light" light expand="md" style={{listStyleType: 'none'}}>
 				<Favicon url="https://imgur.com/AzPIQVM.png" />
 				<Helmet>
 					<title>ReFur</title>
@@ -181,13 +194,52 @@ export default class NavigationBar extends React.Component {
 					<img src={logo} />&nbsp;
 					ReFur
 				</NavbarBrand>
+
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
 						{NavigationBar.checkUserStatus()}
 					</Nav>
 				</Collapse>
+
+				{_.isDefined(this.props.user) &&
+				<React.Fragment>
+					<UncontrolledDropdown nav inNavbar>
+						<DropdownToggle nav>
+							<img src={notificationBell}/>
+						</DropdownToggle>
+
+						{/* @TODO BRANDON Do your notification stuff here */}
+						<DropdownMenu>
+							<DropdownItem href="">
+								{this.props.user.principal}
+							</DropdownItem>
+							<DropdownItem href="">
+								Notification 2
+							</DropdownItem>
+							<DropdownItem href="">
+								Notification 3
+							</DropdownItem>
+							<DropdownItem href="">
+								Notification 4
+							</DropdownItem>
+							<DropdownItem href="">
+								Notification 5
+							</DropdownItem>
+						</DropdownMenu>
+					</UncontrolledDropdown>
+				</React.Fragment>
+				}
 			</Navbar>
 		);
 	}
 }
+
+NavigationBar = connect(
+	state => ({
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
+	})
+)(NavigationBar);
+
+export default NavigationBar;
