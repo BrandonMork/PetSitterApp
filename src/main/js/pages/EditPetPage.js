@@ -5,14 +5,12 @@ import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg, Form, Row, FormGroup, Label, Input} from 'reactstrap';
 import {Button} from 'js/alloy/bessemer/components';
-import {updateUser} from 'js/utils/Users';
 import {updatePet} from 'js/utils/Users';
 
 // @TODO Mario make this look pretty pls
 class EditPetPage extends React.Component {
 	constructor(props){
 		super(props);
-		setTimeout(1000);
 	}
 
 	getCurrentPet() {

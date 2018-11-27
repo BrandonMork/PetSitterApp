@@ -1,27 +1,16 @@
 import _ from 'lodash';
 import React from 'react';
-import {
-	Collapse,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	UncontrolledDropdown,
-	DropdownToggle,
-	DropdownItem,
-	DropdownMenu,
-	NavLink} from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu, NavLink } from 'reactstrap';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet';
 import Cookie from 'universal-cookie';
-import '../../styles/pageStyles.css';
 import logo from '../logo.png';
 import Favicon from 'react-favicon';
-import { Helmet } from 'react-helmet';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
 import notificationBell from '../notificationUnread.png';
+import * as Users from 'js/utils/Users';
+import '../../styles/pageStyles.css';
 
 library.add(faPaw);
 
@@ -184,7 +173,7 @@ class NavigationBar extends React.Component {
 
 	render() {
 		return (
-			<Navbar color="light" light expand="md" style={{listStyleType: 'none'}}>
+			<Navbar fixed="top" color="dark" dark expand="md" style={{listStyleType: 'none'}}>
 				<Favicon url="https://imgur.com/AzPIQVM.png" />
 				<Helmet>
 					<title>ReFur</title>

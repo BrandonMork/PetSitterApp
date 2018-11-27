@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
 
 	render() {
 		return (
-			<div className="center">
+			<div style={{marginTop: 100}} className="center">
 				<Col sm="8">
 					<Card>
 						<br/>
