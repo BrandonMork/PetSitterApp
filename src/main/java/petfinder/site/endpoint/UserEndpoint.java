@@ -30,10 +30,11 @@ public class UserEndpoint {
 		return userService.findUserByPrincipal(principal);
 	}
 
-	@GetMapping(value = "/{principal}", produces = "application/json")
-	public Optional<UserDto> getSitterInfo(@PathVariable("principal") String principal) {
+	@GetMapping(value = "/sitter/{principal}")
+	public Optional<UserDto> getSitterInfo(@PathVariable ("principal") String principal) {
 		System.out.println("In the UserEndpoint with principal " + principal);
-		return userService.findUserByPrincipal(principal);
+		principal = principal.replace("*",".");
+		return userService.findUser(principal);
 	}
 
 	@PostMapping(value = "/register")
