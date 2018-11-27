@@ -3,15 +3,7 @@ import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import {updateUser} from 'js/utils/Users';
-import {
-	Form,
-	Col,
-	Row,
-	FormGroup,
-	Label,
-	Input,
-	Button
-} from 'reactstrap';
+import { Form, Col, Row, FormGroup, Label, Input, Button } from 'reactstrap';
 
 // @TODO This is completely broken and doesn't do what we want it to
 class ProfilePageForm extends React.Component {
@@ -22,12 +14,8 @@ class ProfilePageForm extends React.Component {
 			value: null,
 			label: null
 		};
-
-		this.props.getUserDetails();
-		setTimeout(this.forceUpdate(),1000);
 	}
 
-	// @TODO MARIO DON'T TOUCH THIS SH** BRANDON WILL FIX IT!!!!!
 	handleSubmit(e) {
 		e.preventDefault();
 		this.setState({
@@ -65,7 +53,6 @@ class ProfilePageForm extends React.Component {
 
 	render () {
 		console.log(this.props.user);
-
 
 		return (
 			<React.Fragment>

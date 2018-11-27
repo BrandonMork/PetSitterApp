@@ -9,7 +9,7 @@ import uuidv4 from 'uuid/v4';
 class FindSitterPage extends React.Component {
 	render() {
 		return (
-			<div>
+			<div style={{marginTop: 80, marginBottom: 30}}>
 				<ReactiveBase
 					app='petfinder-users'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -23,7 +23,7 @@ class FindSitterPage extends React.Component {
 							<React.Fragment key={uuidv4()}>
 								{_.isDefined(res.user) &&
 								_.isEqual(res.user.userType, 'Sitter') &&
-								<Card className="center" body outline color="info">
+								<Card className="center" body outline style={{marginBottom: 10}}>
 									<CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
 									<CardText>
 										<br/>

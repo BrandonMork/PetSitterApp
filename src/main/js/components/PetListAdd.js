@@ -3,20 +3,20 @@ import React from 'react';
 import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-import { Button, Container, Table } from 'reactstrap';
-import { getOnePet, deletePet } from 'js/utils/Users';
+import { Button, Container, Table, NavLink } from 'reactstrap';
+import { getOnePet } from 'js/utils/Users';
 import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
 import '../../styles/pageStyles.css';
 
-class PetList extends React.Component {
+class PetListAdd extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.props.fetchPets(this.props.user.principal);
 	}
 
-	handleEditPet = (e, name) => {
+	handleAddPet = (e, name) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
 		getOnePet(this.props.user.principal, name)
@@ -31,12 +31,6 @@ class PetList extends React.Component {
 		this.context.router.history.push('/edit-pet-page');
 	};
 
-	handleDeletePet = (e, name) => {
-		e.preventDefault();
-		deletePet(this.props.user.principal, name);
-		this.forceUpdate();
-	};
-
 	render() {
 		return (
 			<React.Fragment>
@@ -47,11 +41,20 @@ class PetList extends React.Component {
 						border: 5
 					}}>
 						{_.isEqual(this.props.elasticPets.length, 0) &&
-						<thead>
-						<tr>
-							<th>Nothing here!</th>
-						</tr>
-						</thead>}
+						<React.Fragment>
+							<thead>
+							<tr>
+								<th>You don't have any pets!</th>
+							</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><NavLink href="#/add-pet">Add A New Pet</NavLink></td>
+								</tr>
+							</tbody>
+						</React.Fragment>
+						}
+
 						{!_.isEqual(this.props.elasticPets.length, 0) &&
 						<React.Fragment>
 							<thead>
@@ -68,8 +71,7 @@ class PetList extends React.Component {
 								<tr key={pet.id}>
 									<th scope="row">{pet.id}</th>
 									<td>{pet.name}</td>
-									<td><Button onClick={ (e) => this.handleEditPet(e, pet.name)}>Edit Pet</Button></td>
-									<td><Button onClick={ (e) => this.handleDeletePet(e, pet.name)}>Delete Pet</Button></td>
+									<td><Button onClick={ (e) => this.handleAddPet(e, pet.name)}>Add Pet</Button></td>
 								</tr>
 							))}
 							</tbody>
@@ -81,14 +83,14 @@ class PetList extends React.Component {
 	}
 }
 
-PetList.contextTypes = {
+PetListAdd.contextTypes = {
 	router: PropTypes.object.isRequired,
 
 };
 
-PetList = ReduxForm.reduxForm({form: 'elasticPets'})(PetList);
+PetListAdd = ReduxForm.reduxForm({form: 'elasticPets'})(PetListAdd);
 
-PetList = connect(
+PetListAdd = connect(
 	state => ({
 		elasticPets: Users.State.getPets(state),
 		user: Users.State.getUser(state),
@@ -97,6 +99,6 @@ PetList = connect(
 		fetchPets: (principal) => dispatch(Users.Actions.getPets(principal)),
 		authenticate: (principal, password) => dispatch(Users.Actions.authenticate(principal, password))
 	})
-)(PetList);
+)(PetListAdd);
 
-export default PetList;
+export default PetListAdd;
