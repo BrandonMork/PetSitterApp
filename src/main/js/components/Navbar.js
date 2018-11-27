@@ -11,6 +11,8 @@ import connect from 'react-redux/es/connect/connect';
 import notificationBell from '../notificationUnread.png';
 import * as Users from 'js/utils/Users';
 import '../../styles/pageStyles.css';
+import PropTypes from 'prop-types';
+import PetList from 'js/components/PetList';
 
 library.add(faPaw);
 
@@ -36,7 +38,12 @@ class NavigationBar extends React.Component {
 		const myCookie = new Cookie();
 		myCookie.remove('authentication', {path: '/'});
 		myCookie.remove('user', {path: '/'});
-		window.location.reload();
+
+		if (window.location.pathname === '/') {
+			return window.location.reload();
+		} else {
+			return this.context.router.history.push('/');
+		}
 	}
 
 	static checkUserStatus() {
@@ -83,6 +90,9 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
+				<NavItem>
+					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
+				</NavItem>
 			</React.Fragment>;
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Sitter') {
 			return <React.Fragment>
@@ -100,6 +110,7 @@ class NavigationBar extends React.Component {
 				<NavItem>
 					<NavLink href="#/profile">Profile</NavLink>
 				</NavItem>
+
 				<NavItem>
 					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
 				</NavItem>
@@ -223,6 +234,10 @@ class NavigationBar extends React.Component {
 		);
 	}
 }
+
+PetList.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
 
 NavigationBar = connect(
 	state => ({
