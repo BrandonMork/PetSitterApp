@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-import NavigationBar from 'js/components/Navbar';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';

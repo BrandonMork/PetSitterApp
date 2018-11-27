@@ -18,7 +18,9 @@ class ProfilePageForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			updatedUserProfile: {}
+			updatedUserProfile: { },
+			value: null,
+			label: null
 		};
 
 		this.props.getUserDetails();
@@ -63,9 +65,25 @@ class ProfilePageForm extends React.Component {
 
 	render () {
 		console.log(this.props.user);
+
+
 		return (
 			<React.Fragment>
 				<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+
+					<Row form>
+						<Col>
+							<FormGroup>
+								<Label for="userType">User Type</Label>
+								<Input type="select" name="userType">
+									<option value="Sitter">Sitter</option>
+									<option value="Owner">Owner</option>
+									<option value="Both">Both</option>
+								</Input>
+							</FormGroup>
+						</Col>
+					</Row>
+
 					<Row form>
 						<Col md={12}>
 							<FormGroup>
@@ -138,12 +156,6 @@ class ProfilePageForm extends React.Component {
 						<Label for="phoneNumber">Phone Number</Label>
 						<Input type="text" name="phoneNumber"
 							   placeholder={this.props.user.phoneNumber} defaultValue={this.props.user.phoneNumber}/>
-					</FormGroup>
-
-					<FormGroup>
-						<Label for="userType">User Type</Label>
-						<Input type="text" name="userType"
-							   placeholder={this.props.user.userType} defaultValue={this.props.user.userType}/>
 					</FormGroup>
 
 					<FormGroup>
