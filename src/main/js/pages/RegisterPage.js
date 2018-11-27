@@ -6,7 +6,7 @@ import '../../styles/pageStyles.css';
 class RegisterPage extends React.Component {
 	render() {
 		return (
-			<div className="center">
+			<div style={{marginTop: 100}} className="center">
 				<Col md="10" sm="12">
 					<Card>
 						<br/>

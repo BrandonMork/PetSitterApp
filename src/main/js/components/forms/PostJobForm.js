@@ -1,18 +1,12 @@
 import React from 'react';
-import PetList from 'js/components/PetList';
 import {postJob} from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import {Form,
-	FormGroup,
-	Label,
-	Input,
-	Row,
-	Col,
-	Button
-} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Row, Col, Button, Container} from 'reactstrap';
 import PropTypes from 'prop-types';
+import PetListAdd from 'js/components/PetListAdd';
+import '../../../styles/pageStyles.css';
 
 class PostJobForm extends React.Component {
 
@@ -52,74 +46,78 @@ class PostJobForm extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<Form name="form" onSubmit={this.handleSubmit}>
-					<p>List of your pets:</p>
-					<PetList/>
+			<Container fluid>
+				<Row>
+					<Col lg={10} sm={12}>
+						<Form name="form" onSubmit={this.handleSubmit}>
+							<h4>List of your pets:</h4>
+							<PetListAdd/>
 
-					<FormGroup>
-						<Label for="pets">Which pet needs sitting?</Label>
-						<Input type="text" ref="pets" name="pets" id="pets" placeholder="Pet Name"/>
-					</FormGroup>
-
-					<FormGroup>
-						<Label for="startDate">Start Date</Label>
-						<Input type="date" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
-					</FormGroup>
-
-					<FormGroup>
-						<Label for="endDate">End Date</Label>
-						<Input type="date" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
-					</FormGroup>
-
-					<h3>Where is the job located? </h3>
-					<p>Sitters will only see the approximate area. Location will be shown after you've accepted their bid.</p>
-					<FormGroup>
-						<Label for="addressLine1">Address</Label>
-						<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" placeholder={this.props.user.userAddress1}/>
-					</FormGroup>
-
-					<FormGroup>
-						<Label for="addressLine2">Address 2</Label>
-						<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" placeholder={this.props.user.userAddress2}/>
-					</FormGroup>
-
-					<Row form>
-						<Col md={6}>
 							<FormGroup>
-								<Label for="city">City</Label>
-								<Input type="text" ref="city" name="city" id="city" placeholder={this.props.user.city}/>
+								<Label for="pets">Which pet needs sitting?</Label>
+								<Input type="text" ref="pets" name="pets" id="pets" placeholder="Pet Name"/>
 							</FormGroup>
-						</Col>
-						<Col md={4}>
-							<FormGroup>
-								<Label for="state">State</Label>
-								<Input type="text" ref="state" name="state" id="state" placeholder={this.props.user.state}/>
-							</FormGroup>
-						</Col>
-						<Col md={2}>
-							<FormGroup>
-								<Label for="zip">Zip</Label>
-								<Input type="number" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
-							</FormGroup>
-						</Col>
-					</Row>
 
-					<Row form>
-						<Col md={12}>
 							<FormGroup>
-								<Label for="pet-details">Other Details</Label>
-								<Input type="textarea" name="job-details"
-									   placeholder="Enter any details about your listing!
+								<Label for="startDate">Start Date</Label>
+								<Input type="date" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
+							</FormGroup>
+
+							<FormGroup>
+								<Label for="endDate">End Date</Label>
+								<Input type="date" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
+							</FormGroup>
+
+							<h4>Where is the job located? </h4>
+							<p>Sitters will only see the approximate area. Location will be shown after you've accepted their bid.</p>
+							<FormGroup>
+								<Label for="addressLine1">Address</Label>
+								<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" placeholder={this.props.user.userAddress1}/>
+							</FormGroup>
+
+							<FormGroup>
+								<Label for="addressLine2">Address 2</Label>
+								<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" placeholder={this.props.user.userAddress2}/>
+							</FormGroup>
+
+							<Row form>
+								<Col md={6}>
+									<FormGroup>
+										<Label for="city">City</Label>
+										<Input type="text" ref="city" name="city" id="city" placeholder={this.props.user.city}/>
+									</FormGroup>
+								</Col>
+								<Col md={4}>
+									<FormGroup>
+										<Label for="state">State</Label>
+										<Input type="text" ref="state" name="state" id="state" placeholder={this.props.user.state}/>
+									</FormGroup>
+								</Col>
+								<Col md={2}>
+									<FormGroup>
+										<Label for="zip">Zip</Label>
+										<Input type="number" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
+									</FormGroup>
+								</Col>
+							</Row>
+
+							<Row form>
+								<Col md={12}>
+									<FormGroup>
+										<Label for="pet-details">Other Details</Label>
+										<Input type="textarea" name="job-details"
+											   placeholder="Enter any details about your listing!
 									   Do your pets play well with other pets?
 									   Any toy preferences? Favorite parks? Etc." />
-							</FormGroup>
-						</Col>
-					</Row>
+									</FormGroup>
+								</Col>
+							</Row>
 
-					<Button>Post Job</Button>
-				</Form>
-			</React.Fragment>
+							<Button>Post Job</Button>
+						</Form>
+					</Col>
+				</Row>
+			</Container>
 		);
 	}
 }

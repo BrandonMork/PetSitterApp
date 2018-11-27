@@ -23,9 +23,11 @@ import NavigationBar from 'js/components/Navbar';
 class Index extends React.Component {
 	render() {
 		return (
-			<div className="pageContainer">
+			<div>
 				<div className="pageContent container padded">
+
 					<NavigationBar/>
+
 					<HashRouter>
 						<Switch>
 							<Route exact path="/" component={HomePage} />
