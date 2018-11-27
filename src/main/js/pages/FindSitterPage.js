@@ -33,6 +33,7 @@ class FindSitterPage extends React.Component {
 										<br/>
 										Phone: {res.user.phoneNumber}
 										<br/>
+										{/** @TODO Need to add actual user ratings here once we start to capture them */}
 										Average Rating : ★★★★★
 									</CardText>
 									<Button color="secondary">View Profile</Button>
