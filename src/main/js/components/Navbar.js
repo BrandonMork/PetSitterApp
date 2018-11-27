@@ -174,12 +174,12 @@ export default class NavigationBar extends React.Component {
 			<Navbar color="light" light expand="md">
 				<Favicon url="https://imgur.com/AzPIQVM.png" />
 				<Helmet>
-					<title>Refur</title>
+					<title>ReFur</title>
 				</Helmet>
 
 				<NavbarBrand href="/">
 					<img src={logo} />&nbsp;
-					Refur
+					ReFur
 				</NavbarBrand>
 				<NavbarToggler onClick={this.toggle} />
 				<Collapse isOpen={this.state.isOpen} navbar>
