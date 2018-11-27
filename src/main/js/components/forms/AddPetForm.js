@@ -4,6 +4,7 @@ import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { Form, Col, Row, FormGroup, Label, Input, Button, Card, CardTitle, CardBody} from 'reactstrap';
+import { NotificationManager } from 'react-notifications';
 
 class AddPetForm extends React.Component {
 
@@ -35,11 +36,10 @@ class AddPetForm extends React.Component {
 			//console.log('the user has pushed the update profile button with the following info');
 			//console.log(this.state.updatedUserProfile);
 			console.log(this.state.newPet.pet);
-			//this.props.addPet(this.state.newPet.pet);
 			registerPet(this.state.newPet.pet);
 			window.location.reload();
-		}
-		);
+			NotificationManager.success('You have added a new pet!', 'Success');
+		});
 	}
 
 	render() {

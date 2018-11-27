@@ -83,7 +83,6 @@ class PetList extends React.Component {
 
 PetList.contextTypes = {
 	router: PropTypes.object.isRequired,
-
 };
 
 PetList = ReduxForm.reduxForm({form: 'elasticPets'})(PetList);
