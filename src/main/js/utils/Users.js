@@ -186,6 +186,11 @@ export function getUserDetails() {
 	return axios.get('/api/user');
 }
 
+export function getSitterInfo(principal){
+	console.log('trying to get sitter info with principal ' + principal);
+	return axios.get('/api/user/' + principal);
+}
+
 let State = {};
 
 State.getAuthentication = state => {

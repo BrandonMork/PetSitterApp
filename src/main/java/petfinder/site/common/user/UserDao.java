@@ -37,7 +37,7 @@ public class UserDao {
 
 		String queryString = String.format("user.principal=\"%s\"", principal.replace("\"", ""));
 		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
-
+		System.out.println("in the UserDao searching for " + principal);
 		return userRepository.search(searchSourceBuilder).stream().findFirst();
 	}
 

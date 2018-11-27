@@ -16,6 +16,7 @@ import ReviewJobPage from 'js/pages/ReviewJobPage';
 import SearchJobPage from 'js/pages/SearchJobPage';
 import AcceptJobPage from 'js/pages/AcceptJobPage';
 import EditPetPage from 'js/pages/EditPetPage';
+import ViewSitterPage from 'js/pages/ViewSitterPage';
 import {Switch} from 'react-router';
 import NavigationBar from 'js/components/Navbar';
 
@@ -44,6 +45,7 @@ class Index extends React.Component {
 							<Route exact path="/review-job-page" component={ReviewJobPage}/>
 							<Route exact path="/accept-job-page" component={AcceptJobPage}/>
 							<Route exact path="/edit-pet-page" component={EditPetPage}/>
+							<Route exact path="/view-sitter-page" component={ViewSitterPage}/>
 						</Switch>
 					</HashRouter>
 				</div>

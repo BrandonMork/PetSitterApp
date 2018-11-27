@@ -6,11 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import petfinder.site.common.pet.PetDto;
 import petfinder.site.common.user.UserDao;
@@ -31,6 +27,12 @@ public class UserEndpoint {
 	@GetMapping(value = "", produces = "application/json")
 	public Optional<UserDto> getUserDetails() {
 		String principal = SecurityContextHolder.getContext().getAuthentication().getName();
+		return userService.findUserByPrincipal(principal);
+	}
+
+	@GetMapping(value = "/{principal}", produces = "application/json")
+	public Optional<UserDto> getSitterInfo(@PathVariable("principal") String principal) {
+		System.out.println("In the UserEndpoint with principal " + principal);
 		return userService.findUserByPrincipal(principal);
 	}
 
