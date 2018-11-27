@@ -30,6 +30,10 @@ public class UserService {
 		return userDao.findUserByPrincipal(principal).map(UserAuthenticationDto::getUser);
 	}
 
+	public Optional<UserDto> findUser(String principal) {
+		return userDao.findUserByPrincipal(principal).map(UserAuthenticationDto::getUser);
+	}
+
 	public Optional<UserAuthenticationDto> findUserAuthenticationByPrincipal(String principal) {
 		return userDao.findUserByPrincipal(principal);
 	}

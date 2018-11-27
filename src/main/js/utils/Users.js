@@ -188,7 +188,10 @@ export function getUserDetails() {
 
 export function getSitterInfo(principal){
 	console.log('trying to get sitter info with principal ' + principal);
-	return axios.get('/api/user/' + principal);
+	principal = principal.replace('@','%40');
+	principal = principal.replace('.','*');
+	console.log('trying to get sitter info with principal ' + principal);
+	return axios.get('/api/user/sitter/' + principal);
 }
 
 let State = {};
