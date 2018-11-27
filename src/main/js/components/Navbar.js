@@ -21,7 +21,7 @@ import Favicon from 'react-favicon';
 import { Helmet } from 'react-helmet';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import notificationBell from '../notification16x16.png';
+import notificationBell from '../notificationUnread.png';
 
 library.add(faPaw);
 
