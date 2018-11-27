@@ -2,19 +2,18 @@ import React from 'react';
 import {Col, Card, CardTitle, CardBody, Row, Container} from 'reactstrap';
 import ProfilePageForm from 'js/components/forms/ProfilePageForm';
 import '../../styles/pageStyles.css';
-import _ from 'lodash';
+import _, {isEqual} from 'lodash';
 import AvailableTimes from 'react-available-times';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 
-// @Todo Mario make sure the form shows the current user info
 class ProfilePage extends React.Component {
 
 	render() {
 		return (
-			<Container className="center-container">
+			<Container style={{marginTop: 15}}>
 				<Row>
-					<Col lg="12" md="10">
+					<Col lg={12} md={12} sm={12} xs={12}>
 						<Card>
 							<br/>
 							<CardTitle className="center">Welcome to your profile!</CardTitle>
@@ -27,10 +26,21 @@ class ProfilePage extends React.Component {
 				</Row>
 			<br/>
 
-			{_.isDefined(this.props.user) &&
-			(_.isEqual(this.props.user.userType, 'Sitter') || _.isEqual(this.props.user.userType, 'Both')) &&
+			{(isEqual(this.props.user.userType, 'Owner') ||
+			  isEqual(this.props.user.userType, 'Both')) &&
 			<Row>
-				<Col lg="12" md="10">
+				<Col lg={6} md={6} sm={12} xs={12}>
+					<p>Pet List Goes Here</p>
+				</Col>
+				<Col lg={6} md={6} sm={12} xs={12}>
+					<p>Delete account? Change password? Something else</p>
+				</Col>
+			</Row>}
+
+			{(_.isEqual(this.props.user.userType, 'Sitter') ||
+			  _.isEqual(this.props.user.userType, 'Both')) &&
+			<Row>
+				<Col lg={12} md={12} sm={12} xs={12}>
 					<Card>
 						<br/>
 						<CardTitle className="center">Set your availability!</CardTitle>
