@@ -48,7 +48,7 @@ class PostJobForm extends React.Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col lg={10} sm={12}>
+					<Col lg={12} md={12} sm={12}>
 						<Form name="form" onSubmit={this.handleSubmit}>
 							<h4>List of your pets:</h4>
 							<PetListAdd/>
