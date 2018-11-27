@@ -7,7 +7,7 @@ import {
     ResultList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
-import {Button} from 'reactstrap';
+import {Button, Container} from 'reactstrap';
 import {getJob} from '../utils/Users';
 import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
@@ -61,7 +61,7 @@ class SearchJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className="center">
+			<Container fluid>
 				<ReactiveBase
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -91,7 +91,7 @@ class SearchJobPage extends React.Component {
 						})}
 					/>
 				</ReactiveBase>
-			</div>
+			</Container>
 		);
 	}
 }

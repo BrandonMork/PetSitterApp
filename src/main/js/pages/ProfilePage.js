@@ -11,7 +11,7 @@ class ProfilePage extends React.Component {
 
 	render() {
 		return (
-			<Container style={{marginTop: 15}}>
+			<Container style={{marginTop: 80}}>
 				<Row>
 					<Col lg={12} md={12} sm={12} xs={12}>
 						<Card>

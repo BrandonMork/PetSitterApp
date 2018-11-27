@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Card, CardTitle, CardBody} from 'reactstrap';
+import {Col, Card, CardTitle, CardBody, Container, Row} from 'reactstrap';
 import PostJobForm from 'js/components/forms/PostJobForm';
 import '../../styles/pageStyles.css';
 
@@ -8,16 +8,19 @@ class PostJobPage extends React.Component {
 
 	render() {
 		return (
-			<div className="center">
-				<Col md="10">
-					<Card>
-						<CardTitle className="center">Create a job!</CardTitle>
-						<CardBody>
-							<PostJobForm/>
-						</CardBody>
-					</Card>
-				</Col>
-			</div>
+			<Container fluid>
+				<Row>
+					<Col md={10} sm={12} style={{marginTop: 80, marginBottom: 20}}>
+						<Card>
+							<CardTitle className="center">Create a job!</CardTitle>
+							<CardBody>
+								<PostJobForm/>
+							</CardBody>
+						</Card>
+					</Col>
+				</Row>
+			</Container>
+
 		);
 	}
 }
