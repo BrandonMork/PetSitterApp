@@ -26,29 +26,21 @@ class RegistrationForm extends React.Component {
 		console.log(Object.keys(user).join(', '));
 		console.log('IN onSubmit() VIA REGISTRATION FORM:');
 		console.log(user);
-		user.type = this.state.selectedState;
 		this.props.register(user);
 		return this.context.router.history.push('/');
-	};
-
-	handleChangeTypeOption = selectedTypeOption => {
-		this.setState({selectedTypeOption });
-		console.log(selectedTypeOption);
 	};
 
 	//@TODO List of roles, and map of attributes, save this form to Elasticsearch
 	//@TODO TURN ALL USER INPUT TO LOWER CASE!!!!
 	render() {
 		let { handleSubmit } = this.props;
-		const { selectedTypeOption } = this.state;
 
 		return (
 			<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
 
-				<Bessemer.Select name="type" friendlyName="User Type" placeholder="User Type" options={typeOptions}
-								 value={selectedTypeOption} onChange={this.handleChangeTypeOption.bind(this)}
-								 validator={[Validation.requiredValidator]} />
-				<br/>
+				<Bessemer.Field name="userType" friendlyName="User Type" placeholder="User Type"
+								validator={[Validation.requiredValidator]}
+								field={<Bessemer.Select options={typeOptions} />} />
 
 				<Bessemer.Field name="principal" friendlyName="Email Address" placeholder="test@web.com"
 								validators={[Validation.requiredValidator, Validation.emailValidator]} />

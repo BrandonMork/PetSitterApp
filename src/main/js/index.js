@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
+import '../styles/pageStyles.css';
 
 // Pages
 import HomePage from 'js/pages/HomePage';
@@ -18,7 +19,6 @@ import EditPetPage from 'js/pages/EditPetPage';
 import {Switch} from 'react-router';
 import NavigationBar from 'js/components/Navbar';
 
-import '../styles/pageStyles.css';
 
 class Index extends React.Component {
 	render() {

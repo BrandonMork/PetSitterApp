@@ -3,18 +3,7 @@ import PropTypes from 'prop-types';
 import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import {
-	Form,
-	Col,
-	Row,
-	FormGroup,
-	Label,
-	Input,
-	Button,
-	Card,
-	CardTitle,
-	CardBody
-} from 'reactstrap';
+import { Form, Col, Row, FormGroup, Label, Input, Button, Card, CardTitle, CardBody} from 'reactstrap';
 
 class AddPetForm extends React.Component {
 
@@ -54,10 +43,6 @@ class AddPetForm extends React.Component {
 	}
 
 	render() {
-		let typeOptions = this.props.types.map(type => {
-			return <option key={type} value={type}>{type}</option>;
-		});
-
 		return (
 			<React.Fragment>
 				<div className="center">
