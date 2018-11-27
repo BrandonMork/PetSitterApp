@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import '../styles/pageStyles.css';
+import 'react-notifications/lib/notifications.css';
 
 // Pages
 import HomePage from 'js/pages/HomePage';
@@ -18,19 +19,18 @@ import AcceptJobPage from 'js/pages/AcceptJobPage';
 import EditPetPage from 'js/pages/EditPetPage';
 import {Switch} from 'react-router';
 import NavigationBar from 'js/components/Navbar';
-
+import {NotificationContainer} from 'react-notifications';
 
 class Index extends React.Component {
 	render() {
 		return (
 			<div>
 				<div className="pageContent container padded">
-
 					<NavigationBar/>
-
 					<HashRouter>
 						<Switch>
 							<Route exact path="/" component={HomePage} />
+							<Route exact path="/home" component={HomePage} />
 							<Route exact path="/register" component={RegisterPage} />
 							<Route exact path="/login" component={LoginPage} />
 							<Route exact path="/profile-page" component={ProfilePage} />
@@ -46,6 +46,8 @@ class Index extends React.Component {
 							<Route exact path="/edit-pet-page" component={EditPetPage}/>
 						</Switch>
 					</HashRouter>
+
+					<NotificationContainer/>
 				</div>
 			</div>
 		);
