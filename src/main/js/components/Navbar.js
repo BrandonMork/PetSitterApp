@@ -32,10 +32,6 @@ class NavigationBar extends React.Component {
 		});
 	}
 
-	reloadComponent = () => {
-		this.setState(this.state);
-	};
-
 	static logout() {
 		const myCookie = new Cookie();
 		myCookie.remove('authentication', {path: '/'});
@@ -66,23 +62,27 @@ class NavigationBar extends React.Component {
 					</DropdownToggle>
 					<DropdownMenu right>
 						<DropdownItem href="#/post-job">
-							Post Jobs
+							Post Job
 						</DropdownItem>
 						<DropdownItem href="#/find-sitter">
 							Find Sitter
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-				<NavItem>
-					<NavLink href="#/add-pet">Pets</NavLink>
-				</NavItem>
-				<NavItem>
-					<NavLink href="#/profile">Profile</NavLink>
-				</NavItem>
-				<NavItem>
-					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
-				</NavItem>
 
+				<UncontrolledDropdown nav inNavbar>
+					<DropdownToggle nav caret>
+						User
+					</DropdownToggle>
+					<DropdownMenu right>
+						<DropdownItem href="#/profile">
+							My Profile
+						</DropdownItem>
+						<DropdownItem href="#/add-pet">
+							My Pets
+						</DropdownItem>
+					</DropdownMenu>
+				</UncontrolledDropdown>
 			</React.Fragment>;
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Sitter') {
 			return <React.Fragment>
@@ -199,7 +199,7 @@ class NavigationBar extends React.Component {
 						</DropdownToggle>
 
 						{/* @TODO BRANDON Do your notification stuff here */}
-						<DropdownMenu>
+						<DropdownMenu style={{marginRight: -50}}>
 							<DropdownItem href="">
 								{this.props.user.principal}
 							</DropdownItem>

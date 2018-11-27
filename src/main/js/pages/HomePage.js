@@ -18,7 +18,7 @@ class HomePage extends React.Component {
 
 	render() {
 		return (
-			<div style={{marginTop: 120}}>
+			<div style={{marginTop: 100}}>
 				<Jumbotron>
 					<Container fluid>
 						<h2 className="display-4">Refurring you to the best sitters in your area!</h2>

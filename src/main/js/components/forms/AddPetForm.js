@@ -37,7 +37,7 @@ class AddPetForm extends React.Component {
 			console.log(this.state.newPet.pet);
 			//this.props.addPet(this.state.newPet.pet);
 			registerPet(this.state.newPet.pet);
-			//window.location.reload();
+			window.location.reload();
 		}
 		);
 	}
