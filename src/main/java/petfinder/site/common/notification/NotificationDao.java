@@ -1,4 +1,4 @@
-package petfinder.site.common.job;
+package petfinder.site.common.notification;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -12,42 +12,40 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.google.common.collect.ImmutableMap;
-
 import alloy.elasticsearch.ElasticSearchClientProvider;
-import petfinder.site.elasticsearch.JobElasticsearchRepository;
-import petfinder.site.elasticsearch.PetfinderElasticSearchClientProvider;
+import petfinder.site.common.notification.NotificationDto;
+import petfinder.site.elasticsearch.NotificationElasticsearchRepository;
 
 /**
  * Created by jlutteringer on 8/23/17.
  */
 @Repository
-public class JobDao {
+public class NotificationDao {
     @Autowired
-    private JobElasticsearchRepository jobElasticsearchRepository;
+    private NotificationElasticsearchRepository notificationElasticsearchRepository;
 
     @Autowired
     private ElasticSearchClientProvider elasticSearchClientProvider;
 
     //call elasticsearch to get PetDto
-    public Optional<JobDto> findJob(Long jobID) {
-        return jobElasticsearchRepository.find(jobID);
+    public Optional<NotificationDto> findJob(Long jobID) {
+        return notificationElasticsearchRepository.find(jobID);
     }
 
 
-    public Optional<JobDto> findPetLowTech(Long id) {
+    public Optional<NotificationDto> findPetLowTech(Long id) {
         RestHighLevelClient client = elasticSearchClientProvider.getClient();
         // Use the client to make your search and manually parse the results
         return Optional.empty();
     }
 
     //save petDto to elasticsearch
-    public void save(JobDto job) {
+    public void save(NotificationDto job) {
         System.out.println("In the JobDao for save with " + job.toString());
-        jobElasticsearchRepository.save(job);
+        notificationElasticsearchRepository.save(job);
     }
 
-    public JobDto getJob(String id) {
+    public NotificationDto getJob(String id) {
         System.out.println("I hit the JobDao and the id is " + id);
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
@@ -57,31 +55,16 @@ public class JobDao {
         System.out.println(queryString);
 
         searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
-        List<JobDto> temp = jobElasticsearchRepository.search(searchSourceBuilder);
+        List<NotificationDto> temp = notificationElasticsearchRepository.search(searchSourceBuilder);
         System.out.println(temp.toString());
         return temp.get(0);
 
     }
 
-    public void update(JobDto job){
-        Long tmp = new Long(job.getJobID());
-        jobElasticsearchRepository.delete(tmp);
-        jobElasticsearchRepository.delete(job.getId());
-        jobElasticsearchRepository.save(job);
+    public void update(NotificationDto job){
+        //Long tmp = new Long(job.getJobID());
+        //notificationElasticsearchRepository.delete(tmp);
+        //notificationElasticsearchRepository.save(job);
     }
 
-    public void quitJob(String jobID, Long id){
-        Long tmp = new Long(jobID);
-        jobElasticsearchRepository.delete(tmp);
-        jobElasticsearchRepository.delete(id);
-    }
-
-//    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
-//        this.id = id;
-//        this.ownerID = ownerID;
-//        this.sitterID = sitterID;
-//        this.pets = pets;
-//        this.startDate = startDate;
-//        this.endDate = endDate;
-//    }
 }
