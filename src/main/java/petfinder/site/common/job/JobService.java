@@ -19,6 +19,11 @@ public class JobService {
         jobDao.save(jobExample);
     }
 
+    public void update(JobDto jobExample) {
+        System.out.println("In the JobService for update" + jobExample.toString() + ".");
+        jobDao.update(jobExample);
+    }
+
     public JobDto getJob(String id) {
         System.out.println("I hit the JobService for getJob and the id is " + id);
         return jobDao.getJob(id);
