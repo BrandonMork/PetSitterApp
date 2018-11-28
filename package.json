@@ -1,8 +1,8 @@
 {
-  "name": "petfinder-site",
-  "version": "1.0.0",
+  "name": "refur-site",
+  "version": "1.2.5",
   "description": "Pet owners are able to easily find sitters at an affordable price and convenient time; Pet sitters can find work that first their schedules easily",
-  "author": "Mario Arturo Lopez Martinez",
+  "author": "Mario Arturo Lopez Martinez, Brandon Michael Mork, Michael Prescott, Cody Dowell",
   "repository": "https://gitlab.com/fall18-group2/group-2",
   "license": "ISC",
   "main": "webpack.config.js",
