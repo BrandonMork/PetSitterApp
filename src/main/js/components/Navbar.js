@@ -40,7 +40,7 @@ class NavigationBar extends React.Component {
 		const { addNotification } = this.props;
 
 		return addNotification(Object.assign({}, notification, {
-			title: 'Alert',
+			title: '',
 			message: 'You have been logged out.',
 			container,
 			type: 'warning'
