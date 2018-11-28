@@ -15,15 +15,20 @@ import DropDownForRating from '../components/DropDownForRating.js';
 
 class ReviewPage extends React.Component {
 
-	constructor(props){
-		super(props);
+    static getMyInfo(){
+
+    }
+
+    constructor(props){
+        super(props);
         /*this.toggle = this.toggle.bind(this);*/
         this.select = this.select.bind(this);
         this.state = {
             value: 'Select a Rating',
-            shown: 'False'
+            shown: 'False',
+            job: props,
         };
-	}
+    }
 
 
     select(event){
@@ -32,15 +37,13 @@ class ReviewPage extends React.Component {
         });
     }
 
-    handleSubmit = (e) =>{
-	    e.preventDefault();
-        this.setState({
-           shown: 'True'
-        });
-    };
 
-	render() {
-		return (
+    render() {
+        const mycookie = new Cookie();
+        const myself = mycookie.get('user');
+        console.log('This is the job');
+        console.log(this.state.job.job);
+        return (
             <div style={{marginTop: 80, marginBottom: 30}}>
                 <ReactiveBase
                     app='petfinder-users'
@@ -54,23 +57,40 @@ class ReviewPage extends React.Component {
                         onData={(res) =>
                             <React.Fragment key={uuidv4()}>
                                 {_.isDefined(res.user) &&
-                                (_.isEqual(res.user.userType, 'Sitter') ||
-                                    _.isEqual(res.user.userType, 'Both')) &&
+                                (_.isEqual(res.user.userType, 'Sitter') || _.isEqual(res.user.userType, 'Both')) &&
+                                //(_.isEqual(this.state.job.jobs.sitterPrincipal, res.user.principal) &&
+                                    //_.isEqual(this.state.job.jobs.ownerPrincipal, myself.user.principal)) &&
                                 <Card className="center" body outline style={{marginBottom: 10}}>
                                     <CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
-                                        <CardText>
-                                            <br/>
-                                            Email: {res.user.principal}
-                                            <br/>
-                                            Location: {res.user.zip}
-                                            <br/>
-                                            Phone: {res.user.phoneNumber}
-                                            <br/>
-                                            Average: {res.user.sumRatings / res.user.numRatings} ({res.user.numRatings})
-                                        </CardText>
+                                    { _.gt(res.user.numRatings, 0) &&
+                                    <CardText>
+                                        <br/>
+                                        Email: {res.user.principal}
+                                        <br/>
+                                        Location: {res.user.zip}
+                                        <br/>
+                                        Phone: {res.user.phoneNumber}
+                                        <br/>
+                                        Average: {res.user.sumRatings / res.user.numRatings} ({res.user.numRatings})
+                                    </CardText>
+                                    }
+
+                                    { _.isEqual(res.user.numRatings, 0) &&
+                                    <CardText>
+                                        <br/>
+                                        Email: {res.user.principal}
+                                        <br/>
+                                        Location: {res.user.zip}
+                                        <br/>
+                                        Phone: {res.user.phoneNumber}
+                                        <br/>
+                                        Average: No Reviews ({res.user.numRatings})
+                                    </CardText>
+                                    }
+
                                     <br/>
                                     <div>
-                                        <DropDownForRating user={res}/>
+                                        <DropDownForRating user={res.user}/>
                                     </div>
                                 </Card>
                                 }
@@ -79,19 +99,19 @@ class ReviewPage extends React.Component {
                     />
                 </ReactiveBase>
             </div>
-		);
-	}
+        );
+    }
 }
 
 ReviewPage.contextTypes = {
-	router: PropTypes.object.isRequired,
+    router: PropTypes.object.isRequired,
 };
 
 ReviewPage = connect(
-	state => ({
-		authentication: Users.State.getAuthentication(state),
-		user: Users.State.getUser(state)
-	})
+    state => ({
+        authentication: Users.State.getAuthentication(state),
+        user: Users.State.getUser(state)
+    })
 )(ReviewPage);
 
 export default ReviewPage;
