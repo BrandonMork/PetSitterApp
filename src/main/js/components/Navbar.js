@@ -9,10 +9,11 @@ import logo from '../logo.png';
 import Favicon from 'react-favicon';
 import connect from 'react-redux/es/connect/connect';
 import notificationBell from '../notificationUnread.png';
-import * as Users from 'js/utils/Users';
+import * as Users from '../utils/Users';
 import '../../styles/pageStyles.css';
 import PropTypes from 'prop-types';
-import PetList from 'js/components/PetList';
+import PetList from '../components/PetList';
+//import {NotificationManager} from 'react-notifications';
 
 library.add(faPaw);
 
@@ -39,10 +40,12 @@ class NavigationBar extends React.Component {
 		myCookie.remove('authentication', {path: '/'});
 		myCookie.remove('user', {path: '/'});
 
+		//NotificationManager.warning('You have been logged out', 1500);
+
 		if (window.location.pathname === '/') {
-			return window.location.reload();
+			window.location.reload();
 		} else {
-			return this.context.router.history.push('/');
+			this.context.router.history.push('/');
 		}
 	}
 

@@ -36,9 +36,22 @@ public class UserDao {
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 
 		String queryString = String.format("user.principal=\"%s\"", principal.replace("\"", ""));
+		System.out.println(queryString);
+		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
+		System.out.println("in the UserDao searching for " + principal);
+		return userRepository.search(searchSourceBuilder).stream().findFirst();
+	}
+
+	public UserDto findUser(String principal){
+		System.out.println("In the UserDao looking for " + principal);
+		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+		String queryString = String.format("principal=\"%s\"", principal.replace("\"", ""));
 		searchSourceBuilder.query(QueryBuilders.queryStringQuery(queryString));
 
-		return userRepository.search(searchSourceBuilder).stream().findFirst();
+		List<UserDto> users = actualUserElasticsearchRepository.search(searchSourceBuilder);
+		System.out.println(users);
+		return  users.get(0);
 	}
 
 	public void save(UserAuthenticationDto userAuthentication) {
