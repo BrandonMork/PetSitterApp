@@ -15,18 +15,20 @@ public class NotificationDto implements Identifiable {
     private String senderPrincipal;
     private String receiverPrincipal;
     private String message;
+    private String read;
 
     public NotificationDto(){
         this.id = UUID.randomUUID().getLeastSignificantBits();
         this.notifyID = id.toString();
     }
 
-    public NotificationDto(Long id, String notifyId, String senderPrincipal, String receiverPrincipal, String message) {
+    public NotificationDto(Long id, String notifyID, String senderPrincipal, String receiverPrincipal, String message, String read) {
         this.id = id;
-        this.notifyID = notifyId;
+        this.notifyID = notifyID;
         this.senderPrincipal = senderPrincipal;
         this.receiverPrincipal = receiverPrincipal;
         this.message = message;
+        this.read = read;
     }
 
     @Override
@@ -70,6 +72,14 @@ public class NotificationDto implements Identifiable {
         this.message = message;
     }
 
+    public String getRead() {
+        return read;
+    }
+
+    public void setRead(String read) {
+        this.read = read;
+    }
+
     @Override
     public String toString() {
         return "NotificationDto{" +
@@ -78,6 +88,7 @@ public class NotificationDto implements Identifiable {
                 ", senderPrincipal='" + senderPrincipal + '\'' +
                 ", receiverPrincipal='" + receiverPrincipal + '\'' +
                 ", message='" + message + '\'' +
+                ", read='" + read + '\'' +
                 '}';
     }
 }
