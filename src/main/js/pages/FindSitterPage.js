@@ -60,8 +60,7 @@ class FindSitterPage extends React.Component {
 									</CardText>
 									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)}
 											color = "secondary">View Profile</Button>
-								</Card>
-								}
+								</Card>}
 							</React.Fragment>
 						}
 					/>
