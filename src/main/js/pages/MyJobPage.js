@@ -4,6 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import uuidv4 from 'uuid/v4';
 import '../../styles/pageStyles.css';
 
 class MyJobPage extends React.Component {
@@ -43,7 +44,7 @@ class MyJobPage extends React.Component {
 						dataField='original_title'
 						defaultQuery={this.ownerQuery}
 						onData={(res)=>
-							<React.Fragment>
+							<React.Fragment key={uuidv4()}>
 								{console.log(res)}
 								<Card className="center" body outline style={{marginBottom: 10}}>
 									<CardTitle>{res.jobID}</CardTitle>
@@ -58,7 +59,7 @@ class MyJobPage extends React.Component {
 						/>
 				</ReactiveBase>}
 
-				<Card className="center" style={{marginTop: 100}}>
+				<Card className="center" style={{marginTop: 80}}>
 					<CardTitle style={{padding: 15}}>
 						Jobs you've picked up:
 					</CardTitle>
@@ -76,7 +77,7 @@ class MyJobPage extends React.Component {
 						dataField='original_title'
 						defaultQuery={this.sitterQuery}
 						onData={(res)=>
-							<React.Fragment key={res.jobID}>
+							<React.Fragment key={uuidv4()}>
 								<Card className="center" body outline style={{marginBottom: 10}}>
 									{console.log(res)}
 									<CardTitle>{res.jobID}</CardTitle>
