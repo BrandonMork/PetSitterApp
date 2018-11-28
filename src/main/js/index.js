@@ -1,10 +1,8 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import '../styles/pageStyles.css';
-import 'react-notifications/lib/notifications.css';
 import {Switch} from 'react-router';
-import {NotificationContainer} from 'react-notifications';
 import NavigationBar from './components/Navbar';
+import '../styles/pageStyles.css';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -50,8 +48,6 @@ class Index extends React.Component {
 						</Switch>
 					</HashRouter>
 				</div>
-
-				<NotificationContainer/>
 			</div>
 		);
 	}
