@@ -6,8 +6,33 @@ import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import '../../styles/pageStyles.css';
+import Cookie from 'universal-cookie';
+import {getJob} from 'js/utils/Users';
+import {quitJob} from 'js/utils/Users';
+import PropTypes from 'prop-types';
+
 
 class MyJobPage extends React.Component {
+
+	reviewJob = (e, res) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		getJob(res.jobID)
+			.then(function (response) {
+				console.log('user has clicked reivewJob button');
+				console.log(response);
+				myCookie.set('currentJob', response, {path: '/'});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		this.context.router.history.push('/review-job-page');
+	};
+
+	quitJob = (e, res) => {
+		e.preventDefault();
+		quitJob(res.jobID, res.id);
+	};
 
 	ownerQuery = () => {
 		return {
@@ -51,12 +76,14 @@ class MyJobPage extends React.Component {
 									<CardBody>
 										<CardText>
 											Picked up by: {res.sitterPrincipal}
+											<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
+											<Button onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
 										</CardText>
 									</CardBody>
 								</Card>
 							</React.Fragment>
 						}
-						/>
+					/>
 				</ReactiveBase>}
 
 				<Card className="center" style={{marginTop: 80}}>
@@ -84,6 +111,8 @@ class MyJobPage extends React.Component {
 									<CardBody>
 										<CardText>
 											Picked up by: {_.isDefined(res.ownerPrincipal) && res.ownerPrincipal}
+											<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
+											<Button onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
 										</CardText>
 									</CardBody>
 								</Card>
@@ -96,6 +125,10 @@ class MyJobPage extends React.Component {
 		);
 	}
 }
+
+MyJobPage.contextTypes = {
+	router: PropTypes.object.isRequired,
+};
 
 MyJobPage = connect(
 	state => ({

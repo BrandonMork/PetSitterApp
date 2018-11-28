@@ -40,4 +40,10 @@ public class JobEndpoint {
         return jobService.getJob(id);
     }
 
+    @PostMapping(value = "/quit-job/{jobID}/{id}")
+    public void quitJob(@PathVariable("jobID") String jobID, @PathVariable("id") Long id){
+        System.out.println("In the JobEndpoint for quitJob " + jobID + " " + id);
+        jobService.quitJob(jobID,id);
+    }
+
 }
