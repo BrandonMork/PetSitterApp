@@ -4,15 +4,13 @@ import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
-import PropTypes from 'prop-types';
-import LoginForm from 'js/components/forms/LoginForm';
 
 // @TODO Mario make this look pretty pls
 class ViewSitterPage extends React.Component {
 	constructor(props){
 		super(props);
 	}
-	
+
 	getCurrentSitter() {
 		const myCookie = new Cookie();
 		const currentSitter = myCookie.get('sitterProfile');
