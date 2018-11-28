@@ -91,6 +91,9 @@ class NavigationBar extends React.Component {
 						<DropdownItem href="#/add-pet">
 							My Pets
 						</DropdownItem>
+						<DropdownItem href="#/my-job-page">
+							My Jobs
+						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
 				<NavItem>
@@ -163,6 +166,9 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 						<DropdownItem href="#/add-pet">
 							My Pets
+						</DropdownItem>
+						<DropdownItem href="#/my-job-page">
+							My Jobs
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
