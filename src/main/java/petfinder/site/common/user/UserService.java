@@ -230,4 +230,26 @@ public class UserService {
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
 	}
+
+	public void updateRating(RegistrationRequest request){
+		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto(
+				request.getPrincipal(),
+				request.getFirstName(),
+				request.getMiddleName(),
+				request.getLastName(),
+				request.getAddressLine1(),
+				request.getAddressLine2(),
+				request.getCity(),
+				request.getState(),
+				request.getZip(),
+				request.getPhoneNumber(),
+				_Lists.list(),
+				_Lists.list("ROLE_USER"),
+				request.getUserType(),
+				request.getNumRatings(),
+				request.getSumRatings()
+		),
+				passwordEncoder.encode(request.getPassword()));
+		userDao.save(userAuthentication);
+	}
 }
