@@ -1,13 +1,12 @@
 import React from 'react';
 import { Card, CardTitle, CardBody, Col } from 'reactstrap';
 import '../../styles/pageStyles.css';
-import * as Bessemer from 'js/alloy/bessemer/components';
-import * as Validation from 'js/alloy/utils/validation';
+import * as Bessemer from '../alloy/bessemer/components';
+import * as Validation from '../alloy/utils/validation';
 import PropTypes from 'prop-types';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
-//import { NotificationManager } from 'react-notifications';
+import * as Users from '../utils/Users';
 
 class LoginPage extends React.Component {
 
@@ -15,7 +14,6 @@ class LoginPage extends React.Component {
 
 		// This is where we would make our axios calls to the data store
 		if (this.props.authenticate(principal, password)) {
-			//NotificationManager.success('You are now logged in!', 'Success');
 			this.context.router.history.push('/');
 		} else {
 			console.log('Error! Email or password does not exist.');
