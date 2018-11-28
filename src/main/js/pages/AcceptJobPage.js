@@ -9,11 +9,6 @@ class AcceptJobPage extends React.Component {
 		const myCookie = new Cookie();
 		const currentJob = myCookie.get('currentJob');
 		return <React.Fragment>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
 			Job ID: {currentJob.id}
 			<br/>
 			Pet name: {currentJob.pets}

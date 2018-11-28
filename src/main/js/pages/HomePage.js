@@ -15,7 +15,7 @@ class HomePage extends React.Component {
 					<Container fluid>
 						<h2 className="display-4">Refurring you to the best sitters in your area!</h2>
 						<h4 className="lead">Our job is to seamlessly pair you with qualified pet sitters in your
-							area. Join our network of just under 5 users today!</h4>
+							area. Join our massive network of just under 5 users today!</h4>
 						<br/>
 
 						{!_.isDefined(this.props.user) &&

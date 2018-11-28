@@ -1,10 +1,11 @@
+import _ from 'lodash';
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import {
     ReactiveBase,
     DataSearch,
-    ResultList
+    ReactiveList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
 import {Button, Col, Container, Row} from 'reactstrap';
@@ -33,6 +34,7 @@ class SearchJobPage extends React.Component {
 		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
+				console.log(response);
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
 				myCookie.set('currentJob', response, {path: '/'});
@@ -72,7 +74,7 @@ class SearchJobPage extends React.Component {
 
 	render() {
 		return (
-			<Container fluid>
+			<Container fluid style={{marginTop: 80}}>
 				<ReactiveBase
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -83,54 +85,54 @@ class SearchJobPage extends React.Component {
 						queryFormat='and'
 						iconPosition='left'
 					/>
-					<ResultList
+
+					<ReactiveList
 						componentId='results'
 						dataField='original_title'
+						showResultStats={false}
 						react={{
-							'and': ['mainSearch']
+							and: ['mainSearch']
 						}}
-						onData={(res) => ({
-							description: (
-								<React.Fragment key={uuidv4()}>
-									<Container style={{justifyContent: 'center', alignItems: 'center'}}>
-										<Row>
-											<Col>
-												<h1>Posting by: {res.ownerPrincipal}</h1>
-											</Col>
-										</Row>
-										<Row>
-											<Col>
-												Start Date: {res.startDate}
-											</Col>
-										</Row>
-										<Row>
-											<Col>
-												End Date: {res.endDate}
-											</Col>
-										</Row>
-										<Row>
-											<Col>
-												Approximate Location: {res.zip}
-											</Col>
-										</Row>
+						onData={(res) =>
+							<React.Fragment key={uuidv4()}>
+								{console.log(res)}
+								{_.isEqual(res.accepted, 'no') &&
+								<Container style={{justifyContent: 'center', alignItems: 'center'}}>
+									<Row>
+										<Col>
+											<h1>Posting by: {res.ownerPrincipal}</h1>
+										</Col>
+									</Row>
+									<Row>
+										<Col>
+											Start Date: {res.startDate}
+										</Col>
+									</Row>
+									<Row>
+										<Col>
+											End Date: {res.endDate}
+										</Col>
+									</Row>
+									<Row>
+										<Col>
+											Approximate Location: {res.zip}
+										</Col>
+									</Row>
 
-										<Row>
-											<Col sm={{ size: '2', offset: 5 }}>
-												<Button onClick={ (e) => this.acceptJob(e, res)}>
-													Accept Job
-												</Button>
-											</Col>
-											<Col sm={{ size: '2', offset: 5 }}>
-												<Button onClick={ (e) => this.reviewJob(e, res)}>
-													Review Job
-												</Button>
-											</Col>
-										</Row>
-									</Container>
-								</React.Fragment>
-							)
-							})
-
+									<Row>
+										<Col sm={{ size: '2', offset: 5 }}>
+											<Button onClick={ (e) => this.acceptJob(e, res)}>
+												Accept Job
+											</Button>
+										</Col>
+										<Col sm={{ size: '2', offset: 5 }}>
+											<Button onClick={ (e) => this.reviewJob(e, res)}>
+												Review Job
+											</Button>
+										</Col>
+									</Row>
+								</Container>}
+							</React.Fragment>
 						}
 					/>
 				</ReactiveBase>

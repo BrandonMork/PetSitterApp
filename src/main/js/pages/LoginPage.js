@@ -32,7 +32,7 @@ class LoginPage extends React.Component {
 
 		return addNotification(Object.assign({}, notification, {
 			title: 'Success',
-			message: 'You are now logged in.',
+			message: 'You are now logged in!',
 			container,
 			type: 'success'
 		}));
