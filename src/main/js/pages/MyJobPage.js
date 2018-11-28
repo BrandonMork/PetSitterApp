@@ -3,7 +3,7 @@ import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
+import {Button, Card, CardBody, CardText, CardTitle} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import '../../styles/pageStyles.css';
 import Cookie from 'universal-cookie';

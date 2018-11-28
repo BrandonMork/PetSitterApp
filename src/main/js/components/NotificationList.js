@@ -12,23 +12,6 @@ import * as Users from 'js/utils/Users';
 
 class NotificationList extends React.Component {
 
-	/*
-	    "bool": {
-      "must": [
-        {
-          "match": {
-            "receiverPrincipal": "bran@mork.com"
-          }
-        },
-        {
-          "match": {
-            "read": "no"
-          }
-        }
-      ]
-    }
-  }
-	 */
 	query = () => {
 		return {
 			'bool': {
