@@ -66,6 +66,7 @@ public class JobDao {
     public void update(JobDto job){
         Long tmp = new Long(job.getJobID());
         jobElasticsearchRepository.delete(tmp);
+        jobElasticsearchRepository.delete(job.getId());
         jobElasticsearchRepository.save(job);
     }
 

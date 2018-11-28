@@ -36,6 +36,7 @@ class SearchJobPage extends React.Component {
 				myCookie.set('currentJob', response, {path: '/'});
 				console.log(response);
 				updateJobDetails(response);
+
 			})
 			.catch(function (error) {
 				console.log(error);
