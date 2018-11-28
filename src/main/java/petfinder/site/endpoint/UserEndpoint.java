@@ -60,4 +60,9 @@ public class UserEndpoint {
 		System.out.println(request.getUserType());
 		userService.updateUser(request);
 	}
+
+	@PostMapping(value = "/add-rating")
+	public void addRating(@RequestBody RegistrationRequest request){
+		userService.updateUser(request);
+	}
 }
