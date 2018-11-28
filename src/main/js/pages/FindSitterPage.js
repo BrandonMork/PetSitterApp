@@ -47,19 +47,32 @@ class FindSitterPage extends React.Component {
 								 _.isEqual(res.user.userType, 'Both')) &&
 								<Card className="center" body outline style={{marginBottom: 10}}>
 									<CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
-									<CardText>
-										<br/>
-										Email: {res.user.principal}
-										<br/>
-										Location: {res.user.zip}
-										<br/>
-										Phone: {res.user.phoneNumber}
-										<br/>
-										{/** @TODO Need to add actual user ratings here once we start to capture them */}
-										Average Rating : ★★★★★
-									</CardText>
-									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)}
-											color = "secondary">View Profile</Button>
+                                    {_.gt(res.user.numRatings, 0) &&
+                                    <CardText>
+                                        <br/>
+                                        Email: {res.user.principal}
+                                        <br/>
+                                        Location: {res.user.zip}
+                                        <br/>
+                                        Phone: {res.user.phoneNumber}
+                                        <br/>
+                                        Average: {res.user.sumRatings / res.user.numRatings} ({res.user.numRatings})
+                                    </CardText>
+                                    }
+
+                                    {_.isEqual(res.user.numRatings, 0) &&
+                                    <CardText>
+                                        <br/>
+                                        Email: {res.user.principal}
+                                        <br/>
+                                        Location: {res.user.zip}
+                                        <br/>
+                                        Phone: {res.user.phoneNumber}
+                                        <br/>
+                                        Average: No Reviews ({res.user.numRatings})
+                                    </CardText>
+                                    }
+									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">View Profile</Button>
 								</Card>
 								}
 							</React.Fragment>
