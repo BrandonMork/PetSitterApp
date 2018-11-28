@@ -43,7 +43,8 @@ class FindSitterPage extends React.Component {
 						onData={(res) =>
 							<React.Fragment key={uuidv4()}>
 								{_.isDefined(res.user) &&
-								_.isEqual(res.user.userType, 'Sitter') &&
+								(_.isEqual(res.user.userType, 'Sitter') ||
+								 _.isEqual(res.user.userType, 'Both')) &&
 								<Card className="center" body outline style={{marginBottom: 10}}>
 									<CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
 									<CardText>
@@ -57,7 +58,8 @@ class FindSitterPage extends React.Component {
 										{/** @TODO Need to add actual user ratings here once we start to capture them */}
 										Average Rating : ★★★★★
 									</CardText>
-									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">View Profile</Button>
+									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)}
+											color = "secondary">View Profile</Button>
 								</Card>
 								}
 							</React.Fragment>
