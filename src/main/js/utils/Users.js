@@ -82,13 +82,11 @@ export function updateJobDetails(frontEndJob){
 				'city': backEndJob.city,
 				'state': backEndJob.state,
 				'zip': backEndJob.zip,
-				'accepted': backEndJob.accepted
+				'accepted': 'yes'
 			};
 
 			if(job.sitterPrincipal == null && frontEndJob.sitterPrincipal != null)
 				job.sitterPrincipal = frontEndJob.sitterPrincipal;
-			if(job.accepted == null && frontEndJob.accepted != null)
-				job.accepted = frontEndJob.accepted;
 
 			console.log('this should send an accepted job to back end');
 			console.log(job);
