@@ -201,15 +201,9 @@ class NavigationBar extends React.Component {
 					ReFur
 				</NavbarBrand>
 
-				<NavbarToggler onClick={this.toggle} />
-				<Collapse isOpen={this.state.isOpen} navbar>
-					<Nav className="ml-auto" navbar>
-						{NavigationBar.checkUserStatus()}
-					</Nav>
-				</Collapse>
-
 				{_.isDefined(this.props.user) &&
 				<React.Fragment>
+					|
 					<UncontrolledDropdown nav inNavbar>
 						<DropdownToggle nav>
 							<img src={notificationBell}/>
@@ -234,8 +228,16 @@ class NavigationBar extends React.Component {
 							</DropdownItem>
 						</DropdownMenu>
 					</UncontrolledDropdown>
-				</React.Fragment>
-				}
+				</React.Fragment>}
+
+				<NavbarToggler onClick={this.toggle} />
+				<Collapse isOpen={this.state.isOpen} navbar>
+					<Nav className="ml-auto" navbar>
+						{NavigationBar.checkUserStatus()}
+					</Nav>
+				</Collapse>
+
+
 			</Navbar>
 		);
 	}
