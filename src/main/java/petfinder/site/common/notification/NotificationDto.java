@@ -1,14 +1,8 @@
 package petfinder.site.common.notification;
-import java.util.Date;
+
 import java.util.UUID;
 import alloy.util.Identifiable;
-import static java.util.UUID.randomUUID;
 
-/**
- * Created by jlutteringer on 8/23/17.
- */
-
-// @TODO Job Title and Description (String) to be added
 public class NotificationDto implements Identifiable {
     private Long id;
     private String notifyID;

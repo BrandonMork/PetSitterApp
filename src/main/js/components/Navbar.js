@@ -11,6 +11,8 @@ import connect from 'react-redux/es/connect/connect';
 import notificationBell from '../notificationUnread.png';
 import * as Users from '../utils/Users';
 import '../../styles/pageStyles.css';
+import notification from 'js/notification';
+import NotificationList from 'js/components/NotificationList';
 
 library.add(faPaw);
 
@@ -20,10 +22,12 @@ class NavigationBar extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.toggle = this.toggle.bind(this);
 		this.state = {
 			isOpen: false
 		};
+
+		this.add = this.add.bind(this);
+		this.toggle = this.toggle.bind(this);
 	}
 
 	toggle() {
@@ -32,19 +36,24 @@ class NavigationBar extends React.Component {
 		});
 	}
 
-	static logout() {
+	add(container) {
+		const { addNotification } = this.props;
+
+		return addNotification(Object.assign({}, notification, {
+			title: 'Alert',
+			message: 'You have been logged out.',
+			container,
+			type: 'warning'
+		}));
+	}
+
+	logout = () => {
+		this.props.logout();
 		const myCookie = new Cookie();
 		myCookie.remove('authentication', {path: '/'});
 		myCookie.remove('user', {path: '/'});
-
-		//NotificationManager.warning('You have been logged out', 1500);
-
-		if (window.location.pathname === '/') {
-			window.location.reload();
-		} else {
-			this.context.router.history.push('/');
-		}
-	}
+		this.add('bottom-center');
+	};
 
 	static checkUserStatus() {
 		const myCookie = new Cookie();
@@ -93,9 +102,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-				<NavItem>
-					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
-				</NavItem>
 			</React.Fragment>;
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Sitter') {
 			return <React.Fragment>
@@ -112,10 +118,6 @@ class NavigationBar extends React.Component {
 				</UncontrolledDropdown>
 				<NavItem>
 					<NavLink href="#/profile">Profile</NavLink>
-				</NavItem>
-
-				<NavItem>
-					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
 				</NavItem>
 
 			</React.Fragment>;
@@ -169,11 +171,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-
-				<NavItem>
-					<NavLink onClick={NavigationBar.logout} href="#">Logout</NavLink>
-				</NavItem>
-
 			</React.Fragment>;
 		}
 		else {
@@ -210,22 +207,8 @@ class NavigationBar extends React.Component {
 						</DropdownToggle>
 
 						{/* @TODO BRANDON Do your notification stuff here */}
-						<DropdownMenu style={{marginRight: -50}}>
-							<DropdownItem href="">
-								{this.props.user.principal}
-							</DropdownItem>
-							<DropdownItem href="">
-								Notification 2
-							</DropdownItem>
-							<DropdownItem href="">
-								Notification 3
-							</DropdownItem>
-							<DropdownItem href="">
-								Notification 4
-							</DropdownItem>
-							<DropdownItem href="">
-								Notification 5
-							</DropdownItem>
+						<DropdownMenu >
+							<NotificationList/>
 						</DropdownMenu>
 					</UncontrolledDropdown>
 				</React.Fragment>}
@@ -234,10 +217,13 @@ class NavigationBar extends React.Component {
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
 						{NavigationBar.checkUserStatus()}
+
+						{_.isDefined(this.props.user) &&
+						<NavItem>
+							<NavLink onClick={this.logout} href="#">Logout</NavLink>
+						</NavItem>}
 					</Nav>
 				</Collapse>
-
-
 			</Navbar>
 		);
 	}
@@ -247,6 +233,9 @@ NavigationBar = connect(
 	state => ({
 		authentication: Users.State.getAuthentication(state),
 		user: Users.State.getUser(state)
+	}),
+	dispatch => ({
+		logout: () => dispatch(Users.Actions.logout())
 	})
 )(NavigationBar);
 
