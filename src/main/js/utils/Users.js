@@ -114,6 +114,8 @@ export function updateUser(user){
 		'phoneNumber': user.phoneNumber,
 		'userType': user.userType,
 		'password': user.password,
+		'sumRatings': user.sumRatings,
+		'numRatings': user.numRatings,
 	};
 
 	console.log('In updateUse()');
