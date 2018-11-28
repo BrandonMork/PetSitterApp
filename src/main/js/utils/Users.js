@@ -201,6 +201,7 @@ export function getSitterInfo(principal){
 
 
 export function createNotification(notification){
+	console.log('creating a notification!');
 	console.log(notification);
 	return axios.post('/api/notification/post-notification' , notification);
 }

@@ -33,7 +33,6 @@ class SearchJobPage extends React.Component {
 		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
-				console.log(response);
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
 				myCookie.set('currentJob', response, {path: '/'});
@@ -44,6 +43,7 @@ class SearchJobPage extends React.Component {
 					'senderPrincipal': sitterInfo,
 					'receiverPrincipal': res.ownerPrincipal,
 					'message': sitterInfo + ' has accepted your job!',
+					'read': 'no'
 				};
 
 				createNotification(notification);
