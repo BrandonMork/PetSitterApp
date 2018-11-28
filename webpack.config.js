@@ -125,7 +125,6 @@ else {
 			fallback: "style-loader",
 			use: ['css-loader', 'sass-loader']
 		}),
-		exclude: /node_modules/
 	});
 
 	config.module.rules.push({
