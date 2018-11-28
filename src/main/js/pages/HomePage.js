@@ -62,7 +62,7 @@ class HomePage extends React.Component {
 
 										{(isEqual(this.props.user.userType, 'Owner') ||
 											isEqual(this.props.user.userType, 'Both')) &&
-										<Container>
+										<React.Fragment>
 											<Row style={{marginBottom: 10}}>
 												<Col>
 													<Button>Post Job</Button>
@@ -73,18 +73,18 @@ class HomePage extends React.Component {
 													<Button>Browse Sitters</Button>
 												</Col>
 											</Row>
-										</Container>
+										</React.Fragment>
 										}
 
 										{(isEqual(this.props.user.userType, 'Sitter') ||
 											isEqual(this.props.user.userType, 'Both')) &&
-										<Container>
+										<React.Fragment>
 											<Row>
 												<Col>
-													<Button>Browse Job</Button>
+													<Button>Browse Jobs</Button>
 												</Col>
 											</Row>
-										</Container>
+										</React.Fragment>
 										}
 
 									</Card>
