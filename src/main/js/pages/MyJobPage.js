@@ -2,8 +2,8 @@ import _ from 'lodash';
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import { ReactiveBase, ResultList } from '@appbaseio/reactivesearch';
-import {Card, CardBody, CardText, CardTitle, Container} from 'reactstrap';
+import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
+import { Card, CardBody, CardText, CardTitle } from 'reactstrap';
 import '../../styles/pageStyles.css';
 
 class MyJobPage extends React.Component {
@@ -22,7 +22,7 @@ class MyJobPage extends React.Component {
 
 	render() {
 		return (
-			<Container style={{marginTop: 100}}>
+			<div style={{marginTop: 100}}>
 
 				<Card className="center">
 					<CardTitle style={{padding: 15}}>
@@ -36,29 +36,29 @@ class MyJobPage extends React.Component {
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 				>
-						<ResultList
-							componentId='results'
-							dataField='original_title'
-							defaultQuery={this.ownerQuery}
-							react={{
-								'and': ['mainSearch']
-							}}
-							onData={(res)=>
-								<React.Fragment key={res.jobID}>
-									<Card>
-										<CardTitle>{res.jobID}</CardTitle>
-										<CardBody>
-											<CardText>
-												Picked up by: {_.isDefined(res.sitterPrincipal) && res.sitterPrincipal}
-											</CardText>
-										</CardBody>
-									</Card>
-								</React.Fragment>
-							}
+					{console.log('Job\'s you have POSTED:')}
+
+					<ReactiveList
+						componentId='results'
+						dataField='original_title'
+						defaultQuery={this.ownerQuery}
+						onData={(res)=>
+							<React.Fragment>
+								{console.log(res)}
+								<Card className="center" body outline style={{marginBottom: 10}}>
+									<CardTitle>{res.jobID}</CardTitle>
+									<CardBody>
+										<CardText>
+											Picked up by: {res.sitterPrincipal}
+										</CardText>
+									</CardBody>
+								</Card>
+							</React.Fragment>
+						}
 						/>
 				</ReactiveBase>}
 
-				<Card className="center">
+				<Card className="center" style={{marginTop: 100}}>
 					<CardTitle style={{padding: 15}}>
 						Jobs you've picked up:
 					</CardTitle>
@@ -70,16 +70,15 @@ class MyJobPage extends React.Component {
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 				>
-					<ResultList
+					{console.log('Job\'s you have p UP:')}
+					<ReactiveList
 						componentId='results'
 						dataField='original_title'
 						defaultQuery={this.sitterQuery}
-						react={{
-							'and': ['mainSearch']
-						}}
 						onData={(res)=>
 							<React.Fragment key={res.jobID}>
-								<Card>
+								<Card className="center" body outline style={{marginBottom: 10}}>
+									{console.log(res)}
 									<CardTitle>{res.jobID}</CardTitle>
 									<CardBody>
 										<CardText>
@@ -92,7 +91,7 @@ class MyJobPage extends React.Component {
 					/>
 				</ReactiveBase>}
 
-			</Container>
+			</div>
 		);
 	}
 }
