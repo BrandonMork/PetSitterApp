@@ -63,6 +63,6 @@ public class UserEndpoint {
 
 	@PostMapping(value = "/add-rating")
 	public void addRating(@RequestBody RegistrationRequest request){
-		userService.updateUser(request);
+		userService.addRating(request);
 	}
 }

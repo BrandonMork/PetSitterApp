@@ -20,39 +20,40 @@ import AcceptJobPage from './pages/AcceptJobPage';
 import EditPetPage from './pages/EditPetPage';
 import ViewSitterPage from './pages/ViewSitterPage';
 import MyJobPage from 'js/pages/MyJobPage';
+import MainReviewPage from './pages/MainReviewPage.js';
 
 
 class Index extends React.Component {
-	render() {
-		return (
-			<div className="pageContainer">
-				<div className="pageContent container padded">
-					<NavigationBar/>
-					<HashRouter>
-						<Switch>
-							<Route exact path="/" component={HomePage} />
-							<Route exact path="/home" component={HomePage} />
-							<Route exact path="/register" component={RegisterPage} />
-							<Route exact path="/login" component={LoginPage} />
-							<Route exact path="/profile-page" component={ProfilePage} />
-							<Route exact path="/rating-page" component={ReviewPage} />
-							<Route exact path="/report-page" component={ReportPage} />
-							<Route exact path="/find-sitter" component={FindSitterPage} />
-							<Route exact path="/profile" component={ProfilePage} />
-							<Route exact path="/add-pet" component={PetPage}/>
-							<Route exact path="/post-job" component={PostJobPage}/>
-							<Route exact path="/search-job" component={SearchJobPage}/>
-							<Route exact path="/review-job-page" component={ReviewJobPage}/>
-							<Route exact path="/accept-job-page" component={AcceptJobPage}/>
-							<Route exact path="/edit-pet-page" component={EditPetPage}/>
-							<Route exact path="/view-sitter-page" component={ViewSitterPage}/>
-							<Route exact path="/my-job-page" component={MyJobPage}/>
-						</Switch>
-					</HashRouter>
-				</div>
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="pageContainer">
+                <div className="pageContent container padded">
+                    <NavigationBar/>
+                    <HashRouter>
+                        <Switch>
+                            <Route exact path="/" component={HomePage} />
+                            <Route exact path="/home" component={HomePage} />
+                            <Route exact path="/register" component={RegisterPage} />
+                            <Route exact path="/login" component={LoginPage} />
+                            <Route exact path="/profile-page" component={ProfilePage} />
+                            <Route exact path="/rating-page" component={MainReviewPage} />
+                            <Route exact path="/report-page" component={ReportPage} />
+                            <Route exact path="/find-sitter" component={FindSitterPage} />
+                            <Route exact path="/profile" component={ProfilePage} />
+                            <Route exact path="/add-pet" component={PetPage}/>
+                            <Route exact path="/post-job" component={PostJobPage}/>
+                            <Route exact path="/search-job" component={SearchJobPage}/>
+                            <Route exact path="/review-job-page" component={ReviewJobPage}/>
+                            <Route exact path="/accept-job-page" component={AcceptJobPage}/>
+                            <Route exact path="/edit-pet-page" component={EditPetPage}/>
+                            <Route exact path="/view-sitter-page" component={ViewSitterPage}/>
+                            <Route exact path="/my-job-page" component={MyJobPage}/>
+                        </Switch>
+                    </HashRouter>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default Index;

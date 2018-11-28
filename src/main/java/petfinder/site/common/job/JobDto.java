@@ -32,6 +32,7 @@ public class JobDto implements Identifiable {
     private String zip;
 
     private String accepted;
+    private String finished;
 
 
     // @TODO Define what our types will be
@@ -43,7 +44,7 @@ public class JobDto implements Identifiable {
         this.jobID = id.toString();
     }
 
-    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted) {
+    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted, String finished) {
         this.id = id;
         this.jobID = jobID;
         this.ownerPrincipal = ownerPrincipal;
@@ -60,6 +61,7 @@ public class JobDto implements Identifiable {
         this.state = state;
         this.zip = zip;
         this.accepted = accepted;
+        this.finished = finished;
     }
 
     @Override
@@ -191,6 +193,10 @@ public class JobDto implements Identifiable {
         this.accepted = accepted;
     }
 
+    public void setFinsihed(String finsihed) { this.finished = finished; }
+
+    public String getFinsihed() { return this.finished; }
+
     @Override
     public String toString() {
         return "JobDto{" +
@@ -210,6 +216,7 @@ public class JobDto implements Identifiable {
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
                 ", accepted='" + accepted + '\'' +
+                ", finished='" + finished + '\'' +
                 '}';
     }
 }
