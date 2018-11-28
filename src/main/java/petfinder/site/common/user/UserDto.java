@@ -4,7 +4,6 @@ import java.util.List;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import alloy.util.Momento;
 
-
 /**
  * Created by jlutteringer on 8/23/17.
  */

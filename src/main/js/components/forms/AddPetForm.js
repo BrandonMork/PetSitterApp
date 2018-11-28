@@ -4,20 +4,15 @@ import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { Form, Col, Row, FormGroup, Label, Input, Button, Card, CardTitle, CardBody} from 'reactstrap';
-//import { NotificationManager } from 'react-notifications';
 
 class AddPetForm extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			newPet: {}
 		};
 	}
-
-	static defaultProps = {
-		types: ['Dog', 'Cat', 'Bird', 'Rabbit', 'Mouse']
-	};
 
 	handleSubmit(e) {
 		e.preventDefault();
@@ -33,12 +28,9 @@ class AddPetForm extends React.Component {
 				},
 			}},
 		function() {
-			//console.log('the user has pushed the update profile button with the following info');
-			//console.log(this.state.updatedUserProfile);
 			console.log(this.state.newPet.pet);
 			registerPet(this.state.newPet.pet);
 			window.location.reload();
-			//NotificationManager.success('You have added a new pet!', 'Success');
 		});
 	}
 
@@ -48,7 +40,7 @@ class AddPetForm extends React.Component {
 				<div className="center">
 					<Col sm="8">
 						<Card>
-							<CardTitle className="center">Add Pet Form</CardTitle>
+							<CardTitle className="center" style={{marginTop: 20}}>Add Pet Form</CardTitle>
 							<CardBody>
 								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 									<Row form>
