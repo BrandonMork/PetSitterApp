@@ -12,6 +12,7 @@ import {getJob} from '../utils/Users';
 import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
 import {updateJobDetails} from 'js/utils/Users';
+import {createNotification} from 'js/utils/Users';
 
 class SearchJobPage extends React.Component {
 
@@ -27,6 +28,7 @@ class SearchJobPage extends React.Component {
 		console.log('the jobID should be');
 		console.log(res.jobID);
 		let sitterInfo = this.props.user.principal;
+		let notification;
 		getJob(res.jobID)
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
@@ -37,6 +39,13 @@ class SearchJobPage extends React.Component {
 				console.log(response);
 				updateJobDetails(response);
 
+				notification = {
+					'senderPrincipal': sitterInfo,
+					'receiverPrincipal': res.ownerPrincipal,
+					'message': sitterInfo + ' has accepted your job!',
+				};
+
+				createNotification(notification);
 			})
 			.catch(function (error) {
 				console.log(error);
