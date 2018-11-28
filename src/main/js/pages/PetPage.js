@@ -61,6 +61,7 @@ class PetPage extends React.Component {
 									<th>Nothing here!</th>
 								</tr>
 								</thead>}
+								
 								{!_.isEqual(this.props.elasticPets.length, 0) &&
 								<React.Fragment>
 									<thead>
