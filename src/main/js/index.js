@@ -4,7 +4,7 @@ import {Switch} from 'react-router';
 import NavigationBar from './components/Navbar';
 import '../styles/pageStyles.css';
 import ReactNotification from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
+import 'react-notifications-component/dist/theme';
 
 // Pages
 import HomePage from './pages/HomePage';
