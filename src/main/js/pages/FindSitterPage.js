@@ -2,11 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import * as Users from '../utils/Users';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import Cookie from 'universal-cookie';
-import {getSitterInfo} from 'js/utils/Users';
+import {getSitterInfo} from '../utils/Users';
 import PropTypes from 'prop-types';
 
 class FindSitterPage extends React.Component {
