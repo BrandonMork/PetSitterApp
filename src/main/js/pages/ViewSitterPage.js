@@ -1,6 +1,6 @@
 import React from 'react';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import * as Users from '../utils/Users';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
 import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
@@ -44,7 +44,7 @@ class ViewSitterPage extends React.Component {
 					<div className='pageContent'>
 						<div>
 							<div>
-								<this.getCurrentSitter />
+								{this.getCurrentSitter()}
 							</div>
 						</div>
 					</div>

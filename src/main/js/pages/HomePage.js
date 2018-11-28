@@ -2,19 +2,11 @@ import React from 'react';
 import _, {isEqual} from 'lodash';
 import {Jumbotron, Container, Row, Col, Card, CardTitle, CardText, Button} from 'reactstrap';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import * as Users from '../utils/Users';
 import '../../styles/pageStyles.css';
 import PropTypes from 'prop-types';
 
 class HomePage extends React.Component {
-
-	login = () => {
-		return this.context.router.history.push('/login');
-	};
-
-	register = () => {
-		return this.context.router.history.push('/register');
-	};
 
 	render() {
 		return (
@@ -24,7 +16,6 @@ class HomePage extends React.Component {
 						<h2 className="display-4">Refurring you to the best sitters in your area!</h2>
 						<h4 className="lead">Our job is to seamlessly pair you with qualified pet sitters in your
 							area. Join our network of just under 5 users today!</h4>
-
 						<br/>
 
 						{!_.isDefined(this.props.authentication) &&
@@ -35,14 +26,14 @@ class HomePage extends React.Component {
 									<Card body>
 										<CardTitle>Join Now!</CardTitle>
 										<CardText>Sign up for the best pet sitting service!</CardText>
-										<Button onClick={this.register}>Register</Button>
+										<Button onClick={() => this.context.router.history.push('/register')}>Register</Button>
 									</Card>
 								</Col>
 								<Col md={6} sm={6} xs={12}>
 									<Card body>
 										<CardTitle>Already a member?</CardTitle>
 										<CardText>Log in to get back to it!</CardText>
-										<Button onClick={this.login}>Login</Button>
+										<Button onClick={() => this.context.router.history.push('/login')}>Login</Button>
 									</Card>
 								</Col>
 							</Row>
@@ -62,29 +53,29 @@ class HomePage extends React.Component {
 
 										{(isEqual(this.props.user.userType, 'Owner') ||
 											isEqual(this.props.user.userType, 'Both')) &&
-										<Container>
+										<React.Fragment>
 											<Row style={{marginBottom: 10}}>
 												<Col>
-													<Button>Post Job</Button>
+													<Button onClick={() => this.context.router.history.push('/post-job')}>Post Job</Button>
 												</Col>
 											</Row>
 											<Row style={{marginBottom: 10}}>
 												<Col>
-													<Button>Browse Sitters</Button>
+													<Button onClick={() => this.context.router.history.push('/find-sitter')}>Browse Sitters</Button>
 												</Col>
 											</Row>
-										</Container>
+										</React.Fragment>
 										}
 
 										{(isEqual(this.props.user.userType, 'Sitter') ||
 											isEqual(this.props.user.userType, 'Both')) &&
-										<Container>
+										<React.Fragment>
 											<Row>
 												<Col>
-													<Button>Browse Job</Button>
+													<Button onClick={() => this.context.router.history.push('/search-job')}>Browse Jobs</Button>
 												</Col>
 											</Row>
-										</Container>
+										</React.Fragment>
 										}
 
 									</Card>

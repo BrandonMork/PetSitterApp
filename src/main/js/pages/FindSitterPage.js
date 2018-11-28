@@ -2,11 +2,11 @@ import React from 'react';
 import _ from 'lodash';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import * as Users from '../utils/Users';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import Cookie from 'universal-cookie';
-import {getSitterInfo} from 'js/utils/Users';
+import {getSitterInfo} from '../utils/Users';
 import PropTypes from 'prop-types';
 
 class FindSitterPage extends React.Component {
@@ -43,7 +43,8 @@ class FindSitterPage extends React.Component {
 						onData={(res) =>
 							<React.Fragment key={uuidv4()}>
 								{_.isDefined(res.user) &&
-								_.isEqual(res.user.userType, 'Sitter') &&
+								(_.isEqual(res.user.userType, 'Sitter') ||
+								 _.isEqual(res.user.userType, 'Both')) &&
 								<Card className="center" body outline style={{marginBottom: 10}}>
 									<CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
 									<CardText>
@@ -57,7 +58,8 @@ class FindSitterPage extends React.Component {
 										{/** @TODO Need to add actual user ratings here once we start to capture them */}
 										Average Rating : ★★★★★
 									</CardText>
-									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">View Profile</Button>
+									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)}
+											color = "secondary">View Profile</Button>
 								</Card>
 								}
 							</React.Fragment>
