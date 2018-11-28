@@ -1,18 +1,11 @@
 package petfinder.site.endpoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import petfinder.site.common.job.JobDto;
 import petfinder.site.common.job.JobService;
 
-import java.util.List;
-
-
-/**
- * Created by jlutteringer on 8/23/17.
- */
 @RestController
 @RequestMapping("/api/jobs")
 public class JobEndpoint {

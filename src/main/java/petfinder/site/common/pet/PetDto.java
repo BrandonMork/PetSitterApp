@@ -1,4 +1,5 @@
 package petfinder.site.common.pet;
+
 import java.util.UUID;
 import alloy.util.Identifiable;
 
