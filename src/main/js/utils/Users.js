@@ -98,6 +98,11 @@ export function updateJobDetails(frontEndJob){
 		});
 }
 
+export function quitJob(jobID, id){
+	console.log('quitting the job with ids ' + jobID + ' ' + id);
+	return axios.post('/api/jobs/quit-job', jobID, id);
+}
+
 export function updateUser(user){
 	//console.log('we are now calling an axios post');
 	let newUser = {

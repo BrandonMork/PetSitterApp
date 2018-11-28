@@ -70,6 +70,12 @@ public class JobDao {
         jobElasticsearchRepository.save(job);
     }
 
+    public void quitJob(String jobID, Long id){
+        Long tmp = new Long(jobID);
+        jobElasticsearchRepository.delete(tmp);
+        jobElasticsearchRepository.delete(id);
+    }
+
 //    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
 //        this.id = id;
 //        this.ownerID = ownerID;
