@@ -9,7 +9,6 @@ public class NotificationService {
     @Autowired
     private NotificationDao notificationDao;
 
-    //Calls JobDto Save() function to save to elasticsearch
     public void save(NotificationDto jobExample) {
         System.out.println("In the NotificationService for save" + jobExample.toString() + ".");
         notificationDao.save(jobExample);

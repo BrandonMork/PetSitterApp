@@ -18,7 +18,7 @@ public class NotificationEndpoint {
     private NotificationService notificationService;
 
     @PostMapping(value = "/post-notification")
-    public NotificationDto postJob(@RequestBody NotificationDto notification) {
+    public NotificationDto postNotification(@RequestBody NotificationDto notification) {
         System.out.println("In the NotificationEndpoint for postNotification" + notification.toString());
         notificationService.save(notification);
         return notification;
