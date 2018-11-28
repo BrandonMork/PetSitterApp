@@ -7,37 +7,55 @@ import PropTypes from 'prop-types';
 import * as ReduxForm from 'redux-form';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
+import notification from 'js/notification';
 
 class LoginPage extends React.Component {
 
-	onSubmit = ({principal, password}) => {
+	constructor(props) {
+		super(props);
 
+		this.add = this.add.bind(this);
+	}
+
+	onSubmit = ({principal, password}) => {
 		// This is where we would make our axios calls to the data store
 		if (this.props.authenticate(principal, password)) {
 			this.context.router.history.push('/');
+			this.add('bottom-center');
 		} else {
 			console.log('Error! Email or password does not exist.');
 		}
 	};
 
+	add(container) {
+		const { addNotification } = this.props;
+
+		return addNotification(Object.assign({}, notification, {
+			title: 'Success',
+			message: 'You are now logged in.',
+			container,
+			type: 'success'
+		}));
+	}
+
 	render() {
 		let { handleSubmit } = this.props;
 
 		return (
-			<div style={{marginTop: 100}} className="center">
-				<Col sm="8">
+			<div style={{marginTop: 100}} className='center'>
+				<Col sm='8'>
 					<Card>
 						<br/>
-						<CardTitle className="center">Login</CardTitle>
+						<CardTitle className='center'>Login</CardTitle>
 						<CardBody>
-							<form name="form" onSubmit={handleSubmit(form => this.onSubmit(form))}>
-								<Bessemer.Field name="principal" friendlyName="Email Address"
+							<form name='form' onSubmit={handleSubmit(form => this.onSubmit(form))}>
+								<Bessemer.Field name='principal' friendlyName='Email Address'
 												validators={[Validation.requiredValidator, Validation.emailValidator]}
-												field={<input className="form-control" type="text" placeholder="example@email.com" /> }/>
+												field={<input className='form-control' type='text' placeholder='example@email.com' /> }/>
 
-								<Bessemer.Field name="password" friendlyName="Password"
+								<Bessemer.Field name='password' friendlyName='Password'
 												validators={[Validation.requiredValidator, Validation.passwordValidator]}
-												field={<input className="form-control" type="password" placeholder="Password" />} />
+												field={<input className='form-control' type='password' placeholder='Password' />} />
 
 								<Bessemer.Button>Sign In</Bessemer.Button>
 							</form>

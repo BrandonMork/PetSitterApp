@@ -1,11 +1,11 @@
 import React from 'react';
 import {Col, Card, CardTitle, CardBody, Row, Container} from 'reactstrap';
-import '../../styles/pageStyles.css';
 import _, {isEqual} from 'lodash';
 import AvailableTimes from 'react-available-times';
 import connect from 'react-redux/es/connect/connect';
 import ProfilePageForm from '../components/forms/ProfilePageForm';
 import * as Users from '../utils/Users';
+import '../../styles/pageStyles.css';
 
 class ProfilePage extends React.Component {
 

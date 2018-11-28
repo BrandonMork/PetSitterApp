@@ -18,8 +18,7 @@ class HomePage extends React.Component {
 							area. Join our network of just under 5 users today!</h4>
 						<br/>
 
-						{!_.isDefined(this.props.authentication) &&
-						!_.isDefined(this.props.user) &&
+						{!_.isDefined(this.props.user) &&
 						<div>
 							<Row>
 								<Col md={6} sm={6} xs={12} style={{marginBottom: 10}}>
@@ -40,8 +39,7 @@ class HomePage extends React.Component {
 						</div>
 						}
 
-						{_.isDefined(this.props.authentication) &&
-						_.isDefined(this.props.user) &&
+						{_.isDefined(this.props.user) &&
 						<div>
 							<Row className="center">
 								<Col md="6" sm="10">

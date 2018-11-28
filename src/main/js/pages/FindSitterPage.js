@@ -11,21 +11,17 @@ import PropTypes from 'prop-types';
 
 class FindSitterPage extends React.Component {
 
-	constructor(props){
-		super(props);
-	}
-
 	handleViewProfile = (e, principal) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
 		getSitterInfo(principal)
 			.then(function (response) {
 				myCookie.set('sitterProfile', response, {path: '/'});
+				window.location.href = '/#/view-sitter-page';
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/view-sitter-page');
 	};
 
 	render() {
@@ -56,7 +52,9 @@ class FindSitterPage extends React.Component {
                                         <br/>
                                         Phone: {res.user.phoneNumber}
                                         <br/>
-                                        Average: {res.user.sumRatings / res.user.numRatings} ({res.user.numRatings})
+                                        Average Rating: {res.user.sumRatings / res.user.numRatings}
+										<br/>
+                                        Number of Ratings: ({res.user.numRatings})
                                     </CardText>
                                     }
 
@@ -69,10 +67,12 @@ class FindSitterPage extends React.Component {
                                         <br/>
                                         Phone: {res.user.phoneNumber}
                                         <br/>
-                                        Average: No Reviews ({res.user.numRatings})
+                                        No Reviews yet!
                                     </CardText>
                                     }
-									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">View Profile</Button>
+									<Button onClick={ (e) => this.handleViewProfile(e, res.user.principal)} color = "secondary">
+										View Profile
+									</Button>
 								</Card>
 								}
 							</React.Fragment>

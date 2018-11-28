@@ -40,7 +40,6 @@ class PetPage extends React.Component {
 	handleDeletePet = (e, name) => {
 		e.preventDefault();
 		deletePet(this.props.user.principal, name);
-		this.forceUpdate();
 	};
 
 	render() {

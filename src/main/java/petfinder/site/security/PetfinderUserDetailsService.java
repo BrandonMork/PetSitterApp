@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import petfinder.site.common.user.UserAuthenticationDto;
-import petfinder.site.common.user.UserDao;
 import petfinder.site.common.user.UserService;
 
 /**

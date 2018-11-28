@@ -7,8 +7,8 @@ import { Form, Col, Row, FormGroup, Label, Input, Button, Card, CardTitle, CardB
 
 class AddPetForm extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			newPet: {}
 		};

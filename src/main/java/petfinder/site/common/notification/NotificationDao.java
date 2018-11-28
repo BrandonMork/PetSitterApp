@@ -1,11 +1,7 @@
 package petfinder.site.common.notification;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 
-import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -13,12 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import alloy.elasticsearch.ElasticSearchClientProvider;
-import petfinder.site.common.notification.NotificationDto;
 import petfinder.site.elasticsearch.NotificationElasticsearchRepository;
 
-/**
- * Created by jlutteringer on 8/23/17.
- */
 @Repository
 public class NotificationDao {
     @Autowired

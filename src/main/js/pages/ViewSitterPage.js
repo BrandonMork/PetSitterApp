@@ -11,11 +11,11 @@ class ViewSitterPage extends React.Component {
 		super(props);
 	}
 
-	getCurrentSitter() {
+	getCurrentSitter = () => {
 		const myCookie = new Cookie();
 		const currentSitter = myCookie.get('sitterProfile');
 		return <React.Fragment>
-			<Col sm='8' >
+			<Col sm={8} >
 				<Card>
 					<CardTitle>{'Please review the information about the pet!'} </CardTitle>
 					<CardImg top width="25%" src={profile_pic} />
@@ -29,7 +29,7 @@ class ViewSitterPage extends React.Component {
 				</Card>
 			</Col>
 		</React.Fragment>;
-	}
+	};
 
 	getCookieInfo(){
 		const myCookie = new Cookie();
