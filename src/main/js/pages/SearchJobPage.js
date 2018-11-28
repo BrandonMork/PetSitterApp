@@ -31,9 +31,9 @@ class SearchJobPage extends React.Component {
 			.then(function (response) {
 				console.log('user has clicked acceptJob button');
 				console.log(response);
-				myCookie.set('currentJob', response, {path: '/'});
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
+				myCookie.set('currentJob', response, {path: '/'});
 				console.log(response);
 				updateJobDetails(response);
 			})

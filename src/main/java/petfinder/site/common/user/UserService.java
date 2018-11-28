@@ -52,6 +52,8 @@ public class UserService {
 		private String state;
 		private String zip;
 		private String phoneNumber;
+		private Integer numRatings;
+		private Integer sumRatings;
 		private Long rating;
 
 		public String getPrincipal() {
@@ -157,6 +159,14 @@ public class UserService {
 		public void setRating(Long rating) {
 			this.rating = rating;
 		}
+
+		public void setNumRatings(Integer numRatings){ this.numRatings = numRatings; }
+
+		public Integer getNumRatings(){ return this.numRatings; }
+
+		public void setSumRatings(Integer sumRatings){ this.sumRatings = sumRatings; }
+
+		public Integer getSumRatings(){ return sumRatings; }
 	}
 
 	// @TODO Add new stuff from new userAuthItem - NOT HARDCODED @brandon
@@ -173,10 +183,12 @@ public class UserService {
 						request.getState(),
 						request.getZip(),
 						request.getPhoneNumber(),
-						request.getRating(),
 						_Lists.list(),
 						_Lists.list("ROLE_USER"),
-						request.getUserType()),
+						request.getUserType(),
+						0,
+						0
+				),
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
 
@@ -199,20 +211,22 @@ public class UserService {
 		System.out.println("In the UserService for updateUser");
 		//userDao.updateUser(userDto);
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto(
-				request.getPrincipal(),
-				request.getFirstName(),
-				request.getMiddleName(),
-				request.getLastName(),
-				request.getAddressLine1(),
-				request.getAddressLine2(),
-				request.getCity(),
-				request.getState(),
-				request.getZip(),
-				request.getPhoneNumber(),
-				request.getRating(),
-				_Lists.list(),
-				_Lists.list("ROLE_USER"),
-				request.getUserType()),
+					request.getPrincipal(),
+					request.getFirstName(),
+					request.getMiddleName(),
+					request.getLastName(),
+					request.getAddressLine1(),
+					request.getAddressLine2(),
+					request.getCity(),
+					request.getState(),
+					request.getZip(),
+					request.getPhoneNumber(),
+					_Lists.list(),
+					_Lists.list("ROLE_USER"),
+					request.getUserType(),
+					request.getNumRatings(),
+					request.getSumRatings()
+				),
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
 	}

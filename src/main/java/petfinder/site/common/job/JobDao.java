@@ -63,6 +63,12 @@ public class JobDao {
 
     }
 
+    public void update(JobDto job){
+        Long tmp = new Long(job.getJobID());
+        jobElasticsearchRepository.delete(tmp);
+        jobElasticsearchRepository.save(job);
+    }
+
 //    public JobDto(Long id, Long ownerID, Long sitterID, String pets, Date startDate, Date endDate) {
 //        this.id = id;
 //        this.ownerID = ownerID;
