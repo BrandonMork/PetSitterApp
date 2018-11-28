@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 import '../styles/pageStyles.css';
-import 'react-notifications/lib/notifications.css';
+//import 'react-notifications/lib/notifications.css';
 
 // Pages
 import HomePage from 'js/pages/HomePage';
@@ -20,7 +20,7 @@ import EditPetPage from 'js/pages/EditPetPage';
 import ViewSitterPage from 'js/pages/ViewSitterPage';
 import {Switch} from 'react-router';
 import NavigationBar from 'js/components/Navbar';
-import {NotificationContainer} from 'react-notifications';
+//import {NotificationContainer} from 'react-notifications';
 
 class Index extends React.Component {
 	render() {
@@ -49,7 +49,7 @@ class Index extends React.Component {
 						</Switch>
 					</HashRouter>
 
-					<NotificationContainer/>
+					/*<NotificationContainer/>*/
 				</div>
 			</div>
 		);
