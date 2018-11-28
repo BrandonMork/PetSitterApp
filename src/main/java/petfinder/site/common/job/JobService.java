@@ -28,4 +28,8 @@ public class JobService {
         System.out.println("I hit the JobService for getJob and the id is " + id);
         return jobDao.getJob(id);
     }
+
+    public void quitJob(String jobID, Long id){
+        jobDao.quitJob(jobID,id);
+    }
 }
