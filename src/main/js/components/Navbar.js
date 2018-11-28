@@ -11,9 +11,6 @@ import connect from 'react-redux/es/connect/connect';
 import notificationBell from '../notificationUnread.png';
 import * as Users from '../utils/Users';
 import '../../styles/pageStyles.css';
-import PropTypes from 'prop-types';
-import PetList from '../components/PetList';
-//import {NotificationManager} from 'react-notifications';
 
 library.add(faPaw);
 
@@ -243,10 +240,6 @@ class NavigationBar extends React.Component {
 		);
 	}
 }
-
-PetList.contextTypes = {
-	router: PropTypes.object.isRequired,
-};
 
 NavigationBar = connect(
 	state => ({
