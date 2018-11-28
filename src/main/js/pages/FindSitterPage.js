@@ -7,7 +7,6 @@ import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import Cookie from 'universal-cookie';
 import {getSitterInfo} from 'js/utils/Users';
-import ViewSitterPage from 'js/pages/ViewSitterPage';
 import PropTypes from 'prop-types';
 
 class FindSitterPage extends React.Component {

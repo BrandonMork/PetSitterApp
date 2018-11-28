@@ -48,8 +48,6 @@ class Index extends React.Component {
 							<Route exact path="/view-sitter-page" component={ViewSitterPage}/>
 						</Switch>
 					</HashRouter>
-
-					/*<NotificationContainer/>*/
 				</div>
 			</div>
 		);
