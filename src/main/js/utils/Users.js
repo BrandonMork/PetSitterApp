@@ -93,7 +93,7 @@ export function updateJobDetails(frontEndJob){
 			console.log('this should send an accepted job to back end');
 			console.log(job);
 
-			return axios.post('api/jobs/post-job' , job);
+			return axios.post('api/jobs/update-job' , job);
 		})
 		.catch(function (error) {
 			console.log(error);

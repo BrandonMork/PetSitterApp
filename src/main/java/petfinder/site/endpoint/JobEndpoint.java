@@ -27,6 +27,13 @@ public class JobEndpoint {
         return job;
     }
 
+    @PostMapping(value = "/update-job")
+    public JobDto updateJob(@RequestBody JobDto job) {
+        System.out.println("In the JobEndpoint for updateJob" + job.toString());
+        jobService.update(job);
+        return job;
+    }
+
     @GetMapping(value = "/get-job/{id}")
     public JobDto getJob(@PathVariable("id") String id) {
         System.out.println("In the JobEndpoint for getJob " + id);
