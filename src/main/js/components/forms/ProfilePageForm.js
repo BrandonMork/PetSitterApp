@@ -4,7 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import {updateUser} from 'js/utils/Users';
 import { Form, Col, Row, FormGroup, Label, Input, Button } from 'reactstrap';
-import { NotificationManager } from 'react-notifications';
+//import { NotificationManager } from 'react-notifications';
 
 // @TODO This is completely broken and doesn't do what we want it to
 class ProfilePageForm extends React.Component {
@@ -48,7 +48,7 @@ class ProfilePageForm extends React.Component {
 			updateUser(this.state.updatedUserProfile.user)
 				.then( () => {
 					this.props.getUserDetails();
-					NotificationManager.success('Your profile info has been updated!', 'Success');
+					//NotificationManager.success('Your profile info has been updated!', 'Success');
 				});
 		});
 	}

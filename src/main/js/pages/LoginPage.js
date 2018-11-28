@@ -15,7 +15,7 @@ class LoginPage extends React.Component {
 
 		// This is where we would make our axios calls to the data store
 		if (this.props.authenticate(principal, password)) {
-			NotificationManager.success('You are now logged in!', 'Success');
+			NotificationManager.success('You are now logged in!', 'Success', 1500);
 			this.context.router.history.push('/');
 		} else {
 			console.log('Error! Email or password does not exist.');

@@ -4,7 +4,7 @@ import {registerPet} from 'js/utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { Form, Col, Row, FormGroup, Label, Input, Button, Card, CardTitle, CardBody} from 'reactstrap';
-import { NotificationManager } from 'react-notifications';
+//import { NotificationManager } from 'react-notifications';
 
 class AddPetForm extends React.Component {
 
@@ -38,7 +38,7 @@ class AddPetForm extends React.Component {
 			console.log(this.state.newPet.pet);
 			registerPet(this.state.newPet.pet);
 			window.location.reload();
-			NotificationManager.success('You have added a new pet!', 'Success');
+			//NotificationManager.success('You have added a new pet!', 'Success');
 		});
 	}
 
