@@ -199,6 +199,12 @@ export function getSitterInfo(principal){
 	return axios.get('/api/user/sitter/' + principal);
 }
 
+
+export function createNotification(notification){
+	console.log(notification);
+	return axios.post('/api/notification/post-notification' , notification);
+}
+
 let State = {};
 
 State.getAuthentication = state => {
