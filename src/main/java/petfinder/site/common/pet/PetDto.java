@@ -17,6 +17,7 @@ public class PetDto implements Identifiable {
 	private String breed;
 	private String size;
 	private Long age;
+	private String preferences;
 
 	// @TODO Define what our types will be
 	// i.e. Breed, Species, Size, Age, etc....
@@ -28,7 +29,7 @@ public class PetDto implements Identifiable {
 		System.out.println("Made a pet object with id of " + id + " with a petID of " + petId);
 	}
 
-	public PetDto(String principal, String petId, Long id, String name, String species, String breed, String size, Long age) {
+	public PetDto(String principal, String petId, Long id, String name, String species, String breed, String size, Long age, String preferences) {
 		this.principal = principal;
 		this.petId = petId;
 		this.id = id;
@@ -37,6 +38,7 @@ public class PetDto implements Identifiable {
 		this.breed = breed;
 		this.size = size;
 		this.age = age;
+		this.preferences = preferences;
 	}
 
 	public PetDto(String principal, String name) {
@@ -109,6 +111,14 @@ public class PetDto implements Identifiable {
 		this.age = age;
 	}
 
+	public String getPreferences() {
+		return preferences;
+	}
+
+	public void setPreferences(String preferences) {
+		this.preferences = preferences;
+	}
+
 	@Override
 	public String toString() {
 		return "PetDto{" +
@@ -120,6 +130,7 @@ public class PetDto implements Identifiable {
 				", breed='" + breed + '\'' +
 				", size='" + size + '\'' +
 				", age=" + age +
+				", preferences='" + preferences + '\'' +
 				'}';
 	}
 }
