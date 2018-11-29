@@ -33,7 +33,7 @@ class LoginPage extends React.Component {
 				} else {
 					this.addError('bottom-center');
 				}
-			}, 100);
+			}, 250);
 		} else {
 			console.log('Error! Email or password does not exist.');
 		}
