@@ -37,16 +37,16 @@ class SearchJobPage extends React.Component {
 			.then(function (response) {
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
-				myCookie.set('currentJob', response, {path: '/'})
-					.then(() => {
-						notification = {
-							'senderPrincipal': sitterInfo,
-							'receiverPrincipal': res.ownerPrincipal,
-							'message': sitterInfo + ' has accepted your job!',
-							'read': 'no'
-						};
+				myCookie.set('currentJob', response, {path: '/'});
+				notification = {
+					'senderPrincipal': sitterInfo,
+					'receiverPrincipal': res.ownerPrincipal,
+					'message': sitterInfo + ' has accepted your job!',
+					'read': 'no'
+				};
 
-						Users.updateJobDetails(response);
+				Users.updateJobDetails(response)
+					.then(() => {
 						Users.createNotification(notification);
 						window.location.href = '/#/accept-job-page';
 					});
