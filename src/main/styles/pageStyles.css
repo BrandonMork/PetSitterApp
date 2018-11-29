@@ -1,4 +1,7 @@
-.pageContainer {
+.backgroundContainer {
+    left: 0;
+    bottom: 0;
+    position: fixed;
     background-size: cover;
     background-position: center;
     background-image: url(../js/dogs_background.jpg);
@@ -8,10 +11,15 @@
     width: 100%;
     min-height: 100vh;
     display: inline-block;
+    z-index: -1;
 }
 
 .pageContent {
-    opacity: 0.8;
+    opacity: 0.75;
+}
+
+.page-content {
+    margin-top: 4vh;
 }
 
 .center {
