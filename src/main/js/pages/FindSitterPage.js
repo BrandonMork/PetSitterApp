@@ -47,7 +47,7 @@ class FindSitterPage extends React.Component {
 				>
 
 					<DataSearch
-						componentId='mainSearch'
+						componentId='Search'
 						dataField={['user.principal', 'user.principal.search',
 							'user.firstName', 'user.firstName.search',
 							'user.lastName', 'user.lastName.search',
@@ -61,7 +61,7 @@ class FindSitterPage extends React.Component {
 						<Row>
 							<Col lg={3} md={4} sm={12}>
 								<SingleRange
-									componentId='ratingsFilter'
+									componentId='Ratings'
 									dataField='user.rating'
 									showRadio={true}
 									title='Sitter Ratings'

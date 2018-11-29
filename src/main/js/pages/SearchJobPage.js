@@ -20,42 +20,6 @@ import '../../styles/pageStyles.css';
 
 class SearchJobPage extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {};
-		this.updatedJob = {};
-	}
-
-	acceptJob = (e, res) => {
-		e.preventDefault();
-		const myCookie = new Cookie();
-		console.log('the jobID should be');
-		console.log(res.jobID);
-		let sitterInfo = this.props.user.principal;
-		let notification;
-		Users.getJob(res.jobID)
-			.then(function (response) {
-				myCookie.set('currentJob', response, {path: '/'});
-
-				response.accepted = 'yes';
-				response.sitterPrincipal = sitterInfo;
-				notification = {
-					'senderPrincipal': sitterInfo,
-					'receiverPrincipal': res.ownerPrincipal,
-					'message': sitterInfo + ' has accepted your job!',
-					'read': 'no'
-				};
-
-				Users.updateJobDetails(response);
-				Users.createNotification(notification);
-				window.location.href = '/#/accept-job-page';
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-
-	};
-
 	reviewJob = (e, res) => {
 		e.preventDefault();
 
@@ -63,7 +27,7 @@ class SearchJobPage extends React.Component {
 			.then(function (response) {
 				const myCookie = new Cookie();
 				myCookie.set('currentJob', response, {path: '/'});
-				window.location.href = '/#/review-job-page';
+				window.location.href = '/#/accept-job-page';
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -98,12 +62,8 @@ class SearchJobPage extends React.Component {
 									{_.isEqual(res.accepted, 'no') &&
 									<ListGroupItem style={{justifyContent: 'center', alignItems: 'center'}}>
 										<div style={{float: 'right'}}>
-												<Button style={{marginBottom: 5}} size='sm' onClick={ (e) => this.acceptJob(e, res)}>
-													Accept Job
-												</Button>
-												<br/>
 												<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>
-													Review Job
+													View Job Details
 												</Button>
 										</div>
 										<h4>Posting by: {res.ownerPrincipal}</h4>
