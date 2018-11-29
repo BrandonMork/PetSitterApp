@@ -25,6 +25,7 @@ class AddPetForm extends React.Component {
 					breed: e.target.breed.value,
 					size: e.target.size.value,
 					age: e.target.age.value,
+					preferences: e.target.details.value
 				},
 			}},
 		function() {
@@ -85,8 +86,8 @@ class AddPetForm extends React.Component {
 									<Row>
 										<Col>
 											<FormGroup>
-												<Label for="pet-details">Other Details</Label>
-												<Input type="textarea" name="pet-details"
+												<Label for="details">Other Details</Label>
+												<Input type="textarea" name="details"
 													   placeholder="Enter any details about your furry friend!
 													   Dietary restrictions, health conditions, special care
 													   instructions, food preferences, etc." />

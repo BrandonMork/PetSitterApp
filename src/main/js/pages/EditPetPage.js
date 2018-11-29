@@ -27,6 +27,7 @@ class EditPetPage extends React.Component {
 						<CardText>{'Breed: ' + currentPet.breed} </CardText>
 						<CardText>{'Size: ' + currentPet.size} </CardText>
 						<CardText>{'Age: ' + currentPet.age} </CardText>
+						<CardText>{'Pet Preferences: ' + currentPet.preferences} </CardText>
 					</CardBody>
 				</Card>
 			</Col>
@@ -49,7 +50,8 @@ class EditPetPage extends React.Component {
 			'species': tempPet.species,
 			'breed': tempPet.breed,
 			'size': e.target.size.value,
-			'age': e.target.age.value
+			'age': e.target.age.value,
+			'preferences': e.target.details.value
 		};
 		updatePet(updatedPet);
 	}
@@ -81,6 +83,13 @@ class EditPetPage extends React.Component {
 										</FormGroup>
 									</Col>
 								</Row>
+								<Col md={12}>
+									<FormGroup>
+										<Label for="details">Pet Preferences</Label>
+										<Input type="text" name="details"
+											   placeholder={this.getCookieInfo().preferences} defaultValue={this.getCookieInfo().preferences} />
+									</FormGroup>
+								</Col>
 								<Button>Submit Changes</Button>
 							</Form>
 						</div>
