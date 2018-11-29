@@ -33,7 +33,7 @@ class MainReviewPage extends React.Component {
 				</ReactiveBase>
 				{console.log(this.state.jobs)}
 				<div>
-					/*Testing some different methods for passing in a job at time, doesn't seem to like the whole array at once*/
+					{/*Testing some different methods for passing in a job at time, doesn't seem to like the whole array at once*/}
 					{this.state.jobs.map((job) => <ReviewPage job={job}/>)}
 				</div>
 			</div>

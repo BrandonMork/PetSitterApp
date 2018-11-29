@@ -61,19 +61,6 @@ class NavigationBar extends React.Component {
 			return <React.Fragment>
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
-						Ratings
-					</DropdownToggle>
-					<DropdownMenu right>
-						<DropdownItem href="#/rating-page">
-							Rate Sitters
-						</DropdownItem>
-						<DropdownItem href="#/report-page">
-							Report a Sitter
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
-				<UncontrolledDropdown nav inNavbar>
-					<DropdownToggle nav caret>
 						Jobs
 					</DropdownToggle>
 					<DropdownMenu right>
@@ -105,7 +92,6 @@ class NavigationBar extends React.Component {
 			</React.Fragment>;
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Sitter') {
 			return <React.Fragment>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Jobs
@@ -119,32 +105,17 @@ class NavigationBar extends React.Component {
 				<NavItem>
 					<NavLink href="#/profile">Profile</NavLink>
 				</NavItem>
-
 			</React.Fragment>;
 
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Both') {
 			return <React.Fragment>
-
-				<UncontrolledDropdown nav inNavbar>
-					<DropdownToggle nav caret>
-						Ratings
-					</DropdownToggle>
-					<DropdownMenu right>
-						<DropdownItem href="#/rating-page">
-							Rate Sitters
-						</DropdownItem>
-						<DropdownItem href="#/report-page">
-							Report a Sitter
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						Jobs
 					</DropdownToggle>
 					<DropdownMenu right>
 						<DropdownItem href="#/post-job">
-							Post Jobs
+							Post Job
 						</DropdownItem>
 						<DropdownItem href="#/find-sitter">
 							Find Sitter
@@ -154,7 +125,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-
 				<UncontrolledDropdown nav inNavbar>
 					<DropdownToggle nav caret>
 						User
@@ -202,8 +172,9 @@ class NavigationBar extends React.Component {
 				<React.Fragment>
 					|
 					<UncontrolledDropdown nav inNavbar>
-						<DropdownToggle nav>
-							<img src={notificationBell}/>
+						<DropdownToggle nav caret>
+							<img src={notificationBell}/>&nbsp;
+							Notifications
 						</DropdownToggle>
 
 						{/* @TODO BRANDON Do your notification stuff here */}
