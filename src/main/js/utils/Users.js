@@ -217,6 +217,11 @@ export function createNotification(notification){
     return axios.post('/api/notification/post-notification' , notification);
 }
 
+export function deleteNotification(id, notifyID){
+    console.log('i want to delete this notification ' + id + ' ' + notifyID);
+    return axios.post('/api/notification/delete-notification/' + id + '/' + notifyID);
+}
+
 let State = {};
 
 State.getAuthentication = state => {

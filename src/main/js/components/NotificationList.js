@@ -9,9 +9,14 @@ import {
 } from 'reactstrap';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
+import {deleteNotification} from 'js/utils/Users';
 
 class NotificationList extends React.Component {
 
+	readNotification(e, res){
+		e.preventDefault();
+		deleteNotification(res.id, res.notifyID);
+	}
 	query = () => {
 		return {
 			'bool': {
@@ -48,7 +53,7 @@ class NotificationList extends React.Component {
 								{console.log(res)}
 								<ListGroupItemText style={{width: '100%', fontSize: 13}}>
 									{res.message}
-									<Button style={{float: 'right'}} size="sm">Mark as Read</Button>
+									<Button onClick={ (e) => this.readNotification(e, res)} style={{float: 'right'}} size="sm">Mark as Read</Button>
 								</ListGroupItemText>
 							</ListGroupItem>
 						}

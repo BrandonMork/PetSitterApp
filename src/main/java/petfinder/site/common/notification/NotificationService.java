@@ -13,6 +13,10 @@ public class NotificationService {
         notificationDao.save(jobExample);
     }
 
+    public void delete(Long id, String notifyID){
+        notificationDao.delete(id, notifyID);
+    }
+
     public void update(NotificationDto jobExample) {
         System.out.println("In the NotificationService for update" + jobExample.toString() + ".");
         notificationDao.update(jobExample);
