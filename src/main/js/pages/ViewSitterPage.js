@@ -3,7 +3,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg, Button} from 'reactstrap';
+import {Card, CardBody, CardTitle, CardText, CardImg, Button} from 'reactstrap';
 
 class ViewSitterPage extends React.Component {
 	constructor(props){
@@ -33,7 +33,7 @@ class ViewSitterPage extends React.Component {
 						<CardText>Phone Number: {this.state.sitter.phoneNumber} </CardText>
 						<CardText>Email: {this.state.sitter.principal} </CardText>
 
-						<Button href="#/find-sitter">Find other awesome sitters!</Button>
+						<Button href="/#/find-sitter">Find other awesome sitters!</Button>
 					</CardBody>
 				</Card>
 			</div>

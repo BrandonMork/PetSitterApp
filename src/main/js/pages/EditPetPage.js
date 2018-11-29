@@ -2,47 +2,25 @@ import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
-import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg, Form, Row, FormGroup, Label, Input} from 'reactstrap';
-import {Button} from 'js/alloy/bessemer/components';
-import {updatePet} from 'js/utils/Users';
+import {Card, CardBody, CardTitle, Col, CardText, Form, Row, FormGroup, Label, Input, Button} from 'reactstrap';
+import { updatePet } from 'js/utils/Users';
 
-// @TODO Mario make this look pretty pls
 class EditPetPage extends React.Component {
 	constructor(props){
 		super(props);
-	}
 
-	getCurrentPet() {
 		const myCookie = new Cookie();
 		const currentPet = myCookie.get('currentPet');
-		return <React.Fragment>
-			<Col sm='8' >
-				<Card>
-					<CardTitle>{'Please review the information about the pet!'} </CardTitle>
-					<CardImg top width="25%" src={profile_pic} />
-					<CardBody>
-						<CardText>{'Pet Name: ' + currentPet.name} </CardText>
-						<CardText>{'Species: ' + currentPet.species} </CardText>
-						<CardText>{'Breed: ' + currentPet.breed} </CardText>
-						<CardText>{'Size: ' + currentPet.size} </CardText>
-						<CardText>{'Age: ' + currentPet.age} </CardText>
-						<CardText>{'Pet Preferences: ' + currentPet.preferences} </CardText>
-					</CardBody>
-				</Card>
-			</Col>
-		</React.Fragment>;
-	}
 
-	getCookieInfo(){
-		const myCookie = new Cookie();
-		const currentPet = myCookie.get('currentPet');
-		return currentPet;
+		this.state = {
+			pet: currentPet
+		};
 	}
 
 	handleSubmit(e) {
 		e.preventDefault();
-		let tempPet = this.getCookieInfo();
+		let tempPet = this.state.pet;
+
 		let updatedPet = {
 			'name': tempPet.name,
 			'principal': tempPet.principal,
@@ -53,49 +31,59 @@ class EditPetPage extends React.Component {
 			'age': e.target.age.value,
 			'preferences': e.target.details.value
 		};
+
 		updatePet(updatedPet);
 	}
 
 	render() {
 		return (
-			<div className='pageContainer'>
-				<div className='container padding'>
-					<div className='pageContent'>
-						<div>
-							<div>
-								<this.getCurrentPet />
-							</div>
-							<br/>
-							<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
-								<Row form>
-									<Col md={4}>
-										<FormGroup>
-											<Label for="size">Size</Label>
-											<Input type="text" name="size"
-												   placeholder={this.getCookieInfo().size} defaultValue={this.getCookieInfo().size} />
-										</FormGroup>
-									</Col>
-									<Col md={4}>
-										<FormGroup>
-											<Label for="age">Age</Label>
-											<Input type="text" name="age"
-												   placeholder={this.getCookieInfo().age} defaultValue={this.getCookieInfo().age} />
-										</FormGroup>
-									</Col>
-								</Row>
-								<Col md={12}>
-									<FormGroup>
-										<Label for="details">Pet Preferences</Label>
-										<Input type="text" name="details"
-											   placeholder={this.getCookieInfo().preferences} defaultValue={this.getCookieInfo().preferences} />
-									</FormGroup>
-								</Col>
-								<Button>Submit Changes</Button>
-							</Form>
-						</div>
+			<Card className='center' style={{marginTop: 80}}>
+				<CardTitle style={{marginTop: 15}}>Current pet details:</CardTitle>
+
+				<CardBody>
+					<CardText>Pet Name: {this.state.pet.name} </CardText>
+					<CardText>Species: {this.state.pet.species} </CardText>
+					<CardText>Breed: {this.state.pet.breed} </CardText>
+					<CardText>Size: {this.state.pet.size} </CardText>
+					<CardText>Age: {this.state.pet.age} </CardText>
+					<CardText>Pet Preferences: {this.state.pet.preferences} </CardText>
+				</CardBody>
+
+				<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+					<Row form>
+						<Col md={6}>
+							<FormGroup>
+								<Label for="size">Size</Label>
+								<Input type="text" name="size"
+									   placeholder={this.state.pet.size}
+									   defaultValue={this.state.pet.size} />
+							</FormGroup>
+						</Col>
+						<Col md={6}>
+							<FormGroup>
+								<Label for="age">Age</Label>
+								<Input type="text" name="age"
+									   placeholder={this.state.pet.age}
+									   defaultValue={this.state.pet.age} />
+							</FormGroup>
+						</Col>
+					</Row>
+					<Row>
+						<Col md={12}>
+							<FormGroup>
+								<Label for="details">Pet Preferences</Label>
+								<Input type="text" name="details"
+									   placeholder={this.state.pet.preferences}
+									   defaultValue={this.state.pet.preferences} />
+							</FormGroup>
+						</Col>
+					</Row>
+
+					<div className="center">
+						<Button>Submit Changes</Button>
 					</div>
-				</div>
-			</div>
+				</Form>
+			</Card>
 		);
 	}
 }
