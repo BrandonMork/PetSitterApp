@@ -13,15 +13,16 @@ import { postJob } from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import * as Users from 'js/utils/Users';
 import PetListAdd from 'js/components/PetListAdd';
-import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
-import '../../../styles/pageStyles.css';
+import connect from 'react-redux/es/connect/connect';
 import notification from 'js/notification';
+import '../../../styles/pageStyles.css';
 
 class PostJobForm extends React.Component {
 
 	constructor(props) {
 		super(props);
+
 		this.state = { updatedJob: null };
 
 		this.add = this.add.bind(this);

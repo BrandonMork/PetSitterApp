@@ -16,8 +16,8 @@ class PostJobPage extends React.Component {
 				<CardTitle className="center" style={{fontSize: 35, marginTop: 20}}>You're one step closer to posting your job!</CardTitle>
 				<CardBody>
 					<PostJobForm
-						addNotification={this.addNotification}
-					    removeNotification={this.removeNotification}/>
+						addNotification={this.props.addNotification}
+					    removeNotification={this.props.removeNotification}/>
 				</CardBody>
 			</Card>
 		);

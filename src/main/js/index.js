@@ -78,43 +78,44 @@ class Index extends React.Component {
 
 							<Route exact path='/register' render={(props) =>
 								<RegisterPage {...props}
-											 addNotification={this.addNotification}
-											 removeNotification={this.removeNotification}
+									 addNotification={this.addNotification}
+									 removeNotification={this.removeNotification}
 								/>}
 							/>
 
 							<Route exact path='/login' render={(props) =>
 								<LoginPage {...props}
-										   addNotification={this.addNotification}
-										   removeNotification={this.removeNotification}
+								   addNotification={this.addNotification}
+								   removeNotification={this.removeNotification}
 								/>}
 							/>
 
 							<Route exact path='/profile-page' render={(props) =>
 								<ProfilePage {...props}
-											 addNotification={this.addNotification}
-											 removeNotification={this.removeNotification}
+									 addNotification={this.addNotification}
+									 removeNotification={this.removeNotification}
 								/>}
 							/>
 
 							{/*@TODO Add notifications for this page (difficult  */}
 							<Route exact path='/pet-page' render={(props) =>
 								<PetPage {...props}
-											 addNotification={this.addNotification}
-											 removeNotification={this.removeNotification}
+									 addNotification={this.addNotification}
+									 removeNotification={this.removeNotification}
 								/>}
 							/>
 
 							<Route exact path='/post-job' render={(props) =>
 								<PostJobPage {...props}
-											 addNotification={this.addNotification}
-											 removeNotification={this.removeNotification}
+									 addNotification={this.addNotification}
+									 removeNotification={this.removeNotification}
 								/>}
 							/>
 
 							<Route exact path='/accept-job-page' render={(props) =>
-								<AcceptJobPage {...props}  addNotification={this.addNotification}
-											   removeNotification={this.removeNotification}
+								<AcceptJobPage {...props}
+									   addNotification={this.addNotification}
+									   removeNotification={this.removeNotification}
 								/>}
 							/>
 

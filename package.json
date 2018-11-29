@@ -60,7 +60,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "@appbaseio/reactivesearch": "2.13.0",
+    "@appbaseio/reactivesearch": "^2.14.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
     "@fortawesome/free-solid-svg-icons": "^5.3.1",
     "@fortawesome/react-fontawesome": "^0.1.3",
@@ -90,11 +90,13 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-select": "1.2.1",
+    "react-slick": "^0.23.2",
     "reactstrap": "6.5.0",
     "redux": "3.7.2",
     "redux-form": "^6.8.0",
     "redux-logger": "^2.8.2 ",
     "redux-thunk": "^2.2.0",
+    "slick-carousel": "^1.8.1",
     "universal-cookie": "^3.0.4",
     "uuid": "^3.3.2"
   }
