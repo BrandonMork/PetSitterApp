@@ -59,17 +59,18 @@ class SearchJobPage extends React.Component {
 
 	reviewJob = (e, res) => {
 		e.preventDefault();
-		const myCookie = new Cookie();
+
 		getJob(res.jobID)
 			.then(function (response) {
+				const myCookie = new Cookie();
+				myCookie.set('currentJob', response, {path: '/'});
 				console.log('user has clicked reivewJob button');
 				console.log(response);
-				myCookie.set('currentJob', response, {path: '/'});
+				this.context.router.history.push('/review-job-page');
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/review-job-page');
 	};
 
 	render() {
