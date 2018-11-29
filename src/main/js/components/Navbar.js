@@ -159,12 +159,12 @@ class NavigationBar extends React.Component {
 								User
 							</DropdownToggle>
 							<DropdownMenu right>
-								<DropdownItem href="#/profile">
+								<DropdownItem href="#/profile-page">
 									My Profile
 								</DropdownItem>
 								{(_.isEqual(this.props.user.userType, 'Both') ||
 								  _.isEqual(this.props.user.userType, 'Owner')) &&
-								<DropdownItem href="#/add-pet">
+								<DropdownItem href="#/pet-page">
 									My Pets
 								</DropdownItem>}
 								<DropdownItem href="#/my-job-page">

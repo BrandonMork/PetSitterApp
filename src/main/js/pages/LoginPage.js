@@ -1,13 +1,18 @@
 import React from 'react';
-import { Card, CardTitle, CardBody, Col } from 'reactstrap';
-import '../../styles/pageStyles.css';
+import {
+	Card,
+	CardTitle,
+	CardBody,
+	Col
+} from 'reactstrap';
 import * as Bessemer from '../alloy/bessemer/components';
 import * as Validation from '../alloy/utils/validation';
-import PropTypes from 'prop-types';
 import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
+import PropTypes from 'prop-types';
 import notification from 'js/notification';
+import connect from 'react-redux/es/connect/connect';
+import '../../styles/pageStyles.css';
 
 class LoginPage extends React.Component {
 
@@ -15,13 +20,20 @@ class LoginPage extends React.Component {
 		super(props);
 
 		this.add = this.add.bind(this);
+		this.addError = this.addError.bind(this);
 	}
 
 	onSubmit = ({principal, password}) => {
 		// This is where we would make our axios calls to the data store
 		if (this.props.authenticate(principal, password)) {
-			this.context.router.history.push('/');
-			this.add('bottom-center');
+			setTimeout(() => {
+				if (this.props.authentication != null) {
+					window.location.href = '/#/';
+					this.add('bottom-center');
+				} else {
+					this.addError('bottom-center');
+				}
+			}, 100);
 		} else {
 			console.log('Error! Email or password does not exist.');
 		}
@@ -31,10 +43,21 @@ class LoginPage extends React.Component {
 		const { addNotification } = this.props;
 
 		return addNotification(Object.assign({}, notification, {
-			title: 'Success',
+			title: 'Success!',
 			message: 'You are now logged in!',
 			container,
 			type: 'success'
+		}));
+	}
+
+	addError(container) {
+		const { addNotification } = this.props;
+
+		return addNotification(Object.assign({}, notification, {
+			title: 'Error!',
+			message: 'Incorrect email or password.',
+			container,
+			type: 'danger'
 		}));
 	}
 
@@ -74,7 +97,8 @@ LoginPage.contextTypes = {
 LoginPage = ReduxForm.reduxForm({form: 'login'})(LoginPage);
 LoginPage = connect(
 	state => ({
-
+		authentication: Users.State.getAuthentication(state),
+		user: Users.State.getUser(state)
 	}),
 	dispatch => ({
 		authenticate: (principal, password) => dispatch(Users.Actions.authenticate(principal, password))

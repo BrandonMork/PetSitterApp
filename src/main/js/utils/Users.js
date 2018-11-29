@@ -3,13 +3,10 @@ import Cookie from 'universal-cookie';
 
 // Makes API call to our register function in the back-end
 export function register(user) {
-	console.log('IN onSubmit() VIA Users.register():');
-	console.log(user);
 	return axios.post('/api/user/register', user);
 }
 
 export function registerPet(pet){
-
 	return axios.post('/api/pets/add-pet', pet)
 		.then(function (response) {
 			console.log(response);
@@ -106,7 +103,8 @@ export function quitJob(jobID, id){
 }
 
 export function updateUser(user){
-	//console.log('we are now calling an axios post');
+	console.log('we are now calling an axios post');
+	console.log(user);
 	let newUser = {
 		'principal': user.principal,
 		'firstName': user.firstName,
@@ -168,6 +166,7 @@ export function updateUser(user){
 
 	return axios.post('/api/user/update-user/', backEndUser)
 		.then(function (response) {
+			console.log('This is a response:');
 			console.log(response);
 		})
 		.catch(function (error) {
@@ -262,8 +261,6 @@ Actions.getPets = principal => {
 Actions.register = user => {
 	return (dispatch) => {
 		return register(user).then(() => {
-			console.log('IN register() VIA Users.Actions:');
-			console.log(user);
 			return dispatch(Actions.authenticate(user.principal, user.password));
 		});
 	};

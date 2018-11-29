@@ -32,7 +32,10 @@ class EditPetPage extends React.Component {
 			'preferences': e.target.details.value
 		};
 
-		updatePet(updatedPet);
+		updatePet(updatedPet)
+			.then(() => {
+				window.location.href = '/#/pet-page';
+			});
 	}
 
 	render() {
@@ -80,7 +83,8 @@ class EditPetPage extends React.Component {
 					</Row>
 
 					<div className="center">
-						<Button>Submit Changes</Button>
+						<Button>Submit Changes</Button>&nbsp;
+						<Button href='/#/pet-page'>Cancel</Button>
 					</div>
 				</Form>
 			</Card>
