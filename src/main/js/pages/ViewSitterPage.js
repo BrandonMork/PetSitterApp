@@ -3,7 +3,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg, Button} from 'reactstrap';
+import {Card, CardBody, CardTitle, CardText, CardImg, Button} from 'reactstrap';
 
 class ViewSitterPage extends React.Component {
 	constructor(props){

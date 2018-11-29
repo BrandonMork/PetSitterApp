@@ -5,7 +5,6 @@ import NavigationBar from './components/Navbar';
 import '../styles/pageStyles.css';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme';
-import { createBrowserHistory } from 'history';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -65,8 +64,6 @@ class Index extends React.Component {
 	}
 
 	render() {
-		const customHistory = createBrowserHistory();
-
 		return (
 			<div>
 				<div className='backgroundContainer' />
@@ -75,7 +72,7 @@ class Index extends React.Component {
 						addNotification={this.addNotification}
 						removeNotification={this.removeNotification}
 					/>
-					<HashRouter history={customHistory}>
+					<HashRouter>
 						<Switch>
 							<Route exact path='/' component={HomePage} />
 							<Route exact path='/home' component={HomePage} />
