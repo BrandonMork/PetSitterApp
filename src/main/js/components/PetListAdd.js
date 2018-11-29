@@ -21,21 +21,6 @@ class PetListAdd extends React.Component {
 		this.props.fetchPets(this.props.user.principal);
 	}
 
-	handleAddPet = (e, name) => {
-		e.preventDefault();
-		const myCookie = new Cookie();
-		getOnePet(this.props.user.principal, name)
-			.then(function (response) {
-				console.log('user has clicked editPet button');
-				console.log(response);
-				myCookie.set('currentPet', response, {path: '/'});
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		this.context.router.history.push('/edit-pet-page');
-	};
-
 	render() {
 		return (
 			<React.Fragment>
@@ -67,7 +52,6 @@ class PetListAdd extends React.Component {
 								<th>Pet ID</th>
 								<th>Pet Name</th>
 								<th> </th>
-								<th> </th>
 							</tr>
 							</thead>
 							<tbody>
@@ -76,7 +60,7 @@ class PetListAdd extends React.Component {
 								<tr key={pet.id}>
 									<th scope="row">{pet.id}</th>
 									<td>{pet.name}</td>
-									<td><Button onClick={ (e) => this.handleAddPet(e, pet.name)}>Add Pet</Button></td>
+									<td>{pet.type}</td>
 								</tr>
 							))}
 							</tbody>

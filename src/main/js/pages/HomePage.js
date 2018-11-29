@@ -188,7 +188,7 @@ class HomePage extends React.Component {
 								dataField='Sitters'
 								size={5}
 								target={'_blank'}
-								showResultStats
+								showResultStats={false}
 								pagination
 								defaultQuery={this.sitterQuery}
 								onData={(res) => {
@@ -243,7 +243,7 @@ class HomePage extends React.Component {
 								dataField='Jobs'
 								size={5}
 								target={'_blank'}
-								pagination
+								showResultStats={false}
 								defaultQuery={this.jobQuery}
 								onData={(res) => {
 									return {
@@ -251,14 +251,15 @@ class HomePage extends React.Component {
 										title: `Posting by: ${res.ownerPrincipal}`,
 										description: (
 											<div>
-												<div style={{float: 'right'}}>
+												<div>Start Date: {res.startDate}</div>
+												<div>End Date: {res.endDate}</div>
+												<div>Asking Price: ${res.maxPay}</div>
+												<div>Approximate Location: {res.zip}</div>
+												<div className="center">
 													<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>
 														View Job Details
 													</Button>
 												</div>
-												<div>Start Date: {res.startDate}</div>
-												<div>End Date: {res.endDate}</div>
-												<div>Approximate Location: {res.zip}</div>
 											</div>
 										),
 									};
