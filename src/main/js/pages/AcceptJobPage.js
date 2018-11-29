@@ -21,7 +21,7 @@ class AcceptJobPage extends React.Component {
 	render() {
 		return (
 			<Card className="center" style={{marginTop: 80}}>
-				<CardTitle className="center">The owner will be notified of your acceptance!</CardTitle>
+				<CardTitle className="center">Detailed information about the job!</CardTitle>
 				<CardBody>
 					<CardText>Job ID: {this.state.job.id}</CardText>
 					<CardText>Pet name: {this.state.job.pets}</CardText>
