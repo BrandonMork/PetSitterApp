@@ -31,12 +31,9 @@ class SearchJobPage extends React.Component {
 		let notification;
 		getJob(res.jobID)
 			.then(function (response) {
-				console.log('user has clicked acceptJob button');
-				console.log(response);
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
 				myCookie.set('currentJob', response, {path: '/'});
-				console.log(response);
 				updateJobDetails(response);
 
 				notification = {
@@ -47,11 +44,11 @@ class SearchJobPage extends React.Component {
 				};
 
 				createNotification(notification);
+				window.location.href = '/#/accept-job-page';
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/accept-job-page');
 
 	};
 
@@ -62,9 +59,7 @@ class SearchJobPage extends React.Component {
 			.then(function (response) {
 				const myCookie = new Cookie();
 				myCookie.set('currentJob', response, {path: '/'});
-				console.log('user has clicked reivewJob button');
-				console.log(response);
-				window.location.push('/review-job-page');
+				window.location.href = '/#/review-job-page';
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -99,11 +94,11 @@ class SearchJobPage extends React.Component {
 									{_.isEqual(res.accepted, 'no') &&
 									<ListGroupItem style={{justifyContent: 'center', alignItems: 'center'}}>
 										<div style={{float: 'right'}}>
-												<Button style={{marginBottom: 5}} size="sm" onClick={ (e) => this.acceptJob(e, res)}>
+												<Button style={{marginBottom: 5}} size='sm' onClick={ (e) => this.acceptJob(e, res)}>
 													Accept Job
 												</Button>
 												<br/>
-												<Button size="sm" onClick={ (e) => this.reviewJob(e, res)}>
+												<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>
 													Review Job
 												</Button>
 										</div>
