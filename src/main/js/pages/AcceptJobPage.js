@@ -84,6 +84,7 @@ class AcceptJobPage extends React.Component {
 					<CardText>Zip: {this.state.job.zip}</CardText>
 					<CardText>Start Date: {this.state.job.startDate}</CardText>
 					<CardText>End Date: {this.state.job.endDate}</CardText>
+					<CardText>Maximum Pay: ${this.state.job.maxPay}</CardText>
 					<CardText>Additional Job Details: {this.state.job.preferences}</CardText>
 
 					<div className="center">

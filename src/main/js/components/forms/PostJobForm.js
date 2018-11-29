@@ -43,7 +43,8 @@ class PostJobForm extends React.Component {
 				city: e.target.city.value,
 				state: e.target.state.value,
 				zip: e.target.zip.value,
-				preferences: e.target.details.value
+				preferences: e.target.details.value,
+				maxPay: e.target.pay.value
 			}},
 		function() {
 			console.log('Im adding a job!');
@@ -148,6 +149,16 @@ class PostJobForm extends React.Component {
 										<Label for="zip">Zip</Label>
 										<Input type="number" ref="zip" name="zip" id="zip"
 											   defaultValue={this.props.user.zip} placeholder={this.props.user.zip}/>
+									</FormGroup>
+								</Col>
+							</Row>
+
+							<Row form>
+								<Col md={12}>
+									<FormGroup>
+										<Label for="pay">Maximum Pay</Label>
+										<Input type="text" ref="pay" name="pay" id="pay"
+											   placeholder="Enter amount to pay a sitter. (Do not include a $)" />
 									</FormGroup>
 								</Col>
 							</Row>

@@ -70,6 +70,7 @@ class SearchJobPage extends React.Component {
 										<h4>Posting by: {res.ownerPrincipal}</h4>
 										<div>Start Date: {res.startDate}</div>
 										<div>End Date: {res.endDate}</div>
+										<div>Maximum Pay: ${res.maxPay}</div>
 										<div>Approximate Location: {res.zip}</div>
 									</ListGroupItem>}
 								</React.Fragment>

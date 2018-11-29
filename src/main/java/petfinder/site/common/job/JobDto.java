@@ -23,7 +23,7 @@ public class JobDto implements Identifiable {
     private String endDate;
     private String startTime;
     private String endTime;
-    private Long maxPay;
+    private String maxPay;
 
     private String addressLine1;
     private String addressLine2;
@@ -46,7 +46,7 @@ public class JobDto implements Identifiable {
         this.jobID = id.toString();
     }
 
-    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, Long maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted, String finished, String preferences) {
+    public JobDto(Long id, String jobID, String ownerPrincipal, String sitterPrincipal, String pets, String startDate, String endDate, String startTime, String endTime, String maxPay, String addressLine1, String addressLine2, String city, String state, String zip, String accepted, String finished, String preferences) {
         this.id = id;
         this.jobID = jobID;
         this.ownerPrincipal = ownerPrincipal;
@@ -140,11 +140,11 @@ public class JobDto implements Identifiable {
         this.endTime = endTime;
     }
 
-    public Long getMaxPay() {
+    public String getMaxPay() {
         return maxPay;
     }
 
-    public void setMaxPay(Long maxPay) {
+    public void setMaxPay(String maxPay) {
         this.maxPay = maxPay;
     }
 
@@ -224,7 +224,7 @@ public class JobDto implements Identifiable {
                 ", endDate='" + endDate + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
-                ", maxPay=" + maxPay +
+                ", maxPay='" + maxPay + '\'' +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", city='" + city + '\'' +
