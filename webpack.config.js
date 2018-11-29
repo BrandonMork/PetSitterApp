@@ -45,7 +45,6 @@ const config = {
 			},
 			'__DEV__': false
 		}),
-		new webpack.optimize.UglifyJsPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
 	],
