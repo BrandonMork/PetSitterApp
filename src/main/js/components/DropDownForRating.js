@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import * as Bessemer from 'js/alloy/bessemer/components';
 import * as ReduxForm from 'redux-form';
 import * as Validation from 'js/alloy/utils/validation';
-import PetList from 'js/components/PetList';
 import {updateUser, addRating} from 'js/utils/Users';
 
 class DropDownForRating extends React.Component {
