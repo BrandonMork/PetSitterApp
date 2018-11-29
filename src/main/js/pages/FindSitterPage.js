@@ -43,7 +43,7 @@ class FindSitterPage extends React.Component {
 						placeholder='Search by name, email, zip...'
 					/>
 
-					<Container style={{marginTop: 20}}>
+					<Container style={{marginTop: 15}}>
 						<Row>
 							<Col lg={3} md={4} sm={12}>
 								<SingleRange

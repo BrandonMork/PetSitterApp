@@ -8,12 +8,10 @@ import {
     ReactiveList
 } from '@appbaseio/reactivesearch';
 import '../../styles/pageStyles.css';
-import {Button, Col, Container, Row} from 'reactstrap';
-import {getJob} from '../utils/Users';
+import { Button, Card, ListGroup, ListGroupItem } from 'reactstrap';
+import { updateJobDetails, createNotification, getJob } from 'js/utils/Users';
 import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
-import {updateJobDetails} from 'js/utils/Users';
-import {createNotification} from 'js/utils/Users';
 import uuidv4 from 'uuid/v4';
 
 class SearchJobPage extends React.Component {
@@ -59,22 +57,23 @@ class SearchJobPage extends React.Component {
 
 	reviewJob = (e, res) => {
 		e.preventDefault();
-		const myCookie = new Cookie();
+
 		getJob(res.jobID)
 			.then(function (response) {
+				const myCookie = new Cookie();
+				myCookie.set('currentJob', response, {path: '/'});
 				console.log('user has clicked reivewJob button');
 				console.log(response);
-				myCookie.set('currentJob', response, {path: '/'});
+				window.location.push('/review-job-page');
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/review-job-page');
 	};
 
 	render() {
 		return (
-			<Container fluid style={{marginTop: 80}}>
+			<Card style={{padding: 10, marginTop: 80}}>
 				<ReactiveBase
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
@@ -86,57 +85,39 @@ class SearchJobPage extends React.Component {
 						iconPosition='left'
 					/>
 
-					<ReactiveList
-						componentId='results'
-						dataField='original_title'
-						showResultStats={false}
-						react={{
-							and: ['mainSearch']
-						}}
-						onData={(res) =>
-							<React.Fragment key={uuidv4()}>
-								{console.log(res)}
-								{_.isEqual(res.accepted, 'no') &&
-								<Container style={{justifyContent: 'center', alignItems: 'center'}}>
-									<Row>
-										<Col>
-											<h1>Posting by: {res.ownerPrincipal}</h1>
-										</Col>
-									</Row>
-									<Row>
-										<Col>
-											Start Date: {res.startDate}
-										</Col>
-									</Row>
-									<Row>
-										<Col>
-											End Date: {res.endDate}
-										</Col>
-									</Row>
-									<Row>
-										<Col>
-											Approximate Location: {res.zip}
-										</Col>
-									</Row>
-
-									<Row>
-										<Col sm={{ size: '2', offset: 5 }}>
-											<Button onClick={ (e) => this.acceptJob(e, res)}>
-												Accept Job
-											</Button>
-										</Col>
-										<Col sm={{ size: '2', offset: 5 }}>
-											<Button onClick={ (e) => this.reviewJob(e, res)}>
-												Review Job
-											</Button>
-										</Col>
-									</Row>
-								</Container>}
-							</React.Fragment>
-						}
-					/>
+					<ListGroup style={{marginTop: 10}}>
+						<ReactiveList
+							componentId='results'
+							dataField='original_title'
+							showResultStats={false}
+							react={{
+								and: ['mainSearch']
+							}}
+							onData={(res) =>
+								<React.Fragment key={uuidv4()}>
+									{console.log(res)}
+									{_.isEqual(res.accepted, 'no') &&
+									<ListGroupItem style={{justifyContent: 'center', alignItems: 'center'}}>
+										<div style={{float: 'right'}}>
+												<Button style={{marginBottom: 5}} size="sm" onClick={ (e) => this.acceptJob(e, res)}>
+													Accept Job
+												</Button>
+												<br/>
+												<Button size="sm" onClick={ (e) => this.reviewJob(e, res)}>
+													Review Job
+												</Button>
+										</div>
+										<h3>Posting by: {res.ownerPrincipal}</h3>
+										<div>Start Date: {res.startDate}</div>
+										<div>End Date: {res.endDate}</div>
+										<div>Approximate Location: {res.zip}</div>
+									</ListGroupItem>}
+								</React.Fragment>
+							}
+						/>
+					</ListGroup>
 				</ReactiveBase>
-			</Container>
+			</Card>
 		);
 	}
 }
