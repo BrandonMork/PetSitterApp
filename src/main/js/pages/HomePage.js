@@ -12,7 +12,6 @@ import {
 } from 'reactstrap';
 import * as Users from '../utils/Users';
 import PropTypes from 'prop-types';
-import Cookie from 'universal-cookie';
 import connect from 'react-redux/es/connect/connect';
 import '../../styles/pageStyles.css';
 import 'slick-carousel/slick/slick.css';
@@ -21,33 +20,6 @@ import FeaturedJobs from 'js/components/FeaturedJobs';
 import FeaturedSitters from 'js/components/FeaturedSitters';
 
 class HomePage extends React.Component {
-
-	reviewJob = (e, res) => {
-		e.preventDefault();
-
-		Users.getJob(res.jobID)
-			.then(function (response) {
-				const myCookie = new Cookie();
-				myCookie.set('currentJob', response, {path: '/'});
-				window.location.href = '/#/accept-job-page';
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	};
-
-	handleViewProfile = (e, principal) => {
-		e.preventDefault();
-		const myCookie = new Cookie();
-		Users.getSitterInfo(principal)
-			.then(function (response) {
-				myCookie.set('sitterProfile', response, {path: '/'});
-				window.location.href = '/#/view-sitter-page';
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	};
 
 	sitterQuery = () => {
 		return {

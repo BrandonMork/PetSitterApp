@@ -2,9 +2,25 @@ import React from 'react';
 import {ReactiveBase, ResultCard} from '@appbaseio/reactivesearch';
 import profile_pic from 'js/profile_pic.jpg';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
+import Cookie from 'universal-cookie';
+import * as Users from 'js/utils/Users';
 
 
 class FeaturedSitters extends React.Component {
+
+	handleViewProfile = (e, principal) => {
+		e.preventDefault();
+		const myCookie = new Cookie();
+		Users.getSitterInfo(principal)
+			.then(function (response) {
+				myCookie.set('sitterProfile', response, {path: '/'});
+				window.location.href = '/#/view-sitter-page';
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
+
 	render() {
 		return(
 			<React.Fragment>

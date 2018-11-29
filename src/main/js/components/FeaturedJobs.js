@@ -2,8 +2,25 @@ import React from 'react';
 import {ReactiveBase, ResultCard} from '@appbaseio/reactivesearch';
 import profile_pic from 'js/profile_pic.jpg';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
+import * as Users from 'js/utils/Users';
+import Cookie from 'universal-cookie';
 
 class FeaturedJobs extends React.Component {
+
+	reviewJob = (e, res) => {
+		e.preventDefault();
+
+		Users.getJob(res.jobID)
+			.then(function (response) {
+				const myCookie = new Cookie();
+				myCookie.set('currentJob', response, {path: '/'});
+				window.location.href = '/#/accept-job-page';
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
+
 	render() {
 		return (
 			<React.Fragment>
