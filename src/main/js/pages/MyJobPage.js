@@ -10,6 +10,7 @@ import Cookie from 'universal-cookie';
 import {getJob} from 'js/utils/Users';
 import {quitJob} from 'js/utils/Users';
 import PropTypes from 'prop-types';
+import {createNotification} from 'js/utils/Users';
 
 
 class MyJobPage extends React.Component {
@@ -26,12 +27,28 @@ class MyJobPage extends React.Component {
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/review-job-page');
+		this.context.router.history.push('/accept-job-page');
 	};
 
 	quitJob = (e, res) => {
 		e.preventDefault();
 		quitJob(res.jobID, res.id);
+		let thisUser = this.props.user.principal;
+		let notification1 = {
+			'senderPrincipal': thisUser,
+			'receiverPrincipal': res.ownerPrincipal,
+			'message': thisUser + ' has quit the job!',
+			'read': 'no'
+		};
+		let notification2 = {
+			'senderPrincipal': thisUser,
+			'receiverPrincipal': res.sitterPrincipal,
+			'message': thisUser + ' has quit the job!',
+			'read': 'no'
+		};
+
+		createNotification(notification1);
+		createNotification(notification2);
 	};
 
 	ownerQuery = () => {
