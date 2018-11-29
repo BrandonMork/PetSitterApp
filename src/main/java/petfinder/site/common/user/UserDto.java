@@ -24,7 +24,8 @@ public class UserDto implements Momento<String> {
 
 	// @TODO Is this the correct data structure?
 	private String phoneNumber;
-	//private Long rating;
+
+	private Double avgRating;
 	private Integer numRatings;
 	private Integer sumRatings;
 
@@ -53,7 +54,7 @@ public class UserDto implements Momento<String> {
 
 	public UserDto(String principal, String firstName, String middleName, String lastName, String addressLine1,
 				   String addressLine2, String city, String state, String zip, String phoneNumber,
-				   List<UserPetDto> pets, List<String> roles, String userType, Integer numRatings, Integer sumRatings) {
+				   List<UserPetDto> pets, List<String> roles, String userType, Integer numRatings, Integer sumRatings, Double avgRating) {
 		this.principal = principal;
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -151,13 +152,13 @@ public class UserDto implements Momento<String> {
 		this.phoneNumber = phoneNumber;
 	}
 
-	/*public Long getRating() {
-		return rating;
+	public Double getAvgRating() {
+		return avgRating;
 	}
 
-	public void setRating(Long rating) {
-		this.rating = rating;
-	}*/
+	public void setAvgRating(Double avgRating) {
+		this.avgRating = avgRating;
+	}
 
 	public List<UserPetDto> getPets() {
 		return pets;

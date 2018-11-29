@@ -23,7 +23,6 @@ import EditPetPage from './pages/EditPetPage';
 import ViewSitterPage from './pages/ViewSitterPage';
 import MyJobPage from 'js/pages/MyJobPage';
 
-
 class Index extends React.Component {
 
 	constructor(props) {
@@ -66,7 +65,8 @@ class Index extends React.Component {
 
 	render() {
 		return (
-			<div className='pageContainer'>
+			<div>
+				<div className='backgroundContainer' />
 				<div className='pageContent container padded'>
 					<NavigationBar
 						addNotification={this.addNotification}
