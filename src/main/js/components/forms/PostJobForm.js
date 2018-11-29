@@ -35,9 +35,9 @@ class PostJobForm extends React.Component {
 				preferences: e.target.details.value
 			}},
 		function() {
-			//console.log('Im adding a job!');
-			//console.log(this.state.newJob);
-			//console.log(this.state.updatedJob);
+			console.log('Im adding a job!');
+			console.log(this.state.newJob);
+			console.log(this.state.updatedJob);
 
 			// @TODO Brandon post job
 			postJob(this.state.updatedJob);
