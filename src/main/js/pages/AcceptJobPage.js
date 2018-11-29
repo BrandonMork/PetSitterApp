@@ -7,8 +7,8 @@ import {
 	Card,
 } from 'reactstrap';
 import * as Users from 'js/utils/Users';
-import Cookie from 'universal-cookie';
 import connect from 'react-redux/es/connect/connect';
+import Cookie from 'universal-cookie';
 import '../../styles/pageStyles.css';
 
 class AcceptJobPage extends React.Component {

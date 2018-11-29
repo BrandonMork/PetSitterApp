@@ -35,9 +35,10 @@ class SearchJobPage extends React.Component {
 		let notification;
 		Users.getJob(res.jobID)
 			.then(function (response) {
+				myCookie.set('currentJob', response, {path: '/'});
+
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
-				myCookie.set('currentJob', response, {path: '/'});
 				notification = {
 					'senderPrincipal': sitterInfo,
 					'receiverPrincipal': res.ownerPrincipal,
@@ -45,11 +46,9 @@ class SearchJobPage extends React.Component {
 					'read': 'no'
 				};
 
-				Users.updateJobDetails(response)
-					.then(() => {
-						Users.createNotification(notification);
-						window.location.href = '/#/accept-job-page';
-					});
+				Users.updateJobDetails(response);
+				Users.createNotification(notification);
+				window.location.href = '/#/accept-job-page';
 			})
 			.catch(function (error) {
 				console.log(error);

@@ -35,7 +35,6 @@ class ProfilePage extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-
 		console.log(e.target.userType.value);
 		this.setState({
 			updatedUserProfile: {
@@ -70,7 +69,6 @@ class ProfilePage extends React.Component {
 
 	add(container) {
 		const { addNotification } = this.props;
-
 		return addNotification(Object.assign({}, notification, {
 			title: 'Success!',
 			message: 'You have updated your profile!',
@@ -88,8 +86,7 @@ class ProfilePage extends React.Component {
 							<br/>
 							<CardTitle className="center">Welcome to your profile!</CardTitle>
 							<CardBody>
-								<p>Submit any changes below.</p>
-
+								<h6 className="center">Submit any changes below.</h6>
 								<Form name="form" onSubmit={this.handleSubmit.bind(this)}>
 									<Row form>
 										<Col>
@@ -109,7 +106,8 @@ class ProfilePage extends React.Component {
 											<FormGroup>
 												<Label for="principal">Email</Label>
 												<Input type="text" name="principal"
-													   placeholder={this.props.user.principal} defaultValue={this.props.user.principal} />
+													   placeholder={this.props.user.principal}
+													   defaultValue={this.props.user.principal} />
 											</FormGroup>
 										</Col>
 									</Row>
@@ -118,34 +116,39 @@ class ProfilePage extends React.Component {
 											<FormGroup>
 												<Label for="firstName">First Name</Label>
 												<Input type="text" name="firstName"
-													   placeholder={this.props.user.firstName}  defaultValue={this.props.user.firstName}/>
+													   placeholder={this.props.user.firstName}
+													   defaultValue={this.props.user.firstName}/>
 											</FormGroup>
 										</Col>
 										<Col md={4}>
 											<FormGroup>
 												<Label for="middleName">Middle Name</Label>
 												<Input type="text" name="middleName"
-													   placeholder={this.props.user.middleName} defaultValue={this.props.user.middleName}/>
+													   placeholder={this.props.user.middleName}
+													   defaultValue={this.props.user.middleName}/>
 											</FormGroup>
 										</Col>
 										<Col md={4}>
 											<FormGroup>
 												<Label for="lastName">Last Name</Label>
 												<Input type="text" name="lastName"
-													   placeholder={this.props.user.lastName} defaultValue={this.props.user.lastName}/>
+													   placeholder={this.props.user.lastName}
+													   defaultValue={this.props.user.lastName}/>
 											</FormGroup>
 										</Col>
 									</Row>
 									<FormGroup>
 										<Label for="addressLine1">Address</Label>
 										<Input type="text" name="addressLine1"
-											   placeholder={this.props.user.addressLine1} defaultValue={this.props.user.addressLine1}/>
+											   placeholder={this.props.user.addressLine1}
+											   defaultValue={this.props.user.addressLine1}/>
 									</FormGroup>
 
 									<FormGroup>
 										<Label for="addressLine2">Address Line 2</Label>
 										<Input type="text" name="addressLine2"
-											   placeholder={this.props.user.addressLine2} defaultValue={this.props.user.addressLine2}/>
+											   placeholder={this.props.user.addressLine2}
+											   defaultValue={this.props.user.addressLine2}/>
 									</FormGroup>
 
 									<Row form>
@@ -153,21 +156,24 @@ class ProfilePage extends React.Component {
 											<FormGroup>
 												<Label for="city">City</Label>
 												<Input type="text" name="city"
-													   placeholder={this.props.user.city} defaultValue={this.props.user.city}/>
+													   placeholder={this.props.user.city}
+													   defaultValue={this.props.user.city}/>
 											</FormGroup>
 										</Col>
 										<Col md={4}>
 											<FormGroup>
 												<Label for="state">State</Label>
 												<Input type="text" name="state"
-													   placeholder={this.props.user.state} defaultValue={this.props.user.state}/>
+													   placeholder={this.props.user.state}
+													   defaultValue={this.props.user.state}/>
 											</FormGroup>
 										</Col>
 										<Col md={2}>
 											<FormGroup>
 												<Label for="zip">Zip</Label>
 												<Input type="text" name="zip"
-													   placeholder={this.props.user.zip} defaultValue={this.props.user.zip}/>
+													   placeholder={this.props.user.zip}
+													   defaultValue={this.props.user.zip}/>
 											</FormGroup>
 										</Col>
 									</Row>
@@ -175,7 +181,8 @@ class ProfilePage extends React.Component {
 									<FormGroup>
 										<Label for="phoneNumber">Phone Number</Label>
 										<Input type="text" name="phoneNumber"
-											   placeholder={this.props.user.phoneNumber} defaultValue={this.props.user.phoneNumber}/>
+											   placeholder={this.props.user.phoneNumber}
+											   defaultValue={this.props.user.phoneNumber}/>
 									</FormGroup>
 
 									<FormGroup>
