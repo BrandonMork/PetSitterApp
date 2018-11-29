@@ -21,6 +21,7 @@ class ReviewJobPage extends React.Component {
 						<CardText>{'Pet Name: ' + currentJob.pets} </CardText>
 						<CardText>{'Start Date: ' + currentJob.startDate} </CardText>
 						<CardText>{'End Date: ' + currentJob.endDate} </CardText>
+						<CardText>{'Additional Details: ' + currentJob.preferences} </CardText>
 					</CardBody>
 				</Card>
 			</Col>

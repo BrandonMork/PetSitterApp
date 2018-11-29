@@ -26,6 +26,8 @@ class AcceptJobPage extends React.Component {
 			Start Date: {currentJob.startDate}
 			<br/>
 			End Date: {currentJob.endDate}
+			<br/>
+			Additional Job Details: {currentJob.preferences}
 		</React.Fragment>;
 	}
 
