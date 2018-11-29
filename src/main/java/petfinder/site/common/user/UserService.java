@@ -169,21 +169,22 @@ public class UserService {
 		// The idea is that we process the request to create a new user
 		// and let the user input non-essential data as they please.
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto( request.getPrincipal(),
-				request.getFirstName(),
-				request.getMiddleName(),
-				request.getLastName(),
-				request.getAddressLine1(),
-				request.getAddressLine2(),
-				request.getCity(),
-				request.getState(),
-				request.getZip(),
-				request.getPhoneNumber(),
-				_Lists.list(),
-				_Lists.list("ROLE_USER"),
-				request.getUserType(),
-				0,
-				0
-		),
+						request.getFirstName(),
+						request.getMiddleName(),
+						request.getLastName(),
+						request.getAddressLine1(),
+						request.getAddressLine2(),
+						request.getCity(),
+						request.getState(),
+						request.getZip(),
+						request.getPhoneNumber(),
+						_Lists.list(),
+						_Lists.list("ROLE_USER"),
+						request.getUserType(),
+						0,
+						0,
+						0.0
+				),
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
 
@@ -206,45 +207,23 @@ public class UserService {
 		System.out.println("In the UserService for updateUser");
 		//userDao.updateUser(userDto);
 		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto(
-				request.getPrincipal(),
-				request.getFirstName(),
-				request.getMiddleName(),
-				request.getLastName(),
-				request.getAddressLine1(),
-				request.getAddressLine2(),
-				request.getCity(),
-				request.getState(),
-				request.getZip(),
-				request.getPhoneNumber(),
-				_Lists.list(),
-				_Lists.list("ROLE_USER"),
-				request.getUserType(),
-				request.getNumRatings(),
-				request.getSumRatings()
-		),
-				passwordEncoder.encode(request.getPassword()));
-		userDao.save(userAuthentication);
-	}
-
-	public void addRating(RegistrationRequest request){
-		System.out.println("I'm in the addRating");
-		UserAuthenticationDto userAuthentication = new UserAuthenticationDto( new UserDto(
-				request.getPrincipal(),
-				request.getFirstName(),
-				request.getMiddleName(),
-				request.getLastName(),
-				request.getAddressLine1(),
-				request.getAddressLine2(),
-				request.getCity(),
-				request.getState(),
-				request.getZip(),
-				request.getPhoneNumber(),
-				_Lists.list(),
-				_Lists.list("ROLE_USER"),
-				request.getUserType(),
-				request.getNumRatings(),
-				request.getSumRatings()
-		),
+					request.getPrincipal(),
+					request.getFirstName(),
+					request.getMiddleName(),
+					request.getLastName(),
+					request.getAddressLine1(),
+					request.getAddressLine2(),
+					request.getCity(),
+					request.getState(),
+					request.getZip(),
+					request.getPhoneNumber(),
+					_Lists.list(),
+					_Lists.list("ROLE_USER"),
+					request.getUserType(),
+					request.getNumRatings(),
+					request.getSumRatings(),
+				0.0
+				),
 				passwordEncoder.encode(request.getPassword()));
 		userDao.save(userAuthentication);
 	}

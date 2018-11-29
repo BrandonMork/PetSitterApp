@@ -8,19 +8,12 @@ class PostJobPage extends React.Component {
 
 	render() {
 		return (
-			<Container fluid>
-				<Row>
-					<Col md={10} sm={12} style={{marginTop: 80, marginBottom: 20}}>
-						<Card>
-							<CardTitle className="center">Create a job!</CardTitle>
-							<CardBody>
-								<PostJobForm/>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-			</Container>
-
+			<Card style={{marginTop: 80, marginBottom: 20}} className="center">
+				<CardTitle className="center" style={{fontSize: 35, marginTop: 20}}>You're one step closer to posting your job!</CardTitle>
+				<CardBody>
+					<PostJobForm/>
+				</CardBody>
+			</Card>
 		);
 	}
 }
