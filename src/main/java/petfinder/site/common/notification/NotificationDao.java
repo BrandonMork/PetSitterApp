@@ -59,4 +59,10 @@ public class NotificationDao {
         //notificationElasticsearchRepository.save(job);
     }
 
+    public void delete(Long id, String notifyID){
+        Long temp = new Long(notifyID);
+        notificationElasticsearchRepository.delete(temp);
+        notificationElasticsearchRepository.delete(id);
+    }
+
 }
