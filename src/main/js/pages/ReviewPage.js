@@ -3,10 +3,14 @@ import _ from 'lodash';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
-import { Card, CardText, CardTitle } from 'reactstrap';
+import {Button, Card, CardText, CardTitle, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown} from 'reactstrap';
 import uuidv4 from 'uuid/v4';
+import Cookie from 'universal-cookie';
 import {getSitterInfo} from '../utils/Users';
 import PropTypes from 'prop-types';
+import * as Bessemer from 'js/alloy/bessemer/components';
+import * as ReduxForm from 'redux-form';
+import * as Validation from 'js/alloy/utils/validation';
 import DropDownForRating from '../components/DropDownForRating.js';
 
 class ReviewPage extends React.Component {
@@ -27,14 +31,16 @@ class ReviewPage extends React.Component {
     }
 
 
-	select(event){
-		this.setState({
-			value: event.target.innerText
-		});
-	}
+    select(event){
+        this.setState({
+            value: event.target.innerText
+        });
+    }
 
 
     render() {
+        const mycookie = new Cookie();
+        const myself = mycookie.get('user');
         console.log('This is the job');
         console.log(this.state.job.job);
         return (
@@ -53,7 +59,7 @@ class ReviewPage extends React.Component {
                                 {_.isDefined(res.user) &&
                                 (_.isEqual(res.user.userType, 'Sitter') || _.isEqual(res.user.userType, 'Both')) &&
                                 //(_.isEqual(this.state.job.jobs.sitterPrincipal, res.user.principal) &&
-                                    //_.isEqual(this.state.job.jobs.ownerPrincipal, myself.user.principal)) &&
+                                //_.isEqual(this.state.job.jobs.ownerPrincipal, myself.user.principal)) &&
                                 <Card className="center" body outline style={{marginBottom: 10}}>
                                     <CardTitle>{res.user.firstName} {res.user.lastName}</CardTitle>
                                     { _.gt(res.user.numRatings, 0) &&
