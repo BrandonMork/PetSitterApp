@@ -225,6 +225,8 @@ public class UserService {
 				0.0
 				),
 				passwordEncoder.encode(request.getPassword()));
+
+		System.out.println(userAuthentication.getUser().toString());
 		userDao.save(userAuthentication);
 	}
 }
