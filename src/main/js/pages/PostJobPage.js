@@ -1,5 +1,9 @@
 import React from 'react';
-import { Card, CardTitle, CardBody } from 'reactstrap';
+import {
+	CardTitle,
+	CardBody,
+	Card,
+} from 'reactstrap';
 import PostJobForm from 'js/components/forms/PostJobForm';
 import '../../styles/pageStyles.css';
 

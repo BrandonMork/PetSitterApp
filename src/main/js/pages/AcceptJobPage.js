@@ -1,8 +1,14 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {
+	CardBody,
+	CardTitle,
+	CardText,
+	Button,
+	Card,
+} from 'reactstrap';
 import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
-import { Card, Button, CardBody, CardTitle, CardText } from 'reactstrap';
+import connect from 'react-redux/es/connect/connect';
 import '../../styles/pageStyles.css';
 
 class AcceptJobPage extends React.Component {

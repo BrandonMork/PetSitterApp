@@ -1,12 +1,17 @@
 import _ from 'lodash';
 import React from 'react';
+import {
+	Container,
+	NavLink,
+	Button,
+	Table,
+} from 'reactstrap';
+import { getOnePet } from 'js/utils/Users';
 import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect';
-import { Button, Container, Table, NavLink } from 'reactstrap';
-import { getOnePet } from 'js/utils/Users';
-import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
+import Cookie from 'universal-cookie';
+import connect from 'react-redux/es/connect/connect';
 import '../../styles/pageStyles.css';
 
 class PetListAdd extends React.Component {

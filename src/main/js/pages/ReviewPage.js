@@ -1,12 +1,16 @@
-import React from 'react';
 import _ from 'lodash';
+import React from 'react';
+import {
+	Card,
+	CardText,
+	CardTitle
+} from 'reactstrap';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
-import {Card, CardText, CardTitle} from 'reactstrap';
-import uuidv4 from 'uuid/v4';
-import PropTypes from 'prop-types';
 import DropDownForRating from '../components/DropDownForRating.js';
+import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import uuidv4 from 'uuid/v4';
 
 class ReviewPage extends React.Component {
 

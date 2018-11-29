@@ -1,13 +1,18 @@
 import React from 'react';
-import {Card, CardBody, CardTitle, Col} from 'reactstrap';
-import '../../styles/pageStyles.css';
-import * as Bessemer from 'js/alloy/bessemer/components';
+import {
+	Card,
+	CardBody,
+	CardTitle,
+	Col
+} from 'reactstrap';
 import * as Validation from 'js/alloy/utils/validation';
-import PropTypes from 'prop-types';
 import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect';
+import * as Bessemer from 'js/alloy/bessemer/components';
 import * as Users from 'js/utils/Users';
+import PropTypes from 'prop-types';
 import notification from 'js/notification';
+import connect from 'react-redux/es/connect/connect';
+import '../../styles/pageStyles.css';
 
 const typeOptions = [
 	{value: 'Owner', label: 'Owner'},

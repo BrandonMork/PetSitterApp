@@ -1,8 +1,14 @@
-import React from 'react';
 import _ from 'lodash';
-import connect from 'react-redux/es/connect/connect';
+import React from 'react';
+import {
+	UncontrolledDropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
+	Button,
+} from 'reactstrap';
 import * as Users from '../utils/Users';
-import {Button, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledDropdown} from 'reactstrap';
+import connect from 'react-redux/es/connect/connect';
 
 class DropDownForRating extends React.Component {
 	constructor(props){

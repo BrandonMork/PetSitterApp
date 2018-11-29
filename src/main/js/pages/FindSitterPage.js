@@ -1,13 +1,27 @@
-import React from 'react';
 import _ from 'lodash';
-import { DataSearch, ReactiveBase, ReactiveList, SingleRange, SelectedFilters } from '@appbaseio/reactivesearch';
-import connect from 'react-redux/es/connect/connect';
+import React from 'react';
+import {
+	CardTitle,
+	Container,
+	CardText,
+	Button,
+	Card,
+	Col,
+	Row,
+} from 'reactstrap';
+import {
+	SelectedFilters,
+	ReactiveList,
+	ReactiveBase,
+	SingleRange,
+	DataSearch,
+} from '@appbaseio/reactivesearch';
+import { getSitterInfo } from '../utils/Users';
 import * as Users from '../utils/Users';
-import {Button, Card, CardText, CardTitle, Col, Container, Row} from 'reactstrap';
-import uuidv4 from 'uuid/v4';
-import Cookie from 'universal-cookie';
-import {getSitterInfo} from '../utils/Users';
 import PropTypes from 'prop-types';
+import Cookie from 'universal-cookie';
+import uuidv4 from 'uuid/v4';
+import connect from 'react-redux/es/connect/connect';
 
 class FindSitterPage extends React.Component {
 

@@ -1,18 +1,17 @@
 import React from 'react';
 import {
-	Col,
-	Card,
 	CardTitle,
-	CardBody,
-	Row,
-	Container,
-	Form,
 	FormGroup,
-	Label,
+	Container,
+	CardBody,
+	Button,
 	Input,
-	Button
+	Label,
+	Card,
+	Form,
+	Row,
+	Col,
 } from 'reactstrap';
-import { updateUser } from '../utils/Users';
 import * as Users from '../utils/Users';
 import connect from 'react-redux/es/connect/connect';
 import '../../styles/pageStyles.css';
@@ -61,7 +60,7 @@ class ProfilePage extends React.Component {
 				},
 			}},
 			function() {
-				updateUser(this.state.updatedUserProfile.user)
+				Users.updateUser(this.state.updatedUserProfile.user)
 					.then( () => {
 						this.props.getUserDetails();
 					});

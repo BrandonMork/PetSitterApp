@@ -1,10 +1,10 @@
 import React from 'react';
 import { HashRouter, Route } from 'react-router-dom';
-import {Switch} from 'react-router';
+import { Switch } from 'react-router';
 import NavigationBar from './components/Navbar';
-import '../styles/pageStyles.css';
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme';
+import '../styles/pageStyles.css';
 
 // Pages
 import HomePage from './pages/HomePage';

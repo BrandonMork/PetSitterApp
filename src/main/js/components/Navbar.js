@@ -1,18 +1,30 @@
 import _ from 'lodash';
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu, NavLink } from 'reactstrap';
+import {
+	UncontrolledDropdown,
+	DropdownToggle,
+	NavbarToggler,
+	DropdownItem,
+	DropdownMenu,
+	NavbarBrand,
+	Collapse,
+	NavItem,
+	NavLink,
+	Navbar,
+	Nav,
+} from 'reactstrap';
+import { Helmet } from 'react-helmet';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
-import { Helmet } from 'react-helmet';
-import Cookie from 'universal-cookie';
-import logo from '../logo.png';
-import Favicon from 'react-favicon';
-import connect from 'react-redux/es/connect/connect';
-import notificationBell from '../notificationUnread.png';
 import * as Users from '../utils/Users';
-import '../../styles/pageStyles.css';
-import notification from 'js/notification';
 import NotificationList from 'js/components/NotificationList';
+import Cookie from 'universal-cookie';
+import Favicon from 'react-favicon';
+import logo from '../logo.png';
+import connect from 'react-redux/es/connect/connect';
+import notification from 'js/notification';
+import notificationBell from '../notificationUnread.png';
+import '../../styles/pageStyles.css';
 
 library.add(faPaw);
 

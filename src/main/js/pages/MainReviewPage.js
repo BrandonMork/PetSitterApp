@@ -1,7 +1,10 @@
 import React from 'react';
-import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import uuidv4 from 'uuid/v4';
+import {
+	ReactiveBase,
+	ReactiveList,
+} from '@appbaseio/reactivesearch';
 import ReviewPage from './ReviewPage.js';
+import uuidv4 from 'uuid/v4';
 
 class MainReviewPage extends React.Component {
 

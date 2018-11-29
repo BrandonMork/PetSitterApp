@@ -1,10 +1,19 @@
+import _ from 'lodash';
 import React from 'react';
-import _, {isEqual} from 'lodash';
-import {Jumbotron, Container, Row, Col, Card, CardTitle, CardText, Button} from 'reactstrap';
-import connect from 'react-redux/es/connect/connect';
+import {
+	Jumbotron,
+	Container,
+	CardTitle,
+	CardText,
+	Button,
+	Card,
+	Row,
+	Col,
+} from 'reactstrap';
 import * as Users from '../utils/Users';
-import '../../styles/pageStyles.css';
 import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import '../../styles/pageStyles.css';
 
 class HomePage extends React.Component {
 
@@ -49,8 +58,8 @@ class HomePage extends React.Component {
 											We're glad you're back!
 										</CardText>
 
-										{(isEqual(this.props.user.userType, 'Owner') ||
-											isEqual(this.props.user.userType, 'Both')) &&
+										{(_.isEqual(this.props.user.userType, 'Owner') ||
+										  _.isEqual(this.props.user.userType, 'Both')) &&
 										<React.Fragment>
 											<Row style={{marginBottom: 10}}>
 												<Col>
@@ -65,8 +74,8 @@ class HomePage extends React.Component {
 										</React.Fragment>
 										}
 
-										{(isEqual(this.props.user.userType, 'Sitter') ||
-											isEqual(this.props.user.userType, 'Both')) &&
+										{(_.isEqual(this.props.user.userType, 'Sitter') ||
+										  _.isEqual(this.props.user.userType, 'Both')) &&
 										<React.Fragment>
 											<Row>
 												<Col>

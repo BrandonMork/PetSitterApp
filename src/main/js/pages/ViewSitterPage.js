@@ -1,9 +1,16 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {
+	CardTitle,
+	CardText,
+	CardBody,
+	CardImg,
+	Button,
+	Card,
+} from 'reactstrap';
 import * as Users from '../utils/Users';
 import Cookie from 'universal-cookie';
+import connect from 'react-redux/es/connect/connect';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, CardText, CardImg, Button} from 'reactstrap';
 
 class ViewSitterPage extends React.Component {
 	constructor(props){

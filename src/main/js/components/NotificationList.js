@@ -1,15 +1,15 @@
-import {ReactiveBase, ReactiveList} from '@appbaseio/reactivesearch';
 import React from 'react';
-import uuidv4 from 'uuid/v4';
 import {
 	Button,
 	ListGroup,
 	ListGroupItem,
 	ListGroupItemText,
 } from 'reactstrap';
-import connect from 'react-redux/es/connect/connect';
+import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
+import { deleteNotification } from 'js/utils/Users';
 import * as Users from 'js/utils/Users';
-import {deleteNotification} from 'js/utils/Users';
+import uuidv4 from 'uuid/v4';
+import connect from 'react-redux/es/connect/connect';
 
 class NotificationList extends React.Component {
 

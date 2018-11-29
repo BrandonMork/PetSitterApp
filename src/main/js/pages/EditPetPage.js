@@ -1,9 +1,21 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {
+	FormGroup,
+	CardTitle,
+	CardBody,
+	CardText,
+	Button,
+	Label,
+	Input,
+	Form,
+	Card,
+	Col,
+	Row,
+} from 'reactstrap';
+import { updatePet } from 'js/utils/Users';
 import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
-import {Card, CardBody, CardTitle, Col, CardText, Form, Row, FormGroup, Label, Input, Button} from 'reactstrap';
-import { updatePet } from 'js/utils/Users';
+import connect from 'react-redux/es/connect/connect';
 
 class EditPetPage extends React.Component {
 	constructor(props){

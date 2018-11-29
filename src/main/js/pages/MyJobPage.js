@@ -1,16 +1,18 @@
 import _ from 'lodash';
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import {
+	ListGroupItem,
+	ListGroup,
+	Button,
+	Card,
+} from 'reactstrap';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import { Button, Card, ListGroup, ListGroupItem } from 'reactstrap';
-import uuidv4 from 'uuid/v4';
-import '../../styles/pageStyles.css';
-import Cookie from 'universal-cookie';
-import {getJob} from 'js/utils/Users';
-import {quitJob} from 'js/utils/Users';
+import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
-import {createNotification} from 'js/utils/Users';
+import Cookie from 'universal-cookie';
+import uuidv4 from 'uuid/v4';
+import connect from 'react-redux/es/connect/connect';
+import '../../styles/pageStyles.css';
 
 
 class MyJobPage extends React.Component {
@@ -18,7 +20,7 @@ class MyJobPage extends React.Component {
 	reviewJob = (e, res) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
-		getJob(res.jobID)
+		Users.getJob(res.jobID)
 			.then(function (response) {
 				myCookie.set('currentJob', response, {path: '/'});
 			})
@@ -31,12 +33,14 @@ class MyJobPage extends React.Component {
 	quitJob = (e, res) => {
 		e.preventDefault();
 		let thisUser = this.props.user.principal;
+
 		let notification1 = {
 			'senderPrincipal': thisUser,
 			'receiverPrincipal': res.ownerPrincipal,
 			'message': thisUser + ' has quit the job!',
 			'read': 'no'
 		};
+
 		let notification2 = {
 			'senderPrincipal': thisUser,
 			'receiverPrincipal': res.sitterPrincipal,
@@ -44,14 +48,13 @@ class MyJobPage extends React.Component {
 			'read': 'no'
 		};
 
-		if(thisUser == res.sitterPrincipal){
-			createNotification(notification1);
+		if(thisUser === res.sitterPrincipal.valueOf()){
+			Users.createNotification(notification1);
+		} else{
+			Users.createNotification(notification2);
 		}
-		else{
-			createNotification(notification2);
-		}
-		quitJob(res.jobID, res.id);
 
+		Users.quitJob(res.jobID, res.id);
 	};
 
 	ownerQuery = () => {

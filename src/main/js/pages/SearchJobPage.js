@@ -1,18 +1,22 @@
 import _ from 'lodash';
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
-import * as Users from 'js/utils/Users';
+import {
+	ListGroupItem,
+	ListGroup,
+	Button,
+	Card,
+} from 'reactstrap';
 import {
     ReactiveBase,
+    ReactiveList,
     DataSearch,
-    ReactiveList
 } from '@appbaseio/reactivesearch';
-import '../../styles/pageStyles.css';
-import { Button, Card, ListGroup, ListGroupItem } from 'reactstrap';
-import { updateJobDetails, createNotification, getJob } from 'js/utils/Users';
-import Cookie from 'universal-cookie';
+import * as Users from 'js/utils/Users';
 import PropTypes from 'prop-types';
+import Cookie from 'universal-cookie';
+import connect from 'react-redux/es/connect/connect';
 import uuidv4 from 'uuid/v4';
+import '../../styles/pageStyles.css';
 
 class SearchJobPage extends React.Component {
 
@@ -29,22 +33,23 @@ class SearchJobPage extends React.Component {
 		console.log(res.jobID);
 		let sitterInfo = this.props.user.principal;
 		let notification;
-		getJob(res.jobID)
+		Users.getJob(res.jobID)
 			.then(function (response) {
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
-				myCookie.set('currentJob', response, {path: '/'});
-				updateJobDetails(response);
+				myCookie.set('currentJob', response, {path: '/'})
+					.then(() => {
+						notification = {
+							'senderPrincipal': sitterInfo,
+							'receiverPrincipal': res.ownerPrincipal,
+							'message': sitterInfo + ' has accepted your job!',
+							'read': 'no'
+						};
 
-				notification = {
-					'senderPrincipal': sitterInfo,
-					'receiverPrincipal': res.ownerPrincipal,
-					'message': sitterInfo + ' has accepted your job!',
-					'read': 'no'
-				};
-
-				createNotification(notification);
-				window.location.href = '/#/accept-job-page';
+						Users.updateJobDetails(response);
+						Users.createNotification(notification);
+						window.location.href = '/#/accept-job-page';
+					});
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -55,7 +60,7 @@ class SearchJobPage extends React.Component {
 	reviewJob = (e, res) => {
 		e.preventDefault();
 
-		getJob(res.jobID)
+		Users.getJob(res.jobID)
 			.then(function (response) {
 				const myCookie = new Cookie();
 				myCookie.set('currentJob', response, {path: '/'});

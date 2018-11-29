@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-	Card,
 	CardTitle,
 	CardBody,
-	Col
+	Card,
+	Col,
 } from 'reactstrap';
 import * as Bessemer from '../alloy/bessemer/components';
 import * as Validation from '../alloy/utils/validation';

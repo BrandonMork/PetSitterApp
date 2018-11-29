@@ -1,11 +1,20 @@
 import React from 'react';
-import {postJob} from 'js/utils/Users';
+import {
+	FormGroup,
+	Container,
+	Button,
+	Label,
+	Input,
+	Form,
+	Row,
+	Col,
+} from 'reactstrap';
+import { postJob } from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
-import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
-import {Form, FormGroup, Label, Input, Row, Col, Button, Container} from 'reactstrap';
-import PropTypes from 'prop-types';
 import PetListAdd from 'js/components/PetListAdd';
+import connect from 'react-redux/es/connect/connect';
+import PropTypes from 'prop-types';
 import '../../../styles/pageStyles.css';
 
 class PostJobForm extends React.Component {
@@ -36,12 +45,9 @@ class PostJobForm extends React.Component {
 			}},
 		function() {
 			console.log('Im adding a job!');
-			console.log(this.state.newJob);
 			console.log(this.state.updatedJob);
-
-			// @TODO Brandon post job
 			postJob(this.state.updatedJob);
-			return this.context.router.history.push('/');
+			return window.location.href = '/';
 		});
 	};
 

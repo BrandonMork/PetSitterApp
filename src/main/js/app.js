@@ -3,14 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import createLogger from 'redux-logger';
-import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
-import axios from 'axios';
-import Cookie from 'universal-cookie';
-import Index from './index';
 import * as Users from './utils/Users';
 import * as Utils from './alloy/utils/core-utils';
+import Cookie from 'universal-cookie';
+import Index from './index';
+import createLogger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import axios from 'axios';
 import 'styles/main.scss';
 
 const reducers = [

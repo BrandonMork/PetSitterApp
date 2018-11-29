@@ -1,5 +1,5 @@
-import axios from 'axios';
 import Cookie from 'universal-cookie';
+import axios from 'axios';
 
 // Makes API call to our register function in the back-end
 export function register(user) {

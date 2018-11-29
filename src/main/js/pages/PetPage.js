@@ -1,22 +1,19 @@
 import _ from 'lodash';
 import React from 'react';
 import {
-	Button,
-	Card,
-	CardBody,
-	CardTitle,
-	Col,
 	Container,
-	Form,
+	CardTitle,
 	FormGroup,
+	CardBody,
+	Button,
 	Input,
 	Label,
+	Table,
+	Card,
+	Form,
+	Col,
 	Row,
-	Table
 } from 'reactstrap';
-import { getOnePet } from 'js/utils/Users';
-import { deletePet } from 'js/utils/Users';
-import { registerPet } from 'js/utils/Users';
 import * as Users from 'js/utils/Users';
 import * as ReduxForm from 'redux-form';
 import PropTypes from 'prop-types';
@@ -52,7 +49,7 @@ class PetPage extends React.Component {
 			}},
 			() => {
 				console.log(this.state.newPet);
-				registerPet(this.state.newPet)
+				Users.registerPet(this.state.newPet)
 					.then(() => {
 						window.location.reload();
 					});
@@ -62,10 +59,12 @@ class PetPage extends React.Component {
 	handleEditPet = (e, name) => {
 		e.preventDefault();
 		const myCookie = new Cookie();
-		getOnePet(this.props.user.principal, name)
+		Users.getOnePet(this.props.user.principal, name)
 			.then(function (response) {
-				myCookie.set('currentPet', response, {path: '/'});
-				window.location.href = '/#/edit-pet-page';
+				myCookie.set('currentPet', response, {path: '/'})
+					.then(() => {
+						window.location.href = '/#/edit-pet-page';
+					});
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -74,7 +73,7 @@ class PetPage extends React.Component {
 
 	handleDeletePet = (e, name) => {
 		e.preventDefault();
-		deletePet(this.props.user.principal, name)
+		Users.deletePet(this.props.user.principal, name)
 			.then(() => {
 				window.location.reload();
 			});

@@ -1,9 +1,16 @@
 import React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {
+	Card,
+	CardBody,
+	CardTitle,
+	Col,
+	CardText,
+	CardImg
+} from 'reactstrap';
 import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
+import connect from 'react-redux/es/connect/connect';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
 
 // @TODO Mario make this look pretty pls
 class ReviewJobPage extends React.Component {
