@@ -87,7 +87,8 @@ class AcceptJobPage extends React.Component {
 					<CardText>Additional Job Details: {this.state.job.preferences}</CardText>
 
 					<div className="center">
-						{_.isEqual(this.state.job.accepted, 'yes') &&
+						{(_.isEqual(this.state.job.accepted, 'no') &&
+						 !_.isEqual(this.state.job.ownerPrincipal, this.props.user.principal)) &&
 						<Button onClick={(e) => this.acceptJob(e)}>Accept Job</Button>}
 						&nbsp;<Button href="/#/search-job">Find more awesome jobs!</Button>
 					</div>

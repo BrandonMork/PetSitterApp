@@ -58,8 +58,9 @@ class SearchJobPage extends React.Component {
 							}}
 							onData={(res) =>
 								<React.Fragment key={uuidv4()}>
-									{console.log(res)}
-									{_.isEqual(res.accepted, 'no') &&
+									{/* Users cannot see/accept their own jobs */}
+									{(_.isEqual(res.accepted, 'no') &&
+									 !_.isEqual(res.ownerPrincipal, this.props.user.principal)) &&
 									<ListGroupItem style={{justifyContent: 'center', alignItems: 'center'}}>
 										<div style={{float: 'right'}}>
 												<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>
