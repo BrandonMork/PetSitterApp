@@ -11,7 +11,6 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
-import MainPageReview from './pages/MainPageReview';
 import ReportPage from './pages/ReportPage';
 import FindSitterPage from './pages/FindSitterPage';
 import PetPage from './pages/PetPage';
