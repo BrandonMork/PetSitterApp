@@ -5,6 +5,7 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
 import { Card, CardText, CardTitle } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
+import {getSitterInfo} from '../utils/Users';
 import PropTypes from 'prop-types';
 import DropDownForRating from '../components/DropDownForRating.js';
 
@@ -34,8 +35,6 @@ class ReviewPage extends React.Component {
 
 
     render() {
-        const mycookie = new Cookie();
-        const myself = mycookie.get('user');
         console.log('This is the job');
         console.log(this.state.job.job);
         return (
