@@ -23,11 +23,13 @@ class MyJobPage extends React.Component {
 		Users.getJob(res.jobID)
 			.then(function (response) {
 				myCookie.set('currentJob', response, {path: '/'});
+				setTimeout(() => {
+					window.location.href = '/#/accept-job-page';
+				});
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
-		this.context.router.history.push('/accept-job-page');
 	};
 
 	quitJob = (e, res) => {
