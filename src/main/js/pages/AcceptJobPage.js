@@ -35,15 +35,16 @@ class AcceptJobPage extends React.Component {
 		console.log(this.state.job.jobID);
 
 		let sitterInfo = this.props.user.principal;
-		let ownerPrincipal = this.state.ownerPrincipal;
+		let ownerInfo = this.state.job.ownerPrincipal;
 
 		Users.getJob(this.state.job.jobID)
 			.then(function (response) {
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
+				response.ownerPrincipal = ownerInfo;
 				let notification = {
 					'senderPrincipal': sitterInfo,
-					'receiverPrincipal': ownerPrincipal,
+					'receiverPrincipal': ownerInfo,
 					'message': sitterInfo + ' has accepted your job!',
 					'read': 'no'
 				};
