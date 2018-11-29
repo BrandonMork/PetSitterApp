@@ -114,6 +114,7 @@ export function updateUser(user){
 		'addressLine1': user.addressLine1,
 		'addressLine2': user.addressLine2,
 		'state': user.state,
+		'city': user.city,
 		'zip': user.zip,
 		'phoneNumber': user.phoneNumber,
 		'userType': user.userType,
@@ -150,6 +151,9 @@ export function updateUser(user){
 	}
 	if(newUser.zip != null){
 		backEndUser.zip = newUser.zip;
+	}
+	if(newUser.city != null){
+		backEndUser.city = newUser.city;
 	}
 	if(newUser.phoneNumber != null){
 		backEndUser.phoneNumber = newUser.phoneNumber;
