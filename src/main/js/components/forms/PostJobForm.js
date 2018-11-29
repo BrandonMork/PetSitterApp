@@ -31,7 +31,8 @@ class PostJobForm extends React.Component {
 				addressLine2: e.target.addressLine2.value,
 				city: e.target.city.value,
 				state: e.target.state.value,
-				zip: e.target.zip.value
+				zip: e.target.zip.value,
+				preferences: e.target.details.value
 			}},
 		function() {
 			//console.log('Im adding a job!');
@@ -128,8 +129,8 @@ class PostJobForm extends React.Component {
 							<Row form>
 								<Col md={12}>
 									<FormGroup>
-										<Label for="pet-details">Other Details</Label>
-										<Input type="textarea" name="job-details"
+										<Label for="details">Other Details</Label>
+										<Input type="textarea" name="details"
 											   placeholder="Enter any details about your listing!
 									   Do your pets play well with other pets?
 									   Any toy preferences? Favorite parks? Etc." />
