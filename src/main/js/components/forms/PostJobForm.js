@@ -16,13 +16,15 @@ import PetListAdd from 'js/components/PetListAdd';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 import '../../../styles/pageStyles.css';
+import notification from 'js/notification';
 
 class PostJobForm extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
-		this.updatedJob = {};
+		this.state = { updatedJob: null };
+
+		this.add = this.add.bind(this);
 	}
 
 	handleSubmit = e => {
@@ -49,7 +51,19 @@ class PostJobForm extends React.Component {
 			postJob(this.state.updatedJob);
 			return window.location.href = '/';
 		});
+		this.add('bottom-center');
 	};
+
+	add(container) {
+		const { addNotification } = this.props;
+
+		return addNotification(Object.assign({}, notification, {
+			title: 'Success!',
+			message: 'Job has been posted!',
+			container,
+			type: 'success'
+		}));
+	}
 
 	render() {
 		return (

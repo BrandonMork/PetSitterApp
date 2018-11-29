@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import {
 	CardBody,
@@ -7,8 +8,9 @@ import {
 	Card,
 } from 'reactstrap';
 import * as Users from 'js/utils/Users';
-import connect from 'react-redux/es/connect/connect';
 import Cookie from 'universal-cookie';
+import connect from 'react-redux/es/connect/connect';
+import notification from 'js/notification';
 import '../../styles/pageStyles.css';
 
 class AcceptJobPage extends React.Component {
@@ -22,6 +24,8 @@ class AcceptJobPage extends React.Component {
 		this.state = {
 			job: currentJob
 		};
+
+		this.add = this.add.bind(this);
 	}
 
 	acceptJob = (e) => {
@@ -46,11 +50,25 @@ class AcceptJobPage extends React.Component {
 
 				Users.updateJobDetails(response);
 				Users.createNotification(notification);
+				window.location.href = '/#/my-job-page';
 			})
 			.catch(function (error) {
 				console.log(error);
 			});
+
+		this.add('bottom-center');
 	};
+
+	add(container) {
+		const { addNotification } = this.props;
+
+		return addNotification(Object.assign({}, notification, {
+			title: 'Success!',
+			message: 'You have accepted a job!',
+			container,
+			type: 'success'
+		}));
+	}
 
 	render() {
 		return (
@@ -69,8 +87,9 @@ class AcceptJobPage extends React.Component {
 					<CardText>Additional Job Details: {this.state.job.preferences}</CardText>
 
 					<div className="center">
-						<Button onClick={(e) => this.acceptJob(e)}>Accept Job</Button>&nbsp;
-						<Button href="/#/search-job">Find more awesome jobs!</Button>
+						{_.isEqual(this.state.job.accepted, 'yes') &&
+						<Button onClick={(e) => this.acceptJob(e)}>Accept Job</Button>}
+						&nbsp;<Button href="/#/search-job">Find more awesome jobs!</Button>
 					</div>
 				</CardBody>
 			</Card>

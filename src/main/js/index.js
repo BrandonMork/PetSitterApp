@@ -97,7 +97,7 @@ class Index extends React.Component {
 								/>}
 							/>
 
-							{/*@TODO Add notifications for this page */}
+							{/*@TODO Add notifications for this page (difficult  */}
 							<Route exact path='/pet-page' render={(props) =>
 								<PetPage {...props}
 											 addNotification={this.addNotification}
@@ -105,11 +105,16 @@ class Index extends React.Component {
 								/>}
 							/>
 
-							{/*@TODO Add notifications for this page */}
 							<Route exact path='/post-job' render={(props) =>
 								<PostJobPage {...props}
 											 addNotification={this.addNotification}
 											 removeNotification={this.removeNotification}
+								/>}
+							/>
+
+							<Route exact path='/accept-job-page' render={(props) =>
+								<AcceptJobPage {...props}  addNotification={this.addNotification}
+											   removeNotification={this.removeNotification}
 								/>}
 							/>
 
@@ -118,7 +123,6 @@ class Index extends React.Component {
 							<Route exact path='/find-sitter' component={FindSitterPage} />
 							<Route exact path='/search-job' component={SearchJobPage}/>
 							<Route exact path='/review-job-page' component={ReviewJobPage}/>
-							<Route exact path='/accept-job-page' component={AcceptJobPage}/>
 							<Route exact path='/edit-pet-page' component={EditPetPage}/>
 							<Route exact path='/view-sitter-page' component={ViewSitterPage}/>
 							<Route exact path='/my-job-page' component={MyJobPage}/>
