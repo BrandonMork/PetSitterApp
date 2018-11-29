@@ -194,6 +194,74 @@ export function authenticate(username, password) {
 }
 
 export function addRating(user){
+    let newUser = {
+        'principal': user.principal,
+        'firstName': user.firstName,
+        'middleName': user.middleName,
+        'lastName': user.lastName,
+        'addressLine1': user.addressLine1,
+        'addressLine2': user.addressLine2,
+        'state': user.state,
+        'city': user.city,
+        'zip': user.zip,
+        'phoneNumber': user.phoneNumber,
+        'userType': user.userType,
+        'password': user.password,
+        'sumRatings': user.sumRatings,
+        'numRatings': user.numRatings,
+        'avgRating': user.avgRating
+    };
+
+    console.log('In updateUse()');
+    console.log(newUser);
+
+    let backEndUser = getSitterInfo(newUser.principal);
+
+    if(newUser.principal != null){
+        backEndUser.principal = newUser.principal;
+    }
+    if(newUser.firstName != null){
+        backEndUser.firstName = newUser.firstName;
+    }
+    if(newUser.middleName != null){
+        backEndUser.middleName = newUser.middleName;
+    }
+    if(newUser.lastName != null){
+        backEndUser.lastName = newUser.lastName;
+    }
+    if(newUser.addressLine1 != null){
+        backEndUser.addressLine1 = newUser.addressLine1;
+    }
+    if(newUser.addressLine2 != null){
+        backEndUser.addressLine2 = newUser.addressLine2;
+    }
+    if(newUser.state != null){
+        backEndUser.state = newUser.state;
+    }
+    if(newUser.zip != null){
+        backEndUser.zip = newUser.zip;
+    }
+    if(newUser.city != null){
+        backEndUser.city = newUser.city;
+    }
+    if(newUser.phoneNumber != null){
+        backEndUser.phoneNumber = newUser.phoneNumber;
+    }
+    if(newUser.userType != null){
+        backEndUser.userType = newUser.userType;
+    }
+    if(newUser.password != null){
+        backEndUser.password = newUser.password;
+    }
+    if(newUser.numRatings != null){
+        backEndUser.numRatings = newUser.numRatings;
+    }
+    if(newUser.sumRatings != null){
+        backEndUser.sumRatings = newUser.sumRatings;
+    }
+    if(newUser.avgRating != null){
+        backEndUser.avgRating = newUser.avgRating;
+    }
 	return axios.post('/api/user/add-rating/', user)
 		.then(function (response) {
 			console.log(response);
