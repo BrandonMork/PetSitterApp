@@ -46,27 +46,51 @@ class PostJobForm extends React.Component {
 
 	render() {
 		return (
-			<Container fluid>
+			<Container>
 				<Row>
 					<Col lg={12} md={12} sm={12}>
 						<Form name="form" onSubmit={this.handleSubmit}>
-							<h4>List of your pets:</h4>
+							<h4>Which pet needs sitting?</h4>
 							<PetListAdd/>
 
 							<FormGroup>
-								<Label for="pets">Which pet needs sitting?</Label>
+								<Label for="pets">Pet Name(s)</Label>
 								<Input type="text" ref="pets" name="pets" id="pets" placeholder="Pet Name"/>
 							</FormGroup>
 
-							<FormGroup>
-								<Label for="startDate">Start Date</Label>
-								<Input type="date" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
-							</FormGroup>
+							<Container>
+								<Row>
+									<Col lg={6} md={6} sm={6}>
+										<FormGroup>
+											<Label for="startDate">Start Date</Label>
+											<Input type="date" ref="startDate" name="startDate" id="startDate" placeholder="YYYY-MM-DD"/>
+										</FormGroup>
+									</Col>
+									<Col lg={6} md={6} sm={6}>
+										<FormGroup>
+											<Label for="startTime">Start Time</Label>
+											<Input type="time" ref="startTime" name="startTime" id="startTime" />
+										</FormGroup>
+									</Col>
+								</Row>
+							</Container>
 
-							<FormGroup>
-								<Label for="endDate">End Date</Label>
-								<Input type="date" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
-							</FormGroup>
+							<Container>
+								<Row>
+									<Col lg={6} md={6} sm={6}>
+										<FormGroup>
+											<Label for="endDate">End Date</Label>
+											<Input type="date" ref="endDate" name="endDate" id="endDate" placeholder="YYYY-MM-DD"/>
+										</FormGroup>
+									</Col>
+									<Col lg={6} md={6} sm={6}>
+										<FormGroup>
+											<Label for="endTime">End Time</Label>
+											<Input type="time" ref="endTime" name="endTime" id="endTime" />
+										</FormGroup>
+									</Col>
+								</Row>
+							</Container>
 
 							<h4>Where is the job located? </h4>
 							<p>Sitters will only see the approximate area. Location will be shown after you've accepted their bid.</p>
