@@ -75,21 +75,49 @@ class Index extends React.Component {
 					<HashRouter>
 						<Switch>
 							<Route exact path='/' component={HomePage} />
-							<Route exact path='/home' component={HomePage} />
-							<Route exact path='/register' component={RegisterPage} />
+
+							<Route exact path='/register' render={(props) =>
+								<RegisterPage {...props}
+											 addNotification={this.addNotification}
+											 removeNotification={this.removeNotification}
+								/>}
+							/>
+
 							<Route exact path='/login' render={(props) =>
 								<LoginPage {...props}
 										   addNotification={this.addNotification}
 										   removeNotification={this.removeNotification}
 								/>}
 							/>
-							<Route exact path='/profile-page' component={ProfilePage} />
+
+							{/*@TODO Add notifications for this page */}
+							<Route exact path='/profile-page' render={(props) =>
+								<ProfilePage {...props}
+											 addNotification={this.addNotification}
+											 removeNotification={this.removeNotification}
+								/>}
+							/>
+
 							<Route exact path='/rating-page' component={MainReviewPage} />
 							<Route exact path='/report-page' component={ReportPage} />
 							<Route exact path='/find-sitter' component={FindSitterPage} />
-							<Route exact path='/profile' component={ProfilePage} />
-							<Route exact path='/add-pet' component={PetPage}/>
-							<Route exact path='/post-job' component={PostJobPage}/>
+
+							{/*@TODO Add notifications for this page */}
+							<Route exact path='/pet-page' render={(props) =>
+								<PetPage {...props}
+											 addNotification={this.addNotification}
+											 removeNotification={this.removeNotification}
+								/>}
+							/>
+
+							{/*@TODO Add notifications for this page */}
+							<Route exact path='/post-job' render={(props) =>
+								<PostJobPage {...props}
+											 addNotification={this.addNotification}
+											 removeNotification={this.removeNotification}
+								/>}
+							/>
+
 							<Route exact path='/search-job' component={SearchJobPage}/>
 							<Route exact path='/review-job-page' component={ReviewJobPage}/>
 							<Route exact path='/accept-job-page' component={AcceptJobPage}/>
