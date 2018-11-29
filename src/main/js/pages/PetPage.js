@@ -41,15 +41,15 @@ class PetPage extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.setState({
-				newPet: {
-					principal: this.props.user.principal,
-					name: e.target.name.value,
-					species: e.target.species.value,
-					breed: e.target.breed.value,
-					size: e.target.size.value,
-					age: e.target.age.value,
-					preferences: e.target.details.value
-				}},
+			newPet: {
+				principal: this.props.user.principal,
+				name: e.target.name.value,
+				species: e.target.species.value,
+				breed: e.target.breed.value,
+				size: e.target.size.value,
+				age: e.target.age.value,
+				preferences: e.target.details.value
+			}},
 			() => {
 				console.log(this.state.newPet);
 				registerPet(this.state.newPet)

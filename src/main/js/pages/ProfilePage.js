@@ -39,27 +39,27 @@ class ProfilePage extends React.Component {
 
 		console.log(e.target.userType.value);
 		this.setState({
-				updatedUserProfile: {
-					user: {
-						principal: e.target.principal.value,
-						firstName: e.target.firstName.value,
-						middleName: e.target.middleName.value,
-						lastName: e.target.lastName.value,
-						addressLine1: e.target.addressLine1.value,
-						addressLine2: e.target.addressLine2.value,
-						city: e.target.city.value,
-						state: e.target.state.value,
-						zip: e.target.zip.value,
-						phoneNumber: e.target.phoneNumber.value,
-						pets: [],
-						roles: [
-							'ROLE_USER',
-						],
-						userType: e.target.userType.value,
-						momento: e.target.principal.value,
-						password: e.target.password.value,
-					},
-				}},
+			updatedUserProfile: {
+				user: {
+					principal: e.target.principal.value,
+					firstName: e.target.firstName.value,
+					middleName: e.target.middleName.value,
+					lastName: e.target.lastName.value,
+					addressLine1: e.target.addressLine1.value,
+					addressLine2: e.target.addressLine2.value,
+					city: e.target.city.value,
+					state: e.target.state.value,
+					zip: e.target.zip.value,
+					phoneNumber: e.target.phoneNumber.value,
+					pets: [],
+					roles: [
+						'ROLE_USER',
+					],
+					userType: e.target.userType.value,
+					momento: e.target.principal.value,
+					password: e.target.password.value,
+				},
+			}},
 			function() {
 				updateUser(this.state.updatedUserProfile.user)
 					.then( () => {

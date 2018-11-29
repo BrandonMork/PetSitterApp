@@ -90,17 +90,12 @@ class Index extends React.Component {
 								/>}
 							/>
 
-							{/*@TODO Add notifications for this page */}
 							<Route exact path='/profile-page' render={(props) =>
 								<ProfilePage {...props}
 											 addNotification={this.addNotification}
 											 removeNotification={this.removeNotification}
 								/>}
 							/>
-
-							<Route exact path='/rating-page' component={MainReviewPage} />
-							<Route exact path='/report-page' component={ReportPage} />
-							<Route exact path='/find-sitter' component={FindSitterPage} />
 
 							{/*@TODO Add notifications for this page */}
 							<Route exact path='/pet-page' render={(props) =>
@@ -118,6 +113,9 @@ class Index extends React.Component {
 								/>}
 							/>
 
+							<Route exact path='/rating-page' component={MainReviewPage} />
+							<Route exact path='/report-page' component={ReportPage} />
+							<Route exact path='/find-sitter' component={FindSitterPage} />
 							<Route exact path='/search-job' component={SearchJobPage}/>
 							<Route exact path='/review-job-page' component={ReviewJobPage}/>
 							<Route exact path='/accept-job-page' component={AcceptJobPage}/>
