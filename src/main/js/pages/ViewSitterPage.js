@@ -3,52 +3,39 @@ import connect from 'react-redux/es/connect/connect';
 import * as Users from '../utils/Users';
 import Cookie from 'universal-cookie';
 import profile_pic from '../profile_pic.jpg';
-import {Card, CardBody, CardTitle, Col, CardText, CardImg} from 'reactstrap';
+import {Card, CardBody, CardTitle, Col, CardText, CardImg, Button} from 'reactstrap';
 
-// @TODO Mario make this look pretty pls
 class ViewSitterPage extends React.Component {
 	constructor(props){
 		super(props);
-	}
 
-	getCurrentSitter = () => {
 		const myCookie = new Cookie();
 		const currentSitter = myCookie.get('sitterProfile');
-		return <React.Fragment>
-			<Col sm={8} >
-				<Card>
-					<CardTitle>{'Please review the information about the pet!'} </CardTitle>
-					<CardImg top width="25%" src={profile_pic} />
-					<CardBody>
-						<CardText>{'First Name: ' + currentSitter.firstName} </CardText>
-						<CardText>{'Last Name: ' + currentSitter.lastName} </CardText>
-						<CardText>{'City: ' + currentSitter.city} </CardText>
-						<CardText>{'Zip: ' + currentSitter.zip} </CardText>
-						<CardText>{'Phone Number ' + currentSitter.phoneNumber} </CardText>
-					</CardBody>
-				</Card>
-			</Col>
-		</React.Fragment>;
-	};
 
-	getCookieInfo(){
-		const myCookie = new Cookie();
-		const currentSitter = myCookie.get('sitterProfile');
-		return currentSitter;
+		console.log(currentSitter);
+		this.state = {
+			sitter: currentSitter,
+		};
 	}
 
 	render() {
 		return (
-			<div className='pageContainer'>
-				<div className='container padding'>
-					<div className='pageContent'>
-						<div>
-							<div>
-								{this.getCurrentSitter()}
-							</div>
-						</div>
-					</div>
-				</div>
+			<div className='center' style={{marginTop: 80}}>
+				<Card>
+					<CardTitle className="center">{this.state.sitter.firstName} {this.state.sitter.lastName}</CardTitle>
+					<CardImg top src={profile_pic} />
+					<CardBody>
+						<CardText>Average Rating: {this.state.sitter.avgRating} ({this.state.sitter.numRatings} total ratings)</CardText>
+						<CardText>City: {this.state.sitter.city}</CardText>
+						<CardText>State: {this.state.sitter.state}</CardText>
+						<CardText>Zip: {this.state.sitter.zip} </CardText>
+						<CardTitle>Would you like to contact this sitter?</CardTitle>
+						<CardText>Phone Number: {this.state.sitter.phoneNumber} </CardText>
+						<CardText>Email: {this.state.sitter.principal} </CardText>
+
+						<Button href="#/find-sitter">Find other awesome sitters!</Button>
+					</CardBody>
+				</Card>
 			</div>
 		);
 	}
