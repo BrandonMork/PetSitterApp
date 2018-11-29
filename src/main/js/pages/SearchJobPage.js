@@ -102,7 +102,7 @@ class SearchJobPage extends React.Component {
 													Review Job
 												</Button>
 										</div>
-										<h3>Posting by: {res.ownerPrincipal}</h3>
+										<h4>Posting by: {res.ownerPrincipal}</h4>
 										<div>Start Date: {res.startDate}</div>
 										<div>End Date: {res.endDate}</div>
 										<div>Approximate Location: {res.zip}</div>
