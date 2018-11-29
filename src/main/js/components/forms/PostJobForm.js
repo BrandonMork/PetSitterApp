@@ -93,35 +93,41 @@ class PostJobForm extends React.Component {
 								</Row>
 							</Container>
 
+							{/*@TODO In future we want an option of "Your place or theirs"*/}
 							<h4>Where is the job located? </h4>
 							<p>Sitters will only see the approximate area. Location will be shown after you've accepted their bid.</p>
 							<FormGroup>
 								<Label for="addressLine1">Address</Label>
-								<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1" placeholder={this.props.user.userAddress1}/>
+								<Input type="text" ref="addressLine1" name="addressLine1" id="addressLine1"
+									   defaultValue={this.props.user.addressLine1} placeholder={this.props.user.addressLine1}/>
 							</FormGroup>
 
 							<FormGroup>
 								<Label for="addressLine2">Address 2</Label>
-								<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2" placeholder={this.props.user.userAddress2}/>
+								<Input type="text" ref="addressLine2" name="addressLine2" id="addressLine2"
+									   defaultValue={this.props.user.addressLine2} placeholder={this.props.user.addressLine2}/>
 							</FormGroup>
 
 							<Row form>
 								<Col md={6}>
 									<FormGroup>
 										<Label for="city">City</Label>
-										<Input type="text" ref="city" name="city" id="city" placeholder={this.props.user.city}/>
+										<Input type="text" ref="city" name="city" id="city"
+											   defaultValue={this.props.user.city} placeholder={this.props.user.city}/>
 									</FormGroup>
 								</Col>
 								<Col md={4}>
 									<FormGroup>
 										<Label for="state">State</Label>
-										<Input type="text" ref="state" name="state" id="state" placeholder={this.props.user.state}/>
+										<Input type="text" ref="state" name="state" id="state"
+											   defaultValue={this.props.user.state} placeholder={this.props.user.state}/>
 									</FormGroup>
 								</Col>
 								<Col md={2}>
 									<FormGroup>
 										<Label for="zip">Zip</Label>
-										<Input type="number" ref="zip" name="zip" id="zip" placeholder={this.props.user.zip}/>
+										<Input type="number" ref="zip" name="zip" id="zip"
+											   defaultValue={this.props.user.zip} placeholder={this.props.user.zip}/>
 									</FormGroup>
 								</Col>
 							</Row>
