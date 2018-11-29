@@ -2,44 +2,40 @@ import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import Cookie from 'universal-cookie';
+import { Card, Button, CardBody, CardTitle, CardText } from 'reactstrap';
+import '../../styles/pageStyles.css';
 
-// @TODO Mario make this look pretty pls
 class AcceptJobPage extends React.Component {
-	getCurrentJob() {
+
+	constructor(props) {
+		super(props);
+
 		const myCookie = new Cookie();
 		const currentJob = myCookie.get('currentJob');
-		return <React.Fragment>
-			Job ID: {currentJob.id}
-			<br/>
-			Pet name: {currentJob.pets}
-			<br/>
-			Address Line 1: {currentJob.addressLine1}
-			<br/>
-			Address Line 2: {currentJob.addressLine2}
-			<br/>
-			City: {currentJob.city}
-			<br/>
-			State: {currentJob.state}
-			<br/>
-			Zip: {currentJob.zip}
-			<br/>
-			Start Date: {currentJob.startDate}
-			<br/>
-			End Date: {currentJob.endDate}
-			<br/>
-			Additional Job Details: {currentJob.preferences}
-		</React.Fragment>;
+
+		this.state = {
+			job: currentJob
+		};
 	}
 
 	render() {
 		return (
-			<div>
-				<div>
-					<p>
-						{this.getCurrentJob()}
-					</p>
-				</div>
-			</div>
+			<Card className="center" style={{marginTop: 80}}>
+				<CardTitle className="center">The owner will be notified of your acceptance!</CardTitle>
+				<CardBody>
+					<CardText>Job ID: {this.state.job.id}</CardText>
+					<CardText>Pet name: {this.state.job.pets}</CardText>
+					<CardText>Address Line 1: {this.state.job.addressLine1}</CardText>
+					<CardText>Address Line 2: {this.state.job.addressLine2}</CardText>
+					<CardText>City: {this.state.job.city}</CardText>
+					<CardText>State: {this.state.job.state}</CardText>
+					<CardText>Zip: {this.state.job.zip}</CardText>
+					<CardText>Start Date: {this.state.job.startDate}</CardText>
+					<CardText>End Date: {this.state.job.endDate}</CardText>
+					<CardText>Additional Job Details: {this.state.job.preferences}</CardText>
+					<Button href="/#/search-job">Find more awesome jobs!</Button>
+				</CardBody>
+			</Card>
 		);
 	}
 }

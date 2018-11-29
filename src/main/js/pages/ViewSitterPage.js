@@ -33,7 +33,7 @@ class ViewSitterPage extends React.Component {
 						<CardText>Phone Number: {this.state.sitter.phoneNumber} </CardText>
 						<CardText>Email: {this.state.sitter.principal} </CardText>
 
-						<Button href="#/find-sitter">Find other awesome sitters!</Button>
+						<Button href="/#/find-sitter">Find other awesome sitters!</Button>
 					</CardBody>
 				</Card>
 			</div>
