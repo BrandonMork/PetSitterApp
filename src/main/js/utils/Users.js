@@ -83,7 +83,8 @@ export function updateJobDetails(frontEndJob){
 				'state': backEndJob.state,
 				'zip': backEndJob.zip,
 				'accepted': 'yes',
-				'finished': 'no'
+				'finished': 'no',
+				'preferences': backEndJob.preferences
 			};
 
 			if(job.sitterPrincipal == null && frontEndJob.sitterPrincipal != null)
