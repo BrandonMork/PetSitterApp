@@ -85,7 +85,7 @@ class Index extends React.Component {
 								/>}
 							/>
 							<Route exact path='/profile-page' component={ProfilePage} />
-							<Route exact path='/rating-page' component={MainPageReview} />
+							<Route exact path='/rating-page' component={MainReviewPage} />
 							<Route exact path='/report-page' component={ReportPage} />
 							<Route exact path='/find-sitter' component={FindSitterPage} />
 							<Route exact path='/profile' component={ProfilePage} />
