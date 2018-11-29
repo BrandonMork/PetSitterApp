@@ -19,6 +19,12 @@ public class NotificationEndpoint {
         return notification;
     }
 
+    @PostMapping(value = "/delete-notification/{id}/{notifyID}")
+    public void deleteNotification(@PathVariable ("id") Long id, @PathVariable ("notifyID") String notifyID) {
+        System.out.println("In the NotificationEndpoint for deleteNotification");
+        notificationService.delete(id, notifyID);
+    }
+
     @PostMapping(value = "/update-notification")
     public NotificationDto updateJob(@RequestBody NotificationDto notification) {
         System.out.println("In the NotificationEndpoint for updateNotification" + notification.toString());

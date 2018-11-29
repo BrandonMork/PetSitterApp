@@ -11,7 +11,7 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
-import ReviewPage from './pages/ReviewPage';
+import MainPageReview from './pages/MainPageReview';
 import ReportPage from './pages/ReportPage';
 import FindSitterPage from './pages/FindSitterPage';
 import PetPage from './pages/PetPage';
@@ -22,6 +22,7 @@ import AcceptJobPage from './pages/AcceptJobPage';
 import EditPetPage from './pages/EditPetPage';
 import ViewSitterPage from './pages/ViewSitterPage';
 import MyJobPage from 'js/pages/MyJobPage';
+import MainReviewPage from './pages/MainReviewPage.js';
 
 class Index extends React.Component {
 
@@ -84,7 +85,7 @@ class Index extends React.Component {
 								/>}
 							/>
 							<Route exact path='/profile-page' component={ProfilePage} />
-							<Route exact path='/rating-page' component={ReviewPage} />
+							<Route exact path='/rating-page' component={MainReviewPage} />
 							<Route exact path='/report-page' component={ReportPage} />
 							<Route exact path='/find-sitter' component={FindSitterPage} />
 							<Route exact path='/profile' component={ProfilePage} />
