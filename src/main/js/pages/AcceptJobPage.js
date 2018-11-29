@@ -24,21 +24,22 @@ class AcceptJobPage extends React.Component {
 		};
 	}
 
-	acceptJob = (e, res) => {
+	acceptJob = (e) => {
 		e.preventDefault();
 
 		console.log('the jobID should be');
-		console.log(res.jobID);
+		console.log(this.state.job.jobID);
 
 		let sitterInfo = this.props.user.principal;
+		let ownerPrincipal = this.state.ownerPrincipal;
 
-		Users.getJob(res.jobID)
+		Users.getJob(this.state.job.jobID)
 			.then(function (response) {
 				response.accepted = 'yes';
 				response.sitterPrincipal = sitterInfo;
 				let notification = {
 					'senderPrincipal': sitterInfo,
-					'receiverPrincipal': res.ownerPrincipal,
+					'receiverPrincipal': ownerPrincipal,
 					'message': sitterInfo + ' has accepted your job!',
 					'read': 'no'
 				};
@@ -68,7 +69,7 @@ class AcceptJobPage extends React.Component {
 					<CardText>Additional Job Details: {this.state.job.preferences}</CardText>
 
 					<div className="center">
-						<Button onClick={ (e) => this.acceptJob(e) }>Find more awesome jobs!</Button>&nbsp;
+						<Button onClick={(e) => this.acceptJob(e)}>Accept Job</Button>&nbsp;
 						<Button href="/#/search-job">Find more awesome jobs!</Button>
 					</div>
 				</CardBody>
