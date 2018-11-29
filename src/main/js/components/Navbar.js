@@ -85,9 +85,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-				<NavItem>
-					<NavLink href="#/profile">Profile</NavLink>
-				</NavItem>
 			</React.Fragment>;
 
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Both') {
@@ -174,8 +171,7 @@ class NavigationBar extends React.Component {
 									My Jobs
 								</DropdownItem>
 							</DropdownMenu>
-						</UncontrolledDropdown>
-						}
+						</UncontrolledDropdown>}
 
 						{_.isDefined(this.props.user) &&
 						<NavItem>

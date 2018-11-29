@@ -30,7 +30,6 @@ class MyJobPage extends React.Component {
 
 	quitJob = (e, res) => {
 		e.preventDefault();
-		quitJob(res.jobID, res.id);
 		let thisUser = this.props.user.principal;
 		let notification1 = {
 			'senderPrincipal': thisUser,
@@ -45,8 +44,14 @@ class MyJobPage extends React.Component {
 			'read': 'no'
 		};
 
-		createNotification(notification1);
-		createNotification(notification2);
+		if(thisUser == res.sitterPrincipal){
+			createNotification(notification1);
+		}
+		else{
+			createNotification(notification2);
+		}
+		quitJob(res.jobID, res.id);
+
 	};
 
 	ownerQuery = () => {
