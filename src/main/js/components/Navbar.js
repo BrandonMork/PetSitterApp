@@ -72,23 +72,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
-
-				<UncontrolledDropdown nav inNavbar>
-					<DropdownToggle nav caret>
-						User
-					</DropdownToggle>
-					<DropdownMenu right>
-						<DropdownItem href="#/profile">
-							My Profile
-						</DropdownItem>
-						<DropdownItem href="#/add-pet">
-							My Pets
-						</DropdownItem>
-						<DropdownItem href="#/my-job-page">
-							My Jobs
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
 			</React.Fragment>;
 		} else if (myCookie.get('user') && myCookie.get('user').userType === 'Sitter') {
 			return <React.Fragment>
@@ -122,22 +105,6 @@ class NavigationBar extends React.Component {
 						</DropdownItem>
 						<DropdownItem href="#/search-job">
 							Search Jobs
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
-				<UncontrolledDropdown nav inNavbar>
-					<DropdownToggle nav caret>
-						User
-					</DropdownToggle>
-					<DropdownMenu right>
-						<DropdownItem href="#/profile">
-							My Profile
-						</DropdownItem>
-						<DropdownItem href="#/add-pet">
-							My Pets
-						</DropdownItem>
-						<DropdownItem href="#/my-job-page">
-							My Jobs
 						</DropdownItem>
 					</DropdownMenu>
 				</UncontrolledDropdown>
@@ -188,6 +155,27 @@ class NavigationBar extends React.Component {
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="ml-auto" navbar>
 						{NavigationBar.checkUserStatus()}
+
+						{_.isDefined(this.props.user) &&
+						<UncontrolledDropdown nav inNavbar>
+							<DropdownToggle nav caret>
+								User
+							</DropdownToggle>
+							<DropdownMenu right>
+								<DropdownItem href="#/profile">
+									My Profile
+								</DropdownItem>
+								{(_.isEqual(this.props.user.userType, 'Both') ||
+								  _.isEqual(this.props.user.userType, 'Owner')) &&
+								<DropdownItem href="#/add-pet">
+									My Pets
+								</DropdownItem>}
+								<DropdownItem href="#/my-job-page">
+									My Jobs
+								</DropdownItem>
+							</DropdownMenu>
+						</UncontrolledDropdown>
+						}
 
 						{_.isDefined(this.props.user) &&
 						<NavItem>
