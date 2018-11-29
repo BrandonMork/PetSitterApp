@@ -175,7 +175,6 @@ class PostJobForm extends React.Component {
 									</FormGroup>
 								</Col>
 							</Row>
-
 							<Button>Post Job</Button>
 						</Form>
 					</Col>

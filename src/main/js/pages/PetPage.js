@@ -61,10 +61,10 @@ class PetPage extends React.Component {
 		const myCookie = new Cookie();
 		Users.getOnePet(this.props.user.principal, name)
 			.then(function (response) {
-				myCookie.set('currentPet', response, {path: '/'})
-					.then(() => {
-						window.location.href = '/#/edit-pet-page';
-					});
+				myCookie.set('currentPet', response, {path: '/'});
+				setTimeout(() => {
+					window.location.href = '/#/edit-pet-page';
+				}, 500);
 			})
 			.catch(function (error) {
 				console.log(error);
