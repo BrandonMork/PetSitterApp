@@ -16,6 +16,7 @@ class NotificationList extends React.Component {
 	readNotification(e, res){
 		e.preventDefault();
 		deleteNotification(res.id, res.notifyID);
+		this.setState(this.state);
 	}
 	query = () => {
 		return {

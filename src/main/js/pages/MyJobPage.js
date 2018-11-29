@@ -3,7 +3,7 @@ import React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import * as Users from 'js/utils/Users';
 import { ReactiveBase, ReactiveList } from '@appbaseio/reactivesearch';
-import {Button, Card, CardBody, CardText, CardTitle} from 'reactstrap';
+import { Button, Card, ListGroup, ListGroupItem } from 'reactstrap';
 import uuidv4 from 'uuid/v4';
 import '../../styles/pageStyles.css';
 import Cookie from 'universal-cookie';
@@ -20,8 +20,6 @@ class MyJobPage extends React.Component {
 		const myCookie = new Cookie();
 		getJob(res.jobID)
 			.then(function (response) {
-				console.log('user has clicked reivewJob button');
-				console.log(response);
 				myCookie.set('currentJob', response, {path: '/'});
 			})
 			.catch(function (error) {
@@ -65,49 +63,35 @@ class MyJobPage extends React.Component {
 
 	render() {
 		return (
-			<div style={{marginTop: 100}}>
-
-				<Card className="center">
-					<CardTitle style={{padding: 15}}>
-						Jobs you've posted:
-					</CardTitle>
-				</Card>
-
+			<Card style={{marginTop: 100, padding: 10}}>
 				{(_.isEqual(this.props.user.userType, 'Owner') ||
 					_.isEqual(this.props.user.userType, 'Both')) &&
 				<ReactiveBase
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 				>
-					{console.log('Job\'s you have POSTED:')}
+					<div className="center" style={{fontSize: 30, fontWeight: 'bold'}}>
+						Jobs you've posted:
+					</div>
 
-					<ReactiveList
-						componentId='results'
-						dataField='original_title'
-						defaultQuery={this.ownerQuery}
-						onData={(res)=>
-							<React.Fragment key={uuidv4()}>
-								{console.log(res)}
-								<Card className="center" body outline style={{marginBottom: 10}}>
-									<CardTitle>{res.jobID}</CardTitle>
-									<CardBody>
-										<CardText>
-											Picked up by: {res.sitterPrincipal}
-											<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
-											<Button onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
-										</CardText>
-									</CardBody>
-								</Card>
-							</React.Fragment>
-						}
-					/>
+					<ListGroup>
+						<ReactiveList
+							componentId='results'
+							dataField='original_title'
+							defaultQuery={this.ownerQuery}
+							showResultStats={false}
+							onData={(res)=>
+								<ListGroupItem style={{width: '100%'}} key={uuidv4()}>
+									Picked up by: {res.sitterPrincipal}
+									<div style={{float: 'right'}}>
+										<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>&nbsp;
+										<Button size='sm' onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
+									</div>
+								</ListGroupItem>
+							}
+						/>
+					</ListGroup>
 				</ReactiveBase>}
-
-				<Card className="center" style={{marginTop: 80}}>
-					<CardTitle style={{padding: 15}}>
-						Jobs you've picked up:
-					</CardTitle>
-				</Card>
 
 				{(_.isEqual(this.props.user.userType, 'Sitter') ||
 					_.isEqual(this.props.user.userType, 'Both')) &&
@@ -115,30 +99,31 @@ class MyJobPage extends React.Component {
 					app='job-info'
 					url='https://rceiwx2ja6:k8akj8q570@yew-1307964.us-east-1.bonsaisearch.net'
 				>
-					{console.log('Job\'s you have p UP:')}
-					<ReactiveList
-						componentId='results'
-						dataField='original_title'
-						defaultQuery={this.sitterQuery}
-						onData={(res)=>
-							<React.Fragment key={uuidv4()}>
-								<Card className="center" body outline style={{marginBottom: 10}}>
-									{console.log(res)}
-									<CardTitle>{res.jobID}</CardTitle>
-									<CardBody>
-										<CardText>
-											Picked up by: {_.isDefined(res.ownerPrincipal) && res.ownerPrincipal}
-											<Button onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>
-											<Button onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
-										</CardText>
-									</CardBody>
-								</Card>
-							</React.Fragment>
-						}
-					/>
+					<div className="center" style={{marginTop: 10, fontSize: 30, fontWeight: 'bold'}}>
+						Jobs you've picked up:
+					</div>
+
+					<ListGroup>
+						<ReactiveList
+							componentId='results'
+							dataField='original_title'
+							defaultQuery={this.sitterQuery}
+							showResultStats={false}
+							onData={(res)=>
+								<ListGroupItem key={uuidv4()}>
+									Picked up by: {res.ownerPrincipal}
+									<div style={{float: 'right'}}>
+										<Button size='sm' onClick={ (e) => this.reviewJob(e, res)}>Review Job</Button>&nbsp;
+										<Button size='sm' onClick={ (e) => this.quitJob(e, res)}>Quit Job</Button>
+									</div>
+								</ListGroupItem>
+							}
+						/>
+					</ListGroup>
+
 				</ReactiveBase>}
 
-			</div>
+			</Card>
 		);
 	}
 }
